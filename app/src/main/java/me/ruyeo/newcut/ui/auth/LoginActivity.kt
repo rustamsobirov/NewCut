@@ -1,4 +1,4 @@
-package me.ruyeo.newcut.ui
+package me.ruyeo.newcut.ui.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
