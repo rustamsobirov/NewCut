@@ -1,4 +1,4 @@
-package me.ruyeo.newcut.ui.home
+package me.ruyeo.newcut.ui.client.home
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

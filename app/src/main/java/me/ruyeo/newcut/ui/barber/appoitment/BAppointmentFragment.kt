@@ -1,36 +1,22 @@
-package me.ruyeo.newcut.ui.home
+package me.ruyeo.newcut.ui.barber.appoitment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
-import me.ruyeo.newcut.databinding.FragmentHomeBinding
+import me.ruyeo.newcut.databinding.FragmentBAppointmentBinding
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 
 @AndroidEntryPoint
-class HomeFragment : BaseFragment(R.layout.fragment_home) {
+class BAppointmentFragment : BaseFragment(R.layout.fragment_b_appointment) {
 
-    private val binding by viewBinding { FragmentHomeBinding.bind(it) }
-    private val viewModel by viewModels<HomeViewModel>()
+    private val binding by viewBinding { FragmentBAppointmentBinding.bind(it) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        setupUI()
-        setupObservers()
-    }
-
-    private fun setupUI() {
-
-    }
-
-    private fun setupObservers() {
-
     }
 }
