@@ -80,8 +80,8 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="blackWhite">#FF000000</color>
-    <color name="edittext_back">#C6C5CD</color>
-    <color name="textColor">#FFFFFF</color>
-    <color name="editTextColor">#FF000000</color>
+    <color name="blackWhite">#FFFFFFFF</color>
+    <color name="edittext_back">#2D3039</color>
+    <color name="textColor">#FF000000</color>
+    <color name="editTextColor">#FFFFFFFF</color>
 </resources>
