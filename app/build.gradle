@@ -68,4 +68,9 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 
     implementation 'com.github.mukeshsolanki:android-otpview-pinview:3.0.0'
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+    //tab-layout
+    implementation 'io.github.ahmad-hamwi:tabsync:1.0.1'
 }
