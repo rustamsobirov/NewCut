@@ -16,6 +16,7 @@
         <item name="android:textColor">@color/blackWhite</item>
         <item name="editTextStyle">@style/PrimaryEditText</item>
     </style>
+    //ss
 
     <style name="CustomDialog" parent="Theme.MaterialComponents.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
