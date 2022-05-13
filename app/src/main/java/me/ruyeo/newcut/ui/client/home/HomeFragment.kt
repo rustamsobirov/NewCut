@@ -3,6 +3,7 @@ package me.ruyeo.newcut.ui.client.home
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.databinding.FragmentHomeBinding
