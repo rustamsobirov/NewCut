@@ -21,7 +21,6 @@ import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.extensions.visible
 
-
 class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     lateinit var detailImageAdapter: DetailImageAdapter
     var photosList = ArrayList<DetailModel>()
@@ -50,7 +49,6 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
         }, 10)
     }
 
-
     private fun getScreenHeight(): Int {
         val displayMetrics = DisplayMetrics()
         requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -62,9 +60,9 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when {
-                    newState == BottomSheetBehavior.STATE_HIDDEN -> {
-                        bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
-                    }
+//                    newState == BottomSheetBehavior.STATE_HIDDEN -> {
+//                        bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
+//                    }
                     bottomSheetBehavior?.state == BottomSheetBehavior.STATE_EXPANDED -> {
                     }
                     bottomSheetBehavior?.state == BottomSheetBehavior.STATE_COLLAPSED -> {
