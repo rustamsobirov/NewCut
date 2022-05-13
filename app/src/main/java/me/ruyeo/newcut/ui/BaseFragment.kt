@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import me.ruyeo.newcut.utils.dialogs.MessageDialog
+import me.ruyeo.newcut.utils.extensions.showSnackMessage
 
 abstract class BaseFragment(private val layoutRes: Int): Fragment() {
 

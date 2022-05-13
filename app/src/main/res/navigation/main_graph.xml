@@ -20,4 +20,9 @@
         android:name="me.ruyeo.newcut.ui.client.settings.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="me.ruyeo.newcut.ui.barber.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>
