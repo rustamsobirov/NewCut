@@ -1,6 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript{
-    ext{
+buildscript {
+    ext {
         kotlin_version = "1.5.20"
         hilt_version = "2.40.5"
         corountine_version = "1.5.1"
@@ -9,6 +9,9 @@ buildscript{
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
     }
 }
+
+
+
 plugins {
     id 'com.android.application' version '7.1.2' apply false
     id 'com.android.library' version '7.1.2' apply false

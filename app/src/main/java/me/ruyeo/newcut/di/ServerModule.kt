@@ -1,12 +1,9 @@
 package me.ruyeo.newcut.di
 
-import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import me.ruyeo.newcut.SharedPref
 import me.ruyeo.newcut.data.remote.ApiService
 import me.ruyeo.newcut.utils.Constants.BASE_URL
 import okhttp3.Interceptor
@@ -32,7 +29,6 @@ class ServerModule {
     @Provides
     @Singleton
     fun getApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
-
     @Provides
     @Singleton
     fun getClient(): OkHttpClient = OkHttpClient.Builder()

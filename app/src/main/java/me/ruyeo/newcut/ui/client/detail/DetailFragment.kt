@@ -19,7 +19,6 @@ import me.ruyeo.newcut.databinding.FragmentDetailBinding
 import me.ruyeo.newcut.model.DetailModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
-import me.ruyeo.newcut.utils.extensions.visible
 
 class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     lateinit var detailImageAdapter: DetailImageAdapter
