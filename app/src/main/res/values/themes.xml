@@ -14,7 +14,6 @@
         <!-- Customize your theme here. -->
         <item name="buttonStyle">@style/ButtonPrimary</item>
         <item name="android:textColor">@color/colorPrimary_300</item>
-        <item name="android:hint">@color/text_500</item>
         <item name="editTextStyle">@style/PrimaryEditText</item>
     </style>
 

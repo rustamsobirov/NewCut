@@ -30,8 +30,6 @@ class DetailImageAdapter(
                 .load(home.imageUrl)
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .into(imageItem)
-
-
         }
     }
 

@@ -27,6 +27,7 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
         dialog.show(childFragmentManager, "message_dialog")
     }
 
+
     fun hideStatusBarAndBottomBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             requireActivity().window.decorView.windowInsetsController!!.hide(
