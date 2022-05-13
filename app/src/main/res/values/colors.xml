@@ -1,10 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    //color primary
     <color name="colorPrimary">#FFBB86FC</color>
-    <color name="colorSecondary">#FF6200EE</color>
-    <color name="colorPrimaryDark">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <color name="colorPrimary_100">#C0B8F4</color>
+    <color name="colorPrimary_200">#ABA1F1</color>
+    <color name="colorPrimary_300">#9789ED</color>
+    <color name="colorPrimary_400">#8272EA</color>
+    <color name="colorPrimary_500">#6D5AE6</color>
+    <color name="colorPrimary_600">#5843E3</color>
+    <color name="colorPrimary_700">#432BDF</color>
+    <color name="colorPrimary_800">#3A22D3</color>
+    <color name="colorPrimary_900">#2C15C1</color>
+
+    //Text
+    <color name="text_100">#DFDEE4</color>
+    <color name="text_200">#C6C5CD</color>
+    <color name="text_300">#ABAAB1</color>
+    <color name="text_400">#89888E</color>
+    <color name="text_500">#5E5D65</color>
+    <color name="text_600">#454354</color>
+    <color name="text_700">#302E43</color>
+    <color name="text_800">#252339</color>
+    <color name="text_900">#191632</color>
+
+    //Dark
+    <color name="dark_100">#DFDEE4</color>
+    <color name="dark_200">#797D8A</color>
+    <color name="dark_300">#6C707D</color>
+    <color name="dark_400">#626673</color>
+    <color name="dark_500">#565A66</color>
+    <color name="dark_600">#484C57</color>
+    <color name="dark_700">#3C404A</color>
+    <color name="dark_800">#2D3039</color>
+    <color name="dark_900">#242731</color>
+
+    //Light
+    <color name="light_100">#FDFDFD</color>
+    <color name="light_200">#FBFBFB</color>
+    <color name="light_300">#F8F8F8</color>
+    <color name="light_400">#F6F6F6</color>
+    <color name="light_500">#F4F4F4</color>
+    <color name="light_600">#F2F2F2</color>
+    <color name="light_700">#EFEFEF</color>
+    <color name="light_800">#EDEDED</color>
+    <color name="light_900">#EBEBEB</color>
+
+    //Green
+    <color name="green_100">#EDFDD4</color>
+    <color name="green_200">#D6FCAA</color>
+    <color name="green_300">#B7F67E</color>
+    <color name="green_400">#98EE5D</color>
+    <color name="green_500">#6BE42B</color>
+    <color name="green_600">#4DC41F</color>
+    <color name="green_700">#34A415</color>
+    <color name="green_800">#20840D</color>
+    <color name="green_900">#116D08</color>
+
+    //Yellow
+    <color name="yellow_100">#FFF5D6</color>
+    <color name="yellow_200">#FFE7AE</color>
+    <color name="yellow_300">#FFD686</color>
+    <color name="yellow_400">#FFC668</color>
+    <color name="yellow_500">#FFAB36</color>
+    <color name="yellow_600">#DB8827</color>
+    <color name="yellow_700">#B7681B</color>
+    <color name="yellow_800">#934C11</color>
+    <color name="yellow_900">#7A380A</color>
+
+    //Red
+    <color name="red_100">#FEE3D5</color>
+    <color name="red_200">#FEC1AC</color>
+    <color name="red_300">#FD9782</color>
+    <color name="red_400">#FC7063</color>
+    <color name="red_500">#FB3030</color>
+    <color name="red_600">#D72332</color>
+    <color name="red_700">#B41833</color>
+    <color name="red_800">#910F31</color>
+    <color name="red_900">#78092F</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
