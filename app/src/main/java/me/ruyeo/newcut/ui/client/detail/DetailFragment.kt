@@ -1,4 +1,4 @@
-package me.ruyeo.newcut.ui.barber.detail
+package me.ruyeo.newcut.ui.client.detail
 
 import android.annotation.SuppressLint
 import android.os.Bundle
