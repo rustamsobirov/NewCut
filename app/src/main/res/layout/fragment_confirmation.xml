@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
+    android:id="@+id/linearLayout"
     tools:context=".ui.auth.ConfirmationFragment">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,6 +15,7 @@
         android:elevation="4dp">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_back"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginStart="16dp"
@@ -50,37 +51,88 @@
         android:textSize="16sp" />
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
         android:layout_marginTop="56dp"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        tools:ignore="MissingClass">
+        android:gravity="center">
 
-
-        <com.mukesh.OtpView
-            android:id="@+id/otpview"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+        <EditText
+            android:id="@+id/ed1"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/edtextbackground"
+            android:enabled="false"
+            android:gravity="center"
             android:inputType="number"
-            app:itemCount="4"
-            app:itemHeight="60dp"
-            app:itemWidth="60dp"
-            app:itemSpacing="22sp"
-            android:itemBackground="#F8F7F7"
-            app:lineColor="@color/white"
-            android:textStyle="bold"
-            app:lineWidth="2dp"
-            android:textSize="30sp"
-            android:text="----"
+            android:maxLength="1"
+            android:maxLines="1"
+            android:padding="10dp"
             android:textColor="@color/black"
-            app:itemRadius="17sp"/>
+            android:textCursorDrawable="@null"
+            android:textSize="30sp" />
 
 
-    </LinearLayout>
+        <EditText
+            android:id="@+id/ed2"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="22dp"
+            android:layout_toRightOf="@id/ed1"
+            android:background="@drawable/edtextbackground"
+            android:cursorVisible="false"
+            android:enabled="false"
+            android:gravity="center"
+            android:imeOptions="actionNone"
+            android:inputType="number"
+            android:maxLength="1"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textCursorDrawable="@null"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/ed3"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="22dp"
+            android:layout_toRightOf="@id/ed2"
+            android:background="@drawable/edtextbackground"
+            android:cursorVisible="false"
+            android:enabled="false"
+            android:imeOptions="actionNone"
+            android:textCursorDrawable="@null"
+            android:inputType="number"
+            android:maxLength="1"
+            android:maxLines="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/ed4"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="22dp"
+            android:layout_toRightOf="@id/ed3"
+            android:background="@drawable/edtextbackground"
+            android:cursorVisible="false"
+            android:enabled="false"
+            android:gravity="center"
+            android:imeOptions="actionNone"
+            android:inputType="number"
+            android:maxLength="1"
+            android:maxLines="1"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textCursorDrawable="@null"
+            android:textSize="30sp" />
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/tv_resend"
