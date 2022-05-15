@@ -3,41 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/NewCut/app/src/main/res/drawable-v24/ic_circle_select.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/btn_bgn.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/btn_round.xml" value="0.1535" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/button_default_bg.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/button_false_bg.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/code_background.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/codepicker_background.xml" value="0.1535" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/detail_bottom_shape.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/edtextbackground.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/ic_circle_unselect.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/ic_detail_back_icon.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/ic_detail_like_icon.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/ic_home.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/keyboard_backspace.xml" value="0.1535" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/list_item.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/radius_top.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/font/poppins_regular.xml" value="0.234375" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/activity_barber.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/activity_main.xml" value="0.33" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/detail_bottom_layout.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/detail_image_item.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/dialog_message.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_about.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_account.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_appoitment.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_confirmation.xml" value="0.25" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_detail.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_history_appointment.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_home.xml" value="0.1" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_registration.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_appoitment.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/dialog_message.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/menu/bottom_menu.xml" value="0.20185185185185187" />
@@ -51,12 +17,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.1" />
-      </ProjectState>
-    </option>
   </component>
 </project>
