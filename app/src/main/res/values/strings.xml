@@ -2,4 +2,12 @@
     <string name="app_name">NewCut</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    <string-array name="times">
+        <item>Remind me</item>
+        <item>10 min before</item>
+        <item>20 min before</item>
+        <item>30 min before</item>
+        <item>Never remind</item>
+    </string-array>
 </resources>
