@@ -28,7 +28,7 @@ class DetailImageAdapter(
 
             Glide.with(context)
                 .load(home.imageUrl)
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .diskCacheStrategy (DiskCacheStrategy.AUTOMATIC)
                 .into(imageItem)
         }
     }

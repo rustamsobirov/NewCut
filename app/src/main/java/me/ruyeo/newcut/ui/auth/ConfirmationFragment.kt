@@ -3,6 +3,7 @@ package me.ruyeo.newcut.ui.auth
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -40,6 +41,8 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
     private val binding by viewBinding { FragmentConfirmationBinding.bind(it) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        countDownTimer()
         onBack()
         setListener()
         initFocus()
@@ -52,12 +55,27 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         }
     }
 
+
+    private fun countDownTimer() {
+        object : CountDownTimer(40000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                binding.tvResend.setText("Resend in " + millisUntilFinished / 1000 + " Sec")
+
+            }
+            override fun onFinish() {
+                binding.tvResend.setText("done!")
+            }
+
+        }.start()
+    }
+
     private fun setListener() {
 
         setTextChengeListener(fromEditText = EditTextOne, targetEdittext = EditTextTwo)
         setTextChengeListener(fromEditText = EditTextTwo, targetEdittext = EditTextThree)
         setTextChengeListener(fromEditText = EditTextThree, targetEdittext = EditTextFour)
         setTextChengeListener(fromEditText = EditTextFour, done = {
+
             verifyOTPCode()
         })
 
