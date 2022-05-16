@@ -17,7 +17,9 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.continueBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_loginFragment_to_confirmationFragment)
+            if (binding.phoneNumberEdt.text.isNotEmpty()){
+                findNavController().navigate(R.id.action_loginFragment_to_confirmationFragment)
+            }
         }
 
     }
