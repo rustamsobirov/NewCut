@@ -2,6 +2,7 @@ package me.ruyeo.newcut.ui.auth
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.KeyEvent
 import android.view.View
@@ -14,6 +15,7 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.databinding.FragmentConfirmationBinding
 import me.ruyeo.newcut.ui.BaseFragment
@@ -38,6 +40,10 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         binding.ed4
     }
     private val binding by viewBinding { FragmentConfirmationBinding.bind(it) }
+
+    private var sec = 120
+    private var secondJob: Job? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onBack()
@@ -142,4 +148,23 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
 
     }
 
+    fun perSecond(): Job {
+        return MainScope().launch {
+            while (isActive) {
+                sec--
+                val min = sec / 60
+                val s = sec - min * 60
+                if (s < 10)
+                    binding.tvResend.text = "$min:0$s"
+                else
+                    binding.tvResend.text = "$min:$s"
+                if (sec == 0) {
+                    //we need text resend
+                    binding.tvResend.setTextColor(Color.parseColor("#052F61"))
+                    cancel()
+                }
+                delay(1000)
+            }
+        }
+    }
 }
