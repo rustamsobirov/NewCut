@@ -69,8 +69,8 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 
     //otpView
-    implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.0.0'
-
+    implementation 'com.github.mukeshsolanki:android-otpview-pinview:2.1.2'
+    //ss
     // Country code picker
     implementation 'com.hbb20:ccp:2.5.1'
     //Glide

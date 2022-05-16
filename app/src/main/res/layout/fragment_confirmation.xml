@@ -66,18 +66,18 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:inputType="number"
-            app:itemCount="4"
-            app:itemHeight="60dp"
-            app:itemWidth="60dp"
-            app:itemSpacing="22sp"
+            app:OtpItemCount="4"
+            app:OtpItemHeight="60dp"
+            app:OtpItemWidth="60dp"
+            app:OtpItemSpacing="22sp"
             android:itemBackground="#F8F7F7"
-            app:lineColor="@color/white"
+            app:OtpLineColor="@color/white"
             android:textStyle="bold"
-            app:lineWidth="2dp"
+            app:OtpLineWidth="2dp"
             android:textSize="30sp"
-            android:text="----"
+            android:hint="----"
             android:textColor="@color/black"
-            app:itemRadius="17sp"/>
+            app:OtpItemRadius="16sp"/>
 
 
     </LinearLayout>

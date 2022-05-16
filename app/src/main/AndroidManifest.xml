@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.ruyeo.newcut">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".App"
@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewCut">
         <activity
-            android:name=".ui.auth.LoginActivity"
+            android:name=".ui.client.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.client.MainActivity"
+            android:name=".ui.auth.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
