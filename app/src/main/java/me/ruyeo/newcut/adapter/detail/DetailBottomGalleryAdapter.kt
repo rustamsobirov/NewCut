@@ -7,13 +7,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import me.ruyeo.newcut.databinding.DetailImageItemBinding
-import me.ruyeo.newcut.model.detail.DetailModel
+import me.ruyeo.newcut.databinding.DetailImageGalleryItemBinding
+import me.ruyeo.newcut.model.detail.GalleryModel
 
-class DetailImageAdapter : RecyclerView.Adapter<DetailImageAdapter.VH>() {
+class DetailBottomGalleryAdapter : RecyclerView.Adapter<DetailBottomGalleryAdapter.VH>() {
     private val dif = AsyncListDiffer(this, ITEM_DIFF)
 
-    inner class VH(private val binding: DetailImageItemBinding) :
+    inner class VH(private val binding: DetailImageGalleryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
             val details = dif.currentList[adapterPosition]
@@ -24,12 +24,12 @@ class DetailImageAdapter : RecyclerView.Adapter<DetailImageAdapter.VH>() {
         }
     }
 
-    fun submitList(list: List<DetailModel>) {
+    fun submitList(list: List<GalleryModel>) {
         dif.submitList(list)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        return VH(DetailImageItemBinding.inflate(LayoutInflater.from(parent.context),
+        return VH(DetailImageGalleryItemBinding.inflate(LayoutInflater.from(parent.context),
             parent,
             false))
     }
@@ -39,11 +39,11 @@ class DetailImageAdapter : RecyclerView.Adapter<DetailImageAdapter.VH>() {
     override fun getItemCount(): Int = dif.currentList.size
 
     companion object {
-        private val ITEM_DIFF = object : DiffUtil.ItemCallback<DetailModel>() {
-            override fun areItemsTheSame(oldItem: DetailModel, newItem: DetailModel): Boolean =
+        private val ITEM_DIFF = object : DiffUtil.ItemCallback<GalleryModel>() {
+            override fun areItemsTheSame(oldItem: GalleryModel, newItem: GalleryModel): Boolean =
                 oldItem.imageUrl == newItem.imageUrl
 
-            override fun areContentsTheSame(oldItem: DetailModel, newItem: DetailModel): Boolean =
+            override fun areContentsTheSame(oldItem: GalleryModel, newItem: GalleryModel): Boolean =
                 oldItem == newItem
         }
     }

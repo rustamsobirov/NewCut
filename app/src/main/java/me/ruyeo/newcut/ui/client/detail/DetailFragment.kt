@@ -6,7 +6,6 @@ import android.os.Handler
 import android.os.Looper
 import android.util.DisplayMetrics
 import android.view.View
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -20,7 +19,7 @@ import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.detail.DetailBottomViewPagerAdapter
 import me.ruyeo.newcut.adapter.detail.DetailImageAdapter
 import me.ruyeo.newcut.databinding.FragmentDetailBinding
-import me.ruyeo.newcut.model.DetailModel
+import me.ruyeo.newcut.model.detail.DetailModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.extensions.visible
