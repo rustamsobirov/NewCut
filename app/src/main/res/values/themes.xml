@@ -54,6 +54,7 @@
 
 
     <style name="circle">
-    <item name="cornerSize">50%</item>
-</style>
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>
