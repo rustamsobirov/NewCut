@@ -5,6 +5,7 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.text.Html
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -49,17 +50,35 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         super.onViewCreated(view, savedInstanceState)
 
         secondJob = perSecond()
-        onBack()
+        callBack()
         setListener()
-        initFocus()
+        binding.tvFourDigit.setText(
+            Html.fromHtml(
+                "Please enter the 4 diget security code we just sent you at " + "<font color=#4F38E1>" + arguments?.getString(
+                    "phoneNumber"
+                )
+            )
+        )
 
     }
 
-    private fun onBack() {
+    private fun callBack() {
         binding.ivBack.setOnClickListener {
             findNavController().navigate(R.id.action_confirmationFragment_to_loginFragment)
         }
     }
+
+
+    @SuppressLint("ServiceCast")
+    fun initFocus() {
+        EditTextOne.isEnabled = true
+
+        EditTextOne.postDelayed({
+            EditTextOne.requestFocus()
+        }, 1000)
+    }
+
+
     private fun setListener() {
 
         setTextChengeListener(fromEditText = EditTextOne, targetEdittext = EditTextTwo)
@@ -75,15 +94,6 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         setKeyListener(fromEditText = EditTextFour, backToEditText = EditTextThree)
     }
 
-    @SuppressLint("ServiceCast")
-    private fun initFocus() {
-        EditTextOne.isEnabled = true
-
-        EditTextOne.postDelayed({
-            EditTextOne.requestFocus()
-        }, 500)
-    }
-
     private fun setTextChengeListener(
         fromEditText: EditText,
         targetEdittext: EditText? = null,
@@ -92,38 +102,26 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         fromEditText.addTextChangedListener {
             it?.let { string ->
                 if (string.isNotEmpty()) {
-                    targetEdittext?.let { edittext ->
-                        edittext.isEnabled = true
-                        edittext.requestFocus()
-                    } ?: run {
+                    targetEdittext?.requestFocus() ?: run {
                         done?.let { done ->
                             done()
                         }
-
                     }
-
-                    fromEditText.clearFocus()
-                    fromEditText.isEnabled = false
                 }
             }
         }
-
     }
 
     private fun setKeyListener(fromEditText: EditText, backToEditText: EditText) {
         fromEditText.setOnKeyListener { _, _, event ->
-            if (null != event && KeyEvent.KEYCODE_DEL == event.keyCode) {
-                backToEditText.isEnabled = true
+            if (event.action == KeyEvent.ACTION_DOWN
+                && event.keyCode == KeyEvent.KEYCODE_DEL
+            ) {
                 backToEditText.requestFocus()
-                backToEditText.setText("")
-
-
-                fromEditText.clearFocus()
-                fromEditText.isEnabled = false
             }
             false
-
         }
+
     }
 
     private fun verifyOTPCode() {
@@ -145,6 +143,11 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
             Toast.makeText(context, "Success, should do next", Toast.LENGTH_SHORT).show()
 
             return
+        } else {
+            EditTextOne.setBackgroundResource(R.drawable.true_code_background)
+            EditTextTwo.setBackgroundResource(R.drawable.true_code_background)
+            EditTextThree.setBackgroundResource(R.drawable.true_code_background)
+            EditTextFour.setBackgroundResource(R.drawable.true_code_background)
         }
 
         Toast.makeText(context, "error, input again", Toast.LENGTH_SHORT).show()
@@ -169,5 +172,10 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                 delay(1000)
             }
         }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        secondJob?.cancel()
     }
 }
