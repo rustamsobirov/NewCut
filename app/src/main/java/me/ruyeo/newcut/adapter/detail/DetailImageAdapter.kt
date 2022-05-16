@@ -4,38 +4,47 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import me.ruyeo.newcut.R
+import me.ruyeo.newcut.databinding.DetailImageItemBinding
 import me.ruyeo.newcut.model.DetailModel
 
-class DetailImageAdapter(
-    private val context: Context, private val lists: ArrayList<DetailModel>,
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.detail_image_item, parent, false)
-        return DetailViewHolder(view)
-    }
+class DetailImageAdapter : RecyclerView.Adapter<DetailImageAdapter.VH>() {
+    private val dif = AsyncListDiffer(this, ITEM_DIFF)
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val home = lists[position]
-
-        if (holder is DetailViewHolder) {
-            val imageItem = holder.detailImageView
-
-            Glide.with(context)
-                .load(home.imageUrl)
+    inner class VH(private val binding: DetailImageItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind() {
+            val details = dif.currentList[adapterPosition]
+            Glide.with(binding.root.context)
+                .load(details.imageUrl)
                 .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .into(imageItem)
+                .into(binding.detailImageItem)
         }
     }
 
-    override fun getItemCount(): Int = lists.size
+    fun submitList(list: List<DetailModel>){
+        dif.submitList(list)
+    }
 
-    class DetailViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val detailImageView: ImageView = view.findViewById(R.id.detailImageItem)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+        return VH(DetailImageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    }
+
+    override fun onBindViewHolder(holder: VH, position: Int) = holder.bind()
+
+    override fun getItemCount(): Int = dif.currentList.size
+
+    companion object {
+        private val ITEM_DIFF = object : DiffUtil.ItemCallback<DetailModel>() {
+            override fun areItemsTheSame(oldItem: DetailModel, newItem: DetailModel): Boolean =
+                oldItem.imageUrl == newItem.imageUrl
+
+            override fun areContentsTheSame(oldItem: DetailModel, newItem: DetailModel): Boolean =
+                oldItem == newItem
+        }
     }
 }

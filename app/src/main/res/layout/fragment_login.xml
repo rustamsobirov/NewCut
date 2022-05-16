@@ -37,7 +37,7 @@
         android:text="Your phone!"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:textStyle="bold" />
 
     <TextView
@@ -84,14 +84,13 @@
 
     </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/continue_btn"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="56dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/btn_round"
         android:clickable="true"
         android:focusable="true"
         android:text="Continue"
