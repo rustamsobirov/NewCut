@@ -10,16 +10,20 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.ahmadhamwi.tabsync.TabbedListMediator
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
+import com.willy.ratingbar.ScaleRatingBar
 import me.ruyeo.newcut.R
+import me.ruyeo.newcut.adapter.detail.DetailBottomViewPagerAdapter
 import me.ruyeo.newcut.adapter.detail.DetailImageAdapter
 import me.ruyeo.newcut.databinding.FragmentDetailBinding
-import me.ruyeo.newcut.model.DetailModel
+import me.ruyeo.newcut.model.detail.DetailModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.extensions.visible
+
 
 class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     private val detailImageAdapter by lazy { DetailImageAdapter() }
@@ -28,12 +32,54 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     private val binding by viewBinding { FragmentDetailBinding.bind(it) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //fragment detail
         hideStatusBarAndBottomBar()
         installRecyclerView()
         carouselRecyclerManager()
         tabLayoutManager()
+        //detail bottom layout
         installBottomSheetBehavior(view)
         bottomSheetBehaviorManager()
+        detailBottomViewPagerManager(view)
+        detailBottomRatingBarManager(view)
+    }
+
+    private fun detailBottomRatingBarManager(view: View) {
+        val ratingBar = view.findViewById<ScaleRatingBar>(R.id.ratingBar)
+
+        ratingBar.setOnRatingChangeListener { _, rating, _ ->
+//            Toast.makeText(context,
+//                "$rating",
+//                Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun detailBottomViewPagerManager(view: View) {
+        val tabLayout = view.findViewById<TabLayout>(R.id.detailBottomTabLayout)
+        val viewPager = view.findViewById<ViewPager2>(R.id.detailBottomViewPager)
+        val detailBottomViewPagerAdapter =
+            DetailBottomViewPagerAdapter(childFragmentManager, lifecycle)
+        viewPager.adapter = detailBottomViewPagerAdapter
+
+        tabLayout.addTab(tabLayout.newTab().setText("About"))
+        tabLayout.addTab(tabLayout.newTab().setText("Gallery"))
+        tabLayout.addTab(tabLayout.newTab().setText("Review"))
+
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                viewPager.currentItem = tab!!.position
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+        })
+
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                tabLayout.selectTab(tabLayout.getTabAt(position))
+            }
+        })
     }
 
     private fun installBottomSheetBehavior(view: View) {
@@ -56,16 +102,15 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     }
 
     private fun bottomSheetBehaviorManager() {
+        bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
         bottomSheetBehavior?.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
+            @SuppressLint("SwitchIntDef")
             override fun onStateChanged(bottomSheet: View, newState: Int) {
-                when {
-//                    newState == BottomSheetBehavior.STATE_HIDDEN -> {
-//                        bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
-//                    }
-                    bottomSheetBehavior?.state == BottomSheetBehavior.STATE_EXPANDED -> {
+                when (bottomSheetBehavior?.state) {
+                    BottomSheetBehavior.STATE_EXPANDED -> {
                     }
-                    bottomSheetBehavior?.state == BottomSheetBehavior.STATE_COLLAPSED -> {
+                    BottomSheetBehavior.STATE_COLLAPSED -> {
                     }
                 }
             }
