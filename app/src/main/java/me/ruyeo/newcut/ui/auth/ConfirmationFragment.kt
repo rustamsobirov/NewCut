@@ -55,7 +55,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         }
     }
 
-
+// countDownTimer
     private fun countDownTimer() {
         object : CountDownTimer(40000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
