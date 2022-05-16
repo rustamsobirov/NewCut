@@ -12,13 +12,11 @@ import me.ruyeo.newcut.databinding.ActivityLoginBinding
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private lateinit var navController: NavController
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        navController = findNavController(R.id.nav_host_login)
-
+//ds
+        navController = findNavController(R.id.nav_host_auth)
     }
 }

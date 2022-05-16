@@ -27,8 +27,8 @@ import me.ruyeo.newcut.utils.extensions.visible
 
 
 class DetailFragment : BaseFragment(R.layout.fragment_detail) {
-    lateinit var detailImageAdapter: DetailImageAdapter
-    var photosList = ArrayList<DetailModel>()
+    private val detailImageAdapter by lazy { DetailImageAdapter() }
+    private var photosList = ArrayList<DetailModel>()
     private var bottomSheetBehavior: BottomSheetBehavior<*>? = null
     private val binding by viewBinding { FragmentDetailBinding.bind(it) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -174,7 +174,6 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
 
     private fun installRecyclerView() {
         binding.apply {
-            detailImageAdapter = DetailImageAdapter(requireContext(), photosList)
             detailRecyclerView.adapter = detailImageAdapter
             PagerSnapHelper().attachToRecyclerView(detailRecyclerView)
         }
@@ -184,12 +183,7 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
         photosList.add(DetailModel("https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Salon-image.png?alt=media&token=88fe9b51-1a16-442b-a994-bcdbf6b37559"))
         photosList.add(DetailModel("https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef"))
         photosList.add(DetailModel("https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef"))
-        notifyAdapter()
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    private fun notifyAdapter() {
-        detailImageAdapter.notifyDataSetChanged()
+        detailImageAdapter.submitList(photosList)
     }
 
     override fun onDestroyView() {

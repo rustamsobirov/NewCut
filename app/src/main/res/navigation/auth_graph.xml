@@ -19,21 +19,17 @@
         android:name="me.ruyeo.newcut.ui.auth.RegistrationFragment"
         android:label="fragment_registration"
         tools:layout="@layout/fragment_registration" />
-    <fragment
-        android:id="@+id/BRegistrationFragment"
-        android:name="me.ruyeo.newcut.ui.auth.BRegistrationFragment"
-        android:label="fragment_b_registration"
-        tools:layout="@layout/fragment_b_registration" />
+
     <fragment
         android:id="@+id/confirmationFragment"
         android:name="me.ruyeo.newcut.ui.auth.ConfirmationFragment"
         android:label="fragment_confirmation"
         tools:layout="@layout/fragment_confirmation" >
         <action
-            android:id="@+id/action_confirmationFragment_to_BRegistrationFragment"
-            app:destination="@id/BRegistrationFragment" />
-        <action
             android:id="@+id/action_confirmationFragment_to_registrationFragment"
             app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/action_confirmationFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>
