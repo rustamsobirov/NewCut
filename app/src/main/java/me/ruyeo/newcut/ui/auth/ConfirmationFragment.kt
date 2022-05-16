@@ -42,13 +42,13 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
     }
     private val binding by viewBinding { FragmentConfirmationBinding.bind(it) }
 
-    private var sec = 120
+    private var sec = 20
     private var secondJob: Job? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        countDownTimer()
+        secondJob = perSecond()
         onBack()
         setListener()
         initFocus()
@@ -60,21 +60,6 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
             findNavController().navigate(R.id.action_confirmationFragment_to_loginFragment)
         }
     }
-
-// countDownTimer
-    private fun countDownTimer() {
-        object : CountDownTimer(40000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                binding.tvResend.setText("Resend in " + millisUntilFinished / 1000 + " Sec")
-
-            }
-            override fun onFinish() {
-                binding.tvResend.setText("done!")
-            }
-
-        }.start()
-    }
-
     private fun setListener() {
 
         setTextChengeListener(fromEditText = EditTextOne, targetEdittext = EditTextTwo)
@@ -166,18 +151,18 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
 
     }
 
-    fun perSecond(): Job {
+    private fun perSecond(): Job {
         return MainScope().launch {
             while (isActive) {
                 sec--
                 val min = sec / 60
                 val s = sec - min * 60
                 if (s < 10)
-                    binding.tvResend.text = "$min:0$s"
+                    binding.tvResend.text = "Resend in $min:0$s Sec"
                 else
-                    binding.tvResend.text = "$min:$s"
+                    binding.tvResend.text = "Resend In $min:$s Sec"
                 if (sec == 0) {
-                    //we need text resend
+                    binding.tvResend.setText("Resend!")
                     binding.tvResend.setTextColor(Color.parseColor("#052F61"))
                     cancel()
                 }

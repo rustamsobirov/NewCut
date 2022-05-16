@@ -3,7 +3,7 @@
     package="me.ruyeo.newcut">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-
+//sss
     <application
         android:name=".App"
         android:allowBackup="true"

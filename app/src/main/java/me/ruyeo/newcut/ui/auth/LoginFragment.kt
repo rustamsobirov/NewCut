@@ -2,6 +2,7 @@ package me.ruyeo.newcut.ui.auth
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
@@ -18,7 +19,8 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
         binding.continueBtn.setOnClickListener {
             if (binding.phoneNumberEdt.text.isNotEmpty()){
-                findNavController().navigate(R.id.action_loginFragment_to_confirmationFragment)
+                findNavController().navigate(R.id.action_loginFragment_to_confirmationFragment,
+                    bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString()))
             }
         }
 

@@ -144,7 +144,7 @@
         android:text="Resend in 40 Sec"
         android:textAllCaps="false"
         android:textColor="#432BDF"
-        android:textSize="13sp" />
+        android:textSize="16sp" />
 
 
 </LinearLayout>
