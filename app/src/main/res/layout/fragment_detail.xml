@@ -60,7 +60,9 @@
             app:tabIndicatorAnimationMode="elastic"
             app:tabIndicatorHeight="0dp"
             app:tabMode="fixed"
-            app:tabRippleColor="@null" />
+            app:tabRippleColor="@null"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="@color/white_30" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

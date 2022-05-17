@@ -3,6 +3,7 @@ package me.ruyeo.newcut.ui.client.detail.detail_in
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.detail.DetailBottomReviewAdapter
 import me.ruyeo.newcut.databinding.FragmentDetailReviewBinding
@@ -10,6 +11,7 @@ import me.ruyeo.newcut.model.detail.ReviewModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 
+@AndroidEntryPoint
 class DetailReviewFragment : BaseFragment(R.layout.fragment_detail_review) {
     private val binding by viewBinding { FragmentDetailReviewBinding.bind(it) }
     var reviewList = ArrayList<ReviewModel>()

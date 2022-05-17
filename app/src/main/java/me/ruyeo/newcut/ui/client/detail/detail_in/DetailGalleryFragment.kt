@@ -2,6 +2,7 @@ package me.ruyeo.newcut.ui.client.detail.detail_in
 
 import android.os.Bundle
 import android.view.View
+import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.detail.DetailBottomGalleryAdapter
 import me.ruyeo.newcut.adapter.detail.manager.SpannedGridLayoutManager
@@ -13,7 +14,7 @@ import me.ruyeo.newcut.model.detail.GalleryModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 
-
+@AndroidEntryPoint
 class DetailGalleryFragment : BaseFragment(R.layout.fragment_detail_gallery) {
     private val binding by viewBinding { FragmentDetailGalleryBinding.bind(it) }
     private val detailImageAdapter by lazy { DetailBottomGalleryAdapter() }
