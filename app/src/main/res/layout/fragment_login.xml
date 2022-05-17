@@ -26,46 +26,29 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="40dp"
         android:lineSpacingExtra="4dp"
-        android:textColor="@color/black"
         android:text="A 4 digit security code will be sent via SMS to verify your mobile number!"
+        android:textColor="@color/black"
         android:textSize="16sp" />
 
-
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/codepicker_background"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingHorizontal="10dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        app:boxStrokeColor="@color/red_600"
+        app:boxStrokeWidth="3dp">
 
-        <com.hbb20.CountryCodePicker
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:ccp_textSize="16sp"
-            app:ccp_defaultNameCode="UZ" />
-
-        <LinearLayout
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="8dp"
-            android:background="#AFACAC" />
-
-        <EditText
-            android:id="@+id/phone_number_edt"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneNumberEdt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:background="@android:color/transparent"
+            android:layout_height="56dp"
+            android:background="@color/light_300"
             android:hint="Enter number"
-            android:maxLength="9"
             android:inputType="phone"
+            android:maxLength="18"
             android:textColorHint="@color/light_900"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
-    </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/continue_btn"

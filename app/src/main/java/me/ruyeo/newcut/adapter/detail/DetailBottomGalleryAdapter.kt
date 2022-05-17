@@ -13,8 +13,7 @@ import me.ruyeo.newcut.model.detail.GalleryModel
 class DetailBottomGalleryAdapter : RecyclerView.Adapter<DetailBottomGalleryAdapter.VH>() {
     private val dif = AsyncListDiffer(this, ITEM_DIFF)
 
-    inner class VH(private val binding: DetailImageGalleryItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
+    inner class VH(private val binding: DetailImageGalleryItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind() {
             val details = dif.currentList[adapterPosition]
             Glide.with(binding.root.context)

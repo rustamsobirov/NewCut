@@ -5,23 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.client.filter.FilterBarberFragment">
+    tools:context=".ui.client.filter.FilterAndBookingBarberFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="50dp"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="300dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginStart="24dp"
+                android:layout_weight="1"
                 android:background="@drawable/filterbackground"
                 android:orientation="horizontal">
 
@@ -59,8 +61,9 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_weight="0.2"
                 android:gravity="center">
 
                 <ImageView
@@ -78,47 +81,45 @@
             android:id="@+id/tv_popular_artist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="Popular artist"
             android:textColor="@color/black"
             android:textSize="17sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_artist"
+            android:id="@+id/rv_specialist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:listitem="@layout/item_popular_artist"
             android:layout_marginTop="20dp"
-           android:layout_marginEnd="4dp"
-            android:layout_marginStart="24dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_popular_artist" />
 
         <TextView
-            android:id="@+id/tv_result_found"
+            android:id="@+id/tv_result_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="20dp"
             android:text="Result found(246)"
-            android:textSize="13sp"
-            android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginHorizontal="24dp"/>
+            android:textSize="13sp"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_book"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="20dp"
-            tools:listitem="@layout/item_book_stylist"
-            android:layout_marginHorizontal="24dp"
+            android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical"/>
+            tools:listitem="@layout/item_book_stylist" />
 
     </LinearLayout>
-
 
 
 </androidx.core.widget.NestedScrollView>

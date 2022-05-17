@@ -7,11 +7,11 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
+        android:layout_marginHorizontal="12dp"
         android:orientation="vertical">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/image_view_profile_story"
+            android:id="@+id/bookImageProfileStory"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:scaleType="centerCrop"
@@ -31,6 +31,7 @@
             android:textColor="@color/black"
             android:textSize="14sp" />
         <TextView
+            android:id="@+id/tvSpecialist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hair Stylist"
