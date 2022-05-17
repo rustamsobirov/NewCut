@@ -5,21 +5,27 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
+import me.ruyeo.newcut.adapter.UpcomingAppointmentAdapter
 import me.ruyeo.newcut.databinding.FragmentPassAppointmentBinding
 import me.ruyeo.newcut.databinding.FragmentUpcomingAppointmentBinding
+import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 
-
-class UpcomingAppointmentFragment : Fragment() {
+@AndroidEntryPoint
+class UpcomingAppointmentFragment : BaseFragment(R.layout.fragment_upcoming_appointment) {
     private val binding by viewBinding { FragmentUpcomingAppointmentBinding.bind(it) }
+    private val adapter by lazy { UpcomingAppointmentAdapter() }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_upcoming_appointment, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        adapter.spinnerClick = {
+            Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 }

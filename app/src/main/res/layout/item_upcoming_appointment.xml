@@ -91,8 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:entries="@array/times"
-            />
+            android:entries="@array/times"/>
 
 
         <LinearLayout
