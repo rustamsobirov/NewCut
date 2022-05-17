@@ -2,33 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
-    android:id="@+id/linearLayout"
+    android:orientation="vertical"
     tools:context=".ui.auth.ConfirmationFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:elevation="4dp">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_back"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="2dp"
+        android:src="@drawable/keyboard_backspace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_back"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="16dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="2dp"
-            android:src="@drawable/keyboard_backspace"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,12 +37,14 @@
         android:textStyle="bold" />
 
     <TextView
+        android:id="@+id/tvFourDigit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="40dp"
         android:lineSpacingExtra="8dp"
         android:text="Please enter the 4 diget security code we just sent you at 713-444-xxxx"
+        android:textColor="@color/black"
         android:textSize="16sp" />
 
 
@@ -62,15 +59,14 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:background="@drawable/edtextbackground"
-            android:enabled="false"
             android:gravity="center"
+            android:includeFontPadding="false"
             android:inputType="number"
             android:maxLength="1"
             android:maxLines="1"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:textCursorDrawable="@null"
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
 
         <EditText
@@ -80,17 +76,14 @@
             android:layout_marginLeft="22dp"
             android:layout_toRightOf="@id/ed1"
             android:background="@drawable/edtextbackground"
-            android:cursorVisible="false"
-            android:enabled="false"
             android:gravity="center"
-            android:imeOptions="actionNone"
+            android:includeFontPadding="false"
             android:inputType="number"
             android:maxLength="1"
             android:maxLines="1"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:textCursorDrawable="@null"
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/ed3"
@@ -99,17 +92,14 @@
             android:layout_marginLeft="22dp"
             android:layout_toRightOf="@id/ed2"
             android:background="@drawable/edtextbackground"
-            android:cursorVisible="false"
-            android:enabled="false"
-            android:imeOptions="actionNone"
-            android:textCursorDrawable="@null"
+            android:gravity="center"
+            android:includeFontPadding="false"
             android:inputType="number"
             android:maxLength="1"
             android:maxLines="1"
-            android:gravity="center"
             android:padding="10dp"
             android:textColor="@color/black"
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/ed4"
@@ -118,18 +108,15 @@
             android:layout_marginLeft="22dp"
             android:layout_toRightOf="@id/ed3"
             android:background="@drawable/edtextbackground"
-            android:cursorVisible="false"
-            android:enabled="false"
             android:gravity="center"
-            android:imeOptions="actionNone"
+            android:includeFontPadding="false"
             android:inputType="number"
             android:maxLength="1"
             android:maxLines="1"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
-            android:textCursorDrawable="@null"
-            android:textSize="30sp" />
+            android:textSize="24sp" />
 
     </RelativeLayout>
 
@@ -143,7 +130,7 @@
         android:gravity="center"
         android:text="Resend in 40 Sec"
         android:textAllCaps="false"
-        android:textColor="#432BDF"
+        android:textColor="#4F38E1"
         android:textSize="16sp" />
 
 
