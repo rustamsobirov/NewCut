@@ -77,4 +77,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
     //tab-layout
     implementation 'io.github.ahmad-hamwi:tabsync:1.0.1'
+    //custom-rating-bar
+    implementation 'com.github.ome450901:SimpleRatingBar:1.5.1'
 }
