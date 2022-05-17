@@ -1,6 +1,6 @@
 package me.ruyeo.newcut.model
 
-data class UpcomingAppointment (
+data class PassAppointmentModel (
     var userName:String? = null,
     var userLocation:String?=null,
     var typeHaircut:String?=null

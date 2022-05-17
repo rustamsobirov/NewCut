@@ -10,9 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.ruyeo.newcut.App
 import me.ruyeo.newcut.R
-import me.ruyeo.newcut.databinding.DetailImageItemBinding
 import me.ruyeo.newcut.databinding.ItemUpcomingAppointmentBinding
-import me.ruyeo.newcut.model.DetailModel
 import me.ruyeo.newcut.model.UpcomingAppointment
 
 class UpcomingAppointmentAdapter : RecyclerView.Adapter<UpcomingAppointmentAdapter.Vh>() {
@@ -22,12 +20,16 @@ class UpcomingAppointmentAdapter : RecyclerView.Adapter<UpcomingAppointmentAdapt
     inner class Vh(var binding: ItemUpcomingAppointmentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
-            val adapter:  ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(App.instance,R.array.times,android.R.layout.simple_spinner_item)
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            val adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(
+                App.instance,
+                R.array.times,
+                R.layout.item_spinner_list
+            )
+            adapter.setDropDownViewResource(R.layout.item_spinner_list)
 
             binding.apply {
                 spinner.adapter = adapter
-                spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+                spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                         spinnerClick?.invoke()
                     }
@@ -43,7 +45,13 @@ class UpcomingAppointmentAdapter : RecyclerView.Adapter<UpcomingAppointmentAdapt
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Vh {
-        return Vh(ItemUpcomingAppointmentBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return Vh(
+            ItemUpcomingAppointmentBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: Vh, position: Int) = holder.bind()
