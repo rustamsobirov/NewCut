@@ -1,121 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="10dp"
-    android:padding="10dp"
-    android:background="@drawable/bg_appointment_item_rv"
-    android:orientation="vertical">
+    tools:context=".ui.client.appoitment.PassAppointmentFragment">
 
-    <TextView
-        android:id="@+id/tv_booked_time"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_pass"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="12 September 2021, 08:00"
-        android:textSize="17sp"
-        android:textColor="#191632"
-        android:textStyle="bold"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:reverseLayout="false"
+        app:spanCount="1"
+        android:overScrollMode="never"
+        tools:listitem="@layout/item_pass_appointment" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_profile"
-            android:layout_width="104dp"
-            android:layout_height="90dp"
-            app:shapeAppearanceOverlay="@style/rounded_corner"
-            android:src="@drawable/image_barber"
-            android:scaleType="centerCrop"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/tv_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bella Rinova"
-                android:textColor="#191632"
-                android:textSize="14sp"
-                android:maxLines="1"
-                android:textStyle="normal"/>
-
-            <TextView
-                android:id="@+id/tv_user_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="6391 Elgin St. Celina, Dela..."
-                android:maxLines="1"
-                android:textColor="#ABAAB1"
-                android:textSize="13sp"/>
-
-            <TextView
-                android:id="@+id/tv_type_haircut"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Services: Regular haircut, Classic shaving"
-                android:textSize="13sp"
-                android:textColor="#432BDF"
-                android:layout_marginTop="6dp"
-                android:maxLines="2"/>
-
-
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
-
-
-
-
-            <TextView
-                android:id="@+id/tv_review"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/tv_bg"
-                android:textColor="#191632"
-                android:textSize="13sp"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="4dp"
-                android:textStyle="normal"
-                android:text="Review"/>
-
-
-
-            <TextView
-                android:id="@+id/tv_reschedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="15dp"
-                android:background="@drawable/tv_reschedule_bg"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="4dp"
-                android:textStyle="normal"
-                android:text="Reschedule"/>
-
-
-
-
-    </LinearLayout>
-
-
-</LinearLayout>
+</FrameLayout>
