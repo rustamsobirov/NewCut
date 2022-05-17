@@ -16,6 +16,7 @@ import com.ahmadhamwi.tabsync.TabbedListMediator
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
 import com.willy.ratingbar.ScaleRatingBar
+import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.detail.DetailBottomViewPagerAdapter
 import me.ruyeo.newcut.adapter.detail.DetailImageAdapter
@@ -25,7 +26,7 @@ import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.extensions.visible
 
-
+@AndroidEntryPoint
 class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     private val detailImageAdapter by lazy { DetailImageAdapter() }
     private var photosList = ArrayList<DetailModel>()
