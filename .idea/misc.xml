@@ -32,51 +32,12 @@
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_pass_appointment.xml" value="0.16417272338606242" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_spinner_list.xml" value="0.19895833333333332" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.33" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_error_message.xml" value="0.12" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_success_message.xml" value="0.12" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_confirmation.xml" value="0.17962962962962964" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_detail.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_login.xml" value="0.2" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/backgroundbook.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/code_background.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/codepicker_background.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/detail_bottom_shape.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/edtextbackground.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/ic_star_selected.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/ic_star_unselected.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/drawable/true_code_background.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/activity_login.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/activity_main.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/detail_bottom_layout.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/detail_image_gallery_item.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/detail_image_item.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/detail_review_item.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/detail_salon_specialists_item.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/dialog_message.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_about.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_account.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_appoitment.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_confirmation.xml" value="0.3582295988934993" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_detail.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_detail_about.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_detail_gallery.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_detail_review.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_filter_barber.xml" value="0.25" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_home.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_login.xml" value="0.22" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_pass_appointment.xml" value="0.33" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_registration.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_upcoming_appointment.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/item_book_stylist.xml" value="0.33" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/item_popular_artist.xml" value="0.33" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/item_spinner_list.xml" value="0.18854166666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.33" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/drawable/btn_bgn.xml" value="0.1955" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/drawable/button_default_bg.xml" value="0.1955" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/drawable/button_false_bg.xml" value="0.1955" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/drawable/list_item.xml" value="0.1955" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/drawable/radius_top.xml" value="0.1955" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/font/poppins_bold.xml" value="0.14322916666666666" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/font/poppins_regular.xml" value="0.14322916666666666" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/dialog_message.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/menu/bottom_menu.xml" value="0.20185185185185187" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/menu/bottom_nav_customer.xml" value="0.25416666666666665" />

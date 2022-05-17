@@ -31,17 +31,22 @@
         android:textSize="16sp" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
-        app:boxStrokeColor="@color/red_600"
-        app:boxStrokeWidth="3dp">
+        android:background="@color/light_300"
+        android:focusable="true"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxStrokeColor="@color/white"
+        app:boxStrokeWidth="5dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/phoneNumberEdt"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/light_300"
             android:hint="Enter number"
             android:inputType="phone"
             android:maxLength="18"
