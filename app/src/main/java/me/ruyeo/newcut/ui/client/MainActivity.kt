@@ -1,6 +1,7 @@
 package me.ruyeo.newcut.ui.client
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -20,5 +21,17 @@ class MainActivity : AppCompatActivity() {
 
         navController = findNavController(R.id.nav_host_main)
         binding.bnvMain.setupWithNavController(navController)
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.detailFragment-> {
+                    binding.bnvMain.visibility = View.GONE
+                }
+                else -> {
+                    binding.bnvMain.visibility = View.VISIBLE
+                }
+            }
+        }
+    }
     }
 }
