@@ -10,13 +10,13 @@
         <item name="colorSecondaryVariant">@color/dark_500</item>
         <item name="colorOnSecondary">@color/black</item>
         <item name="colorButtonNormal">@color/colorPrimary_500</item>
-        <item name="android:hint">@color/text_500</item>
         <item name="buttonStyle">@style/ButtonPrimary</item>
         <item name="android:textColor">@color/blackWhite</item>
         <item name="editTextStyle">@style/PrimaryEditText</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
     </style>
 
     <style name="CustomDialog" parent="Theme.MaterialComponents.Dialog">

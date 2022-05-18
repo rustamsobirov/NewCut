@@ -22,7 +22,12 @@
         tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/detailFragment"
-        android:name="me.ruyeo.newcut.ui.barber.detail.DetailFragment"
+        android:name="me.ruyeo.newcut.ui.client.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/filterAndBookingBarberFragment"
+        android:name="me.ruyeo.newcut.ui.client.filter.FilterAndBookingBarberFragment"
+        android:label="fragment_filter_barber"
+        tools:layout="@layout/fragment_filter_barber" />
 </navigation>

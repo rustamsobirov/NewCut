@@ -13,7 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
         <item name="buttonStyle">@style/ButtonPrimary</item>
-        <item name="android:textColor">@color/blackWhite</item>
+        <item name="android:textColor">@color/colorPrimary_300</item>
         <item name="editTextStyle">@style/PrimaryEditText</item>
     </style>
 
@@ -28,7 +28,7 @@
         <item name="fontFamily">@font/medium</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="android:textColor">@color/editTextColor</item>
-        <item name="android:paddingStart">20dp</item>
+        <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">8dp</item>
     </style>
 
@@ -52,5 +52,19 @@
         <item name="android:background">@drawable/radius_top</item>
     </style>
 
+
+    <style name="circle">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="rounded_corner">
+        <item name="cornerSize">30%</item>
+    </style>
+
+    <declare-styleable name="SpannedGridLayoutManager">
+        <attr name="android:orientation" />
+        <attr name="spanCount" />
+        <attr name="aspectRatio" format="string" />
+    </declare-styleable>
 
 </resources>

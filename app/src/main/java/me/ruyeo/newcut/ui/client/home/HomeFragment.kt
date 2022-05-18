@@ -18,9 +18,19 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+//test fun
+        detailFragmentOpener()
+//        filterFragmentOpener()
         setupUI()
         setupObservers()
+    }
+
+    private fun filterFragmentOpener() {
+        findNavController().navigate(R.id.filterAndBookingBarberFragment)
+    }
+
+    private fun detailFragmentOpener() {
+        findNavController().navigate(R.id.detailFragment)
     }
 
     private fun setupUI() {
