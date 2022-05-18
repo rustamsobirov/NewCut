@@ -10,6 +10,8 @@ import me.ruyeo.newcut.databinding.FragmentDetailReviewBinding
 import me.ruyeo.newcut.model.detail.ReviewModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
+import okhttp3.internal.notify
+import okhttp3.internal.notifyAll
 
 @AndroidEntryPoint
 class DetailReviewFragment : BaseFragment(R.layout.fragment_detail_review) {
