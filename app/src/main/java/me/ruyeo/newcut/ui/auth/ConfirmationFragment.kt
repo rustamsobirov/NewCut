@@ -66,7 +66,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
 
     private fun callBack() {
         binding.ivBack.setOnClickListener {
-            findNavController().navigate(R.id.action_confirmationFragment_to_loginFragment)
+            findNavController().popBackStack()
         }
     }
 

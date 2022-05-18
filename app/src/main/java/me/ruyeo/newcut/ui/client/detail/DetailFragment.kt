@@ -1,10 +1,13 @@
 package me.ruyeo.newcut.ui.client.detail
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -96,6 +99,11 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
         }, 10)
     }
 
+    override fun onAttach(context: Context) {
+        Log.d("@@@","Slom")
+        super.onAttach(context)
+    }
+
     private fun getScreenHeight(): Int {
         val displayMetrics = DisplayMetrics()
         requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
@@ -129,15 +137,20 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
 
             for (category in 0 until photosList.size) {
                 tabLayout.addTab(binding.tabLayout.newTab())
-                allTabLayoutIndicatorUnselected()
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1)
+                    allTabLayoutIndicatorUnselected()
+                else tabLayout.getTabAt(category)?.text = "⬤"
             }
-            tabLayout.getTabAt(0)?.setIcon(R.drawable.ic_circle_select)
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1)
+                tabLayout.getTabAt(0)?.setIcon(R.drawable.ic_circle_select)
 
             tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {
                     detailRecyclerView.smoothScrollToPosition(tab!!.position)
-                    allTabLayoutIndicatorUnselected()
-                    tabLayout.getTabAt(tab.position)?.setIcon(R.drawable.ic_circle_select)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1)
+                        allTabLayoutIndicatorUnselected()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1)
+                        tabLayout.getTabAt(tab.position)?.setIcon(R.drawable.ic_circle_select)
                 }
 
                 override fun onTabUnselected(tab: TabLayout.Tab?) {}
@@ -152,8 +165,10 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
                         LinearLayoutManager::class.java.cast(recyclerView.layoutManager)
                     val lastVisible = layoutManager!!.findLastVisibleItemPosition()
                     tabLayout.setScrollPosition(lastVisible, 0f, true)
-                    allTabLayoutIndicatorUnselected()
-                    tabLayout.getTabAt(lastVisible)?.setIcon(R.drawable.ic_circle_select)
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1)
+                        allTabLayoutIndicatorUnselected()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1)
+                        tabLayout.getTabAt(lastVisible)?.setIcon(R.drawable.ic_circle_select)
                 }
             })
 
