@@ -4,10 +4,10 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,7 +15,6 @@ import me.ruyeo.newcut.R
 import me.ruyeo.newcut.databinding.FragmentLoginBinding
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
-
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment(R.layout.fragment_login) {
@@ -25,48 +24,17 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
 
         phoneEditTextManager()
-        continueButtonManager()
-    }
-
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private fun continueButtonManager() {
-        val errorMessageIcon = resources.getDrawable(R.drawable.ic_error_message)
-        errorMessageIcon.setBounds(0, 0,
-            errorMessageIcon.intrinsicWidth, errorMessageIcon.intrinsicHeight)
-        binding.phoneNumberEdt.apply {
-            binding.continueBtn.setOnClickListener {
-                when {
-                    text!!.length > 17 -> {
-                        inputLayoutBoxDisable()
-                        findNavController().navigate(
-                            R.id.action_loginFragment_to_confirmationFragment,
-                            bundleOf("phoneNumber" to text.toString())
-                        )
-                    }
-                    text!!.length == 5 -> {
-                        setError("Raqam Kiritilmagan!", errorMessageIcon)
-                        inputLayoutBoxEnable()
-                    }
-                    else -> {
-                        setError("Noto'g'ri formatdagi raqam!", errorMessageIcon)
-                        inputLayoutBoxEnable()
-                    }
-                }
+        binding.continueBtn.setOnClickListener {
+            if (binding.phoneNumberEdt.text!!.isNotEmpty()) {
+                findNavController().navigate(
+                    R.id.action_loginFragment_to_confirmationFragment,
+                    bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
+                )
             }
         }
+
     }
 
-    private fun inputLayoutBoxEnable() {
-        binding.textInputLayout.boxStrokeColor =
-            ContextCompat.getColor(requireContext(), R.color.red_500)
-    }
-
-    private fun inputLayoutBoxDisable() {
-        binding.textInputLayout.boxStrokeColor =
-            ContextCompat.getColor(requireContext(), R.color.white)
-    }
-
-    @SuppressLint("SetTextI18n")
     private fun phoneEditTextManager() {
         binding.apply {
             phoneNumberEdt.addTextChangedListener(object : TextWatcher {
@@ -76,18 +44,18 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
                 @SuppressLint("SetTextI18n")
                 override fun afterTextChanged(p0: Editable?) {
-                    inputLayoutBoxDisable()
-                    if (phoneNumberEdt.text!!.length < 5) {
+                    if (phoneNumberEdt.text.toString() == "+998") {
                         phoneNumberEdt.setText("+998(")
                         editLastCursor()
                     }
                 }
             })
-            phoneNumberEdt.onFocusChangeListener = View.OnFocusChangeListener { _, p1 ->
-                if (p1) {
-                    if (phoneNumberEdt.text!!.isEmpty())
+            phoneNumberEdt.onFocusChangeListener = object : View.OnFocusChangeListener {
+                @SuppressLint("SetTextI18n")
+                override fun onFocusChange(p0: View?, p1: Boolean) {
+                    if (p1) {
                         phoneNumberEdt.setText("${phoneNumberEdt.text}+998(")
-                    editLastCursor()
+                    }
                 }
             }
 
@@ -98,13 +66,13 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                         phoneNumberEdt.setText(
                             phoneNumberEdt.text!!.substring(
                                 0,
-                                phoneNumberEdt.text!!.length - 1
+                                phoneNumberEdt.text!!.length-1
                             )
                         )
                         editLastCursor()
-                    } else if (phoneNumberEdt.text?.get(phoneNumberEdt.text?.length!! - 1)
-                            .toString() == ")"
-                    ) {
+                    }
+
+                    if (phoneNumberEdt.text?.get(phoneNumberEdt.text?.length!! - 1).toString() == ")") {
                         phoneNumberEdt.setText(
                             phoneNumberEdt.text!!.substring(
                                 0,
@@ -113,6 +81,11 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                         )
                         editLastCursor()
                     }
+                    if (phoneNumberEdt.text!!.length == 9){
+                        phoneNumberEdt.setText(phoneNumberEdt.text!!.substring(0, phoneNumberEdt.text!!.length-1))
+                        editLastCursor()
+                    }
+
 
                 } else {
                     if (phoneNumberEdt.text!!.length == 7) {
@@ -120,27 +93,24 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                         editLastCursor()
                     }
 
-                    if (phoneNumberEdt.text!!.length == 8) {
-                        phoneNumberEdt.setText("${phoneNumberEdt.text} ")
-                        editLastCursor()
-                    }
-                    if (phoneNumberEdt.text!!.length == 12) {
-                        phoneNumberEdt.setText("${phoneNumberEdt.text} ")
-                        editLastCursor()
-                    }
-                    if (phoneNumberEdt.text!!.length == 15) {
-                        phoneNumberEdt.setText("${phoneNumberEdt.text} ")
-                        editLastCursor()
-                    }
+                        if (phoneNumberEdt.text!!.length == 8) {
+                            phoneNumberEdt.setText("${phoneNumberEdt.text} ")
+                            editLastCursor()
+                        }
+                        if (phoneNumberEdt.text!!.length == 12) {
+                            phoneNumberEdt.setText("${phoneNumberEdt.text} ")
+                            editLastCursor()
+                        }
+                        if (phoneNumberEdt.text!!.length == 15) {
+                            phoneNumberEdt.setText("${phoneNumberEdt.text} ")
+                            editLastCursor()
+                        }
+
+
                 }
                 false
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        inputLayoutBoxDisable()
     }
 
     private fun editLastCursor() {
