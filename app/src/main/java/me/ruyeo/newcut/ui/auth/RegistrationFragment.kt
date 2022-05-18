@@ -2,6 +2,7 @@ package me.ruyeo.newcut.ui.auth
 
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.databinding.FragmentRegistrationBinding
@@ -15,5 +16,9 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.signUpBtn.setOnClickListener {
+
+        }
     }
 }

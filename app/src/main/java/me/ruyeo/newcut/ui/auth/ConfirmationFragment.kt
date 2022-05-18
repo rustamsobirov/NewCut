@@ -49,6 +49,12 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         secondJob = perSecond()
         callBack()
         setListener()
+        phoneNumberColor()
+
+
+    }
+
+    private fun phoneNumberColor() {
         binding.tvFourDigit.setText(
             Html.fromHtml(
                 "Please enter the 4 diget security code we just sent you at " + "<font color=#4F38E1>" + arguments?.getString(
@@ -56,7 +62,6 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                 )
             )
         )
-
     }
 
     private fun callBack() {
@@ -139,6 +144,8 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
 
             Toast.makeText(context, "Success, should do next", Toast.LENGTH_SHORT).show()
 
+            findNavController().navigate(R.id.action_confirmationFragment_to_registrationFragment)
+
             return
         } else {
             EditTextOne.setBackgroundResource(R.drawable.true_code_background)
@@ -150,6 +157,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         Toast.makeText(context, "error, input again", Toast.LENGTH_SHORT).show()
 
     }
+
 
     private fun perSecond(): Job {
         return MainScope().launch {
@@ -169,6 +177,8 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                 delay(1000)
             }
         }
+
+
     }
 
     override fun onDestroyView() {

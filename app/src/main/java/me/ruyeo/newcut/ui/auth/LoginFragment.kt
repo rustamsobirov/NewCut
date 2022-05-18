@@ -16,7 +16,6 @@ import me.ruyeo.newcut.databinding.FragmentLoginBinding
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 
-
 @AndroidEntryPoint
 class LoginFragment : BaseFragment(R.layout.fragment_login) {
     private val binding by viewBinding { FragmentLoginBinding.bind(it) }

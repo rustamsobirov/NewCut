@@ -19,10 +19,7 @@
         android:clickable="true"
         android:focusable="true"
         android:padding="2dp"
-        android:src="@drawable/keyboard_backspace"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:src="@drawable/keyboard_backspace" />
 
 
     <TextView
@@ -32,6 +29,7 @@
         android:layout_marginTop="96dp"
         android:text="Verify phone"
         android:textAllCaps="false"
+        android:ellipsize="end"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -43,8 +41,9 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="40dp"
         android:lineSpacingExtra="8dp"
+        android:ellipsize="end"
         android:text="Please enter the 4 diget security code we just sent you at 713-444-xxxx"
-        android:textColor="@color/black"
+        android:textColor="#ABAAB1"
         android:textSize="16sp" />
 
 
