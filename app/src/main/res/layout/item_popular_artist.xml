@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/bookImageProfileStory"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            android:src="@drawable/stylist_img_1"
+            app:shapeAppearanceOverlay="@style/circle" />
+
+        <TextView
+            android:id="@+id/text_view_full_name_story"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:padding="0dp"
+            android:text="Lily"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tvSpecialist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hair Stylist"
+            android:textSize="17sp"
+            android:textColor="#ABAAB1"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

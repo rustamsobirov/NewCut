@@ -20,8 +20,13 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
 //test fun
         detailFragmentOpener()
+//        filterFragmentOpener()
         setupUI()
         setupObservers()
+    }
+
+    private fun filterFragmentOpener() {
+        findNavController().navigate(R.id.filterAndBookingBarberFragment)
     }
 
     private fun detailFragmentOpener() {

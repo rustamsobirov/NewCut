@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.detailFragment-> {
+                R.id.detailFragment -> {
                     binding.bnvMain.visibility = View.GONE
                 }
                 else -> {
@@ -32,5 +32,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
     }
 }

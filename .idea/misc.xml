@@ -20,7 +20,6 @@
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/detail_bottom_layout.xml" value="0.1" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/detail_image_item.xml" value="0.2" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/detail_review_item.xml" value="0.16417272338606242" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/dialog_message.xml" value="0.22" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_about.xml" value="0.2" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_account.xml" value="0.2" />
@@ -28,13 +27,16 @@
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_confirmation.xml" value="0.2" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_history_appointment.xml" value="0.2" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_login.xml" value="0.16417272338606242" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_pass_appointment.xml" value="0.22" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_registration.xml" value="0.16417272338606242" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_upcoming_appointment.xml" value="0.16" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_pass_appointment.xml" value="0.14" />
+        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_pass_appointment.xml" value="0.33" />
+        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_upcoming_appointment.xml" value="0.3282051282051282" />
+        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_pass_appointment.xml" value="0.16417272338606242" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_spinner_list.xml" value="0.19895833333333332" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.25" />
+        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.33" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_error_message.xml" value="0.12" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_success_message.xml" value="0.12" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_confirmation.xml" value="0.17962962962962964" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_detail.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_login.xml" value="0.2" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/dialog_message.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_confirmation.xml" value="0.25416666666666665" />
@@ -49,12 +51,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.2" />
-      </ProjectState>
-    </option>
   </component>
 </project>

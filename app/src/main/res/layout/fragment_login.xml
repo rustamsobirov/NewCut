@@ -9,26 +9,6 @@
     tools:context=".ui.auth.LoginFragment">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:elevation="4dp">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="16dp"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="2dp"
-            android:src="@drawable/keyboard_backspace"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,42 +27,33 @@
         android:layout_marginTop="40dp"
         android:lineSpacingExtra="4dp"
         android:text="A 4 digit security code will be sent via SMS to verify your mobile number!"
+        android:textColor="@color/black"
         android:textSize="16sp" />
 
-
-    <LinearLayout
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/codepicker_background"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingHorizontal="10dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:background="@color/light_300"
+        android:focusable="true"
+        app:boxCornerRadiusBottomStart="20dp"
+        app:boxCornerRadiusTopEnd="20dp"
+        app:boxStrokeColor="@color/white"
+        app:boxStrokeWidth="5dp">
 
-        <com.hbb20.CountryCodePicker
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:ccp_defaultNameCode="UZ" />
-
-        <LinearLayout
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_marginVertical="10dp"
-            android:background="#AFACAC" />
-
-        <EditText
-            android:id="@+id/phone_number_edt"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneNumberEdt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:background="@android:color/transparent"
+            android:layout_height="56dp"
             android:hint="Enter number"
             android:inputType="phone"
+            android:maxLength="18"
             android:textColorHint="@color/light_900"
-            android:textSize="16sp" />
+            android:textSize="14sp" />
 
-    </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/continue_btn"

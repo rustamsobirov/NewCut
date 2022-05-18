@@ -1,13 +1,11 @@
 package me.ruyeo.newcut.utils.extensions
 
 import android.view.View
-import androidx.annotation.NonNull
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
-import me.ruyeo.newcut.databinding.FragmentLoginBinding
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
