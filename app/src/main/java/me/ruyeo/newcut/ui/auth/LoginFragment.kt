@@ -66,23 +66,26 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                         phoneNumberEdt.setText(
                             phoneNumberEdt.text!!.substring(
                                 0,
-                                phoneNumberEdt.text!!.length - 1
+                                phoneNumberEdt.text!!.length-1
                             )
                         )
                         editLastCursor()
                     }
 
-                    if (phoneNumberEdt.text?.get(phoneNumberEdt.text?.length!! - 1)
-                            .toString() == ")"
-                    ) {
+                    if (phoneNumberEdt.text?.get(phoneNumberEdt.text?.length!! - 1).toString() == ")") {
                         phoneNumberEdt.setText(
                             phoneNumberEdt.text!!.substring(
                                 0,
-                                phoneNumberEdt.text!!.length - 2
+                                phoneNumberEdt.text!!.length - 1
                             )
                         )
                         editLastCursor()
                     }
+                    if (phoneNumberEdt.text!!.length == 9){
+                        phoneNumberEdt.setText(phoneNumberEdt.text!!.substring(0, phoneNumberEdt.text!!.length-1))
+                        editLastCursor()
+                    }
+
 
                 } else {
                     if (phoneNumberEdt.text!!.length == 7) {

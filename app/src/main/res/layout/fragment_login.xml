@@ -16,6 +16,7 @@
         android:layout_marginTop="96dp"
         android:text="Your phone!"
         android:textAllCaps="false"
+        android:ellipsize="end"
         android:textColor="@color/black"
         android:textSize="28sp"
         android:textStyle="bold" />
@@ -26,14 +27,16 @@
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="40dp"
         android:lineSpacingExtra="4dp"
+        android:ellipsize="end"
         android:text="A 4 digit security code will be sent via SMS to verify your mobile number!"
-        android:textColor="@color/black"
+        android:textColor="#ABAAB1"
+        android:layout_marginBottom="40dp"
         android:textSize="16sp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="14dp"
+        android:layout_margin="16dp"
         app:boxStrokeColor="@color/red_600"
         app:boxStrokeWidth="3dp">
 
@@ -41,7 +44,7 @@
             android:id="@+id/phoneNumberEdt"
             android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:background="@color/light_300"
+            android:background="@drawable/edtextbackground"
             android:hint="Enter number"
             android:inputType="phone"
             android:maxLength="18"

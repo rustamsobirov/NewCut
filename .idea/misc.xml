@@ -11,7 +11,7 @@
         <entry key="..\:/NewCut/app/src/main/res/drawable/ic_star_selected.xml" value="0.1525" />
         <entry key="..\:/NewCut/app/src/main/res/drawable/ic_star_unselected.xml" value="0.1525" />
         <entry key="..\:/NewCut/app/src/main/res/drawable/true_code_background.xml" value="0.1525" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/activity_login.xml" value="0.18854166666666666" />
+        <entry key="..\:/NewCut/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/NewCut/app/src/main/res/layout/activity_main.xml" value="0.18854166666666666" />
         <entry key="..\:/NewCut/app/src/main/res/layout/detail_bottom_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCut/app/src/main/res/layout/detail_image_gallery_item.xml" value="0.18854166666666666" />
@@ -22,7 +22,7 @@
         <entry key="..\:/NewCut/app/src/main/res/layout/fragment_about.xml" value="0.18854166666666666" />
         <entry key="..\:/NewCut/app/src/main/res/layout/fragment_account.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCut/app/src/main/res/layout/fragment_appoitment.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_confirmation.xml" value="0.3582295988934993" />
+        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_confirmation.xml" value="0.33" />
         <entry key="..\:/NewCut/app/src/main/res/layout/fragment_detail.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCut/app/src/main/res/layout/fragment_detail_about.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCut/app/src/main/res/layout/fragment_detail_gallery.xml" value="0.18854166666666666" />
@@ -31,7 +31,7 @@
         <entry key="..\:/NewCut/app/src/main/res/layout/fragment_home.xml" value="0.18854166666666666" />
         <entry key="..\:/NewCut/app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="..\:/NewCut/app/src/main/res/layout/fragment_pass_appointment.xml" value="0.33" />
-        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_registration.xml" value="0.18854166666666666" />
+        <entry key="..\:/NewCut/app/src/main/res/layout/fragment_registration.xml" value="0.33" />
         <entry key="..\:/NewCut/app/src/main/res/layout/fragment_upcoming_appointment.xml" value="0.18854166666666666" />
         <entry key="..\:/NewCut/app/src/main/res/layout/item_book_stylist.xml" value="0.33" />
         <entry key="..\:/NewCut/app/src/main/res/layout/item_popular_artist.xml" value="0.33" />
