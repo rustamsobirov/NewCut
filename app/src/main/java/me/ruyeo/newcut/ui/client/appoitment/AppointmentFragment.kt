@@ -8,7 +8,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.AppointmentVPAdapter
 import me.ruyeo.newcut.databinding.FragmentAppoitmentBinding
-import me.ruyeo.newcut.databinding.FragmentUpcomingAppointmentBinding
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 

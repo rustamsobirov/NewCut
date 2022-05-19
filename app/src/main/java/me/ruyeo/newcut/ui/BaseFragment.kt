@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import me.ruyeo.newcut.utils.dialogs.MessageDialog
 
 abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
