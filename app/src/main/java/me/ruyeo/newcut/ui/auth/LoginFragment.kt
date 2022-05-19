@@ -14,6 +14,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.databinding.FragmentLoginBinding
 import me.ruyeo.newcut.ui.BaseFragment
+import me.ruyeo.newcut.utils.extensions.getMyDrawable
 import me.ruyeo.newcut.utils.extensions.viewBinding
 
 @AndroidEntryPoint
@@ -29,8 +30,8 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun continueButtonManager() {
-        val errorMessageIcon = resources.getDrawable(R.drawable.ic_error_message)
-        errorMessageIcon.setBounds(0, 0,
+        val errorMessageIcon = requireContext().getMyDrawable(R.drawable.ic_error_message)
+        errorMessageIcon?.setBounds(0, 0,
             errorMessageIcon.intrinsicWidth, errorMessageIcon.intrinsicHeight)
         binding.phoneNumberEdt.apply {
             binding.continueBtn.setOnClickListener {
