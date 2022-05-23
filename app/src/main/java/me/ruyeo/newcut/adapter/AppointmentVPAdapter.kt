@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import me.ruyeo.newcut.ui.client.appoitment.PassAppointmentFragment
-import me.ruyeo.newcut.ui.client.appoitment.UpcomingAppointmentFragment
+import me.ruyeo.newcut.ui.client.appointment.PassAppointmentFragment
+import me.ruyeo.newcut.ui.client.appointment.UpcomingAppointmentFragment
 
 class AppointmentVPAdapter  (fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {

@@ -1,15 +1,11 @@
-package me.ruyeo.newcut.ui.client.appoitment
+package me.ruyeo.newcut.ui.client.appointment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.UpcomingAppointmentAdapter
-import me.ruyeo.newcut.databinding.FragmentPassAppointmentBinding
 import me.ruyeo.newcut.databinding.FragmentUpcomingAppointmentBinding
 import me.ruyeo.newcut.model.UpcomingAppointment
 import me.ruyeo.newcut.ui.BaseFragment
@@ -44,7 +40,7 @@ class UpcomingAppointmentFragment : BaseFragment(R.layout.fragment_upcoming_appo
 
     private fun adapterClickManager() {
         adapter.spinnerClick = {
-            Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show()
+           // Toast.makeText(requireContext(), "ok", Toast.LENGTH_SHORT).show()
         }
     }
 

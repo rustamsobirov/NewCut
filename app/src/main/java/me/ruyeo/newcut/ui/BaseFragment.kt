@@ -11,6 +11,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import me.ruyeo.newcut.utils.dialogs.CancellationDialog
 import me.ruyeo.newcut.utils.dialogs.MessageDialog
 
 abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
@@ -29,6 +30,16 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
         }
         dialog.show(childFragmentManager, "message_dialog")
     }
+
+     protected fun showCancellationDialog(){
+        val dialog = CancellationDialog()
+        dialog.onClickListener = {
+            dialog.dismiss()
+        }
+        dialog.show(childFragmentManager, "cancellation_dialog")
+    }
+
+
 
     fun hideStatusBarAndBottomBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:layout_margin="15dp"
+    android:background="@drawable/bg_appointment_item_rv"
+    android:orientation="vertical">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/map_cv"
+        android:layout_width="match_parent"
+        android:layout_height="127dp"
+        app:cardCornerRadius="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="15dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_booked_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="12 September 2021, 08:00"
+            android:textSize="17sp"
+            android:textColor="#191632"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_user_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="6391 Elgin St. Celina, Dela..."
+            android:maxLines="1"
+            android:layout_marginTop="2dp"
+            android:textColor="#ABAAB1"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/tv_type_haircut"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Services: Regular haircut, Classic shaving"
+            android:textSize="13sp"
+            android:textColor="#432BDF"
+            android:layout_marginTop="10dp"
+            android:maxLines="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_marginStart="15dp"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:thumb="@drawable/switch_thumb"
+                app:track="@drawable/switch_track" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:entries="@array/times"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:gravity="end|center_vertical">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/tv_bg"
+                android:textColor="#191632"
+                android:textSize="13sp"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:textStyle="normal"
+                android:text="Cancel"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,4 +1,4 @@
-package me.ruyeo.newcut.ui.client.appoitment
+package me.ruyeo.newcut.ui.client.appointment
 
 import android.os.Bundle
 import android.view.View

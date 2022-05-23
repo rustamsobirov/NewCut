@@ -12,12 +12,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NewCut">
-        <activity
+        <!--<activity
             android:name=".ui.client.MainActivity"
             android:exported="true" >
-        </activity>
+        </activity>-->
         <activity
-            android:name=".ui.auth.LoginActivity"
+            android:name=".ui.client.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
