@@ -12,5 +12,6 @@ class AboutFragment : BaseFragment(R.layout.fragment_about) {
     private val binding by viewBinding { FragmentAboutBinding.bind(it) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 }
