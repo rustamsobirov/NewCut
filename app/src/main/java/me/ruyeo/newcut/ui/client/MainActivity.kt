@@ -19,16 +19,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        navController = findNavController(R.id.nav_host_main)
-        binding.bnvMain.setupWithNavController(navController)
+        binding.apply {
+            bnvMain.itemIconTintList = null
+            navController = findNavController(R.id.nav_host_main)
+            bnvMain.setupWithNavController(navController)
 
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.detailFragment -> {
-                    binding.bnvMain.visibility = View.GONE
-                }
-                else -> {
-                    binding.bnvMain.visibility = View.VISIBLE
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                when (destination.id) {
+                    R.id.detailFragment -> {
+                        bnvMain.visibility = View.GONE
+                    }
+                    else -> {
+                        bnvMain.visibility = View.VISIBLE
+                    }
                 }
             }
         }
