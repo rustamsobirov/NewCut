@@ -7,4 +7,5 @@ interface ApiService {
 
     @POST("login")
     suspend fun login(@Body map: HashMap<String,Any>) // we need model class to fetch response
+
 }

@@ -38,10 +38,12 @@
         android:layout_margin="14dp"
         android:background="@color/light_300"
         android:focusable="true"
-        app:boxCornerRadiusBottomStart="20dp"
-        app:boxCornerRadiusTopEnd="20dp"
         app:boxStrokeColor="@color/white"
-        app:boxStrokeWidth="5dp">
+        app:boxCornerRadiusBottomEnd="16sp"
+        app:boxCornerRadiusBottomStart="16dp"
+        app:boxCornerRadiusTopStart="16dp"
+        app:boxCornerRadiusTopEnd="16dp"
+        app:boxStrokeWidth="2dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/phoneNumberEdt"

@@ -91,8 +91,9 @@
                 android:id="@+id/btn_book"
                 android:layout_width="70dp"
                 android:layout_height="32dp"
-                android:background="@drawable/backgroundbook"
                 android:text="Book"
+                android:clickable="true"
+                android:focusable="true"
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 android:textStyle="bold" />
