@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -35,6 +36,8 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
         //detail bottom layout
         detailBottomViewPagerManager()
         detailBottomRatingBarManager()
+
+        callBack()
     }
 
     private fun detailBottomRatingBarManager() {
@@ -42,6 +45,12 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
 //            Toast.makeText(context,
 //                "$rating",
 //                Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun callBack() {
+        binding.backBtn.setOnClickListener {
+
         }
     }
 

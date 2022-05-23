@@ -16,7 +16,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//ds
+
         navController = findNavController(R.id.nav_host_auth)
     }
 }

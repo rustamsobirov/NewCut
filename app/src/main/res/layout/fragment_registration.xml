@@ -7,21 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".ui.auth.RegistrationFragment"
-    >
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_back"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
-        android:background="?attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="2dp"
-        android:src="@drawable/keyboard_backspace" />
-
+    tools:context=".ui.auth.RegistrationFragment">
 
     <TextView
         android:id="@+id/tvSignUp"
@@ -51,10 +37,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="40dp"
         android:orientation="horizontal"
-        android:layout_gravity="center_vertical"
         app:boxStrokeColor="@color/red_600"
         app:boxStrokeWidth="3dp">
 
@@ -65,9 +51,9 @@
             android:background="@drawable/edtextbackground"
             android:drawableStart="@drawable/sign_up_profile_img"
             android:drawablePadding="12dp"
-            android:paddingStart="22dp"
             android:hint="Name"
             android:inputType="text"
+            android:paddingStart="22dp"
             android:textColorHint="@color/light_900"
             android:textSize="14sp" />
 
@@ -76,10 +62,10 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:layout_gravity="center_vertical"
         app:boxStrokeColor="@color/red_600"
         app:boxStrokeWidth="3dp">
 
@@ -91,8 +77,8 @@
             android:drawableStart="@drawable/ic_sms"
             android:drawablePadding="12dp"
             android:hint="Email"
-            android:paddingStart="22dp"
             android:inputType="text"
+            android:paddingStart="22dp"
             android:textColorHint="@color/light_900"
             android:textSize="14sp" />
 
@@ -101,9 +87,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="20dp"
-        android:layout_gravity="center_vertical"
         android:orientation="horizontal"
         app:boxStrokeColor="@color/red_600"
         app:boxStrokeWidth="3dp">
@@ -116,8 +102,8 @@
             android:drawableStart="@drawable/ic_password"
             android:drawablePadding="12dp"
             android:hint="Password"
-            android:paddingStart="22dp"
             android:inputType="text"
+            android:paddingStart="22dp"
             android:textColorHint="@color/light_900"
             android:textSize="14sp"
             tools:ignore="RtlSymmetry" />
@@ -146,11 +132,7 @@
         android:layout_marginHorizontal="16dp"
         android:text="By contunuing Sign up you agree to the following Terms &amp; Conditions without reservation"
         android:textColor="#ABAAB1"
-        android:textSize="12sp"/>
-
-
-
-
+        android:textSize="12sp" />
 
 
 </LinearLayout>
