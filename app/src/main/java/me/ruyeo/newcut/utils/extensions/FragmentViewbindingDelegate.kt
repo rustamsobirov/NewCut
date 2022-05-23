@@ -6,6 +6,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.viewbinding.ViewBinding
+import me.ruyeo.newcut.ui.auth.ConfirmationFragment
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
