@@ -283,7 +283,7 @@
                             android:ellipsize="end"
                             android:fontFamily="@font/poppins_regular"
                             android:maxLines="1"
-                            android:text="Call"
+                            android:text="Direction"
                             android:textColor="@color/text_900"
                             android:textSize="16sp" />
 
