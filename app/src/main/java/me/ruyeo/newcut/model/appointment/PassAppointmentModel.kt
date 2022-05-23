@@ -1,4 +1,4 @@
-package me.ruyeo.newcut.model
+package me.ruyeo.newcut.model.appointment
 
 data class PassAppointmentModel (
     var userName:String? = null,

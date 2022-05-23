@@ -1,4 +1,4 @@
-package me.ruyeo.newcut.adapter
+package me.ruyeo.newcut.adapter.appointment
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
