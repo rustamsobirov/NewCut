@@ -1,4 +1,4 @@
-package me.ruyeo.newcut.ui.client.appoitment
+package me.ruyeo.newcut.ui.client.appointment
 
 import android.os.Bundle
 import android.view.View
@@ -8,14 +8,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.AppointmentVPAdapter
 import me.ruyeo.newcut.databinding.FragmentAppoitmentBinding
-import me.ruyeo.newcut.databinding.FragmentUpcomingAppointmentBinding
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 
 @AndroidEntryPoint
 class AppointmentFragment : BaseFragment(R.layout.fragment_appoitment) {
     private val binding by viewBinding { FragmentAppoitmentBinding.bind(it) }
-    var viewPager: ViewPager2? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
