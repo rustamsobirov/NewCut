@@ -4,7 +4,18 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="verify_phone">Verify phone</string>
     <string name="resend">Resend</string>
-    <string name="todo">TODO</string>
+    <string name="notifications">Notifications</string>
+    <string name="mark_all_as_read">Mark all as read</string>
+    <string name="do_not_disturb">Do not disturb</string>
+    <string name="just_now">Just now</string>
+    <string name="notif_example">You have an appointment at The Galleria Hair Salon at 8:00am today</string>
+    <string name="faqs">FAQs</string>
+    <string name="what_is_flo_cutters">What is Flo Cutters?</string>
+    <string name="how_much_does_this_cost">How much does this cost?</string>
+    <string name="where_are_you_located">Where are you located?</string>
+    <string name="can_i_just_come_in_or_do_i_have_to_make_an_appointment">Can I just come in or do I have to \n make an appointment?</string>
+    <string name="change_avatar">Change Avatar</string>
+    <string name="full_name">Full name</string>
 
     <string-array name="times">
         <item>Remind me</item>
