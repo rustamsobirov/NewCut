@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -13,10 +12,12 @@ import com.ahmadhamwi.tabsync.TabbedListMediator
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
+import me.ruyeo.newcut.adapter.detail.DetailBottomSalonSpecialistAdapter
 import me.ruyeo.newcut.adapter.detail.DetailBottomViewPagerAdapter
 import me.ruyeo.newcut.adapter.detail.DetailImageAdapter
 import me.ruyeo.newcut.databinding.FragmentDetailBinding
 import me.ruyeo.newcut.model.detail.DetailModel
+import me.ruyeo.newcut.model.detail.DetailSpecialistModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.extensions.visible
@@ -24,7 +25,9 @@ import me.ruyeo.newcut.utils.extensions.visible
 @AndroidEntryPoint
 class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     private val detailImageAdapter by lazy { DetailImageAdapter() }
+    private val detailBottomSalonSpecialistAdapter by lazy { DetailBottomSalonSpecialistAdapter() }
     private var photosList = ArrayList<DetailModel>()
+    private var specialistList = ArrayList<DetailSpecialistModel>()
     private val binding by viewBinding { FragmentDetailBinding.bind(it) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,8 +39,32 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
         //detail bottom layout
         detailBottomViewPagerManager()
         detailBottomRatingBarManager()
+        salonSpecialistRecycler()
 
         callBack()
+    }
+
+    private fun salonSpecialistRecycler() {
+        binding.apply {
+            salonSpecialistRecyclerView.adapter = detailBottomSalonSpecialistAdapter
+            specialistList.add(DetailSpecialistModel("https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                "Valeriy", "wiki"))
+            specialistList.add(DetailSpecialistModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                "Brian", "google"))
+            specialistList.add(DetailSpecialistModel("https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                "Valeriy", "wiki"))
+            specialistList.add(DetailSpecialistModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                "Brian", "google"))
+            specialistList.add(DetailSpecialistModel("https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                "Valeriy", "wiki"))
+            specialistList.add(DetailSpecialistModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                "Brian", "google"))
+            specialistList.add(DetailSpecialistModel("https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                "Valeriy", "wiki"))
+            specialistList.add(DetailSpecialistModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                "Brian", "google"))
+            detailBottomSalonSpecialistAdapter.submitList(specialistList)
+        }
     }
 
     private fun detailBottomRatingBarManager() {
