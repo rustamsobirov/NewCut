@@ -1,18 +1,12 @@
 package me.ruyeo.newcut.ui.client.settings
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.book.UserBookingAdapter
 import me.ruyeo.newcut.databinding.FragmentFavoriteBinding
-import me.ruyeo.newcut.databinding.FragmentHomeBinding
 import me.ruyeo.newcut.model.book.BookModel
 import me.ruyeo.newcut.ui.BaseFragment
-import me.ruyeo.newcut.ui.client.home.HomeViewModel
 import me.ruyeo.newcut.utils.extensions.viewBinding
 
 class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {

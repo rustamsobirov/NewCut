@@ -20,7 +20,7 @@ class UpcomingAppointmentWithMapAdapter:RecyclerView.Adapter<UpcomingAppointment
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Vh {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UpcomingAppointmentWithMapAdapter.Vh {
         return Vh(
             ItemAppointmentWithMapBinding.inflate(
                 LayoutInflater.from(parent.context),

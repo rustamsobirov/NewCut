@@ -355,6 +355,7 @@
                     android:layout_marginHorizontal="5dp"
                     android:paddingVertical="6dp"
                     app:tabGravity="center"
+                    android:textAllCaps="false"
                     app:tabIndicator="@drawable/detail_bottom_tab_background"
                     app:tabIndicatorAnimationMode="elastic"
                     app:tabIndicatorColor="@color/black"

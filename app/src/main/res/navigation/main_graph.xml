@@ -3,13 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/mapViewFragment">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="me.ruyeo.newcut.ui.client.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/appointmentFragment"
         android:name="me.ruyeo.newcut.ui.client.appointment.AppointmentFragment"
@@ -31,8 +26,8 @@
         android:label="fragment_filter_barber"
         tools:layout="@layout/fragment_filter_barber" />
     <fragment
-        android:id="@+id/upcomingFragmentWithMap"
-        android:name="me.ruyeo.newcut.ui.client.appointment.UpcomingFragmentWithMap"
-        android:label="fragment_upcoming_with_map"
-        tools:layout="@layout/fragment_upcoming_with_map" />
+        android:id="@+id/mapViewFragment"
+        android:name="me.ruyeo.newcut.ui.client.home.mapview.MapViewFragment"
+        android:label="fragment_map_view"
+        tools:layout="@layout/fragment_map_view" />
 </navigation>
