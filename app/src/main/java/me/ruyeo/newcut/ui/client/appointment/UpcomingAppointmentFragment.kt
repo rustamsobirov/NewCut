@@ -2,7 +2,6 @@ package me.ruyeo.newcut.ui.client.appointment
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -11,6 +10,7 @@ import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.appointment.UpcomingAppointmentAdapter
 import me.ruyeo.newcut.adapter.appointment.UpcomingAppointmentWithMapAdapter
 import me.ruyeo.newcut.databinding.FragmentUpcomingAppointmentBinding
+import me.ruyeo.newcut.model.appointment.AppointmentSharedViewModel
 import me.ruyeo.newcut.model.appointment.UpcomingAppointment
 import me.ruyeo.newcut.model.appointment.UpcomingAppointmentMapModel
 import me.ruyeo.newcut.ui.BaseFragment

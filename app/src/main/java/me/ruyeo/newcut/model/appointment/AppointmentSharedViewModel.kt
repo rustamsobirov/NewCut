@@ -1,4 +1,4 @@
-package me.ruyeo.newcut.ui.client.appointment
+package me.ruyeo.newcut.model.appointment
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

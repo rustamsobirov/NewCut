@@ -19,7 +19,7 @@
             android:layout_height="86dp"
             app:shapeAppearanceOverlay="@style/rounded_corner"
             android:src="@drawable/image_barber"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,7 +47,7 @@
                     android:gravity="bottom"
                     android:text="@string/change_avatar"
                     android:textColor="#432BDF"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -62,11 +62,172 @@
         android:layout_marginTop="15dp"
         android:textColor="#89888E"
         android:textSize="14sp"
-        android:textStyle="normal"/>
+        android:textStyle="normal" />
+
+
+    <EditText
+        android:id="@+id/fullname_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_edt"
+        android:hint="fullname"
+        android:textColorHint="#89888E"
+        android:padding="10dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email"
+        android:layout_marginTop="10dp"
+        android:textColor="#89888E"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+
+
+    <EditText
+        android:id="@+id/email_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_edt"
+        android:hint="email"
+        android:textColorHint="#89888E"
+        android:padding="10dp" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:layout_marginTop="10dp"
+                android:textColor="#89888E"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <Spinner
+                android:id="@+id/spinner_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:entries="@array/gender" />
+
+
+
+        </LinearLayout>
+
+         <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+             android:orientation="vertical">
+
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="@string/birth_of_date"
+                 android:layout_marginTop="10dp"
+                 android:textColor="#89888E"
+                 android:textSize="14sp"
+                 android:textStyle="normal" />
+
+             <TextView
+                 android:id="@+id/birthday_tv"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="17/08/2000"
+                 android:padding="10dp"
+                 android:layout_marginTop="10dp"
+                 android:background="@drawable/bg_edt"
+                 android:textSize="14sp"
+                 android:textColor="#191632"
+                 android:layout_gravity="center_horizontal"/>
 
 
 
 
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/address"
+        android:layout_marginTop="15dp"
+        android:textColor="#89888E"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+
+
+    <EditText
+        android:id="@+id/address_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_edt"
+        android:hint="address"
+        android:textColorHint="#89888E"
+        android:padding="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_number"
+        android:layout_marginTop="15dp"
+        android:textColor="#89888E"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:hint="Phone number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:prefixText="+998">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:maxLength="9"
+            android:id="@+id/phone_number_edt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_edt"
+            android:padding="10dp"
+            android:inputType="number" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/b_save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:textSize="18sp" />
 
 
 </LinearLayout>

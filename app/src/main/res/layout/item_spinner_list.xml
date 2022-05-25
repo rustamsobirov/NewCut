@@ -5,5 +5,4 @@
     android:padding="8dp"
     android:background="@color/white"
     android:textColor="#191632"
-    android:textSize="13sp"
     android:textStyle="normal"/>
