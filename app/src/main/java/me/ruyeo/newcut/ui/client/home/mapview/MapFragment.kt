@@ -41,7 +41,6 @@ import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEvent
 import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEventListener
 
-
 @AndroidEntryPoint
 class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClickListener {
     private lateinit var map: GoogleMap

@@ -1,10 +1,7 @@
 package me.ruyeo.newcut.ui.client.profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
@@ -21,27 +18,23 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
         binding.apply {
             FAQsTv.setOnClickListener {
-                findNavController().navigate(R.id.action_profileFragment_to_FAQsFragment)
+                findNavController().navigate(R.id.FAQsFragment)
             }
             notifIv.setOnClickListener {
-                findNavController().navigate(R.id.action_profileFragment_to_notificationFragment)
+                findNavController().navigate(R.id.notificationFragment)
             }
             editFl.setOnClickListener {
-                findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
+                findNavController().navigate(R.id.editProfileFragment)
             }
             favoriteIv.setOnClickListener {
-                findNavController().navigate(R.id.action_profileFragment_to_favoriteFragment)
+                findNavController().navigate(R.id.favoriteFragment)
             }
-
-
 
 
         }
 
 
     }
-
-
 
 
 }
