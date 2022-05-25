@@ -19,10 +19,17 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 //test fun
-        detailFragmentOpener()
+//        detailFragmentOpener()
 //        filterFragmentOpener()
+        mapViewFragmentOpener()
         setupUI()
         setupObservers()
+    }
+
+    private fun mapViewFragmentOpener() {
+        binding.mapViewBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_mapViewFragment)
+        }
     }
 
     private fun filterFragmentOpener() {

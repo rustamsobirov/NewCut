@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="me.ruyeo.newcut.ui.client.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_mapViewFragment"
+            app:destination="@id/mapViewFragment" />
+    </fragment>
     <fragment
         android:id="@+id/appointmentFragment"
         android:name="me.ruyeo.newcut.ui.client.appointment.AppointmentFragment"
@@ -35,4 +39,9 @@
         android:name="me.ruyeo.newcut.ui.client.appointment.UpcomingFragmentWithMap"
         android:label="fragment_upcoming_with_map"
         tools:layout="@layout/fragment_upcoming_with_map" />
+    <fragment
+        android:id="@+id/mapViewFragment"
+        android:name="me.ruyeo.newcut.ui.client.home.mapview.MapViewFragment"
+        android:label="fragment_map_view"
+        tools:layout="@layout/fragment_map_view" />
 </navigation>
