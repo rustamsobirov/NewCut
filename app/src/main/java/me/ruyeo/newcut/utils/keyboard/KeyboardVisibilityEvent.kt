@@ -38,7 +38,12 @@ object KeyboardVisibilityEvent {
     }
 
     private fun getActivityRoot(activity: Activity): View {
-        return (activity.findViewById<View>(R.id.content) as ViewGroup).getChildAt(0)
+        val view = activity.findViewById<View>(R.id.content) as ViewGroup
+        try {
+            return (view).getChildAt(0)
+        } catch (e: Exception) {
+        }
+        return view
     }
 
     fun convertDpToPx(context: Context, dp: Float): Float {
