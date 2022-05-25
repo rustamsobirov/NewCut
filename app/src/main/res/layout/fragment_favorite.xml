@@ -36,8 +36,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:backgroundTint="@color/light_900"
-                android:src="@drawable/ic_cancel"
-                android:contentDescription="@string/todo" />
+                android:src="@drawable/ic_cancel"/>
 
     </LinearLayout>
 

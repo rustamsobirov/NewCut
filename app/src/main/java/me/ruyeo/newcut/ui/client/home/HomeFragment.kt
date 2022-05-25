@@ -1,6 +1,8 @@
 package me.ruyeo.newcut.ui.client.home
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -27,9 +29,13 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     }
 
     private fun mapViewFragmentOpener() {
-        binding.mapViewBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_mapViewFragment)
-        }
+//        binding.mapViewBtn.setOnClickListener {
+        Handler(Looper.getMainLooper()).postDelayed({
+        // Your Code
+            findNavController().navigate(R.id.mapViewFragment)
+        }, 3000)
+
+//        }
     }
 
     private fun filterFragmentOpener() {
