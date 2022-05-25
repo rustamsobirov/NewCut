@@ -18,41 +18,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:text="Your Appointments"
             android:textStyle="bold"
             android:textColor="#191632"
             android:textSize="20sp"/>
 
-       <LinearLayout
-           android:id="@+id/map_ll"
-           android:layout_width="40dp"
-           android:layout_height="40dp"
-           android:background="@drawable/ll_bg"
-           android:layout_marginRight="10dp"
-           android:gravity="center">
-
            <ImageView
                android:id="@+id/map_iv"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:padding="12dp"
+               android:background="@drawable/ll_bg"
                android:src="@drawable/ic_map" />
-
-       </LinearLayout>
-
-        <LinearLayout
-           android:id="@+id/ll_vector_stroke"
-           android:layout_width="40dp"
-           android:layout_height="40dp"
-           android:background="@drawable/ll_bg"
-           android:gravity="center">
 
            <ImageView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:padding="12dp"
+               android:layout_marginStart="4dp"
+               android:background="@drawable/ll_bg"
                android:src="@drawable/ic_vector_stroke"/>
-
-       </LinearLayout>
 
     </LinearLayout>
 
@@ -75,9 +61,8 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:layout_weight="1"
-        android:layout_marginTop="10dp"/>
+        android:padding="10dp" />
 
 
 </LinearLayout>

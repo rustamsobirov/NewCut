@@ -14,6 +14,7 @@
         <!-- Customize your theme here. -->
         <item name="buttonStyle">@style/ButtonPrimary</item>
         <item name="android:textColor">@color/colorPrimary_300</item>
+        <item name="android:textSize">16sp</item>
         <item name="editTextStyle">@style/PrimaryEditText</item>
     </style>
 
