@@ -2,11 +2,13 @@ package me.ruyeo.newcut.ui.client.appointment
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
-import me.ruyeo.newcut.adapter.AppointmentVPAdapter
+import me.ruyeo.newcut.adapter.appointment.AppointmentVPAdapter
 import me.ruyeo.newcut.databinding.FragmentAppoitmentBinding
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
@@ -14,6 +16,8 @@ import me.ruyeo.newcut.utils.extensions.viewBinding
 @AndroidEntryPoint
 class AppointmentFragment : BaseFragment(R.layout.fragment_appoitment) {
     private val binding by viewBinding { FragmentAppoitmentBinding.bind(it) }
+    private val sharedViewModel by activityViewModels<AppointmentSharedViewModel>()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,6 +49,10 @@ class AppointmentFragment : BaseFragment(R.layout.fragment_appoitment) {
                 }
             })
 
+            mapIv.setOnClickListener {
+                sharedViewModel.setValue(true)
+            }
+
+        }
     }
-}
 }

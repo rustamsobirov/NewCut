@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
-import me.ruyeo.newcut.adapter.PassAppointmentAdapter
+import me.ruyeo.newcut.adapter.appointment.PassAppointmentAdapter
 import me.ruyeo.newcut.databinding.FragmentPassAppointmentBinding
-import me.ruyeo.newcut.model.PassAppointmentModel
+import me.ruyeo.newcut.model.appointment.PassAppointmentModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 

@@ -1,4 +1,4 @@
-package me.ruyeo.newcut.adapter
+package me.ruyeo.newcut.adapter.appointment
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.ruyeo.newcut.databinding.ItemPassAppointmentBinding
-import me.ruyeo.newcut.model.PassAppointmentModel
+import me.ruyeo.newcut.model.appointment.PassAppointmentModel
 
 class PassAppointmentAdapter : RecyclerView.Adapter<PassAppointmentAdapter.Vh>() {
     private val dif = AsyncListDiffer(this, ITEM_DIFF)

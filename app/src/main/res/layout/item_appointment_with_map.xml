@@ -12,6 +12,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/map_cv"
         android:layout_width="match_parent"
+        android:backgroundTint="@color/red_400"
         android:layout_height="127dp"
         app:cardCornerRadius="30dp" />
 

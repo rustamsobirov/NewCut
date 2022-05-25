@@ -1,4 +1,4 @@
-package me.ruyeo.newcut.adapter
+package me.ruyeo.newcut.adapter.appointment
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,9 +11,9 @@ import androidx.recyclerview.widget.RecyclerView
 import me.ruyeo.newcut.App
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.databinding.ItemUpcomingAppointmentBinding
-import me.ruyeo.newcut.model.UpcomingAppointment
+import me.ruyeo.newcut.model.appointment.UpcomingAppointment
 
-class UpcomingAppointmentAdapter : RecyclerView.Adapter<UpcomingAppointmentAdapter.Vh>() {
+class UpcomingAppointmentAdapter :  RecyclerView.Adapter<UpcomingAppointmentAdapter.Vh>(){
     private val dif = AsyncListDiffer(this, ITEM_DIFF)
     var spinnerClick: (() -> Unit)? = null
 
@@ -42,6 +42,8 @@ class UpcomingAppointmentAdapter : RecyclerView.Adapter<UpcomingAppointmentAdapt
             }
         }
     }
+
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Vh {
