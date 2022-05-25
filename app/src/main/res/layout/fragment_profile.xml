@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
+    android:background="@color/white"
+    android:padding="20dp"
     android:gravity="top"
     android:orientation="vertical"
     tools:context=".ui.client.profile.ProfileFragment">
@@ -36,6 +37,7 @@
                 android:layout_margin="10dp"
                 android:background="@drawable/ll_bg"
                 android:padding="12dp"
+
                 android:src="@drawable/ic_ring" />
 
             <ImageView

@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:text="12 September 2021, 08:00"
             android:textColor="#191632"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -40,7 +40,7 @@
             android:maxLines="1"
             android:text="6391 Elgin St. Celina, Dela..."
             android:textColor="#ABAAB1"
-            android:textSize="13sp" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_type_haircut"
@@ -50,23 +50,19 @@
             android:maxLines="1"
             android:text="Services: Regular haircut, Classic shaving"
             android:textColor="#432BDF"
-            android:textSize="13sp" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
+        android:paddingHorizontal="15dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+
 
             <androidx.appcompat.widget.SwitchCompat
                 android:layout_width="wrap_content"
@@ -82,7 +78,6 @@
                 android:layout_marginStart="10dp"
                 android:entries="@array/times" />
 
-        </LinearLayout>
 
 
         <LinearLayout
@@ -92,17 +87,17 @@
             android:gravity="end|center_vertical"
             android:padding="5dp">
 
-            <TextView
-                android:id="@+id/tv_cancel"
+            <Button
+                android:id="@+id/b_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/tv_bg"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
-                android:text="Cancel"
+                android:text="@string/Bcancel"
                 android:textColor="#191632"
-                android:textSize="13sp"
+                android:textSize="17sp"
                 android:textStyle="normal" />
 
 

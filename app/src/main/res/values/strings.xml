@@ -30,6 +30,7 @@
     <string name="settings">Settings</string>
     <string name="about_us">About Us</string>
     <string name="logout">Logout</string>
+    <string name="Bcancel">Cancel</string>
 
 
     <string-array name="times">

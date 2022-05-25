@@ -11,16 +11,6 @@
         android:label="fragment_appoitment"
         tools:layout="@layout/fragment_appoitment" />
     <fragment
-        android:id="@+id/accountFragment"
-        android:name="me.ruyeo.newcut.ui.client.settings.AccountFragment"
-        android:label="fragment_account"
-        tools:layout="@layout/fragment_account" />
-    <fragment
-        android:id="@+id/detailFragment"
-        android:name="me.ruyeo.newcut.ui.client.detail.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
-    <fragment
         android:id="@+id/filterAndBookingBarberFragment"
         android:name="me.ruyeo.newcut.ui.client.filter.FilterAndBookingBarberFragment"
         android:label="fragment_filter_barber"
@@ -30,4 +20,54 @@
         android:name="me.ruyeo.newcut.ui.client.home.mapview.MapViewFragment"
         android:label="fragment_map_view"
         tools:layout="@layout/fragment_map_view" />
+    <navigation android:id="@+id/navigation2"
+        app:startDestination="@id/navigation">
+        <navigation
+            android:id="@+id/navigation"
+            app:startDestination="@id/detailFragment">
+            <fragment
+                android:id="@+id/detailFragment"
+                android:name="me.ruyeo.newcut.ui.client.detail.DetailFragment"
+                android:label="fragment_detail"
+                tools:layout="@layout/fragment_detail" />
+        </navigation>
+    </navigation>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="me.ruyeo.newcut.ui.client.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_FAQsFragment"
+            app:destination="@id/FAQsFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_notificationFragment"
+            app:destination="@id/notificationFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FAQsFragment"
+        android:name="me.ruyeo.newcut.ui.client.profile.FAQsFragment"
+        android:label="fragment_faqs"
+        tools:layout="@layout/fragment_faqs" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="me.ruyeo.newcut.ui.client.profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="me.ruyeo.newcut.ui.client.profile.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="me.ruyeo.newcut.ui.client.settings.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
 </navigation>
