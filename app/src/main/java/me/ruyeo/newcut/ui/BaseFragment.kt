@@ -1,6 +1,8 @@
 package me.ruyeo.newcut.ui
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +12,13 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.utils.dialogs.CancellationDialog
 import me.ruyeo.newcut.utils.dialogs.MessageDialog
-import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEvent
-import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEventListener
 
 
 abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
@@ -84,6 +87,19 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
 
     fun toaster(msg: String) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+    }
+
+    fun bitmapFromVector(vectorResId: Int): BitmapDescriptor {
+        val vectorDrawable = ContextCompat.getDrawable(requireContext(), vectorResId)
+        vectorDrawable!!.setBounds(0, 0,
+            vectorDrawable.intrinsicWidth,
+            vectorDrawable.intrinsicHeight)
+        val bitmap = Bitmap.createBitmap(vectorDrawable.intrinsicWidth,
+            vectorDrawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        vectorDrawable.draw(canvas)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
 
 }

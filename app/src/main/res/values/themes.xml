@@ -17,6 +17,7 @@
         <item name="android:textSize">16sp</item>
         <item name="editTextStyle">@style/PrimaryEditText</item>
         <item name="android:windowTranslucentNavigation">false</item>
+        <item name="android:listDivider">@android:color/transparent</item>
     </style>
 
     <!--        full screen-->

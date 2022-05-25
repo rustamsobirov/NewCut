@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.detailFragment -> {
                         bnvMain.visibility = View.GONE
                     }
-                    R.id.mapViewFragment -> {
+                    R.id.mapFragment -> {
 //                        bnvMain.visibility = View.GONE
                     }
                     else -> {

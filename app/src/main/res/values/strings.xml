@@ -6,7 +6,6 @@
     <string name="resend">Resend</string>
 
 
-
     <string name="notifications">Notifications</string>
     <string name="mark_all_as_read">Mark all as read</string>
     <string name="do_not_disturb">Do not disturb</string>
@@ -19,6 +18,8 @@
     <string name="can_i_just_come_in_or_do_i_have_to_make_an_appointment">Can I just come in or do I have to \n make an appointment?</string>
     <string name="change_avatar">Change Avatar</string>
     <string name="full_name">Full name</string>
+    <string name="permission_not_allowed">Location Permission Don\'t Allowed\nClick to open setting</string>
+    <string name="please_allow_phone_local">Please Accept Location enable for use this App.</string>
 
     <string-array name="times">
         <item>Remind me</item>
