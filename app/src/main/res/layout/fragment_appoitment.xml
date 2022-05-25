@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.client.appointment.AppointmentFragment">
@@ -54,6 +55,7 @@
         app:tabIndicatorGravity="stretch"
         app:tabMode="fixed"
         app:tabRippleColor="@null"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
         app:tabSelectedTextColor="@color/white"
         app:tabTextColor="@color/black" />
 

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="25dp"
+    android:background="@color/white"
     android:orientation="vertical"
+    android:padding="25dp"
     tools:context=".ui.client.profile.EditProfileFragment">
 
     <LinearLayout
@@ -17,9 +18,9 @@
             android:id="@+id/iv_profile"
             android:layout_width="86dp"
             android:layout_height="86dp"
-            app:shapeAppearanceOverlay="@style/rounded_corner"
+            android:scaleType="centerCrop"
             android:src="@drawable/image_barber"
-            android:scaleType="centerCrop"/>
+            app:shapeAppearanceOverlay="@style/rounded_corner" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,8 +39,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="bottom"
-                android:layout_marginStart="10dp">
+                android:layout_marginStart="10dp"
+                android:gravity="bottom">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -47,7 +48,7 @@
                     android:gravity="bottom"
                     android:text="@string/change_avatar"
                     android:textColor="#432BDF"
-                    android:textSize="14sp"/>
+                    android:textSize="14sp" />
 
             </LinearLayout>
 
@@ -58,15 +59,173 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/full_name"
         android:layout_marginTop="15dp"
+        android:text="@string/full_name"
         android:textColor="#89888E"
         android:textSize="14sp"
-        android:textStyle="normal"/>
+        android:textStyle="normal" />
 
 
+    <EditText
+        android:id="@+id/fullname_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_edt"
+        android:hint="fullname"
+        android:padding="10dp"
+        android:textColorHint="#89888E" />
 
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/email"
+        android:textColor="#89888E"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+
+
+    <EditText
+        android:id="@+id/email_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_edt"
+        android:hint="email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColorHint="#89888E" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/gender"
+                android:textColor="#89888E"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <Spinner
+                android:id="@+id/spinner_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:entries="@array/gender"
+                android:padding="10dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/birth_of_date"
+                android:textColor="#89888E"
+                android:textSize="14sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/birthday_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_edt"
+                android:padding="10dp"
+                android:paddingHorizontal="10dp"
+                android:text="17/08/2000"
+                android:textColor="#191632"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/address"
+        android:textColor="#89888E"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+
+
+    <EditText
+        android:id="@+id/address_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_edt"
+        android:hint="address"
+        android:padding="10dp"
+        android:textColorHint="#89888E" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/phone_number"
+        android:textColor="#89888E"
+        android:textSize="14sp"
+        android:textStyle="normal" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone number"
+        app:prefixText="+998">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phone_number_edt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_edt"
+            android:inputType="number"
+            android:maxLength="9"
+            android:padding="10dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/b_save"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
 
 </LinearLayout>

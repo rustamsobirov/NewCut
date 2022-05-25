@@ -13,7 +13,7 @@
         app:showAsAction="always"
         tools:ignore="MenuTitle" />
     <item
-        android:id="@+id/accountFragment"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/account_icon_manager"
         app:showAsAction="always"
         tools:ignore="MenuTitle" />
