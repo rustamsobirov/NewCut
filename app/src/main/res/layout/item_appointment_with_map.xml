@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp"
     android:layout_margin="15dp"
     android:background="@drawable/bg_appointment_item_rv"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp">
 
 
     <androidx.cardview.widget.CardView
         android:id="@+id/map_cv"
         android:layout_width="match_parent"
-        android:backgroundTint="@color/red_400"
         android:layout_height="127dp"
+        android:backgroundTint="@color/red_400"
         app:cardCornerRadius="30dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <TextView
@@ -28,45 +28,45 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="12 September 2021, 08:00"
-            android:textSize="17sp"
             android:textColor="#191632"
-            android:textStyle="bold"/>
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_user_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="6391 Elgin St. Celina, Dela..."
-            android:maxLines="1"
             android:layout_marginTop="2dp"
+            android:maxLines="1"
+            android:text="6391 Elgin St. Celina, Dela..."
             android:textColor="#ABAAB1"
-            android:textSize="13sp"/>
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/tv_type_haircut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Services: Regular haircut, Classic shaving"
-            android:textSize="13sp"
-            android:textColor="#432BDF"
             android:layout_marginTop="10dp"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:text="Services: Regular haircut, Classic shaving"
+            android:textColor="#432BDF"
+            android:textSize="13sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:layout_marginStart="15dp"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <androidx.appcompat.widget.SwitchCompat
                 android:layout_width="wrap_content"
@@ -80,18 +80,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:entries="@array/times"/>
+                android:entries="@array/times" />
 
         </LinearLayout>
-
 
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="5dp"
-            android:gravity="end|center_vertical">
+            android:gravity="end|center_vertical"
+            android:padding="5dp">
 
             <TextView
                 android:id="@+id/tv_cancel"
@@ -99,18 +98,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/tv_bg"
-                android:textColor="#191632"
-                android:textSize="13sp"
                 android:paddingHorizontal="8dp"
                 android:paddingVertical="4dp"
-                android:textStyle="normal"
-                android:text="Cancel"/>
+                android:text="Cancel"
+                android:textColor="#191632"
+                android:textSize="13sp"
+                android:textStyle="normal" />
 
 
         </LinearLayout>
 
     </LinearLayout>
-
 
 
 </LinearLayout>

@@ -9,9 +9,10 @@
     android:backgroundTint="@color/white"
     android:fitsSystemWindows="true"
     app:behavior_hideable="false"
-    app:behavior_peekHeight="180dp"
+    app:behavior_peekHeight="80dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
+<!--    app:behavior_peekHeight="180dp"-->
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

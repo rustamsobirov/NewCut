@@ -31,10 +31,11 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
     private val viewModel by viewModels<HomeViewModel>()
-    var barberShopLatLongList = ArrayList<BarberShopLatLongModel>()
-    lateinit var myLocationMarker: Marker
+    private var barberShopLatLongList = ArrayList<BarberShopLatLongModel>()
+    private lateinit var myLocationMarker: Marker
 
     private val callback = OnMapReadyCallback { googleMap ->
+        googleMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
         map = googleMap
         map.setOnMarkerClickListener(this)
         setUpMap()
@@ -64,6 +65,8 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
         //setup
         map.uiSettings.isZoomControlsEnabled = false
         map.isMyLocationEnabled = true
+        map.isIndoorEnabled = false
+
         userFusedLocation()
         locationChangeListener()
     }

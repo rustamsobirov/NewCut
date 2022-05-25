@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
                         bnvMain.visibility = View.GONE
                     }
                     R.id.mapViewFragment -> {
-                        bnvMain.visibility = View.GONE
+//                        bnvMain.visibility = View.GONE
                     }
                     else -> {
                         bnvMain.visibility = View.VISIBLE
