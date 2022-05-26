@@ -6,6 +6,8 @@
         <item name="colorPrimaryVariant">@color/colorPrimary_900</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
         <item name="colorSecondary">@color/colorPrimary_500</item>
         <item name="colorSecondaryVariant">@color/colorPrimary_300</item>
         <item name="colorOnSecondary">@color/black</item>
