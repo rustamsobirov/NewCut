@@ -17,6 +17,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.directions.route.*
 import com.google.android.gms.common.api.ApiException
@@ -76,6 +77,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         searchButtonManager()
         keyboardChangeListener()
         barberShopRecyclerItem()
+        openDetailFragment()
         requestPermissions()
     }
 
@@ -129,6 +131,12 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
             }
         }
 
+    private fun openDetailFragment() {
+        barberShopAdapter.itemClick = {
+            findNavController().navigate(R.id.action_mapFragment_to_detailFragment)
+            Log.d("TAG", "openDetail: ")
+        }
+    }
 
     private fun updateLastLocation() {
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lastLocation.latitude,
@@ -183,7 +191,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
             animateCamera(LatLng(lastLocation.latitude, lastLocation.longitude), 16f)
         }
     }
-
 
     private fun setUpMap() {
         installLocation()
