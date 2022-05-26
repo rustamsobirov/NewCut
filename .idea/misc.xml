@@ -4,7 +4,6 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/drawable-v24/bg_appointment_item_rv.xml" value="0.1215" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/drawable-v24/bg_edt.xml" value="0.1425" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/drawable-v24/tv_bg.xml" value="0.141" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/drawable-v24/tv_reschedule_bg.xml" value="0.141" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/drawable/btn_bgn.xml" value="0.1195" />
@@ -27,16 +26,12 @@
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_appoitment.xml" value="0.25" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_confirmation.xml" value="0.2" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_detail.xml" value="0.2" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_history_appointment.xml" value="0.2" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_map.xml" value="0.33" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_pass_appointment.xml" value="0.33" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_upcoming_appointment.xml" value="0.3282051282051282" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_appointment_with_map.xml" value="0.25" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_pass_appointment.xml" value="0.33" />
+        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_pass_appointment.xml" value="0.16417272338606242" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_spinner_list.xml" value="0.19895833333333332" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_spinner_list_gender.xml" value="0.16417272338606242" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.25" />
+        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.33" />
         <entry key="..\:/NewCut/app/src/main/res/drawable/button_default_bg.xml" value="0.154" />
         <entry key="..\:/NewCut/app/src/main/res/drawable/code_background.xml" value="0.133" />
         <entry key="..\:/NewCut/app/src/main/res/drawable/edtextbackground.xml" value="0.154" />
@@ -72,6 +67,7 @@
         <entry key="..\:/NewCut/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCut/app/src/main/res/layout/view_dialog_cancellation.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCut/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_detail_back_icon.xml" value="0.1" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_error_message.xml" value="0.138" />
         <entry key="..\:/NewCuteCut/app/src/main/res/font/poppins_bold.xml" value="0.1574074074074074" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
@@ -85,7 +81,7 @@
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_about.xml" value="0.15833333333333333" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_appoitment.xml" value="0.18854166666666666" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_confirmation.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_detail.xml" value="0.20416666666666666" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_detail.xml" value="0.1" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_faqs.xml" value="0.18" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_favorite.xml" value="0.22" />
@@ -122,7 +118,6 @@
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_location_darker.xml" value="0.1" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_location_pin.xml" value="0.1" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_location_yellow.xml" value="0.114" />
-        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_my_location.xml" value="0.101" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_success_message.xml" value="0.12" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/list_item.xml" value="0.1685" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/radius_top.xml" value="0.1685" />

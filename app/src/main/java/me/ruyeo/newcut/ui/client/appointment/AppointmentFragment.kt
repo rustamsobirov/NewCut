@@ -22,7 +22,6 @@ class AppointmentFragment : BaseFragment(R.layout.fragment_appoitment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val viewPagerAdapter = AppointmentVPAdapter(childFragmentManager, lifecycle)
-
         binding.apply {
             viewPager.adapter = viewPagerAdapter
 
@@ -54,5 +53,7 @@ class AppointmentFragment : BaseFragment(R.layout.fragment_appoitment) {
             }
 
         }
+
     }
+
 }
