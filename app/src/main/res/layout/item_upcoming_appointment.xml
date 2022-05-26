@@ -110,7 +110,8 @@
                 android:background="@drawable/tv_bg"
                 android:text="@string/Bcancel"
                 android:textColor="#191632"
-                android:textSize="17sp"
+                android:textSize="14sp"
+                android:maxLines="1"
                 android:textStyle="normal" />
 
 

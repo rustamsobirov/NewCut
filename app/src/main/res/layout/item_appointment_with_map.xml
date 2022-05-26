@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="15dp"
+    android:layout_margin="10dp"
     android:background="@drawable/bg_appointment_item_rv"
     android:orientation="vertical"
     android:padding="10dp">
@@ -66,7 +67,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="15dp"
+        android:paddingHorizontal="10dp"
+        android:layout_marginTop="5dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -74,16 +76,20 @@
 
 
             <androidx.appcompat.widget.SwitchCompat
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.5"
                 android:background="@null"
+                android:gravity="left"
                 android:thumb="@drawable/switch_thumb"
-                app:track="@drawable/switch_track" />
+                app:track="@drawable/switch_track"
+                tools:ignore="RtlHardcoded" />
 
             <Spinner
                 android:id="@+id/spinner"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1.4"
                 android:layout_marginStart="10dp"
                 android:entries="@array/times" />
 
@@ -92,20 +98,18 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="end|center_vertical"
-            android:padding="5dp">
+            android:layout_weight="0.8"
+            android:gravity="end|center_vertical">
 
             <Button
                 android:id="@+id/b_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/tv_bg"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
                 android:text="@string/Bcancel"
                 android:textColor="#191632"
-                android:textSize="17sp"
+                android:maxLines="1"
+                android:textSize="14sp"
                 android:textStyle="normal" />
 
 

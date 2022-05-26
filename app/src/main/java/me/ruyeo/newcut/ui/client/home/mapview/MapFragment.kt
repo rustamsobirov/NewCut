@@ -7,8 +7,6 @@ import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.activity.result.IntentSenderRequest
@@ -16,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -37,7 +36,6 @@ import me.ruyeo.newcut.databinding.FragmentMapBinding
 import me.ruyeo.newcut.model.map.BarberShopLatLongModel
 import me.ruyeo.newcut.model.map.MapBarberShopModel
 import me.ruyeo.newcut.ui.BaseFragment
-import me.ruyeo.newcut.ui.client.detail.DetailFragment
 import me.ruyeo.newcut.ui.client.home.HomeViewModel
 import me.ruyeo.newcut.utils.extensions.isLocationEnabled
 import me.ruyeo.newcut.utils.extensions.viewBinding
@@ -48,6 +46,7 @@ import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEventListener
 class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClickListener {
     private lateinit var map: GoogleMap
     private val binding by viewBinding { FragmentMapBinding.bind(it) }
+
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
     private val barberShopAdapter by lazy { MapBarberShopAdapter() }
@@ -74,6 +73,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
         super.onViewCreated(view, savedInstanceState)
 
         installLocation()
+//        installLocation()
         playerSheetInstall(view)
         hideStatusBarAndBottomBar()
         collapseManager()
@@ -84,6 +84,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
         openDetailFragment()
 
 
+        requestPermissions()
     }
 
     private fun checkLocationPermission() {
@@ -96,7 +97,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
                 binding.locationAllowed.isVisible = true
             } else {
                 permissionDeniedCount++
-                requestLocationPermission()
+//                requestLocationPermission()
             }
         } else {
             binding.locationAllowed.isVisible = false
@@ -106,6 +107,15 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
             } else {
                 showLocationOn()
             }
+        }
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            //location permission berilgan
+        } else {
+            //location permission berilmagan
         }
     }
 
@@ -204,6 +214,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
         btnMyLocationClickManager()
         updateLastLocation()
 
+        updateLastLocation()
     }
 
     private fun locationChangeListener() {
@@ -374,6 +385,20 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
         super.onDestroyView()
         hideKeyboard()
         showStatusBarAndBottomBar()
+    }
+
+    private fun requestPermissions() {
+       val checkLocationPermission = registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true) {
+                toaster("success")
+            } else {
+                toaster("Ss")
+                // Permission was denied. Display an error message.
+            }
+        }
+
+        checkLocationPermission.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
     }
 
 }
