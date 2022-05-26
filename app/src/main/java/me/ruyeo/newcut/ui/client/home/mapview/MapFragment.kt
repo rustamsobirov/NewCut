@@ -6,8 +6,6 @@ import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.activity.result.IntentSenderRequest
@@ -15,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -40,9 +39,11 @@ import me.ruyeo.newcut.utils.extensions.isLocationEnabled
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEvent
 import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEventListener
+import pub.devrel.easypermissions.EasyPermissions
 
 @AndroidEntryPoint
-class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClickListener {
+class MapFragment : BaseFragment(R.layout.fragment_map), EasyPermissions.PermissionCallbacks,
+    GoogleMap.OnMarkerClickListener {
     private lateinit var map: GoogleMap
     private val binding by viewBinding { FragmentMapBinding.bind(it) }
 
@@ -55,7 +56,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
     private var barberShopLatLongList = ArrayList<BarberShopLatLongModel>()
     private lateinit var myLocationMarker: Marker
     var permissionDeniedCount = 0
-    var loginUpdater = false
     private val myLocationZoom = 15f
 
     private val callback = OnMapReadyCallback { googleMap ->
@@ -69,14 +69,14 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        installLocation()
+//        installLocation()
         playerSheetInstall(view)
         hideStatusBarAndBottomBar()
         collapseManager()
         searchButtonManager()
         keyboardChangeListener()
         barberShopRecyclerItem()
-        checkLocationPermission()
+        requestPermissions()
     }
 
     private fun checkLocationPermission() {
@@ -89,7 +89,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
                 binding.locationAllowed.isVisible = true
             } else {
                 permissionDeniedCount++
-                requestLocationPermission()
+//                requestLocationPermission()
             }
         } else {
             binding.locationAllowed.isVisible = false
@@ -100,12 +100,15 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
                 showLocationOn()
             }
         }
-    }
-
-    private fun requestLocationPermission() {
-        ActivityCompat.requestPermissions(
-            requireActivity(),
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 99)
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            //location permission berilgan
+        } else {
+            //location permission berilmagan
+        }
     }
 
     private fun btnMyLocationClickManager() {
@@ -188,14 +191,14 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
         barShopLatLongListAdder()
         userFusedLocation()
         btnMyLocationClickManager()
-            updateLastLocation()
+        updateLastLocation()
     }
 
     private fun locationChangeListener() {
         map.setOnMyLocationChangeListener {
             myLocationMarker.position = LatLng(it.latitude, it.longitude)
-                lastLocation.latitude = it.latitude
-                lastLocation.longitude = it.longitude
+            lastLocation.latitude = it.latitude
+            lastLocation.longitude = it.longitude
         }
     }
 
@@ -326,4 +329,27 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
         hideKeyboard()
         showStatusBarAndBottomBar()
     }
+
+    private fun requestPermissions() {
+       val checkLocationPermission = registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+            if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true) {
+                toaster("success")
+            } else {
+                toaster("Ss")
+                // Permission was denied. Display an error message.
+            }
+        }
+
+        checkLocationPermission.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
+        toaster("task1")
+    }
+
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
+        toaster("task2")
+    }
+
 }
