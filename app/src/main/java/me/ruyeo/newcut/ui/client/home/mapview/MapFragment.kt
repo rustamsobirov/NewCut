@@ -1,6 +1,7 @@
 package me.ruyeo.newcut.ui.client.home.mapview
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.IntentSender
 import android.content.pm.PackageManager
@@ -17,6 +18,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.location.*
@@ -35,6 +37,7 @@ import me.ruyeo.newcut.databinding.FragmentMapBinding
 import me.ruyeo.newcut.model.map.BarberShopLatLongModel
 import me.ruyeo.newcut.model.map.MapBarberShopModel
 import me.ruyeo.newcut.ui.BaseFragment
+import me.ruyeo.newcut.ui.client.detail.DetailFragment
 import me.ruyeo.newcut.ui.client.home.HomeViewModel
 import me.ruyeo.newcut.utils.extensions.isLocationEnabled
 import me.ruyeo.newcut.utils.extensions.viewBinding
@@ -45,7 +48,6 @@ import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEventListener
 class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClickListener {
     private lateinit var map: GoogleMap
     private val binding by viewBinding { FragmentMapBinding.bind(it) }
-
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
     private val barberShopAdapter by lazy { MapBarberShopAdapter() }
@@ -58,8 +60,9 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
     var loginUpdater = false
     private val myLocationZoom = 15f
 
+    @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { googleMap ->
-        googleMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
+        googleMap.mapType = GoogleMap.MAP_TYPE_NORMAL
         googleMap.uiSettings.isZoomControlsEnabled = false
         googleMap.isMyLocationEnabled = true
         googleMap.uiSettings.isMyLocationButtonEnabled = false
@@ -69,6 +72,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         installLocation()
         playerSheetInstall(view)
         hideStatusBarAndBottomBar()
@@ -77,6 +81,9 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
         keyboardChangeListener()
         barberShopRecyclerItem()
         checkLocationPermission()
+        openDetailFragment()
+
+
     }
 
     private fun checkLocationPermission() {
@@ -105,7 +112,8 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
     private fun requestLocationPermission() {
         ActivityCompat.requestPermissions(
             requireActivity(),
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 99)
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 99
+        )
     }
 
     private fun btnMyLocationClickManager() {
@@ -162,8 +170,14 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
 
     private fun updateLastLocation() {
         try {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lastLocation.latitude,
-                lastLocation.longitude), myLocationZoom))
+            map.animateCamera(
+                CameraUpdateFactory.newLatLngZoom(
+                    LatLng(
+                        lastLocation.latitude,
+                        lastLocation.longitude
+                    ), myLocationZoom
+                )
+            )
         } catch (e: UninitializedPropertyAccessException) {
             toaster("error $e")
         }
@@ -188,24 +202,30 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
         barShopLatLongListAdder()
         userFusedLocation()
         btnMyLocationClickManager()
-            updateLastLocation()
+        updateLastLocation()
+
     }
 
     private fun locationChangeListener() {
         map.setOnMyLocationChangeListener {
             myLocationMarker.position = LatLng(it.latitude, it.longitude)
-                lastLocation.latitude = it.latitude
-                lastLocation.longitude = it.longitude
+            lastLocation.latitude = it.latitude
+            lastLocation.longitude = it.longitude
         }
     }
 
+    @SuppressLint("MissingPermission")
     private fun userFusedLocation() {
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->
             if (location != null) {
                 lastLocation = location
                 val currentLatLng = LatLng(location.latitude, location.longitude)
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng,
-                    myLocationZoom))
+                map.animateCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        currentLatLng,
+                        myLocationZoom
+                    )
+                )
                 markerAdder(currentLatLng)
                 locationChangeListener()
             }
@@ -213,13 +233,17 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
     }
 
     private fun markerAdder(currentLatLng: LatLng) {
-        myLocationMarker = map.addMarker(MarkerOptions().position(currentLatLng)
-            .title("My Location")
-            .icon(bitmapFromVector(R.drawable.ic_location_darker)))!!
+        myLocationMarker = map.addMarker(
+            MarkerOptions().position(currentLatLng)
+                .title("My Location")
+                .icon(bitmapFromVector(R.drawable.ic_location_darker))
+        )!!
         for (i in 0 until barberShopLatLongList.size) {
-            map.addMarker(MarkerOptions().position(barberShopLatLongList[i].latLng)
-                .title(barberShopLatLongList[i].localName)
-                .icon(bitmapFromVector(R.drawable.ic_location_yellow)))
+            map.addMarker(
+                MarkerOptions().position(barberShopLatLongList[i].latLng)
+                    .title(barberShopLatLongList[i].localName)
+                    .icon(bitmapFromVector(R.drawable.ic_location_yellow))
+            )
         }
     }
 
@@ -237,29 +261,54 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
         binding.apply {
             barberShopRecyclerView.adapter = barberShopAdapter
             PagerSnapHelper().attachToRecyclerView(barberShopRecyclerView)
-            mapBarberList.add(MapBarberShopModel("https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Salon-image.png?alt=media&token=88fe9b51-1a16-442b-a994-bcdbf6b37559",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
-            mapBarberList.add(MapBarberShopModel("https://beautyhealthtips.in/wp-content/uploads/2019/02/Quiff-Haircuts.jpg",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
-            mapBarberList.add(MapBarberShopModel("https://i.pinimg.com/originals/e5/1f/e7/e51fe72785398953ab9095023bc98505.jpg",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
-            mapBarberList.add(MapBarberShopModel("https://wallpaperaccess.com/full/3696056.jpg",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Salon-image.png?alt=media&token=88fe9b51-1a16-442b-a994-bcdbf6b37559",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://beautyhealthtips.in/wp-content/uploads/2019/02/Quiff-Haircuts.jpg",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://i.pinimg.com/originals/e5/1f/e7/e51fe72785398953ab9095023bc98505.jpg",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://wallpaperaccess.com/full/3696056.jpg",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
             barberShopAdapter.submitList(mapBarberList)
         }
     }
+
+    private fun openDetailFragment() {
+        barberShopAdapter.itemClick = {
+            findNavController().navigate(R.id.action_mapFragment_to_detailFragment)
+            Log.d("TAG", "openDetail: ")
+        }
+
+    }
+
 
     private fun searchButtonManager() {
         binding.included.linearCompat.setOnClickListener {
@@ -326,4 +375,5 @@ class MapFragment : BaseFragment(R.layout.fragment_map), GoogleMap.OnMarkerClick
         hideKeyboard()
         showStatusBarAndBottomBar()
     }
+
 }

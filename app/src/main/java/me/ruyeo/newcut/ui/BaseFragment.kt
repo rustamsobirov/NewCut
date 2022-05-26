@@ -14,6 +14,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import me.ruyeo.newcut.R
@@ -49,8 +50,10 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
     fun hideStatusBarAndBottomBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             requireActivity().setTheme(R.style.homeTheme)
-            requireActivity().window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            requireActivity().window.setFlags(
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+            )
         } else {
             requireActivity().window.setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -91,15 +94,23 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
 
     fun bitmapFromVector(vectorResId: Int): BitmapDescriptor {
         val vectorDrawable = ContextCompat.getDrawable(requireContext(), vectorResId)
-        vectorDrawable!!.setBounds(0, 0,
+        vectorDrawable!!.setBounds(
+            0, 0,
             vectorDrawable.intrinsicWidth,
-            vectorDrawable.intrinsicHeight)
-        val bitmap = Bitmap.createBitmap(vectorDrawable.intrinsicWidth,
+            vectorDrawable.intrinsicHeight
+        )
+        val bitmap = Bitmap.createBitmap(
+            vectorDrawable.intrinsicWidth,
             vectorDrawable.intrinsicHeight,
-            Bitmap.Config.ARGB_8888)
+            Bitmap.Config.ARGB_8888
+        )
         val canvas = Canvas(bitmap)
         vectorDrawable.draw(canvas)
         return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+
+    fun onBackPressed() {
+        findNavController().popBackStack()
     }
 
 }

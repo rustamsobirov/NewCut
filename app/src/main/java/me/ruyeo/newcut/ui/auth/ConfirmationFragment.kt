@@ -45,6 +45,8 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         phoneNumberColor()
         inputSmsCodeManager()
         resendTextClickManager()
+
+
     }
 
     private fun resendTextClickManager() {
@@ -214,7 +216,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
 
     private fun callBack() {
         binding.ivBack.setOnClickListener {
-            findNavController().popBackStack()
+           onBackPressed()
         }
     }
 

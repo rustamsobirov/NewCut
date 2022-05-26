@@ -26,6 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Green Apple"
+            android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -35,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
+            android:fontFamily="@font/poppins_regular"
             android:text="6391 Elgin St. Celina, Delaware..."
             android:textColor="#ABAAB1"
             android:textSize="13sp" />
@@ -61,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="5dp"
+                android:fontFamily="@font/poppins_regular"
                 android:layout_weight="1"
                 android:text="15 km"
                 android:textColor="@color/black"

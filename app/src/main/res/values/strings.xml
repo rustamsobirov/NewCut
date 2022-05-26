@@ -4,7 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="verify_phone">Verify phone</string>
     <string name="resend">Resend</string>
-    <string name="todo">TODO</string>
 
     <string name="notifications">Notifications</string>
     <string name="mark_all_as_read">Mark all as read</string>
@@ -32,6 +31,7 @@
     <string name="about_us">About Us</string>
     <string name="logout">Logout</string>
     <string name="Bcancel">Cancel</string>
+    <string name="todo">TODO</string>
 
 
     <string-array name="times">

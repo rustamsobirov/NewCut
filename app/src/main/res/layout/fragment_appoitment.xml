@@ -21,6 +21,7 @@
             android:layout_weight="1"
             android:layout_marginStart="5dp"
             android:text="Your Appointments"
+            android:fontFamily="@font/poppins_bold"
             android:textStyle="bold"
             android:textColor="#191632"
             android:textSize="20sp"/>
