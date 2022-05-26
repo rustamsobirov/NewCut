@@ -5,6 +5,6 @@
     android:padding="8dp"
     android:textSize="14sp"
     android:maxLines="1"
-    android:background="@color/white"
+    android:background="#F8F8F8"
     android:textColor="#191632"
     android:textStyle="normal"/>

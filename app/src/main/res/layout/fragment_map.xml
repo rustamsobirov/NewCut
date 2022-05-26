@@ -50,7 +50,7 @@
             android:clickable="true"
             android:elevation="8dp"
             android:focusable="true"
-            android:src="@drawable/ic_my_location"
+            android:src="@drawable/ic_location"
             app:layout_constraintBottom_toTopOf="@id/barberShopRecyclerView"
             app:layout_constraintEnd_toEndOf="parent" />
 

@@ -73,7 +73,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/bg_edt"
         android:hint="fullname"
-        android:padding="10dp"
+        android:maxLines="1"
         android:textColorHint="#89888E" />
 
 
@@ -94,10 +94,9 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/bg_edt"
         android:hint="email"
+        android:maxLines="1"
         android:inputType="textEmailAddress"
-        android:padding="10dp"
         android:textColorHint="#89888E" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -120,14 +119,25 @@
                 android:textSize="14sp"
                 android:textStyle="normal" />
 
-            <Spinner
-                android:id="@+id/spinner_gender"
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_edt"
+                android:paddingVertical="2dp"
+                android:paddingHorizontal="5dp"
                 android:layout_marginTop="10dp"
-                android:entries="@array/gender"
-                android:padding="10dp" />
+                android:gravity="center">
+
+                <Spinner
+                    android:id="@+id/spinner_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:entries="@array/gender" />
+
+            </LinearLayout>
 
 
         </LinearLayout>
@@ -156,8 +166,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_edt"
-                android:padding="10dp"
-                android:paddingHorizontal="10dp"
+                android:padding="15dp"
                 android:text="17/08/2000"
                 android:textColor="#191632"
                 android:textSize="14sp" />
@@ -172,7 +181,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:text="@string/address"
         android:textColor="#89888E"
         android:textSize="14sp"
@@ -183,10 +192,10 @@
         android:id="@+id/address_edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/bg_edt"
         android:hint="address"
-        android:padding="10dp"
+        android:maxLines="1"
         android:textColorHint="#89888E" />
 
     <TextView
@@ -202,6 +211,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Phone number"
+        android:layout_marginTop="10dp"
         app:prefixText="+998">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -210,8 +220,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/bg_edt"
             android:inputType="number"
-            android:maxLength="9"
-            android:padding="10dp" />
+            android:maxLines="1"
+            android:maxLength="7" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
