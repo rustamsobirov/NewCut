@@ -12,6 +12,7 @@
         android:layout_margin="10dp"
         android:clickable="true"
         android:focusable="true"
+        android:id="@+id/map_cutter_item"
         android:foreground="?android:attr/selectableItemBackground"
         android:maxWidth="400dp"
         android:minWidth="350dp"

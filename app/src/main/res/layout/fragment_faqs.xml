@@ -1,153 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:paddingHorizontal="25dp"
     android:orientation="vertical"
     tools:context=".ui.client.profile.FAQsFragment">
 
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp"
-        android:gravity="center_vertical">
+        android:layout_height="?actionBarSize"
+        android:elevation="3dp"
+        app:navigationIcon="@drawable/keyboard_backspace">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_gravity="center"
             android:text="@string/faqs"
-            android:textSize="24sp"
-            android:textColor="#191632"
-            android:textStyle="bold"/>
-
-        <ImageView
-            android:id="@+id/cancel_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_cancel_x"
-            android:layout_marginEnd="10dp"/>
-
-    </LinearLayout>
+            android:textSize="20sp"
+            android:fontFamily="@font/poppins_bold"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="25dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/what_is_flo_cutters"
+                android:textColor="#191632"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/plus_FloCutter_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_plus"
+                android:contentDescription="@string/todo" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_regular"
+                android:text="@string/how_much_does_this_cost"
+                android:textColor="#191632"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/minus_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_minus" />
+
+        </LinearLayout>
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/what_is_flo_cutters"
-            android:textSize="15sp"
-            android:textColor="#191632"
-            android:textStyle="bold"/>
-
-        <ImageView
-            android:id="@+id/plus_FloCutter_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_plus"
-            android:layout_marginEnd="10dp"/>
+            android:layout_marginTop="15dp"
+            android:text="We provide highend services without the highend price. A moderate price allows us to provide the high end services you enjoy and the lower price allows you to enjoy it more often! Prices for services are subject to consultation."
+            android:textColor="#5E5D65"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="13sp"
+            android:textStyle="normal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/where_are_you_located"
+                android:textColor="#191632"
+                android:fontFamily="@font/regular"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/plus_locate_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_plus" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/can_i_just_come_in_or_do_i_have_to_make_an_appointment"
+                android:textColor="#191632"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/plus_appointment_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_plus" />
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/how_much_does_this_cost"
-            android:textSize="15sp"
-            android:textColor="#191632"
-            android:textStyle="bold"/>
-
-        <ImageView
-            android:id="@+id/minus_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_minus"
-            android:layout_marginEnd="10dp"/>
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="We provide highend services without the highend price. A moderate price allows us to provide the high end services you enjoy and the lower price allows you to enjoy it more often! Prices for services are subject to consultation."
-        android:textColor="#5E5D65"
-        android:textSize="13sp"
-        android:layout_marginTop="15dp"
-        android:textStyle="normal"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/where_are_you_located"
-            android:textSize="15sp"
-            android:textColor="#191632"
-            android:textStyle="bold"/>
-
-        <ImageView
-            android:id="@+id/plus_locate_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_plus"
-            android:layout_marginEnd="10dp"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:gravity="center_vertical">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/can_i_just_come_in_or_do_i_have_to_make_an_appointment"
-            android:textSize="15sp"
-            android:textColor="#191632"
-            android:textStyle="bold"/>
-
-        <ImageView
-            android:id="@+id/plus_appointment_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_plus"
-            android:layout_marginEnd="10dp"
-             />
-
-    </LinearLayout>
-
-
-
-
-
-
 
 
 </LinearLayout>

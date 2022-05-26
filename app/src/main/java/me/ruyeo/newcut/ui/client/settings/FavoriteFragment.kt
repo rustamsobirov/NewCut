@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.book.UserBookingAdapter
+import me.ruyeo.newcut.adapter.book.UserFavoriteAdapter
 import me.ruyeo.newcut.databinding.FragmentFavoriteBinding
 import me.ruyeo.newcut.model.book.BookModel
 import me.ruyeo.newcut.ui.BaseFragment
@@ -11,19 +12,24 @@ import me.ruyeo.newcut.utils.extensions.viewBinding
 
 class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
     private val binding by viewBinding { FragmentFavoriteBinding.bind(it) }
-    private val userFavoriteAdapter by lazy { UserBookingAdapter() }
+    private val userFavoriteAdapter by lazy { UserFavoriteAdapter() }
     var rvFavoriteList = ArrayList<BookModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        installRecyclerView()
         recyclerFavoriteList()
+        installRecyclerView()
+
+        binding.toolbar.setNavigationOnClickListener{
+            onBackPressed()
+        }
+
     }
 
 
     private fun installRecyclerView() {
         binding.apply {
-            rvFavorite.adapter = UserBookingAdapter()
+            rvFavorite.adapter = userFavoriteAdapter
         }
     }
 

@@ -1,6 +1,8 @@
 package me.ruyeo.newcut.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -10,8 +12,10 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import me.ruyeo.newcut.databinding.MapCuttersItemBinding
 import me.ruyeo.newcut.model.map.MapBarberShopModel
 
-class MapBarberShopAdapter : RecyclerView.Adapter<MapBarberShopAdapter.VH>() {
+class MapBarberShopAdapter() :
+    RecyclerView.Adapter<MapBarberShopAdapter.VH>() {
     private val dif = AsyncListDiffer(this, ITEM_DIFF)
+    var itemClick: (() -> Unit)? = null
 
     inner class VH(private val binding: MapCuttersItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -26,18 +30,30 @@ class MapBarberShopAdapter : RecyclerView.Adapter<MapBarberShopAdapter.VH>() {
                 barberShopLocationName.text = details.barberShopLocationName
                 barberShopRating.rating = details.barberShopStarCount.toFloat()
                 barberShopLocationKM.text = details.barberShopLocationKM
+
+                mapCutterItem.setOnClickListener {
+                    itemClick?.invoke()
+
+                }
+
             }
         }
     }
+
 
     fun submitList(list: List<MapBarberShopModel>) {
         dif.submitList(list)
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        return VH(MapCuttersItemBinding.inflate(LayoutInflater.from(parent.context),
-            parent,
-            false))
+        return VH(
+            MapCuttersItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) = holder.bind()

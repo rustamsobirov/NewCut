@@ -20,6 +20,7 @@ private val binding by viewBinding { FragmentNotificationBinding.bind(it) }
         super.onViewCreated(view, savedInstanceState)
         recyclerViewInstall()
         notifRecyclerList()
+        callBack()
     }
 
 
@@ -33,6 +34,13 @@ private val binding by viewBinding { FragmentNotificationBinding.bind(it) }
 
     private fun recyclerViewInstall() {
         binding.notificationsRv.adapter = adapter
+
+    }
+    
+    fun callBack(){
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
 
     }
 
