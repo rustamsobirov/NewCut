@@ -1,11 +1,13 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.NewCut" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green_default</item>
-        <item name="colorPrimaryVariant">@color/green_default</item>
+        <item name="colorPrimary">@color/colorPrimary_700</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary_900</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
         <item name="colorSecondary">@color/green_default</item>
         <item name="colorSecondaryVariant">@color/green_default</item>
         <item name="colorOnSecondary">@color/green_default</item>

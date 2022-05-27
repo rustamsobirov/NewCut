@@ -1,16 +1,12 @@
 package me.ruyeo.newcut.ui.auth
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.Html
-import android.text.TextWatcher
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
-import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -22,7 +18,7 @@ import kotlinx.coroutines.*
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.databinding.FragmentConfirmationBinding
 import me.ruyeo.newcut.ui.BaseFragment
-import me.ruyeo.newcut.utils.extensions.viewBinding
+import me.ruyeo.newcut.utils.TextWatcherWrapper
 
 @AndroidEntryPoint
 class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
@@ -69,19 +65,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
     private fun inputSmsCodeManager() {
         binding.apply {
             //edit txt 1
-            ed1.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-                override fun afterTextChanged(p0: Editable) {
-                    if (p0.length == 1) {
-                        ed2.requestFocus()
-                        ed1.setBackgroundResource(R.drawable.code_background)
-                        checkAllEditToSendCodeServer()
-                    }
-                }
-            })
+            ed1.addTextChangedListener(textWatcherET1)
             ed1.setOnKeyListener { _, keyCode, _ ->
                 if (keyCode == KeyEvent.KEYCODE_DEL) {
                     if (ed1.text.isEmpty()) {
@@ -91,19 +75,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                 false
             }
             //edit txt 2
-            ed2.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-                override fun afterTextChanged(p0: Editable?) {
-                    if (p0!!.length == 1) {
-                        ed3.requestFocus()
-                        ed2.setBackgroundResource(R.drawable.code_background)
-                        checkAllEditToSendCodeServer()
-                    }
-                }
-            })
+            ed2.addTextChangedListener(textWatcherET2)
             ed2.setOnKeyListener { _, keyCode, _ ->
                 if (keyCode == KeyEvent.KEYCODE_DEL) {
                     if (ed2.text.isEmpty()) {
@@ -114,19 +86,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                 false
             }
             //edit txt 3
-            ed3.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-                override fun afterTextChanged(p0: Editable?) {
-                    if (p0!!.length == 1) {
-                        ed4.requestFocus()
-                        ed3.setBackgroundResource(R.drawable.code_background)
-                        checkAllEditToSendCodeServer()
-                    }
-                }
-            })
+            ed3.addTextChangedListener(textWatcherET3)
             ed3.setOnKeyListener { _, keyCode, _ ->
                 if (keyCode == KeyEvent.KEYCODE_DEL) {
                     if (ed3.text.isEmpty()) {
@@ -137,25 +97,11 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                 false
             }
             //edit txt 4
-            ed4.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-                override fun afterTextChanged(p0: Editable?) {
-                    if (p0!!.length == 1) {
-                        ed4.setBackgroundResource(R.drawable.code_background)
-                        if (checkAllEditToSendCodeServer()) {
-                            hideKeyboard()
-                            allEditClearFocus()
-                            allEditTextClickableFalse()
-                            checkRequestServerCode(ed1.text.toString() + ed2.text.toString() + ed3.text.toString() + ed4.text.toString())
-                            findNavController().navigate(R.id.action_confirmationFragment_to_registrationFragment)
-                        }
-                    }
-                }
-            })
+            ed4.addTextChangedListener(textWatcherET4)
             ed4.setOnKeyListener { _, keyCode, _ ->
                 if (keyCode == KeyEvent.KEYCODE_DEL) {
                     if (ed4.text.isEmpty()) {
+                        Log.d("@@@", "4 DEL")
                         ed4.setBackgroundResource(R.drawable.edtextbackground)
                         allEditTextClickableTrue()
                         ed3.requestFocus()
@@ -206,6 +152,54 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         }
     }
 
+    private val textWatcherET1 = object : TextWatcherWrapper() {
+        override fun afterTextChanged(s: Editable) {
+            super.afterTextChanged(s)
+            if (s.length == 1) {
+                binding.ed2.requestFocus()
+                binding.ed1.setBackgroundResource(R.drawable.code_background)
+                checkAllEditToSendCodeServer()
+            }
+        }
+    }
+    private val textWatcherET2 = object : TextWatcherWrapper() {
+        override fun afterTextChanged(s: Editable) {
+            super.afterTextChanged(s)
+            if (s.length == 1) {
+                binding.ed3.requestFocus()
+                binding.ed2.setBackgroundResource(R.drawable.code_background)
+                checkAllEditToSendCodeServer()
+            }
+        }
+    }
+    private val textWatcherET3 = object : TextWatcherWrapper() {
+        override fun afterTextChanged(s: Editable) {
+            super.afterTextChanged(s)
+            if (s.length == 1) {
+                binding.ed4.requestFocus()
+                binding.ed3.setBackgroundResource(R.drawable.code_background)
+                checkAllEditToSendCodeServer()
+            }
+        }
+    }
+    private val textWatcherET4 = object : TextWatcherWrapper() {
+        override fun afterTextChanged(s: Editable) {
+            super.afterTextChanged(s)
+            if (s.length == 1) {
+                binding.apply {
+                    ed4.setBackgroundResource(R.drawable.code_background)
+                    if (checkAllEditToSendCodeServer()) {
+                        hideKeyboard()
+                        allEditClearFocus()
+                        allEditTextClickableFalse()
+                        checkRequestServerCode(ed1.text.toString() + ed2.text.toString() + ed3.text.toString() + ed4.text.toString())
+                        findNavController().navigate(R.id.action_confirmationFragment_to_registrationFragment)
+                    }
+                }
+            }
+        }
+    }
+
     private fun phoneNumberColor() {
         binding.tvFourDigit.text = Html.fromHtml(
             "Please enter the 4 diget security code we just sent you at " + "<font color=${
@@ -225,7 +219,6 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun perSecond(): Job {
         if (sec == 0) sec = 10
         return MainScope().launch {

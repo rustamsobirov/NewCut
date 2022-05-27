@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "68225643367",
+    "project_id": "cutecut-f73ab",
+    "storage_bucket": "cutecut-f73ab.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:68225643367:android:88025eecef3c25077275c2",
+        "android_client_info": {
+          "package_name": "me.ruyeo.newcut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "68225643367-ilgrth22tplhheve1589er2e8geqapfh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.ruyeo.newcut",
+            "certificate_hash": "cf7abfe209ee57ee59ecdfbd279c1e8b1a9f3168"
+          }
+        },
+        {
+          "client_id": "68225643367-2noqsdo0ai7u1fs9i93ojm0laf04u8ue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChFCp8L1SO5CPRiyNOI9BFgVjOnYBWY9w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "68225643367-2noqsdo0ai7u1fs9i93ojm0laf04u8ue.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

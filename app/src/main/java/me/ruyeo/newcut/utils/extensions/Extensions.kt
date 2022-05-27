@@ -292,15 +292,6 @@ fun Context.showMessage(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-fun moneyToPin(money: String): String {
-    val length = money.length
-    var ans = ""
-    for (i in 0 until length) {
-        ans += "*"
-    }
-    return ans
-}
-
 fun Long.formattedMoney(showDecimal: Boolean = true, tiyinToSum: Boolean = false) =
     formatMoney(if (tiyinToSum) (this / 100.toDouble()) else this.toDouble(), showDecimal)
 
@@ -351,26 +342,4 @@ fun Spinner.setSelections(spinnerId: Int?) {
 }
 
 fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
-fun Any.toRoundInt(): Int = this.toString().toDouble().roundToInt()
 
-typealias SingleBlock <T> = (T) -> Unit
-
-fun Long.generateId(): String {
-    if (this >= 10_000) return this.toString()
-    return "00000$this".reversed().substring(0, 5).reversed()
-}
-
-fun String.scanId(): String {
-    var res = ""
-    var isDigit = false
-    for (i in this.indices) {
-        if (!isDigit) {
-            if (this[i].isDigit() && this[i].toRoundInt() > 0) {
-                isDigit = true
-                res += this[i]
-            }
-        } else res += this[i]
-    }
-
-    return res
-}
