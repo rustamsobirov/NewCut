@@ -1,6 +1,7 @@
 package me.ruyeo.newcut.ui.client.home.mapview
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.IntentSender
 import android.content.pm.PackageManager
@@ -62,6 +63,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     private var polyLines: MutableList<Polyline>? = null
     private var markerList = java.util.ArrayList<Marker>()
 
+    @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { googleMap ->
         googleMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
         googleMap.uiSettings.isZoomControlsEnabled = false
@@ -218,6 +220,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         }
     }
 
+    @SuppressLint("MissingPermission")
     private fun userFusedLocation() {
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->
             if (location != null) {

@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.client.settings.FavoriteFragment">
-
+    app:layoutDescription="@xml/fragment_favorite_xml_constraintlayout_scene">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:elevation="3dp"
+        app:layout_constraintBottom_toTopOf="@id/rv_favorite"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/keyboard_backspace">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="20sp"
             android:fontFamily="@font/poppins_regular"
             android:text="Favorite"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_favorite"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         tools:listitem="@layout/item_favorite" />
 
-</LinearLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

@@ -18,9 +18,12 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showKeyboard(binding.nameEdt)
         binding.signUpBtn.setOnClickListener {
+            showDialog()
             Intent(requireActivity(), MainActivity::class.java).also {
                 startActivity(it)
+
             }
         }
     }

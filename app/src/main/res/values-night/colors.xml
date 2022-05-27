@@ -78,11 +78,14 @@
     <color name="red_800">#910F31</color>
     <color name="red_900">#78092F</color>
 
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FFFFFF</color>
+    <color name="white">#FF000000</color>
+    <color name="stroke_white">#FFFFFF</color>
     <color name="blackWhite">#FFFFFFFF</color>
     <color name="edittext_back">#2D3039</color>
     <color name="textColor">#FF000000</color>
     <color name="editTextColor">#FFFFFFFF</color>
     <color name="white_30">#4DFFFFFF</color>
+
+    <color name="green_default">#ff119e46</color>
 </resources>

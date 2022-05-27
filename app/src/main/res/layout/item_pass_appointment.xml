@@ -27,8 +27,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_profile"
-            android:layout_width="104dp"
-            android:layout_height="90dp"
+            android:layout_width="100dp"
+            android:layout_height="85dp"
             app:shapeAppearanceOverlay="@style/rounded_corner"
             android:src="@drawable/image_barber"
             android:scaleType="centerCrop"/>
@@ -45,10 +45,9 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:text="Bella Rinova"
-                android:fontFamily="@font/poppins_regular"
+                android:fontFamily="@font/poppins_bold"
                 android:textColor="#191632"
-                android:textSize="17sp"
-                android:textStyle="normal" />
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_user_address"
@@ -65,14 +64,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Services: Regular haircut, Classic shaving"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="#432BDF"
-                android:layout_marginTop="6dp"
+                android:textColor="@color/black"
                 android:maxLines="2"/>
-
-
-
 
         </LinearLayout>
 
@@ -87,25 +82,28 @@
         android:orientation="horizontal">
 
 
-
-
         <Button
             android:id="@+id/b_review"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
             android:background="@drawable/tv_bg"
             android:textColor="#191632"
             android:textSize="14sp"
+            android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:textStyle="normal"
             android:text="Review"/>
+
+        <Space
+            android:layout_width="15dp"
+            android:layout_height="0dp"/>
 
 
         <Button
             android:id="@+id/b_reschedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
+            android:layout_weight="1"
             android:background="@drawable/tv_reschedule_bg"
             android:text="Reschedule"
             android:textColor="@color/white"
