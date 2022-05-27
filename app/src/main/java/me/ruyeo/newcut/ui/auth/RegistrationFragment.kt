@@ -19,12 +19,19 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
         super.onViewCreated(view, savedInstanceState)
 
         showKeyboard(binding.nameEdt)
+        screenTouchManager()
         binding.signUpBtn.setOnClickListener {
             showDialog()
             Intent(requireActivity(), MainActivity::class.java).also {
                 startActivity(it)
 
             }
+        }
+    }
+
+    private fun screenTouchManager() {
+        binding.linearLayout.setOnClickListener {
+            hideKeyboard()
         }
     }
 }
