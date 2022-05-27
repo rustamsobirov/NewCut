@@ -43,7 +43,7 @@
         android:layout_marginHorizontal="16dp"
         android:background="@color/white"
         android:focusable="true"
-        app:boxStrokeColor="@color/white"
+        app:boxStrokeColor="@color/stroke_white"
         app:boxCornerRadiusBottomEnd="16dp"
         app:boxCornerRadiusBottomStart="16dp"
         app:boxCornerRadiusTopStart="16dp"

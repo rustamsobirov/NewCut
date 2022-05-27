@@ -28,6 +28,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
         continueButtonManager()
     }
 
+
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun continueButtonManager() {
         val errorMessageIcon = requireContext().getMyDrawable(R.drawable.ic_error_message)
