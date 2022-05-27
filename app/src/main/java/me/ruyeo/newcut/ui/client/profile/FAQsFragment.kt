@@ -15,6 +15,14 @@ class FAQsFragment : BaseFragment(R.layout.fragment_faqs) {
     private val binding by viewBinding { FragmentFaqsBinding.bind(it) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        callBack()
+    }
+
+    private fun callBack() {
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
 

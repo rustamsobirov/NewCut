@@ -4,30 +4,33 @@ import android.Manifest
 import android.app.Activity
 import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.PagerSnapHelper
+import com.directions.route.*
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.MapBarberShopAdapter
 import me.ruyeo.newcut.databinding.FragmentMapBinding
@@ -36,13 +39,13 @@ import me.ruyeo.newcut.model.map.MapBarberShopModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.ui.client.home.HomeViewModel
 import me.ruyeo.newcut.utils.extensions.isLocationEnabled
+import me.ruyeo.newcut.utils.extensions.showSnackMessage
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEvent
 import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEventListener
-import pub.devrel.easypermissions.EasyPermissions
 
 @AndroidEntryPoint
-class MapFragment : BaseFragment(R.layout.fragment_map), EasyPermissions.PermissionCallbacks,
+class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     GoogleMap.OnMarkerClickListener {
     private lateinit var map: GoogleMap
     private val binding by viewBinding { FragmentMapBinding.bind(it) }
@@ -55,8 +58,9 @@ class MapFragment : BaseFragment(R.layout.fragment_map), EasyPermissions.Permiss
     private val viewModel by viewModels<HomeViewModel>()
     private var barberShopLatLongList = ArrayList<BarberShopLatLongModel>()
     private lateinit var myLocationMarker: Marker
-    var permissionDeniedCount = 0
     private val myLocationZoom = 15f
+    private var polyLines: MutableList<Polyline>? = null
+    private var markerList = java.util.ArrayList<Marker>()
 
     private val callback = OnMapReadyCallback { googleMap ->
         googleMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
@@ -69,46 +73,14 @@ class MapFragment : BaseFragment(R.layout.fragment_map), EasyPermissions.Permiss
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        installLocation()
         playerSheetInstall(view)
         hideStatusBarAndBottomBar()
         collapseManager()
         searchButtonManager()
         keyboardChangeListener()
         barberShopRecyclerItem()
+        openDetailFragment()
         requestPermissions()
-    }
-
-    private fun checkLocationPermission() {
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) != PackageManager.PERMISSION_GRANTED
-        ) {
-            if (permissionDeniedCount >= 1) {
-                binding.locationAllowed.isVisible = true
-            } else {
-                permissionDeniedCount++
-//                requestLocationPermission()
-            }
-        } else {
-            binding.locationAllowed.isVisible = false
-            //1
-            if (isLocationEnabled()) {
-                setUpMap()
-            } else {
-                showLocationOn()
-            }
-        }
-        if (ActivityCompat.checkSelfPermission(
-                requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION
-            ) == PackageManager.PERMISSION_GRANTED
-        ) {
-            //location permission berilgan
-        } else {
-            //location permission berilmagan
-        }
     }
 
     private fun btnMyLocationClickManager() {
@@ -138,7 +110,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), EasyPermissions.Permiss
             try {
                 val response: LocationSettingsResponse = it.getResult(ApiException::class.java)
                 if (response.locationSettingsStates!!.isGpsPresent)
-                    Log.d("@@@", "ERROR..........")
+                    Log.d("@@@", "ERROR")
             } catch (e: ApiException) {
                 when (e.statusCode) {
                     LocationSettingsStatusCodes.RESOLUTION_REQUIRED -> try {
@@ -152,46 +124,90 @@ class MapFragment : BaseFragment(R.layout.fragment_map), EasyPermissions.Permiss
         }
     }
 
-    //2
     private var launcher =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                checkLocationPermission()
+                setUpMap()
             } else {
-                toaster(getString(R.string.please_allow_phone_local))
                 showLocationOn()
             }
         }
 
-    private fun updateLastLocation() {
-        try {
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lastLocation.latitude,
-                lastLocation.longitude), myLocationZoom))
-        } catch (e: UninitializedPropertyAccessException) {
-            toaster("error $e")
+    private fun openDetailFragment() {
+        barberShopAdapter.itemClick = {
+            findNavController().navigate(R.id.action_mapFragment_to_detailFragment)
+            Log.d("TAG", "openDetail: ")
         }
     }
 
+    private fun updateLastLocation() {
+        map.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                LatLng(
+                    lastLocation.latitude,
+                    lastLocation.longitude
+                ), myLocationZoom
+            )
+        )
+    }
 
     private fun installLocation() {
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
-        fusedLocationClient =
-            LocationServices.getFusedLocationProviderClient(requireContext())
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+            mapFragment?.getMapAsync(callback)
+            fusedLocationClient =
+                LocationServices.getFusedLocationProviderClient(requireContext())
+            delay(500)
+            userFusedLocation()
+        }
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
         if (marker != myLocationMarker) {
+//            polyLine(LatLng(lastLocation.latitude, lastLocation.longitude), marker.position)
             toaster("${marker.position}")
+//            markerList.clear()
+//            markerUpdater()
+            findRoutes(LatLng(lastLocation.latitude, lastLocation.longitude), marker.position)
         }
-        return false
+        return true
+    }
+
+    private fun animateCamera(toLatLong: LatLng, zoom: Float) {
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(toLatLong, zoom))
+    }
+
+    private fun polyLine(firstPosition: LatLng, endPosition: LatLng) {
+//        map.addPolyline(PolylineOptions().add(firstPosition,
+//            endPosition)
+//            .width(15f).color(Color.RED)
+//            .geodesic(true))
+//        map.animateCamera(CameraUpdateFactory.newLatLngZoom(firstPosition, myLocationZoom - 5))
+
+        val routing = Routing.Builder()
+    }
+
+    private fun findRoutes(start: LatLng?, end: LatLng?) {
+        if (start == null || end == null) {
+            Toast.makeText(requireContext(), "Unable to get location", Toast.LENGTH_LONG).show()
+            updateLastLocation()
+        } else {
+            val routing = Routing.Builder()
+                .travelMode(AbstractRouting.TravelMode.DRIVING)
+                .withListener(this)
+                .alternativeRoutes(true)
+                .waypoints(start, end)
+                .key(requireContext().resources.getString(R.string.map_key))
+                .build()
+            routing.execute()
+            animateCamera(LatLng(lastLocation.latitude, lastLocation.longitude), 16f)
+        }
     }
 
     private fun setUpMap() {
+        installLocation()
         barShopLatLongListAdder()
-        userFusedLocation()
         btnMyLocationClickManager()
-        updateLastLocation()
     }
 
     private fun locationChangeListener() {
@@ -207,8 +223,12 @@ class MapFragment : BaseFragment(R.layout.fragment_map), EasyPermissions.Permiss
             if (location != null) {
                 lastLocation = location
                 val currentLatLng = LatLng(location.latitude, location.longitude)
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng,
-                    myLocationZoom))
+                map.animateCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        currentLatLng,
+                        myLocationZoom
+                    )
+                )
                 markerAdder(currentLatLng)
                 locationChangeListener()
             }
@@ -216,13 +236,30 @@ class MapFragment : BaseFragment(R.layout.fragment_map), EasyPermissions.Permiss
     }
 
     private fun markerAdder(currentLatLng: LatLng) {
-        myLocationMarker = map.addMarker(MarkerOptions().position(currentLatLng)
-            .title("My Location")
-            .icon(bitmapFromVector(R.drawable.ic_location_darker)))!!
+        myLocationMarker = map.addMarker(
+            MarkerOptions().position(currentLatLng)
+                .title("My Location")
+                .icon(bitmapFromVector(R.drawable.ic_location_darker))
+        )!!
+
         for (i in 0 until barberShopLatLongList.size) {
-            map.addMarker(MarkerOptions().position(barberShopLatLongList[i].latLng)
-                .title(barberShopLatLongList[i].localName)
-                .icon(bitmapFromVector(R.drawable.ic_location_yellow)))
+            val myMarker = map.addMarker(
+                MarkerOptions().position(barberShopLatLongList[i].latLng)
+                    .title(barberShopLatLongList[i].localName)
+                    .icon(bitmapFromVector(R.drawable.ic_location_yellow))
+            )
+            markerList.add(myMarker!!)
+        }
+    }
+
+    private fun markerUpdater() {
+        for (i in 0 until markerList.size) {
+            val myMarker = map.addMarker(
+                MarkerOptions().position(barberShopLatLongList[i].latLng)
+                    .title(barberShopLatLongList[i].localName)
+                    .icon(bitmapFromVector(R.drawable.ic_location_yellow))
+            )
+            markerList.add(myMarker!!)
         }
     }
 
@@ -240,26 +277,42 @@ class MapFragment : BaseFragment(R.layout.fragment_map), EasyPermissions.Permiss
         binding.apply {
             barberShopRecyclerView.adapter = barberShopAdapter
             PagerSnapHelper().attachToRecyclerView(barberShopRecyclerView)
-            mapBarberList.add(MapBarberShopModel("https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Salon-image.png?alt=media&token=88fe9b51-1a16-442b-a994-bcdbf6b37559",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
-            mapBarberList.add(MapBarberShopModel("https://beautyhealthtips.in/wp-content/uploads/2019/02/Quiff-Haircuts.jpg",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
-            mapBarberList.add(MapBarberShopModel("https://i.pinimg.com/originals/e5/1f/e7/e51fe72785398953ab9095023bc98505.jpg",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
-            mapBarberList.add(MapBarberShopModel("https://wallpaperaccess.com/full/3696056.jpg",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Salon-image.png?alt=media&token=88fe9b51-1a16-442b-a994-bcdbf6b37559",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://beautyhealthtips.in/wp-content/uploads/2019/02/Quiff-Haircuts.jpg",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://i.pinimg.com/originals/e5/1f/e7/e51fe72785398953ab9095023bc98505.jpg",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://wallpaperaccess.com/full/3696056.jpg",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
             barberShopAdapter.submitList(mapBarberList)
         }
     }
@@ -324,32 +377,90 @@ class MapFragment : BaseFragment(R.layout.fragment_map), EasyPermissions.Permiss
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
+    private fun hasPermissionLocation() = ContextCompat.checkSelfPermission(
+        requireContext(),
+        Manifest.permission.ACCESS_FINE_LOCATION
+    ) == PackageManager.PERMISSION_GRANTED
+
+    private fun requestPermissions() {
+        if (!hasPermissionLocation()) {
+            val checkLocationPermission = registerForActivityResult(
+                ActivityResultContracts.RequestMultiplePermissions()
+            ) { permissions ->
+                if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true) {
+                    binding.locationAllowed.isVisible = false
+                    if (isLocationEnabled()) {
+                        setUpMap()
+                    } else {
+                        showLocationOn()
+                    }
+                } else {
+                    binding.locationAllowed.isVisible = true
+                }
+            }
+            checkLocationPermission.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
+        } else {
+            if (!isLocationEnabled()) {
+                showLocationOn()
+            } else {
+                setUpMap()
+            }
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         hideKeyboard()
         showStatusBarAndBottomBar()
     }
 
-    private fun requestPermissions() {
-       val checkLocationPermission = registerForActivityResult(
-            ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
-            if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true) {
-                toaster("success")
-            } else {
-                toaster("Ss")
-                // Permission was denied. Display an error message.
+    override fun onRoutingFailure(p0: RouteException?) {
+        showSnackMessage(p0?.message ?: "")
+    }
+
+    override fun onRoutingStart() {}
+
+    override fun onRoutingSuccess(route: java.util.ArrayList<Route>?, shortestRouteIndex: Int) {
+
+        if (polyLines != null) {
+            polyLines?.clear()
+        }
+        val polyOptions = PolylineOptions()
+        var polylineStartLatLng: LatLng? = null
+        var polylineEndLatLng: LatLng? = null
+        polyLines = ArrayList()
+        for (i in route!!.indices) {
+            if (i == shortestRouteIndex) {
+                polyOptions.color(
+                    Color.rgb(
+                        (0..255).random(),
+                        (0..255).random(),
+                        (0..255).random()
+                    )
+                )
+                polyOptions.width(7f)
+                polyOptions.addAll(route[shortestRouteIndex].points)
+                val polyline = map.addPolyline(polyOptions)
+                polylineStartLatLng = polyline.points[0]
+                val k = polyline.points.size
+                polylineEndLatLng = polyline.points[k - 1]
+                (polyLines as ArrayList<Polyline>).add(polyline)
             }
         }
+        val endMarker = MarkerOptions()
+        endMarker.position(polylineEndLatLng!!)
+        deleteMarker(polylineEndLatLng)
+//        endMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_dest))
 
-        checkLocationPermission.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
+        endMarker.title("Borilishi kerak manzil")
+        map.addMarker(endMarker)
     }
 
-    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>) {
-        toaster("task1")
+    private fun deleteMarker(polylineEndLatLng: LatLng) {
+
     }
 
-    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>) {
-        toaster("task2")
-    }
+    override fun onRoutingCancelled() {
 
+    }
 }

@@ -47,22 +47,54 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     private fun salonSpecialistRecycler() {
         binding.apply {
             salonSpecialistRecyclerView.adapter = detailBottomSalonSpecialistAdapter
-            specialistList.add(DetailSpecialistModel("https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
-                "Valeriy", "wiki"))
-            specialistList.add(DetailSpecialistModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
-                "Brian", "google"))
-            specialistList.add(DetailSpecialistModel("https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
-                "Valeriy", "wiki"))
-            specialistList.add(DetailSpecialistModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
-                "Brian", "google"))
-            specialistList.add(DetailSpecialistModel("https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
-                "Valeriy", "wiki"))
-            specialistList.add(DetailSpecialistModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
-                "Brian", "google"))
-            specialistList.add(DetailSpecialistModel("https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
-                "Valeriy", "wiki"))
-            specialistList.add(DetailSpecialistModel("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
-                "Brian", "google"))
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                    "Valeriy", "wiki"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                    "Brian", "google"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                    "Valeriy", "wiki"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                    "Brian", "google"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                    "Valeriy", "wiki"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                    "Brian", "google"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                    "Valeriy", "wiki"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                    "Brian", "google"
+                )
+            )
             detailBottomSalonSpecialistAdapter.submitList(specialistList)
         }
     }
@@ -77,7 +109,7 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
 
     private fun callBack() {
         binding.backBtn.setOnClickListener {
-
+            onBackPressed()
         }
     }
 

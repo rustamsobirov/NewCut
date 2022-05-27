@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:text="12 September 2021, 08:00"
         android:textSize="20sp"
+        android:fontFamily="@font/poppins_regular"
         android:textColor="#191632"
         android:textStyle="bold"/>
 
@@ -44,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:maxLines="1"
                 android:text="Bella Rinova"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="#191632"
                 android:textSize="17sp"
                 android:textStyle="normal" />
@@ -52,6 +54,7 @@
                 android:id="@+id/tv_user_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:text="6391 Elgin St. Celina, Dela..."
                 android:maxLines="1"
                 android:textColor="#ABAAB1"
@@ -63,6 +66,7 @@
                 android:layout_height="wrap_content"
                 android:text="Services: Regular haircut, Classic shaving"
                 android:textSize="15sp"
+                android:fontFamily="@font/poppins_regular"
                 android:textColor="#432BDF"
                 android:layout_marginTop="6dp"
                 android:maxLines="2"/>

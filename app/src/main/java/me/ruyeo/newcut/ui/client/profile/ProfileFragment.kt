@@ -12,25 +12,22 @@ import me.ruyeo.newcut.utils.extensions.viewBinding
 @AndroidEntryPoint
 class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
     private val binding by viewBinding { FragmentProfileBinding.bind(it) }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
             FAQsTv.setOnClickListener {
-                findNavController().navigate(R.id.FAQsFragment)
+                findNavController().navigate(R.id.action_profileFragment_to_FAQsFragment)
             }
             notifIv.setOnClickListener {
-                findNavController().navigate(R.id.notificationFragment)
+                findNavController().navigate(R.id.action_profileFragment_to_notificationFragment)
             }
             editFl.setOnClickListener {
-                findNavController().navigate(R.id.editProfileFragment)
+                findNavController().navigate(R.id.action_profileFragment_to_editProfileFragment)
             }
             favoriteIv.setOnClickListener {
-                findNavController().navigate(R.id.favoriteFragment)
+                findNavController().navigate(R.id.action_profileFragment_to_favoriteFragment)
             }
-
-
         }
 
 

@@ -6,5 +6,6 @@
     android:textSize="14sp"
     android:maxLines="1"
     android:background="@color/white"
+    android:fontFamily="@font/poppins_regular"
     android:textColor="#191632"
     android:textStyle="normal"/>
