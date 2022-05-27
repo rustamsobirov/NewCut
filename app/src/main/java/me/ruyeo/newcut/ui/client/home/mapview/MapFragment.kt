@@ -76,7 +76,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         playerSheetInstall(view)
-        hideStatusBarAndBottomBar()
         collapseManager()
         searchButtonManager()
         keyboardChangeListener()
@@ -358,6 +357,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                         BottomSheetBehavior.STATE_EXPANDED -> {
                             searchEditText.isVisible = true
                             linearCompat.isVisible = false
+                            locationAddress.isVisible = false
                             searchEditText.requestFocus()
                             searchEditText.isFocusableInTouchMode = true
                             searchEditText.isFocusable = true
@@ -366,6 +366,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                         BottomSheetBehavior.STATE_COLLAPSED -> {
                             searchEditText.isVisible = false
                             linearCompat.isVisible = true
+                            locationAddress.isVisible = true
                             hideKeyboard()
                         }
                     }
@@ -414,7 +415,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     override fun onDestroyView() {
         super.onDestroyView()
         hideKeyboard()
-        showStatusBarAndBottomBar()
     }
 
     override fun onRoutingFailure(p0: RouteException?) {

@@ -7,30 +7,28 @@
     android:layout_height="match_parent"
     android:background="@drawable/radius_top"
     android:backgroundTint="@color/white"
-    android:fitsSystemWindows="true"
     app:behavior_hideable="false"
     app:behavior_peekHeight="80dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
-    <!--    app:behavior_peekHeight="180dp"-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/line"
+        android:layout_width="80dp"
+        android:layout_height="8dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/light_600"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/line"
-            android:layout_width="80dp"
-            android:layout_height="8dp"
-            android:layout_marginTop="10dp"
-            app:cardBackgroundColor="@color/light_600"
-            app:cardCornerRadius="5dp"
-            app:cardElevation="0dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/line">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -40,16 +38,13 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_location" />
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/locationAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:drawableStart="@drawable/ic_location"
+                android:drawablePadding="10dp"
                 android:ellipsize="end"
                 android:includeFontPadding="false"
                 android:maxLines="1"

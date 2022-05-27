@@ -67,30 +67,6 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
         dialog.show(childFragmentManager, "cancellation_dialog")
     }
 
-    fun hideStatusBarAndBottomBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            requireActivity().setTheme(R.style.homeTheme)
-            requireActivity().window.setFlags(
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-            )
-        } else {
-            requireActivity().window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-    }
-
-    fun showStatusBarAndBottomBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            requireActivity().setTheme(R.style.Theme_NewCut)
-            requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        } else {
-            requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        }
-    }
-
     fun showKeyboard(editText: EditText) {
         editText.requestFocus()
         val content =
