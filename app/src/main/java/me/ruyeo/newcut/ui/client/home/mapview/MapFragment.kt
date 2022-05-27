@@ -18,6 +18,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.directions.route.*
@@ -30,6 +31,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.MapBarberShopAdapter
 import me.ruyeo.newcut.databinding.FragmentMapBinding
@@ -141,15 +143,25 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun updateLastLocation() {
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lastLocation.latitude,
-            lastLocation.longitude), myLocationZoom))
+        map.animateCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                LatLng(
+                    lastLocation.latitude,
+                    lastLocation.longitude
+                ), myLocationZoom
+            )
+        )
     }
 
     private fun installLocation() {
-        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
-        mapFragment?.getMapAsync(callback)
-        fusedLocationClient =
-            LocationServices.getFusedLocationProviderClient(requireContext())
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment?
+            mapFragment?.getMapAsync(callback)
+            fusedLocationClient =
+                LocationServices.getFusedLocationProviderClient(requireContext())
+            delay(500)
+            userFusedLocation()
+        }
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
@@ -198,7 +210,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         installLocation()
         barShopLatLongListAdder()
         btnMyLocationClickManager()
-        userFusedLocation()
     }
 
     private fun locationChangeListener() {
@@ -215,8 +226,12 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
             if (location != null) {
                 lastLocation = location
                 val currentLatLng = LatLng(location.latitude, location.longitude)
-                map.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng,
-                    myLocationZoom))
+                map.animateCamera(
+                    CameraUpdateFactory.newLatLngZoom(
+                        currentLatLng,
+                        myLocationZoom
+                    )
+                )
                 markerAdder(currentLatLng)
                 locationChangeListener()
             }
@@ -224,23 +239,29 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun markerAdder(currentLatLng: LatLng) {
-        myLocationMarker = map.addMarker(MarkerOptions().position(currentLatLng)
-            .title("My Location")
-            .icon(bitmapFromVector(R.drawable.ic_location_darker)))!!
+        myLocationMarker = map.addMarker(
+            MarkerOptions().position(currentLatLng)
+                .title("My Location")
+                .icon(bitmapFromVector(R.drawable.ic_location_darker))
+        )!!
 
         for (i in 0 until barberShopLatLongList.size) {
-            val myMarker = map.addMarker(MarkerOptions().position(barberShopLatLongList[i].latLng)
-                .title(barberShopLatLongList[i].localName)
-                .icon(bitmapFromVector(R.drawable.ic_location_yellow)))
+            val myMarker = map.addMarker(
+                MarkerOptions().position(barberShopLatLongList[i].latLng)
+                    .title(barberShopLatLongList[i].localName)
+                    .icon(bitmapFromVector(R.drawable.ic_location_yellow))
+            )
             markerList.add(myMarker!!)
         }
     }
 
     private fun markerUpdater() {
         for (i in 0 until markerList.size) {
-            val myMarker = map.addMarker(MarkerOptions().position(barberShopLatLongList[i].latLng)
-                .title(barberShopLatLongList[i].localName)
-                .icon(bitmapFromVector(R.drawable.ic_location_yellow)))
+            val myMarker = map.addMarker(
+                MarkerOptions().position(barberShopLatLongList[i].latLng)
+                    .title(barberShopLatLongList[i].localName)
+                    .icon(bitmapFromVector(R.drawable.ic_location_yellow))
+            )
             markerList.add(myMarker!!)
         }
     }
@@ -259,26 +280,42 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         binding.apply {
             barberShopRecyclerView.adapter = barberShopAdapter
             PagerSnapHelper().attachToRecyclerView(barberShopRecyclerView)
-            mapBarberList.add(MapBarberShopModel("https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Salon-image.png?alt=media&token=88fe9b51-1a16-442b-a994-bcdbf6b37559",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
-            mapBarberList.add(MapBarberShopModel("https://beautyhealthtips.in/wp-content/uploads/2019/02/Quiff-Haircuts.jpg",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
-            mapBarberList.add(MapBarberShopModel("https://i.pinimg.com/originals/e5/1f/e7/e51fe72785398953ab9095023bc98505.jpg",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
-            mapBarberList.add(MapBarberShopModel("https://wallpaperaccess.com/full/3696056.jpg",
-                "Sartaroshxona",
-                "chorsu",
-                4,
-                "25 km"))
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Salon-image.png?alt=media&token=88fe9b51-1a16-442b-a994-bcdbf6b37559",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://beautyhealthtips.in/wp-content/uploads/2019/02/Quiff-Haircuts.jpg",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://i.pinimg.com/originals/e5/1f/e7/e51fe72785398953ab9095023bc98505.jpg",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
+            mapBarberList.add(
+                MapBarberShopModel(
+                    "https://wallpaperaccess.com/full/3696056.jpg",
+                    "Sartaroshxona",
+                    "chorsu",
+                    4,
+                    "25 km"
+                )
+            )
             barberShopAdapter.submitList(mapBarberList)
         }
     }
@@ -343,13 +380,16 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
-    private fun hasPermissionLocation() = ContextCompat.checkSelfPermission(requireContext(),
-        Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+    private fun hasPermissionLocation() = ContextCompat.checkSelfPermission(
+        requireContext(),
+        Manifest.permission.ACCESS_FINE_LOCATION
+    ) == PackageManager.PERMISSION_GRANTED
 
     private fun requestPermissions() {
         if (!hasPermissionLocation()) {
             val checkLocationPermission = registerForActivityResult(
-                ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
+                ActivityResultContracts.RequestMultiplePermissions()
+            ) { permissions ->
                 if (permissions[Manifest.permission.ACCESS_FINE_LOCATION] == true) {
                     binding.locationAllowed.isVisible = false
                     if (isLocationEnabled()) {
@@ -394,9 +434,13 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         polyLines = ArrayList()
         for (i in route!!.indices) {
             if (i == shortestRouteIndex) {
-                polyOptions.color(Color.rgb((0..255).random(),
-                    (0..255).random(),
-                    (0..255).random()))
+                polyOptions.color(
+                    Color.rgb(
+                        (0..255).random(),
+                        (0..255).random(),
+                        (0..255).random()
+                    )
+                )
                 polyOptions.width(7f)
                 polyOptions.addAll(route[shortestRouteIndex].points)
                 val polyline = map.addPolyline(polyOptions)
