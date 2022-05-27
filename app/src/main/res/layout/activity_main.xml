@@ -31,7 +31,7 @@
             android:outlineSpotShadowColor="@android:color/transparent"
             app:elevation="0dp"
             app:itemBackground="@color/white"
-            app:itemIconSize="20dp"
+            app:itemIconSize="30dp"
             app:labelVisibilityMode="unlabeled"
             app:menu="@menu/bottom_menu"
             tools:ignore="UnusedAttribute" />

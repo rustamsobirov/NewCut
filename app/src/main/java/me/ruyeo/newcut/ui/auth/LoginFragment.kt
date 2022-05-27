@@ -31,13 +31,16 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun continueButtonManager() {
         val errorMessageIcon = requireContext().getMyDrawable(R.drawable.ic_error_message)
-        errorMessageIcon?.setBounds(0, 0,
-            errorMessageIcon.intrinsicWidth, errorMessageIcon.intrinsicHeight)
+        errorMessageIcon?.setBounds(
+            0, 0,
+            errorMessageIcon.intrinsicWidth, errorMessageIcon.intrinsicHeight
+        )
         binding.phoneNumberEdt.apply {
             binding.continueBtn.setOnClickListener {
                 when {
                     text!!.length > 17 -> {
                         inputLayoutBoxDisable()
+
                         findNavController().navigate(
                             R.id.action_loginFragment_to_confirmationFragment,
                             bundleOf("phoneNumber" to text.toString())
@@ -63,7 +66,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     private fun inputLayoutBoxDisable() {
         binding.textInputLayout.boxStrokeColor =
-            ContextCompat.getColor(requireContext(), R.color.white)
+            ContextCompat.getColor(requireContext(), R.color.green_default)
     }
 
     @SuppressLint("SetTextI18n")
@@ -77,9 +80,19 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                 @SuppressLint("SetTextI18n")
                 override fun afterTextChanged(p0: Editable?) {
                     inputLayoutBoxDisable()
+                    if (!phoneNumberEdt.text!!.contains("+998(") ||
+                        phoneNumberEdt.text!![0].toString() != "+"
+                    ) {
+                        phoneNumberEdt.setText("+998(")
+                        editLastCursor()
+                    }
                     if (phoneNumberEdt.text!!.length < 5) {
                         phoneNumberEdt.setText("+998(")
                         editLastCursor()
+                    }
+
+                    if (phoneNumberEdt.text!!.length == 18) {
+                        hideKeyboard()
                     }
                 }
             })

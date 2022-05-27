@@ -60,7 +60,7 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:paddingHorizontal="6dp"
@@ -115,8 +115,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="20dp"
+                        android:backgroundTint="@color/green_default"
                         android:clickable="false"
-                        app:cardBackgroundColor="#4DC41F"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="0dp"
                         app:layout_constraintRight_toRightOf="parent"
@@ -157,9 +157,12 @@
                         android:id="@+id/ratingBar"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:clickable="false"
+                        app:srb_clickable="false"
                         app:srb_drawableEmpty="@drawable/ic_star_unselected"
                         app:srb_drawableFilled="@drawable/ic_star_selected"
                         app:srb_numStars="5"
+                        app:srb_scrollable="false"
                         app:srb_starHeight="20dp"
                         app:srb_starPadding="3dp"
                         app:srb_starWidth="20dp"
@@ -236,7 +239,7 @@
 
                         <ImageView
                             android:layout_width="wrap_content"
-                            android:layout_height="20dp"
+                            android:layout_height="wrap_content"
                             android:src="@drawable/ic_call_icon"
                             app:tint="@color/text_900" />
 
@@ -350,15 +353,15 @@
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/detailBottomTabLayout"
                     android:layout_width="wrap_content"
-                    android:layout_height="57dp"
+                    android:layout_height="56dp"
                     android:layout_gravity="center"
                     android:layout_marginHorizontal="5dp"
                     android:paddingVertical="6dp"
-                    app:tabGravity="center"
                     android:textAllCaps="false"
+                    app:tabGravity="center"
                     app:tabIndicator="@drawable/detail_bottom_tab_background"
                     app:tabIndicatorAnimationMode="elastic"
-                    app:tabIndicatorColor="@color/black"
+                    app:tabIndicatorColor="@color/green_default"
                     app:tabIndicatorGravity="stretch"
                     app:tabMode="scrollable"
                     app:tabRippleColor="@null"

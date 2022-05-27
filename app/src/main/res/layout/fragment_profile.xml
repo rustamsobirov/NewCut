@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:padding="20dp"
     android:gravity="top"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".ui.client.profile.ProfileFragment">
 
     <LinearLayout
@@ -15,13 +15,44 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_profile"
-            android:layout_width="86dp"
-            android:layout_height="86dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/image_barber"
-            app:shapeAppearanceOverlay="@style/rounded_corner" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image_barber"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/rounded_corner" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/circle_shape_green"
+                android:gravity="center"
+                android:padding="3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:srcCompat="@drawable/ic_plus"
+                    app:tint="@color/white" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -87,7 +118,7 @@
 
                 <ImageView
                     android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_height="wrap_content"
                     android:src="@drawable/ic_edit2" />
             </LinearLayout>
         </FrameLayout>
@@ -95,67 +126,58 @@
     </LinearLayout>
 
     <TextView
+        android:id="@+id/setting_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/email_ex"
-        android:textColor="#ABAAB1"
-        android:textSize="13sp" />
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/settings"
+        android:textColor="#191632"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:drawableEndCompat="@drawable/ic_road"
+        app:drawableStartCompat="@drawable/ic_setting"
+        tools:ignore="RtlSymmetry" />
 
+    <TextView
+        android:id="@+id/FAQs_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/faqs"
+        android:textColor="#191632"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:drawableEndCompat="@drawable/ic_road"
+        app:drawableStartCompat="@drawable/ic_faqs"
+        tools:ignore="RtlSymmetry" />
 
-        <TextView
-            android:id="@+id/setting_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:padding="10dp"
-            android:drawablePadding="10dp"
-            android:text="@string/settings"
-            android:textColor="#191632"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            tools:ignore="RtlSymmetry"
-            app:drawableStartCompat="@drawable/ic_setting"
-            app:drawableEndCompat="@drawable/ic_road" />
-
-        <TextView
-            android:id="@+id/FAQs_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:text="@string/faqs"
-            android:textColor="#191632"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            tools:ignore="RtlSymmetry"
-            app:drawableStartCompat="@drawable/ic_faqs"
-            app:drawableEndCompat="@drawable/ic_road" />
-
-        <TextView
-            android:id="@+id/aboutUs_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center_vertical"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
-            android:text="@string/about_us"
-            android:textColor="#191632"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            tools:ignore="RtlSymmetry"
-            app:drawableStartCompat="@drawable/ic_aboutus"
-            app:drawableEndCompat="@drawable/ic_road" />
+    <TextView
+        android:id="@+id/aboutUs_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:text="@string/about_us"
+        android:textColor="#191632"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:drawableEndCompat="@drawable/ic_road"
+        app:drawableStartCompat="@drawable/ic_aboutus"
+        tools:ignore="RtlSymmetry" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="10dp"
+        android:gravity="bottom">
 
         <TextView
             android:id="@+id/logout_tv"
@@ -168,9 +190,9 @@
             android:textColor="#191632"
             android:textSize="15sp"
             android:textStyle="bold"
-            tools:ignore="RtlSymmetry"
+            app:drawableEndCompat="@drawable/ic_road"
             app:drawableStartCompat="@drawable/ic_aboutus"
-            app:drawableEndCompat="@drawable/ic_road" />
+            tools:ignore="RtlSymmetry" />
 
     </LinearLayout>
 

@@ -18,12 +18,19 @@ import java.util.*
 
 @AndroidEntryPoint
 class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile),
-    AdapterView.OnItemSelectedListener,DatePickerDialog.OnDateSetListener{
+    AdapterView.OnItemSelectedListener, DatePickerDialog.OnDateSetListener {
     private val binding by viewBinding { FragmentEditProfileBinding.bind(it) }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        initViews()
+        callBack()
+
+    }
+
+    private fun initViews() {
         // Calendar
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
@@ -36,23 +43,26 @@ class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile),
                     requireContext(),
                     android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                     this@EditProfileFragment,
-                    year,month,day
+                    year, month, day
                 )
                 datePickerDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
                 datePickerDialog.show()
             }
         }
 
-
         val adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(
             requireContext(),
             R.array.gender, R.layout.item_spinner_list_gender
         )
         adapter.setDropDownViewResource(R.layout.item_spinner_list_gender)
-        binding.spinnerGender.adapter = adapter
+//        binding.spinnerGender.adapter = adapter
+//        binding.spinnerGender.onItemSelectedListener = this
+    }
 
-        binding.spinnerGender.onItemSelectedListener = this
-
+    private fun callBack() {
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -66,9 +76,9 @@ class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile),
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
 
-        val day = String.format("%02d",dayOfMonth)
-        val mMonth = String.format("%02d",month)
-      val date = "$day/$mMonth/$year"
+        val day = String.format("%02d", dayOfMonth)
+        val mMonth = String.format("%02d", month)
+        val date = "$day/$mMonth/$year"
         binding.birthdayTv.text = date
 
     }

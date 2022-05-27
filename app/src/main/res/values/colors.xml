@@ -85,4 +85,6 @@
     <color name="textColor">#FFFFFF</color>
     <color name="editTextColor">#FF000000</color>
     <color name="white_30">#4DFFFFFF</color>
+
+    <color name="green_default">#ff02c65c</color>
 </resources>

@@ -14,7 +14,7 @@
         android:layout_height="32dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
-        android:background="?attr/selectableItemBackground"
+        android:background="@drawable/card_ripple_touch_effect"
         android:clickable="true"
         android:focusable="true"
         android:padding="2dp"
@@ -53,78 +53,29 @@
 
         <EditText
             android:id="@+id/ed1"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:autofillHints="password"
-            android:background="@drawable/edtextbackground"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:inputType="number"
-            android:maxLength="1"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:ignore="LabelFor" />
+            style="@style/verifyEditStyle" />
 
 
         <EditText
             android:id="@+id/ed2"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            style="@style/verifyEditStyle"
             android:layout_marginStart="22dp"
-            android:layout_toEndOf="@id/ed1"
-            android:autofillHints="password"
-            android:background="@drawable/edtextbackground"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:inputType="number"
-            android:maxLength="1"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:ignore="LabelFor" />
+            android:layout_toEndOf="@id/ed1" />
 
         <EditText
             android:id="@+id/ed3"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            style="@style/verifyEditStyle"
             android:layout_marginStart="22dp"
-            android:layout_toEndOf="@id/ed2"
-            android:autofillHints="password"
-            android:background="@drawable/edtextbackground"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:inputType="number"
-            android:maxLength="1"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            tools:ignore="LabelFor" />
+            android:layout_toEndOf="@id/ed2" />
 
         <EditText
             android:id="@+id/ed4"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
+            style="@style/verifyEditStyle"
             android:layout_marginStart="22dp"
-            android:layout_toEndOf="@id/ed3"
-            android:autofillHints="password"
-            android:background="@drawable/edtextbackground"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:inputType="number"
-            android:maxLength="1"
-            android:maxLines="1"
-            android:padding="10dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/black"
-            android:textSize="24sp"
-            tools:ignore="LabelFor" />
+            android:layout_toEndOf="@id/ed3" />
 
     </RelativeLayout>
-
+    
 
     <TextView
         android:id="@+id/tv_resend"
@@ -134,7 +85,7 @@
         android:layout_marginTop="56dp"
         android:gravity="center"
         android:textAllCaps="false"
-        android:textColor="#4F38E1"
+        android:textColor="@color/green_default"
         android:textSize="16sp" />
 
 

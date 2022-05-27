@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.widget.addTextChangedListener
 import androidx.navigation.fragment.findNavController
@@ -155,7 +156,6 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
             ed4.setOnKeyListener { _, keyCode, _ ->
                 if (keyCode == KeyEvent.KEYCODE_DEL) {
                     if (ed4.text.isEmpty()) {
-                        Log.d("@@@", "4 DEL")
                         ed4.setBackgroundResource(R.drawable.edtextbackground)
                         allEditTextClickableTrue()
                         ed3.requestFocus()
@@ -208,7 +208,12 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
 
     private fun phoneNumberColor() {
         binding.tvFourDigit.text = Html.fromHtml(
-            "Please enter the 4 diget security code we just sent you at " + "<font color=#4F38E1>" + arguments?.getString(
+            "Please enter the 4 diget security code we just sent you at " + "<font color=${
+                ContextCompat.getColor(
+                    requireContext(),
+                    R.color.green_default
+                )
+            }>" + arguments?.getString(
                 "phoneNumber"
             )
         )
@@ -216,10 +221,11 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
 
     private fun callBack() {
         binding.ivBack.setOnClickListener {
-           onBackPressed()
+            onBackPressed()
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun perSecond(): Job {
         if (sec == 0) sec = 10
         return MainScope().launch {
@@ -233,7 +239,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                 binding.tvResend.text = "Resend In $min:$s Sec"
                 if (sec == 0) {
                     binding.tvResend.text = getString(R.string.resend)
-                    binding.tvResend.setTextColor(Color.parseColor("#052F61"))
+                    binding.tvResend.setTextColor(Color.parseColor("#ff02c65c"))
                     cancel()
                 }
                 delay(1000)

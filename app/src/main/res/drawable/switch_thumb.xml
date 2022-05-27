@@ -3,25 +3,20 @@
 
     <item android:state_checked="true">
         <shape android:shape="oval">
-            <solid android:color="@color/white"/>
+            <solid android:color="@color/white" />
 
-            <stroke android:width="3dp"
-                android:color="#6D5AE6"/>
-            <size android:width="24dp"
-                android:height="24dp"/>
+            <stroke android:width="3dp" android:color="@color/green_default" />
+            <size android:width="24dp" android:height="24dp" />
         </shape>
     </item>
 
-      <item android:state_checked="false">
+    <item android:state_checked="false">
         <shape android:shape="oval">
-            <solid android:color="@color/white"/>
-            <stroke android:width="3dp"
-                android:color="#EBEBEB"/>
-            <size android:width="24dp"
-                android:height="24dp"/>
+            <solid android:color="@color/white" />
+            <stroke android:width="3dp" android:color="#EBEBEB" />
+            <size android:width="24dp" android:height="24dp" />
         </shape>
     </item>
-
 
 
 </selector>

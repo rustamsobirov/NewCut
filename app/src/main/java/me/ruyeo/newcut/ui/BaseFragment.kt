@@ -19,10 +19,11 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.utils.dialogs.CancellationDialog
+import me.ruyeo.newcut.utils.dialogs.LoadingDialog
 import me.ruyeo.newcut.utils.dialogs.MessageDialog
 
-
 abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
+    lateinit var loadingDialog: LoadingDialog
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,6 +31,25 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
     ): View {
         return inflater.inflate(layoutRes, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        loadingDialog = LoadingDialog(requireContext())
+        loadingDialog()
+    }
+
+    private fun loadingDialog() {
+        loadingDialog.loadDialog()
+    }
+
+    fun showDialog() {
+        loadingDialog.showDialog()
+    }
+
+    fun hideDialog() {
+        loadingDialog.hideDialog()
+    }
+
 
     protected fun showMessage(message: String) {
         val dialog = MessageDialog(message)

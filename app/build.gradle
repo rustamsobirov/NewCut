@@ -92,4 +92,6 @@ dependencies {
     kapt "androidx.room:room-compiler:$roomVersion"
     //map routing
     implementation 'com.github.jd-alexander:library:1.1.0'
+//Lottie animation
+    implementation 'com.airbnb.android:lottie:5.0.3'
 }

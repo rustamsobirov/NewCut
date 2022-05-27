@@ -15,14 +15,14 @@
         android:layout_width="match_parent"
         android:layout_height="127dp"
         android:backgroundTint="@color/red_400"
-        app:cardCornerRadius="30dp" >
+        app:cardCornerRadius="30dp">
 
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/map_frame"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/map_frame" />
 
     </androidx.cardview.widget.CardView>
 
@@ -59,7 +59,7 @@
             android:layout_marginTop="10dp"
             android:maxLines="1"
             android:text="Services: Regular haircut, Classic shaving"
-            android:textColor="#432BDF"
+            android:textColor="@color/green_default"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -67,32 +67,29 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="10dp"
         android:layout_marginTop="5dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp">
 
 
+        <androidx.appcompat.widget.SwitchCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:background="@null"
+            android:gravity="left"
+            android:thumb="@drawable/switch_thumb"
+            app:track="@drawable/switch_track"
+            tools:ignore="RtlHardcoded" />
 
-
-            <androidx.appcompat.widget.SwitchCompat
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                android:background="@null"
-                android:gravity="left"
-                android:thumb="@drawable/switch_thumb"
-                app:track="@drawable/switch_track"
-                tools:ignore="RtlHardcoded" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.4"
-                android:layout_marginStart="10dp"
-                android:entries="@array/times" />
-
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1.4"
+            android:entries="@array/times" />
 
 
         <LinearLayout
@@ -106,9 +103,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/tv_bg"
+                android:maxLines="1"
                 android:text="@string/Bcancel"
                 android:textColor="#191632"
-                android:maxLines="1"
                 android:textSize="14sp"
                 android:textStyle="normal" />
 
