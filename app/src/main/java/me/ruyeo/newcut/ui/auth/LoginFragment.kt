@@ -31,11 +31,6 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun continueButtonManager() {
-        val errorMessageIcon = requireContext().getMyDrawable(R.drawable.ic_error_message)
-        errorMessageIcon?.setBounds(
-            0, 0,
-            errorMessageIcon.intrinsicWidth, errorMessageIcon.intrinsicHeight
-        )
         binding.phoneNumberEdt.apply {
             binding.continueBtn.setOnClickListener {
                 when {
@@ -47,12 +42,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                             bundleOf("phoneNumber" to text.toString())
                         )
                     }
-                    text!!.length == 5 -> {
-                        setError("Raqam Kiritilmagan!", errorMessageIcon)
-                        inputLayoutBoxEnable()
-                    }
                     else -> {
-                        setError("Noto'g'ri formatdagi raqam!", errorMessageIcon)
                         inputLayoutBoxEnable()
                     }
                 }

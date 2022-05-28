@@ -19,12 +19,10 @@ import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.utils.dialogs.CancellationDialog
-import me.ruyeo.newcut.utils.dialogs.LoadingDialog
 import me.ruyeo.newcut.utils.dialogs.MessageDialog
 import me.ruyeo.newcut.utils.dialogs.RadioConfirmationDialog
 
 abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
-    lateinit var loadingDialog: LoadingDialog
     lateinit var radioConfirmationDialog: RadioConfirmationDialog
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,9 +34,7 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadingDialog = LoadingDialog(requireContext())
         radioConfirmationDialog = RadioConfirmationDialog(requireContext())
-        loadingDialog()
         loadRadioConfDialog()
     }
 
@@ -52,18 +48,6 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
 
     fun hideRadioDialog() {
         radioConfirmationDialog.hideDialog()
-    }
-
-    private fun loadingDialog() {
-        loadingDialog.loadDialog()
-    }
-
-    fun showDialog() {
-        loadingDialog.showDialog()
-    }
-
-    fun hideDialog() {
-        loadingDialog.hideDialog()
     }
 
 

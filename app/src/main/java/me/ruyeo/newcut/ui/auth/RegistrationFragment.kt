@@ -1,5 +1,6 @@
 package me.ruyeo.newcut.ui.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -24,12 +25,14 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
 
     }
 
+    @SuppressLint("SetTextI18n")
     private fun openToHomeFragment() {
-        binding.signUpBtn.setOnClickListener {
-            showDialog()
-            Intent(requireActivity(), MainActivity::class.java).also {
-                startActivity(it)
-
+        binding.signUpBtn.apply {
+            setOnClickListener {
+                text = "Loading..."
+                Intent(requireActivity(), MainActivity::class.java).also {
+                    startActivity(it)
+                }
             }
         }
     }
