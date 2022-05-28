@@ -100,23 +100,21 @@ class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile),
 
     private fun continueButtonManager() {
         binding.phoneNumberEdt.apply {
-            binding.saveBtn.setOnClickListener {
-                when {
-                    text!!.length > 17 -> {
-                        inputLayoutBoxDisable()
-
-                        findNavController().navigate(
-                            R.id.action_loginFragment_to_confirmationFragment,
-                            bundleOf("phoneNumber" to text.toString())
-                        )
-                    }
-                    else -> {
-                        inputLayoutBoxEnable()
+            binding.apply {
+                saveBtn.setOnClickListener {
+                    when {
+                        text!!.length > 17 -> {
+                            findNavController().popBackStack()
+                        }
+                        else -> {
+                            inputLayoutBoxEnable()
+                        }
                     }
                 }
             }
         }
     }
+
     private fun inputLayoutBoxEnable() {
         binding.textInputLayout.boxStrokeColor =
             ContextCompat.getColor(requireContext(), R.color.red_500)
@@ -126,6 +124,7 @@ class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile),
         binding.textInputLayout.boxStrokeColor =
             ContextCompat.getColor(requireContext(), R.color.green_default)
     }
+
     private fun phoneEditTextManager() {
         binding.apply {
             phoneNumberEdt.addTextChangedListener(object : TextWatcher {

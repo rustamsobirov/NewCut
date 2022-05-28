@@ -381,21 +381,25 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     private fun getCurrentLatLngLabel(current: LatLng) {
         with(current) {
-            GeoClient.geoService.getGeoCodeInfo("f69e3c084c93c56331d9ac63f0df2e41",
-                Latlng(this.latitude, this.longitude)).enqueue(object : Callback<GeoResponse> {
+            GeoClient.geoService.getGeoCodeInfo(
+                "f69e3c084c93c56331d9ac63f0df2e41",
+                Latlng(this.latitude, this.longitude)
+            ).enqueue(object : Callback<GeoResponse> {
                 override fun onResponse(
                     call: Call<GeoResponse>,
                     response: Response<GeoResponse>,
                 ) {
                     if (response.isSuccessful) {
                         binding.included.locationAddress.text =
-                            calculateDestination(response = response.body()!!,
-                                current)?.name
+                            calculateDestination(
+                                response = response.body()!!,
+                                current
+                            )?.name
                     }
                 }
 
                 override fun onFailure(call: Call<GeoResponse>, t: Throwable) {
-                    Snackbar.make(binding.root, "${t.message}", Snackbar.LENGTH_INDEFINITE).show()
+                    binding.included.locationAddress.text = "${t.message}"
                 }
 
             })
@@ -408,10 +412,12 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         var minDistance = Double.MAX_VALUE
 
         for (datum in response.data) {
-            if (minDistance > distance(datum.latitude,
+            if (minDistance > distance(
+                    datum.latitude,
                     datum.longitude,
                     latlng.latitude,
-                    latlng.longitude)
+                    latlng.longitude
+                )
             ) {
                 minDistance =
                     distance(datum.latitude, datum.longitude, latlng.latitude, latlng.longitude)
