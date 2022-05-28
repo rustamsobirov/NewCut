@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -42,7 +40,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     GoogleMap.OnMarkerClickListener {
     private lateinit var map: GoogleMap
     private val binding by viewBinding { FragmentMapBinding.bind(it) }
-
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
     private val barberShopAdapter by lazy { MapBarberShopAdapter() }
@@ -63,8 +60,8 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         googleMap.isMyLocationEnabled = true
         googleMap.uiSettings.isMyLocationButtonEnabled = false
         map = googleMap
+        cameraMoveStartedListener(googleMap)
         setUpMap()
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -139,25 +136,12 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         setupMe()
         barShopLatLongListAdder()
         btnMyLocationClickManager()
-        Handler(Looper.getMainLooper()).postDelayed({
-            //bu funksiya internetdan markerlarni olib kelib
-            // bo'lgandagina ishlashi kerak aks holsa tashavoradi
-            locationChangeListener()
-        }, 3000)
     }
 
     private fun setupMe() {
         fusedLocationClient =
             LocationServices.getFusedLocationProviderClient(requireActivity())
         userFusedLocation()
-    }
-
-    private fun locationChangeListener() {
-        map.setOnMyLocationChangeListener {
-            myLocationMarker.position = LatLng(it.latitude, it.longitude)
-            lastLocation.latitude = it.latitude
-            lastLocation.longitude = it.longitude
-        }
     }
 
     @SuppressLint("MissingPermission")
@@ -181,12 +165,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun markerAdder(currentLatLng: LatLng) {
-        myLocationMarker = map.addMarker(
-            MarkerOptions().position(currentLatLng)
-                .title("My Location")
-                .icon(bitmapFromVector(R.drawable.ic_location_darker))
-        )!!
-
         for (i in 0 until barberShopLatLongList.size) {
             val myMarker = map.addMarker(
                 MarkerOptions().position(barberShopLatLongList[i].latLng)
@@ -365,7 +343,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         val endMarker = MarkerOptions()
         endMarker.position(polylineEndLatLng!!)
         deleteMarker(polylineEndLatLng)
-        endMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_dest))
+//        endMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_dest))
 
         endMarker.title("Borilishi kerak manzil")
         map.addMarker(endMarker)
@@ -377,6 +355,48 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     private fun deleteMarker(polylineEndLatLng: LatLng) {
 
+    }
+
+    private fun cameraMoveStartedListener(googleMap: GoogleMap) {
+        googleMap.setOnCameraMoveStartedListener {
+            binding.mapPoint.playAnimation()
+            binding.mapPoint.loop(true)
+        }
+        googleMap.setOnCameraIdleListener {
+            binding.mapPoint.loop(false)
+            //Bu yerda yaxshiroq logika bo'lishi mumkin edi,
+            // lekin API clear text trafic bilan muammo sababli response yoki boshqa wrapper
+            // class'lardan foydalanad olmadim, call ishlayabdi ))
+            // GeoLocation label olishda free api service'dan foydalanilgan shuning uchun to'liq aniq
+            // chiqarib bermasligi mumkin
+
+            getCurrentLatLngLabel(current = googleMap.cameraPosition.target)
+
+        }
+    }
+
+    private fun getCurrentLatLngLabel(current: LatLng) {
+        with(current) {
+//            GeoClient.geoService.getGeoCodeInfo(getString(R.string.acces_key),
+//                Latlng(this.latitude, this.longitude)).enqueue(object : Callback<GeoResponse> {
+//                override fun onResponse(
+//                    call: Call<GeoResponse>,
+//                    response: Response<GeoResponse>,
+//                ) {
+//                    if (response.isSuccessful) {
+//                        binding.edtStartPoint.setText(calculateDestination(response = response.body()!!,
+//                            current)?.name)
+//                    }
+//                }
+//
+//                override fun onFailure(call: Call<GeoResponse>, t: Throwable) {
+//
+//                    Snackbar.make(binding.root, "${t.message}", Snackbar.LENGTH_INDEFINITE).show()
+//
+//                }
+//
+//            })
+        }
     }
 
 }
