@@ -13,6 +13,7 @@ import me.ruyeo.newcut.model.detail.DetailSpecialistModel
 class DetailBottomSalonSpecialistAdapter :
     RecyclerView.Adapter<DetailBottomSalonSpecialistAdapter.VH>() {
     private val dif = AsyncListDiffer(this, ITEM_DIFF)
+    var itemClick: (() -> Unit)? = null
 
     inner class VH(private val binding: DetailSalonSpecialistItemBinding) :
         RecyclerView.ViewHolder(binding.root) {

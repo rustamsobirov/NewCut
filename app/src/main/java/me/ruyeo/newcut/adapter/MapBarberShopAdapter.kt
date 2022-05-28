@@ -31,7 +31,6 @@ class MapBarberShopAdapter() :
 
                 mapCutterItem.setOnClickListener {
                     itemClick?.invoke()
-
                 }
 
             }
