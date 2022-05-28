@@ -5,8 +5,6 @@ import android.app.Activity
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.activity.result.IntentSenderRequest
@@ -101,9 +99,6 @@ class MapPermissionFragment : BaseFragment(R.layout.fragment_map_permission) {
         }
 
     private fun openMap() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            findNavController().navigate(R.id.mapFragment)
-        }, 3000)
-
+        findNavController().navigate(R.id.mapFragment)
     }
 }
