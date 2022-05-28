@@ -99,6 +99,7 @@
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_error_message.xml" value="0.138" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_faqs.xml" value="0.1505" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_favorite.xml" value="0.1555" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_flag_for_uzbekistan.xml" value="0.1635" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_home_select.xml" value="0.181" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_location_blue.xml" value="0.181" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_location_darker.xml" value="0.181" />
@@ -108,8 +109,10 @@
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_profile.xml" value="0.1505" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_ring.xml" value="0.1555" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_road.xml" value="0.1505" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_russia_svgrepo.xml" value="0.1635" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_setting.xml" value="0.167" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_settings.xml" value="0.167" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_united_states_of_america.xml" value="0.1635" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_user_select.xml" value="0.181" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_vector_stroke.xml" value="0.1635" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/keyboard_backspace.xml" value="0.1505" />
@@ -123,6 +126,7 @@
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/tv_reschedule_bg.xml" value="0.1505" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/tv_select_bg.xml" value="0.1505" />
         <entry key="..\:/NewCuteCut/app/src/main/res/font/poppins_bold.xml" value="0.1574074074074074" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/font/poppins_regular.xml" value="0.184375" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_image_gallery_item.xml" value="0.18854166666666666" />
@@ -142,6 +146,7 @@
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_faqs.xml" value="0.18" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_favorite.xml" value="0.2" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_filter_barber.xml" value="0.1" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_language.xml" value="0.25" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_map.xml" value="0.18" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_notification.xml" value="0.25" />

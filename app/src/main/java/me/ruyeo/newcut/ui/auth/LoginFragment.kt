@@ -26,8 +26,14 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
         phoneEditTextManager()
         continueButtonManager()
+        callBack()
     }
 
+    private fun callBack() {
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+    }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun continueButtonManager() {

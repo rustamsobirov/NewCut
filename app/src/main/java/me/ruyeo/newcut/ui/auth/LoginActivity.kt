@@ -18,5 +18,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         navController = findNavController(R.id.nav_host_auth)
+
+
     }
 }
