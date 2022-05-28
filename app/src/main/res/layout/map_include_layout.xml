@@ -48,7 +48,7 @@
                 android:ellipsize="end"
                 android:includeFontPadding="false"
                 android:maxLines="1"
-                android:text="6391 Elgin St. Celina, Delaware 10299"
+                android:text="loading..."
                 android:textColor="@color/text_900"
                 android:textSize="16sp" />
 

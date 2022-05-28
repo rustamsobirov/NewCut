@@ -22,18 +22,22 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.MapBarberShopAdapter
 import me.ruyeo.newcut.databinding.FragmentMapBinding
-import me.ruyeo.newcut.model.map.BarberShopLatLongModel
-import me.ruyeo.newcut.model.map.MapBarberShopModel
+import me.ruyeo.newcut.model.map.*
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.ui.client.home.HomeViewModel
+import me.ruyeo.newcut.utils.extensions.distance
 import me.ruyeo.newcut.utils.extensions.showSnackMessage
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEvent
 import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEventListener
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 @AndroidEntryPoint
 class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
@@ -377,26 +381,47 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     private fun getCurrentLatLngLabel(current: LatLng) {
         with(current) {
-//            GeoClient.geoService.getGeoCodeInfo(getString(R.string.acces_key),
-//                Latlng(this.latitude, this.longitude)).enqueue(object : Callback<GeoResponse> {
-//                override fun onResponse(
-//                    call: Call<GeoResponse>,
-//                    response: Response<GeoResponse>,
-//                ) {
-//                    if (response.isSuccessful) {
-//                        binding.edtStartPoint.setText(calculateDestination(response = response.body()!!,
-//                            current)?.name)
-//                    }
-//                }
-//
-//                override fun onFailure(call: Call<GeoResponse>, t: Throwable) {
-//
-//                    Snackbar.make(binding.root, "${t.message}", Snackbar.LENGTH_INDEFINITE).show()
-//
-//                }
-//
-//            })
+            GeoClient.geoService.getGeoCodeInfo("f69e3c084c93c56331d9ac63f0df2e41",
+                Latlng(this.latitude, this.longitude)).enqueue(object : Callback<GeoResponse> {
+                override fun onResponse(
+                    call: Call<GeoResponse>,
+                    response: Response<GeoResponse>,
+                ) {
+                    if (response.isSuccessful) {
+                        binding.included.locationAddress.text =
+                            calculateDestination(response = response.body()!!,
+                                current)?.name
+                    }
+                }
+
+                override fun onFailure(call: Call<GeoResponse>, t: Throwable) {
+                    Snackbar.make(binding.root, "${t.message}", Snackbar.LENGTH_INDEFINITE).show()
+                }
+
+            })
         }
     }
+
+
+    private fun calculateDestination(response: GeoResponse, latlng: LatLng): GeoCodeInfo? {
+        var geoCodeInfo: GeoCodeInfo? = null
+        var minDistance = Double.MAX_VALUE
+
+        for (datum in response.data) {
+            if (minDistance > distance(datum.latitude,
+                    datum.longitude,
+                    latlng.latitude,
+                    latlng.longitude)
+            ) {
+                minDistance =
+                    distance(datum.latitude, datum.longitude, latlng.latitude, latlng.longitude)
+                geoCodeInfo = datum
+            }
+        }
+
+        return geoCodeInfo
+
+    }
+
 
 }

@@ -170,8 +170,10 @@
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/btn_round.xml" value="0.1055" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/detail_bottom_shape.xml" value="0.12" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/edit_text_background.xml" value="0.1685" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/favorite_circle_shape.xml" value="0.197" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/filterbackground.xml" value="0.1685" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/home_icon_manager.xml" value="0.1685" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_direction_icon.xml" value="0.2595" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_error_message.xml" value="0.12" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_home.xml" value="0.1685" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_link_settings.xml" value="0.114" />
@@ -208,6 +210,7 @@
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_registration.xml" value="0.2" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/item_appointment_with_map.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/item_favorite.xml" value="0.264" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.1" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/map_cutters_item.xml" value="0.264" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/map_include_layout.xml" value="0.264" />
