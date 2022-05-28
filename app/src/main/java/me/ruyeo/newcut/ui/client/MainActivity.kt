@@ -31,6 +31,9 @@ class MainActivity : AppCompatActivity() {
                     R.id.detailFragment -> {
                         bnvMain.visibility = View.GONE
                     }
+                    R.id.editProfileFragment -> {
+                        bnvMain.visibility = View.GONE
+                    }
                     else -> {
                         bnvMain.visibility = View.VISIBLE
                     }

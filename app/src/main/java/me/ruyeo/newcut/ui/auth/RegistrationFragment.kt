@@ -19,7 +19,12 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
         super.onViewCreated(view, savedInstanceState)
 
         showKeyboard(binding.nameEdt)
-        screenTouchManager()
+        sensorTohideKeyBoard()
+        openToHomeFragment()
+
+    }
+
+    private fun openToHomeFragment() {
         binding.signUpBtn.setOnClickListener {
             showDialog()
             Intent(requireActivity(), MainActivity::class.java).also {
@@ -29,9 +34,10 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
         }
     }
 
-    private fun screenTouchManager() {
+    private fun sensorTohideKeyBoard() {
         binding.linearLayout.setOnClickListener {
             hideKeyboard()
         }
     }
+
 }
