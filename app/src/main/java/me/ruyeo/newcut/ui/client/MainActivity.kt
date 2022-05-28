@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                         bnvMain.isVisible = false
                     }
                     R.id.editProfileFragment -> {
-                        bnvMain.visibility = View.GONE
+                        bnvMain.isVisible = false
                     }
                     else -> {
                         showStatusBarAndBottomBar()
