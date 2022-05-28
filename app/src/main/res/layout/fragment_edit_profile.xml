@@ -2,11 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearProfile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    android:id="@+id/linearProfile"
     tools:context=".ui.client.profile.EditProfileFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -66,24 +66,34 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="Jins"
+            android:includeFontPadding="false"
+            android:text="Telefon raqamni o'zgartirish"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/gender_edt"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:background="@drawable/edtextbackground"
-            android:drawableEnd="@drawable/ic_bottom_icon"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center_vertical"
-            android:maxLines="1"
-            android:paddingStart="10dp"
-            android:paddingEnd="15dp"
-            tools:ignore="RtlSymmetry" />
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            app:boxStrokeWidth="1dp"
+            app:hintEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phoneNumberEdt"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/edtextbackground"
+                android:hint="Enter number"
+                android:inputType="phone"
+                android:maxLength="18"
+                android:textColorHint="@color/text_100"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
