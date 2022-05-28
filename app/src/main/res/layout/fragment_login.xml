@@ -32,11 +32,10 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        style="@style/InputEditTextOutline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
-        android:background="@color/light_300"
         android:focusable="true"
         app:boxStrokeColor="@color/white"
         app:boxCornerRadiusBottomEnd="16sp"
