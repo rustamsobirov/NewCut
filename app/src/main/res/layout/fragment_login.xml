@@ -7,7 +7,12 @@
     android:background="@color/white"
     android:orientation="vertical"
     tools:context=".ui.auth.LoginFragment">
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:elevation="3dp"
+        app:navigationIcon="@drawable/keyboard_backspace"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -32,10 +37,11 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
-        style="@style/InputEditTextOutline"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="14dp"
+        android:background="@color/light_300"
         android:focusable="true"
         app:boxStrokeColor="@color/white"
         app:boxCornerRadiusBottomEnd="16sp"

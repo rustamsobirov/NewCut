@@ -1,9 +1,8 @@
-package me.ruyeo.newcut.ui.client.settings
+package me.ruyeo.newcut.ui.client.profile
 
 import android.os.Bundle
 import android.view.View
 import me.ruyeo.newcut.R
-import me.ruyeo.newcut.adapter.book.UserBookingAdapter
 import me.ruyeo.newcut.adapter.book.UserFavoriteAdapter
 import me.ruyeo.newcut.databinding.FragmentFavoriteBinding
 import me.ruyeo.newcut.model.book.BookModel

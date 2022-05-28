@@ -1,6 +1,7 @@
 package me.ruyeo.newcut.ui.client.home.mapview
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.IntentSender
 import android.content.pm.PackageManager
@@ -62,6 +63,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     private var polyLines: MutableList<Polyline>? = null
     private var markerList = java.util.ArrayList<Marker>()
 
+    @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { googleMap ->
         googleMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
         googleMap.uiSettings.isZoomControlsEnabled = false
@@ -74,7 +76,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         playerSheetInstall(view)
-        hideStatusBarAndBottomBar()
         collapseManager()
         searchButtonManager()
         keyboardChangeListener()
@@ -218,6 +219,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         }
     }
 
+    @SuppressLint("MissingPermission")
     private fun userFusedLocation() {
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->
             if (location != null) {
@@ -355,6 +357,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                         BottomSheetBehavior.STATE_EXPANDED -> {
                             searchEditText.isVisible = true
                             linearCompat.isVisible = false
+                            locationAddress.isVisible = false
                             searchEditText.requestFocus()
                             searchEditText.isFocusableInTouchMode = true
                             searchEditText.isFocusable = true
@@ -363,6 +366,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                         BottomSheetBehavior.STATE_COLLAPSED -> {
                             searchEditText.isVisible = false
                             linearCompat.isVisible = true
+                            locationAddress.isVisible = true
                             hideKeyboard()
                         }
                     }
@@ -411,7 +415,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     override fun onDestroyView() {
         super.onDestroyView()
         hideKeyboard()
-        showStatusBarAndBottomBar()
     }
 
     override fun onRoutingFailure(p0: RouteException?) {

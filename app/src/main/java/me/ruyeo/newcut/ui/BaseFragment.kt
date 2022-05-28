@@ -20,9 +20,10 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.utils.dialogs.CancellationDialog
 import me.ruyeo.newcut.utils.dialogs.MessageDialog
-
+import me.ruyeo.newcut.utils.dialogs.RadioConfirmationDialog
 
 abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
+    lateinit var radioConfirmationDialog: RadioConfirmationDialog
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,6 +31,25 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
     ): View {
         return inflater.inflate(layoutRes, container, false)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        radioConfirmationDialog = RadioConfirmationDialog(requireContext())
+        loadRadioConfDialog()
+    }
+
+    private fun loadRadioConfDialog() {
+        radioConfirmationDialog.loadDialog()
+    }
+
+    fun showRadioDialog() {
+        radioConfirmationDialog.showDialog()
+    }
+
+    fun hideRadioDialog() {
+        radioConfirmationDialog.hideDialog()
+    }
+
 
     protected fun showMessage(message: String) {
         val dialog = MessageDialog(message)
@@ -45,30 +65,6 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
             dialog.dismiss()
         }
         dialog.show(childFragmentManager, "cancellation_dialog")
-    }
-
-    fun hideStatusBarAndBottomBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            requireActivity().setTheme(R.style.homeTheme)
-            requireActivity().window.setFlags(
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-            )
-        } else {
-            requireActivity().window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-    }
-
-    fun showStatusBarAndBottomBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            requireActivity().setTheme(R.style.Theme_NewCut)
-            requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        } else {
-            requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        }
     }
 
     fun showKeyboard(editText: EditText) {

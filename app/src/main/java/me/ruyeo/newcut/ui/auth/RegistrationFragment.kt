@@ -1,5 +1,6 @@
 package me.ruyeo.newcut.ui.auth
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -18,10 +19,28 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.signUpBtn.setOnClickListener {
-            Intent(requireActivity(), MainActivity::class.java).also {
-                startActivity(it)
+        showKeyboard(binding.nameEdt)
+        sensorTohideKeyBoard()
+        openToHomeFragment()
+
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun openToHomeFragment() {
+        binding.signUpBtn.apply {
+            setOnClickListener {
+                text = "Loading..."
+                Intent(requireActivity(), MainActivity::class.java).also {
+                    startActivity(it)
+                }
             }
         }
     }
+
+    private fun sensorTohideKeyBoard() {
+        binding.linearLayout.setOnClickListener {
+            hideKeyboard()
+        }
+    }
+
 }

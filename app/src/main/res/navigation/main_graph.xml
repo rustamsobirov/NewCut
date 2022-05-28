@@ -50,7 +50,7 @@
         tools:layout="@layout/fragment_edit_profile" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="me.ruyeo.newcut.ui.client.settings.FavoriteFragment"
+        android:name="me.ruyeo.newcut.ui.client.profile.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
     <fragment

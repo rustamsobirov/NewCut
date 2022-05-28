@@ -43,8 +43,8 @@
                 android:id="@+id/tv_user_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:fontFamily="@font/poppins_regular"
+                android:maxLines="1"
                 android:text="Bella Rinova"
                 android:textColor="#191632"
                 android:textSize="17sp"
@@ -54,8 +54,8 @@
                 android:id="@+id/tv_user_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="1"
                 android:fontFamily="@font/poppins_regular"
+                android:maxLines="1"
                 android:text="6391 Elgin St. Celina, Dela..."
                 android:textColor="#ABAAB1"
                 android:textSize="14sp" />
@@ -65,10 +65,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:maxLines="2"
                 android:fontFamily="@font/poppins_regular"
+                android:maxLines="2"
                 android:text="Services: Regular haircut, Classic shaving"
-                android:textColor="#432BDF"
+                android:textColor="@color/green_default"
                 android:textSize="15sp" />
 
 
@@ -79,7 +79,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="15dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -108,10 +107,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/tv_bg"
+                android:maxLines="1"
                 android:text="@string/Bcancel"
                 android:textColor="#191632"
                 android:textSize="14sp"
-                android:maxLines="1"
                 android:textStyle="normal" />
 
 
