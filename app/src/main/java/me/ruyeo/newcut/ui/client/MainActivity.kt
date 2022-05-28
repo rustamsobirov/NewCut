@@ -1,9 +1,11 @@
 package me.ruyeo.newcut.ui.client
 
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -31,17 +33,22 @@ class MainActivity : AppCompatActivity() {
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
                     R.id.mapFragment -> {
+                        statusBarColorDefault()
                         hideStatusBarAndBottomBar()
                         bnvMain.isVisible = true
                     }
                     R.id.detailFragment -> {
+                        statusBarColorDefault()
                         hideStatusBarAndBottomBar()
                         bnvMain.isVisible = false
                     }
                     R.id.editProfileFragment -> {
+                        statusBarColorWhite()
+                        showStatusBarAndBottomBar()
                         bnvMain.isVisible = false
                     }
                     else -> {
+                        statusBarColorDefault()
                         showStatusBarAndBottomBar()
                         bnvMain.isVisible = true
                     }
@@ -50,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun hideStatusBarAndBottomBar() {
+    private fun hideStatusBarAndBottomBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             setTheme(R.style.homeTheme)
             window.setFlags(
@@ -65,12 +72,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun showStatusBarAndBottomBar() {
+    private fun showStatusBarAndBottomBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             setTheme(R.style.Theme_NewCut)
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         } else {
             window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
         }
+    }
+
+    private fun statusBarColorWhite(){
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = Color.WHITE
+    }
+    private fun statusBarColorDefault(){
+        window.statusBarColor = ContextCompat.getColor(this, R.color.green_default)
     }
 }

@@ -36,8 +36,8 @@
 
                 <ImageView
                     android:id="@+id/notif_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_margin="10dp"
                     android:background="@drawable/ll_bg"
                     android:padding="12dp"
@@ -46,8 +46,8 @@
 
                 <ImageView
                     android:id="@+id/favorite_iv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_margin="10dp"
                     android:background="@drawable/ll_bg"
                     android:padding="12dp"
