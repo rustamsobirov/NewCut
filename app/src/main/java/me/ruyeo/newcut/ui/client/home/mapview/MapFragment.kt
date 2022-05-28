@@ -4,9 +4,10 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
@@ -22,7 +23,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.MapBarberShopAdapter
@@ -45,16 +45,16 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     private lateinit var map: GoogleMap
     private val binding by viewBinding { FragmentMapBinding.bind(it) }
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-    private lateinit var lastLocation: Location
+    private var lastLocation: Location? = null
     private val barberShopAdapter by lazy { MapBarberShopAdapter() }
     private var mapBarberList = ArrayList<MapBarberShopModel>()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val viewModel by viewModels<HomeViewModel>()
     private var barberShopLatLongList = ArrayList<BarberShopLatLongModel>()
-    private lateinit var myLocationMarker: Marker
     private val myLocationZoom = 15f
     private var polyLines: MutableList<Polyline>? = null
     private var markerList = ArrayList<Marker>()
+    private var cameraCurrentLatLng: LatLng? = null
 
     @SuppressLint("MissingPermission")
     private val callback = OnMapReadyCallback { googleMap ->
@@ -65,6 +65,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         googleMap.uiSettings.isMyLocationButtonEnabled = false
         map = googleMap
         cameraMoveStartedListener(googleMap)
+        map.setOnMarkerClickListener(this)
         setUpMap()
     }
 
@@ -95,8 +96,8 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         map.animateCamera(
             CameraUpdateFactory.newLatLngZoom(
                 LatLng(
-                    lastLocation.latitude,
-                    lastLocation.longitude
+                    lastLocation!!.latitude,
+                    lastLocation!!.longitude
                 ), myLocationZoom
             )
         )
@@ -108,11 +109,17 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-        if (marker != myLocationMarker) {
-            toaster("${marker.position}")
-            findRoutes(LatLng(lastLocation.latitude, lastLocation.longitude), marker.position)
-        }
+        routeClear()
+        if (cameraCurrentLatLng != null)
+            findRoutes(LatLng(cameraCurrentLatLng!!.latitude, cameraCurrentLatLng!!.longitude),
+                marker.position) else
+            findRoutes(LatLng(lastLocation!!.latitude, lastLocation!!.longitude), marker.position)
         return true
+    }
+
+    private fun routeClear() {
+        if (polyLines != null)
+            polyLines!![0].remove()
     }
 
     private fun animateCamera(toLatLong: LatLng, zoom: Float) {
@@ -121,7 +128,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     private fun findRoutes(start: LatLng?, end: LatLng?) {
         if (start == null || end == null) {
-            Toast.makeText(requireContext(), "Unable to get location", Toast.LENGTH_LONG).show()
+            toaster("Unable to get location")
             updateLastLocation()
         } else {
             val routing = Routing.Builder()
@@ -129,10 +136,13 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                 .withListener(this)
                 .alternativeRoutes(true)
                 .waypoints(start, end)
-                .key(requireContext().resources.getString(R.string.map_key))
+                .key("AIzaSyCVwdU3slouglv7TBDh3juGegafJVnKx8U")
                 .build()
             routing.execute()
-            animateCamera(LatLng(lastLocation.latitude, lastLocation.longitude), 16f)
+            if (cameraCurrentLatLng != null)
+                animateCamera(LatLng(cameraCurrentLatLng!!.latitude,
+                    cameraCurrentLatLng!!.longitude), 16f) else
+                animateCamera(LatLng(lastLocation!!.latitude, lastLocation!!.longitude), 16f)
         }
     }
 
@@ -144,12 +154,8 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     private fun setupMe() {
         fusedLocationClient =
-            LocationServices.getFusedLocationProviderClient(requireActivity())
-        userFusedLocation()
-    }
+            LocationServices.getFusedLocationProviderClient(requireContext())
 
-    @SuppressLint("MissingPermission")
-    private fun userFusedLocation() {
         fusedLocationClient.lastLocation.addOnSuccessListener { location ->
             if (location != null) {
                 lastLocation = location
@@ -160,7 +166,15 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                         myLocationZoom
                     )
                 )
-                markerAdder(currentLatLng)
+                markerAdder()
+
+            } else {
+                Handler(Looper.getMainLooper()).postDelayed({
+                    fusedLocationClient =
+                        LocationServices.getFusedLocationProviderClient(requireContext())
+                    toaster("loading your location...")
+                    findNavController().popBackStack()
+                }, 400)
             }
         }
         fusedLocationClient.lastLocation.addOnFailureListener {
@@ -168,7 +182,8 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         }
     }
 
-    private fun markerAdder(currentLatLng: LatLng) {
+
+    private fun markerAdder() {
         for (i in 0 until barberShopLatLongList.size) {
             val myMarker = map.addMarker(
                 MarkerOptions().position(barberShopLatLongList[i].latLng)
@@ -317,7 +332,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     override fun onRoutingStart() {}
 
-    override fun onRoutingSuccess(route: java.util.ArrayList<Route>?, shortestRouteIndex: Int) {
+    override fun onRoutingSuccess(route: ArrayList<Route>?, shortestRouteIndex: Int) {
 
         if (polyLines != null) {
             polyLines?.clear()
@@ -335,7 +350,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                         (0..255).random()
                     )
                 )
-                polyOptions.width(7f)
+                polyOptions.width(10f)
                 polyOptions.addAll(route[shortestRouteIndex].points)
                 val polyline = map.addPolyline(polyOptions)
                 polylineStartLatLng = polyline.points[0]
@@ -344,20 +359,16 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                 (polyLines as ArrayList<Polyline>).add(polyline)
             }
         }
-        val endMarker = MarkerOptions()
-        endMarker.position(polylineEndLatLng!!)
-        deleteMarker(polylineEndLatLng)
+//        val endMarker = MarkerOptions()
+//        endMarker.position(polylineEndLatLng!!)
+//        deleteMarker(polylineEndLatLng)
 //        endMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_dest))
 
-        endMarker.title("Borilishi kerak manzil")
-        map.addMarker(endMarker)
+//        endMarker.title("Borilishi kerak manzil")
+//        map.addMarker(endMarker)
     }
 
     override fun onRoutingCancelled() {
-
-    }
-
-    private fun deleteMarker(polylineEndLatLng: LatLng) {
 
     }
 
@@ -375,7 +386,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
             // chiqarib bermasligi mumkin
 
             getCurrentLatLngLabel(current = googleMap.cameraPosition.target)
-
+            cameraCurrentLatLng = googleMap.cameraPosition.target
         }
     }
 
@@ -406,7 +417,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         }
     }
 
-
     private fun calculateDestination(response: GeoResponse, latlng: LatLng): GeoCodeInfo? {
         var geoCodeInfo: GeoCodeInfo? = null
         var minDistance = Double.MAX_VALUE
@@ -428,6 +438,5 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         return geoCodeInfo
 
     }
-
 
 }
