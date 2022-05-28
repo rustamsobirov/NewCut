@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/mapFragment"
+        android:id="@+id/mapPermissionFragment"
         android:icon="@drawable/home_icon_manager"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         tools:ignore="MenuTitle" />
     <item
         android:id="@+id/appointmentFragment"
