@@ -16,6 +16,7 @@ import me.ruyeo.newcut.model.appointment.UpcomingAppointment
 class UpcomingAppointmentAdapter :  RecyclerView.Adapter<UpcomingAppointmentAdapter.Vh>(){
     private val dif = AsyncListDiffer(this, ITEM_DIFF)
     var spinnerClick: (() -> Unit)? = null
+    var cancelClick: (()-> Unit)? = null
 
     inner class Vh(var binding: ItemUpcomingAppointmentBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -38,6 +39,10 @@ class UpcomingAppointmentAdapter :  RecyclerView.Adapter<UpcomingAppointmentAdap
 
                     }
 
+                }
+
+                bCancel.setOnClickListener{
+                    cancelClick?.invoke()
                 }
             }
         }
