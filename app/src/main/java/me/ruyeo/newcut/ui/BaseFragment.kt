@@ -3,12 +3,10 @@ package me.ruyeo.newcut.ui
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
@@ -17,13 +15,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import me.ruyeo.newcut.R
 import me.ruyeo.newcut.utils.dialogs.CancellationDialog
-import me.ruyeo.newcut.utils.dialogs.LoadingDialog
 import me.ruyeo.newcut.utils.dialogs.MessageDialog
 
 abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
-    lateinit var loadingDialog: LoadingDialog
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,20 +30,7 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        loadingDialog = LoadingDialog(requireContext())
-        loadingDialog()
-    }
 
-    private fun loadingDialog() {
-        loadingDialog.loadDialog()
-    }
-
-    fun showDialog() {
-        loadingDialog.showDialog()
-    }
-
-    fun hideDialog() {
-        loadingDialog.hideDialog()
     }
 
 
@@ -65,30 +48,6 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
             dialog.dismiss()
         }
         dialog.show(childFragmentManager, "cancellation_dialog")
-    }
-
-    fun hideStatusBarAndBottomBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            requireActivity().setTheme(R.style.homeTheme)
-            requireActivity().window.setFlags(
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-            )
-        } else {
-            requireActivity().window.setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-            )
-        }
-    }
-
-    fun showStatusBarAndBottomBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            requireActivity().setTheme(R.style.Theme_NewCut)
-            requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-        } else {
-            requireActivity().window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        }
     }
 
     fun showKeyboard(editText: EditText) {

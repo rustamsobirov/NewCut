@@ -3,8 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/mapFragment">
-
+    app:startDestination="@id/mapPermissionFragment">
+    <fragment
+        android:id="@+id/mapPermissionFragment"
+        android:name="me.ruyeo.newcut.ui.client.home.mapview.MapPermissionFragment"
+        android:label="fragment_map_permission"
+        tools:layout="@layout/fragment_map_permission" />
     <fragment
         android:id="@+id/appointmentFragment"
         android:name="me.ruyeo.newcut.ui.client.appointment.AppointmentFragment"
@@ -19,7 +23,7 @@
         android:id="@+id/mapFragment"
         android:name="me.ruyeo.newcut.ui.client.home.mapview.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" >
+        tools:layout="@layout/fragment_map">
         <action
             android:id="@+id/action_mapFragment_to_detailFragment"
             app:destination="@id/detailFragment"
@@ -50,14 +54,14 @@
         tools:layout="@layout/fragment_edit_profile" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="me.ruyeo.newcut.ui.client.settings.FavoriteFragment"
+        android:name="me.ruyeo.newcut.ui.client.profile.FavoriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="me.ruyeo.newcut.ui.client.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_notificationFragment"
             app:destination="@id/notificationFragment"

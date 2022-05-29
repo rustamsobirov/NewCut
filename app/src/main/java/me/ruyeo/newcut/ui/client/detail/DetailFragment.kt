@@ -32,7 +32,6 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //fragment detail
-        hideStatusBarAndBottomBar()
         installRecyclerView()
         carouselRecyclerManager()
         tabLayoutManager()
@@ -214,10 +213,5 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
         photosList.add(DetailModel("https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef"))
         photosList.add(DetailModel("https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef"))
         detailImageAdapter.submitList(photosList)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        showStatusBarAndBottomBar()
     }
 }
