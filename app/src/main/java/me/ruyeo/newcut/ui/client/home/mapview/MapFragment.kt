@@ -10,13 +10,9 @@ import android.os.Looper
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.LinearLayoutCompat
+import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -89,23 +85,11 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun replaceFrameManager() {
-//        requireActivity().supportFragmentManager.beginTransaction()
-//            .replace(binding.included.replaceFrame, FilterAndBookingBarberFragment()).commit()
-//
-//        fragmentManager!!.beginTransaction()
-//            .replace(binding.included.replaceFrame, FilterAndBookingBarberFragment()).commit()
-    }
-
-    fun AppCompatActivity.addFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { add(frameId, fragment) }
-    }
-
-    fun AppCompatActivity.replaceFragment(fragment: Fragment, frameId: Int) {
-        supportFragmentManager.inTransaction { replace(frameId, fragment) }
-    }
-
-    inline fun FragmentManager.inTransaction(func: FragmentTransaction.() -> FragmentTransaction) {
-        beginTransaction().func().commit()
+        binding.included.openerFrame.setOnClickListener {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, FilterAndBookingBarberFragment()).commit()
     }
 
     private fun btnMyLocationClickManager() {
@@ -210,7 +194,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         }
     }
 
-
     private fun markerAdder() {
         for (i in 0 until barberShopLatLongList.size) {
             val myMarker = map.addMarker(
@@ -288,7 +271,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun searchButtonManager() {
-        binding.included.linearCompat.setOnClickListener {
+        binding.included.mainContainer.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
     }
@@ -296,7 +279,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     private fun playerSheetInstall(view: View) {
         val bottomSheet = view.findViewById<ConstraintLayout>(R.id.included)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        view.findViewById<LinearLayoutCompat>(R.id.linear_compat)
     }
 
     private fun keyboardChangeListener() {
@@ -317,18 +299,10 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     when (newState) {
                         BottomSheetBehavior.STATE_EXPANDED -> {
-                            searchEditText.isVisible = true
-                            linearCompat.isVisible = false
-                            locationAddress.isVisible = false
-                            searchEditText.requestFocus()
-                            searchEditText.isFocusableInTouchMode = true
-                            searchEditText.isFocusable = true
-                            showKeyboard(searchEditText)
+                            binding.included.openerFrame.isVisible = false
                         }
                         BottomSheetBehavior.STATE_COLLAPSED -> {
-                            searchEditText.isVisible = false
-                            linearCompat.isVisible = true
-                            locationAddress.isVisible = true
+                            binding.included.openerFrame.isVisible = true
                             hideKeyboard()
                         }
                     }
