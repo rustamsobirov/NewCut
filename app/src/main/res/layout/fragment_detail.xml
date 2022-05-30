@@ -102,11 +102,10 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:ellipsize="end"
-                        android:fontFamily="@font/semi_bold"
+                        android:fontFamily="@font/poppins_bold"
                         android:maxLines="1"
                         android:text="Bella Rinova"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"
+                        android:textSize="20sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -117,7 +116,7 @@
                         android:layout_marginEnd="20dp"
                         android:backgroundTint="@color/green_default"
                         android:clickable="false"
-                        app:cardCornerRadius="20dp"
+                        app:cardCornerRadius="16sp"
                         app:cardElevation="0dp"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -131,7 +130,7 @@
                             android:includeFontPadding="false"
                             android:text="Open"
                             android:textColor="@color/white"
-                            android:textSize="20sp" />
+                            android:textSize="16sp" />
 
                     </androidx.cardview.widget.CardView>
 
@@ -143,8 +142,9 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginVertical="5dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:textSize="14sp"
                     android:text="6391 Elgin St. Celina, Delaware 10299"
-                    android:textColor="@color/dark_900" />
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -174,7 +174,7 @@
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_regular"
                         android:text="(76 Reviews)"
-                        android:textColor="@color/text_300" />
+                        android:textColor="@color/text_500" />
 
                 </LinearLayout>
 
@@ -213,8 +213,7 @@
                             android:fontFamily="@font/poppins_regular"
                             android:maxLines="1"
                             android:text="Website"
-                            android:textColor="@color/text_900"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
 
                     </LinearLayout>
@@ -250,8 +249,7 @@
                             android:fontFamily="@font/poppins_regular"
                             android:maxLines="1"
                             android:text="Call"
-                            android:textColor="@color/text_900"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
 
                     </LinearLayout>
@@ -287,8 +285,7 @@
                             android:fontFamily="@font/poppins_regular"
                             android:maxLines="1"
                             android:text="Direction"
-                            android:textColor="@color/text_900"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
 
                     </LinearLayout>
@@ -324,8 +321,7 @@
                             android:fontFamily="@font/poppins_regular"
                             android:maxLines="1"
                             android:text="Share"
-                            android:textColor="@color/text_900"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
 
 
                     </LinearLayout>
@@ -336,11 +332,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:layout_marginVertical="20dp"
-                    android:fontFamily="@font/poppins_regular"
+                    android:layout_marginVertical="5dp"
+                    android:fontFamily="@font/poppins_bold"
                     android:text="Salon specialists"
-                    android:textColor="@color/dark_900"
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/salon_specialist_recycler_view"
@@ -366,7 +361,7 @@
                     app:tabMode="scrollable"
                     app:tabRippleColor="@null"
                     app:tabSelectedTextColor="@color/white"
-                    app:tabTextColor="@color/text_100" />
+                    app:tabTextColor="@color/text_500" />
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/detailBottomViewPager"
