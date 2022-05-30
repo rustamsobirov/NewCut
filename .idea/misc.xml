@@ -29,11 +29,9 @@
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_history_appointment.xml" value="0.2" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_pass_appointment.xml" value="0.33" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/fragment_upcoming_appointment.xml" value="0.3282051282051282" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_appointment_with_map.xml" value="0.14324569356300998" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_pass_appointment.xml" value="0.16417272338606242" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_spinner_list.xml" value="0.19895833333333332" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.33" />
-        <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/view_dialog_cancellation.xml" value="0.18" />
         <entry key="..\:/NewCut/app/src/main/res/drawable/button_default_bg.xml" value="0.154" />
         <entry key="..\:/NewCut/app/src/main/res/drawable/code_background.xml" value="0.133" />
         <entry key="..\:/NewCut/app/src/main/res/drawable/edtextbackground.xml" value="0.154" />
@@ -101,6 +99,7 @@
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_error_message.xml" value="0.138" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_faqs.xml" value="0.1505" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_favorite.xml" value="0.1555" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_flag_for_uzbekistan.xml" value="0.1635" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_home_select.xml" value="0.181" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_location_blue.xml" value="0.181" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_location_darker.xml" value="0.181" />
@@ -110,8 +109,12 @@
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_profile.xml" value="0.1505" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_ring.xml" value="0.1555" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_road.xml" value="0.1505" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_russia_svgrepo.xml" value="0.1635" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_setting.xml" value="0.167" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_settings.xml" value="0.167" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_share_icon.xml" value="0.2115" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_star_unselected.xml" value="0.143" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_united_states_of_america.xml" value="0.1635" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_user_select.xml" value="0.181" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/ic_vector_stroke.xml" value="0.1635" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/keyboard_backspace.xml" value="0.1505" />
@@ -126,28 +129,32 @@
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/tv_reschedule_bg.xml" value="0.1505" />
         <entry key="..\:/NewCuteCut/app/src/main/res/drawable/tv_select_bg.xml" value="0.1505" />
         <entry key="..\:/NewCuteCut/app/src/main/res/font/poppins_bold.xml" value="0.1574074074074074" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/font/poppins_regular.xml" value="0.184375" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCuteCut/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_image_gallery_item.xml" value="0.18854166666666666" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_image_item.xml" value="0.15833333333333333" />
-        <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_review_item.xml" value="0.5" />
-        <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_salon_specialist_item.xml" value="0.15833333333333333" />
-        <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_salon_specialists_item.xml" value="0.15833333333333333" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_review_item.xml" value="0.33" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_salon_specialist_item.xml" value="0.25" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_salon_specialists_item.xml" value="0.67" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/dialog_gender.xml" value="0.18" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/dialog_message.xml" value="0.15833333333333333" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_about.xml" value="0.15833333333333333" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_appoitment.xml" value="0.22" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_confirmation.xml" value="0.2" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_detail.xml" value="0.22" />
-        <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_detail_about.xml" value="0.20416666666666666" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_detail_about.xml" value="0.25" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_detail_gallery.xml" value="0.20416666666666666" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_detail_maps.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_detail_review.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_edit_profile.xml" value="0.22" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_faqs.xml" value="0.18" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_favorite.xml" value="0.2" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_filter_barber.xml" value="0.1" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_language.xml" value="0.18" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_map.xml" value="0.18" />
-        <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_notification.xml" value="0.25" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_notification.xml" value="0.33" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_pass_appointment.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/fragment_registration.xml" value="0.25" />
@@ -155,8 +162,8 @@
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_appointment_with_map.xml" value="0.25" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_book_stylist.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_favorite.xml" value="0.33" />
-        <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_notification.xml" value="0.33" />
-        <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_pass_appointment.xml" value="0.33" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_notification.xml" value="0.5" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_pass_appointment.xml" value="0.22" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_popular_artist.xml" value="0.15833333333333333" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_spinner_list.xml" value="0.15833333333333333" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_spinner_list_gender.xml" value="0.20416666666666666" />
@@ -172,13 +179,10 @@
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable-v24/tv_bg.xml" value="0.1685" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/account_icon_manager.xml" value="0.1685" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/appointment_icon_manager.xml" value="0.1685" />
-        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/btn_round.xml" value="0.1055" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/detail_bottom_shape.xml" value="0.12" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/edit_text_background.xml" value="0.1685" />
-        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/favorite_circle_shape.xml" value="0.197" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/filterbackground.xml" value="0.1685" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/home_icon_manager.xml" value="0.1685" />
-        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_direction_icon.xml" value="0.2595" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_error_message.xml" value="0.12" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_home.xml" value="0.1685" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_link_settings.xml" value="0.114" />
@@ -187,8 +191,6 @@
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_location_darker.xml" value="0.1" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_location_pin.xml" value="0.1" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_location_yellow.xml" value="0.114" />
-        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_my_location.xml" value="0.1535" />
-        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_search.xml" value="0.1055" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/ic_success_message.xml" value="0.12" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/list_item.xml" value="0.1685" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/drawable/radius_top.xml" value="0.1685" />
@@ -207,6 +209,7 @@
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_detail_maps.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_detail_review.xml" value="0.17962962962962964" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_favorite.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_filter_barber.xml" value="0.2" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_login.xml" value="0.2" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_map.xml" value="0.2" />
@@ -214,10 +217,9 @@
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_registration.xml" value="0.2" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/item_appointment_with_map.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/item_favorite.xml" value="0.264" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.1" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/map_cutters_item.xml" value="0.264" />
-        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/map_include_layout.xml" value="0.264" />
+        <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/layout/map_include_layout.xml" value="0.176" />
         <entry key="..\:/Users/OsiyoComputers/AndroidStudioProjects/NewCut/app/src/main/res/menu/bottom_menu.xml" value="0.1" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/drawable/btn_bgn.xml" value="0.1955" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/drawable/button_default_bg.xml" value="0.1955" />

@@ -41,7 +41,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/mark_all_as_read"
-            android:textColor="#ABAAB1"
+            android:textColor="#3C3B3E"
             android:textSize="13sp"
             android:textStyle="normal" />
 
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/do_not_disturb"
-            android:textColor="#ABAAB1"
+            android:textColor="#3C3B3E"
             android:textSize="13sp"
             android:textStyle="normal" />
 

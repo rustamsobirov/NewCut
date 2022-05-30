@@ -22,9 +22,6 @@ import me.ruyeo.newcut.utils.TextWatcherWrapper
 
 @AndroidEntryPoint
 class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
-    companion object {
-        private const val TEST_VERIFY_CODE = "1234"
-    }
 
     //    private val binding by viewBinding { FragmentConfirmationBinding.bind(it) }
     private var _binding: FragmentConfirmationBinding? = null

@@ -37,8 +37,7 @@
             android:text="@string/just_now"
             android:textSize="16sp"
             android:fontFamily="@font/poppins_regular"
-            android:textColor="#ABAAB1"
-            android:textStyle="normal"/>
+            android:textColor="#3C3B3E" />
 
     </LinearLayout>
 

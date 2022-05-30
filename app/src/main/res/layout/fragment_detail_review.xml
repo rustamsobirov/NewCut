@@ -19,8 +19,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
             android:text="All reviews(76)"
-            android:textColor="@color/text_600"
-            android:textSize="20sp" />
+            android:textSize="18sp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reviewRecyclerView"
