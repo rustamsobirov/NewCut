@@ -81,11 +81,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun statusBarColorWhite(){
+    private fun statusBarColorWhite() {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
         window.statusBarColor = Color.WHITE
     }
-    private fun statusBarColorDefault(){
+
+    private fun statusBarColorDefault() {
         window.statusBarColor = ContextCompat.getColor(this, R.color.green_default)
     }
 }

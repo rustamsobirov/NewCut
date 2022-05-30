@@ -3,12 +3,10 @@ package me.ruyeo.newcut.ui
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
@@ -17,13 +15,11 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import me.ruyeo.newcut.R
 import me.ruyeo.newcut.utils.dialogs.CancellationDialog
 import me.ruyeo.newcut.utils.dialogs.MessageDialog
-import me.ruyeo.newcut.utils.dialogs.RadioConfirmationDialog
 
 abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
-    lateinit var radioConfirmationDialog: RadioConfirmationDialog
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -34,20 +30,7 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        radioConfirmationDialog = RadioConfirmationDialog(requireContext())
-        loadRadioConfDialog()
-    }
 
-    private fun loadRadioConfDialog() {
-        radioConfirmationDialog.loadDialog()
-    }
-
-    fun showRadioDialog() {
-        radioConfirmationDialog.showDialog()
-    }
-
-    fun hideRadioDialog() {
-        radioConfirmationDialog.hideDialog()
     }
 
 
