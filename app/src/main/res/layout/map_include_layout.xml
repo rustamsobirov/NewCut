@@ -8,7 +8,7 @@
     android:background="@drawable/radius_top"
     android:backgroundTint="@color/white"
     app:behavior_hideable="false"
-    app:behavior_peekHeight="80dp"
+    app:behavior_peekHeight="150dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
     <com.google.android.material.card.MaterialCardView
@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/line">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -108,5 +109,13 @@
             android:textSize="16sp" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <FrameLayout
+        android:id="@+id/replaceFrame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/line">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
