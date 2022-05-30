@@ -19,7 +19,7 @@
             android:fontFamily="@font/poppins_regular"
             android:text="Axe Hair salon is located in Houston, Virginia was formed in 2003. Opened with the premise of exceptional service for a fair price, Good ... Readmore"
             android:textColor="@color/text_600"
-            android:textSize="20sp" />
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
             android:fontFamily="@font/poppins_bold"
             android:text="Opening Hours"
             android:textColor="@color/text_600"
-            android:textSize="22sp" />
+            android:textSize="18sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,19 +40,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Monday - Friday:"
-                android:textColor="@color/text_300"
-                android:textSize="20sp" />
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/text_700"
+                android:textSize="16sp" />
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/poppins_regular"
                 android:ellipsize="end"
                 android:gravity="end"
                 android:text="8:30 am - 9:30 pm"
-                android:textColor="@color/text_600"
-                android:textSize="20sp" />
+                android:textColor="@color/text_500"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -66,8 +68,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Saturday - Sunday:"
-                android:textColor="@color/text_300"
-                android:textSize="20sp" />
+                android:textColor="@color/text_700"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -75,9 +78,10 @@
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:gravity="end"
+                android:fontFamily="@font/poppins_regular"
                 android:text="9:00 am - 1:00 pm"
-                android:textColor="@color/text_600"
-                android:textSize="20sp" />
+                android:textColor="@color/text_500"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -88,7 +92,7 @@
             android:fontFamily="@font/poppins_bold"
             android:text="Contact"
             android:textColor="@color/text_600"
-            android:textSize="22sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/contactNumber"
@@ -112,7 +116,7 @@
             android:fontFamily="@font/poppins_bold"
             android:text="Address"
             android:textColor="@color/text_600"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -124,15 +128,15 @@
             android:gravity="end"
             android:padding="2dp"
             android:text="6391 Elgin St. Celina, Delaware 10299"
-            android:textColor="@color/text_600"
-            android:textSize="20sp"
+            android:textColor="@color/text_700"
+            android:textSize="16sp"
             tools:ignore="UnusedAttribute" />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="220dp"
             android:layout_marginVertical="15dp"
-            app:cardBackgroundColor="@color/text_600"
+            app:cardBackgroundColor="@color/text_700"
             app:cardCornerRadius="30dp">
 
             <FrameLayout
@@ -144,12 +148,12 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="56dp"
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
             app:cardBackgroundColor="@color/green_default"
-            app:cardCornerRadius="20dp"
+            app:cardCornerRadius="16dp"
             app:cardElevation="0dp">
 
             <LinearLayout
@@ -172,7 +176,7 @@
                     android:includeFontPadding="false"
                     android:text="Get directions - 4 km"
                     android:textColor="@color/white"
-                    android:textSize="20sp" />
+                    android:textSize="16sp" />
 
             </LinearLayout>
 

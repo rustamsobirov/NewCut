@@ -25,6 +25,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         FirebaseAnalytics.getInstance(this)
+
+        bottomNavigationManagment()
+
+    }
+
+    private fun bottomNavigationManagment() {
         binding.apply {
             bnvMain.itemIconTintList = null
             navController = findNavController(R.id.nav_host_main)
