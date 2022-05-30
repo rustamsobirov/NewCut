@@ -28,12 +28,12 @@ class CancellationDialog: DialogFragment() {
         isCancelable = false
         bn.apply {
 
-            cancelTv.setOnClickListener {
+            cancelBtn.setOnClickListener {
                 onClickListener.invoke()
                 dismiss()
             }
 
-            selectTv.setOnClickListener {
+            selectBtn.setOnClickListener {
                 onClickListener.invoke()
                 dismiss()
             }

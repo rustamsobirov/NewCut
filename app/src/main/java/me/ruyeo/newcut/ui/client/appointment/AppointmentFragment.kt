@@ -9,14 +9,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.appointment.AppointmentVPAdapter
 import me.ruyeo.newcut.databinding.FragmentAppoitmentBinding
-import me.ruyeo.newcut.model.appointment.AppointmentSharedViewModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 
 @AndroidEntryPoint
 class AppointmentFragment : BaseFragment(R.layout.fragment_appoitment) {
     private val binding by viewBinding { FragmentAppoitmentBinding.bind(it) }
-    private val sharedViewModel by activityViewModels<AppointmentSharedViewModel>()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -47,11 +45,6 @@ class AppointmentFragment : BaseFragment(R.layout.fragment_appoitment) {
                     tabLayout.selectTab(tabLayout.getTabAt(position))
                 }
             })
-
-            mapIv.setOnClickListener {
-                sharedViewModel.setValue(true)
-            }
-
         }
 
     }
