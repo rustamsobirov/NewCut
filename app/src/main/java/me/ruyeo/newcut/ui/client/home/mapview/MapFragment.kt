@@ -1,14 +1,16 @@
 package me.ruyeo.newcut.ui.client.home.mapview
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
-import androidx.appcompat.widget.LinearLayoutCompat
+import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -29,6 +31,7 @@ import me.ruyeo.newcut.adapter.MapBarberShopAdapter
 import me.ruyeo.newcut.databinding.FragmentMapBinding
 import me.ruyeo.newcut.model.map.*
 import me.ruyeo.newcut.ui.BaseFragment
+import me.ruyeo.newcut.ui.client.filter.FilterAndBookingBarberFragment
 import me.ruyeo.newcut.ui.client.home.HomeViewModel
 import me.ruyeo.newcut.utils.extensions.distance
 import me.ruyeo.newcut.utils.extensions.showSnackMessage
@@ -51,7 +54,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val viewModel by viewModels<HomeViewModel>()
     private var barberShopLatLongList = ArrayList<BarberShopLatLongModel>()
-    private val myLocationZoom = 15f
+    private val myLocationZoom = 14.5f
     private var polyLines: MutableList<Polyline>? = null
     private var markerList = ArrayList<Marker>()
     private var cameraCurrentLatLng: LatLng? = null
@@ -78,6 +81,15 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         keyboardChangeListener()
         barberShopRecyclerItem()
         openDetailFragment()
+        replaceFrameManager()
+    }
+
+    private fun replaceFrameManager() {
+        binding.included.openerFrame.setOnClickListener {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.main_container, FilterAndBookingBarberFragment()).commit()
     }
 
     private fun btnMyLocationClickManager() {
@@ -182,7 +194,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         }
     }
 
-
     private fun markerAdder() {
         for (i in 0 until barberShopLatLongList.size) {
             val myMarker = map.addMarker(
@@ -260,7 +271,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun searchButtonManager() {
-        binding.included.linearCompat.setOnClickListener {
+        binding.included.mainContainer.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
     }
@@ -268,7 +279,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     private fun playerSheetInstall(view: View) {
         val bottomSheet = view.findViewById<ConstraintLayout>(R.id.included)
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
-        view.findViewById<LinearLayoutCompat>(R.id.linear_compat)
     }
 
     private fun keyboardChangeListener() {
@@ -277,8 +287,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                 override fun onVisibilityChanged(isOpen: Boolean) {
                     if (isOpen) {
                         Log.d("@@@", "show")
-                    } else {
-                        hideInclude()
                     }
                 }
             })
@@ -290,23 +298,11 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                 BottomSheetBehavior.BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     when (newState) {
-                        BottomSheetBehavior.STATE_HIDDEN -> {
-                            hideInclude()
-                            hideKeyboard()
-                        }
                         BottomSheetBehavior.STATE_EXPANDED -> {
-                            searchEditText.isVisible = true
-                            linearCompat.isVisible = false
-                            locationAddress.isVisible = false
-                            searchEditText.requestFocus()
-                            searchEditText.isFocusableInTouchMode = true
-                            searchEditText.isFocusable = true
-                            showKeyboard(searchEditText)
+                            binding.included.openerFrame.isVisible = false
                         }
                         BottomSheetBehavior.STATE_COLLAPSED -> {
-                            searchEditText.isVisible = false
-                            linearCompat.isVisible = true
-                            locationAddress.isVisible = true
+                            binding.included.openerFrame.isVisible = true
                             hideKeyboard()
                         }
                     }
@@ -315,10 +311,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {}
             })
         }
-    }
-
-    private fun hideInclude() {
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
     override fun onDestroyView() {
@@ -376,24 +368,51 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         googleMap.setOnCameraMoveStartedListener {
             binding.mapPoint.playAnimation()
             binding.mapPoint.loop(true)
+            bottomSheetBehavior.isHideable = true
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+
+//            val layoutParams = binding.map.layoutParams
+//            layoutParams.width = screenWidth()
+//            layoutParams.height = screenHeight()
+//            binding.map.layoutParams = layoutParams
+
         }
         googleMap.setOnCameraIdleListener {
             binding.mapPoint.loop(false)
-            //Bu yerda yaxshiroq logika bo'lishi mumkin edi,
-            // lekin API clear text trafic bilan muammo sababli response yoki boshqa wrapper
-            // class'lardan foydalanad olmadim, call ishlayabdi ))
-            // GeoLocation label olishda free api service'dan foydalanilgan shuning uchun to'liq aniq
-            // chiqarib bermasligi mumkin
-
+            bottomSheetBehavior.isHideable = false
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             getCurrentLatLngLabel(current = googleMap.cameraPosition.target)
             cameraCurrentLatLng = googleMap.cameraPosition.target
+
+//            val layoutParams = binding.map.layoutParams
+//            layoutParams.width = screenWidth()
+//            layoutParams.height = screenHeight() - 500
+//            binding.map.layoutParams = layoutParams
+
         }
+    }
+
+    private fun screenWidth(): Int {
+        val displayMetrics = DisplayMetrics()
+        requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
+        return displayMetrics.widthPixels
+    }
+
+    private fun screenHeight(): Int {
+        val displayMetrics = DisplayMetrics()
+        requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
+        return displayMetrics.heightPixels
+    }
+
+    fun pxFromDp(context: Context, dp: Float): Float {
+        return dp * context.getResources().getDisplayMetrics().density
     }
 
     private fun getCurrentLatLngLabel(current: LatLng) {
         with(current) {
             GeoClient.geoService.getGeoCodeInfo(
-                "f69e3c084c93c56331d9ac63f0df2e41",
+//                "f69e3c084c93c56331d9ac63f0df2e41",
+                "abfb06c1b3f6d63c60c62b98c212ad28",
                 Latlng(this.latitude, this.longitude)
             ).enqueue(object : Callback<GeoResponse> {
                 override fun onResponse(

@@ -2,9 +2,12 @@ package me.ruyeo.newcut.ui.client.home.mapview
 
 import android.Manifest
 import android.app.Activity
+import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import android.util.Log
 import android.view.View
 import androidx.activity.result.IntentSenderRequest
@@ -25,6 +28,17 @@ class MapPermissionFragment : BaseFragment(R.layout.fragment_map_permission) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requestPermissions()
+        openSettings()
+    }
+
+    private fun openSettings() {
+        binding.locationAllowed.setOnClickListener {
+            val intent = Intent()
+            intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+            val uri: Uri = Uri.fromParts("package", requireActivity().packageName, null)
+            intent.data = uri
+            requireContext().startActivity(intent)
+        }
     }
 
     private fun requestPermissions() {

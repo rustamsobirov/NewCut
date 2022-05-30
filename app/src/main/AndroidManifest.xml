@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewCut">
 
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCVwdU3slouglv7TBDh3juGegafJVnKx8U" />
