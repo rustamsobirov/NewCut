@@ -129,7 +129,7 @@
         <entry key="..\:/NewCuteCut/app/src/main/res/font/poppins_bold.xml" value="0.1574074074074074" />
         <entry key="..\:/NewCuteCut/app/src/main/res/font/poppins_regular.xml" value="0.184375" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
-        <entry key="..\:/NewCuteCut/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_image_gallery_item.xml" value="0.18854166666666666" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_image_item.xml" value="0.15833333333333333" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/detail_review_item.xml" value="0.5" />
@@ -159,7 +159,7 @@
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_book_stylist.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_favorite.xml" value="0.33" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_notification.xml" value="0.33" />
-        <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_pass_appointment.xml" value="0.33" />
+        <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_pass_appointment.xml" value="0.22" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_popular_artist.xml" value="0.15833333333333333" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_spinner_list.xml" value="0.15833333333333333" />
         <entry key="..\:/NewCuteCut/app/src/main/res/layout/item_spinner_list_gender.xml" value="0.20416666666666666" />
