@@ -300,9 +300,11 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                     when (newState) {
                         BottomSheetBehavior.STATE_EXPANDED -> {
                             binding.included.openerFrame.isVisible = false
+                            locationAddress.isVisible = false
                         }
                         BottomSheetBehavior.STATE_COLLAPSED -> {
                             binding.included.openerFrame.isVisible = true
+                            locationAddress.isVisible = true
                             hideKeyboard()
                         }
                     }
