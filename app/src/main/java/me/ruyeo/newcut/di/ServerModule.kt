@@ -9,6 +9,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import me.ruyeo.newcut.data.remote.ApiService
+import me.ruyeo.newcut.data.remote.GeoService
+import me.ruyeo.newcut.utils.Constants
 import me.ruyeo.newcut.utils.Constants.BASE_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -16,6 +18,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -24,6 +27,7 @@ class ServerModule {
 
     @Provides
     @Singleton
+    @Named("Normal")
     fun getRetrofit(client: OkHttpClient): Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
         .client(client)
@@ -31,8 +35,9 @@ class ServerModule {
         .build()
 
     @Provides
-    @Singleton
-    fun getApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
+    fun getApiService(@Named("Normal") retrofit: Retrofit): ApiService =
+        retrofit.create(ApiService::class.java)
+
     @Provides
     @Singleton
     fun getClient(): OkHttpClient = OkHttpClient.Builder()
@@ -52,6 +57,19 @@ class ServerModule {
             chain.proceed(builder.build())
         })
         .build()
+
+    @Provides
+    @Singleton
+    @Named("Geo")
+    fun getRetrofitGeo(client: OkHttpClient): Retrofit = Retrofit.Builder()
+        .baseUrl(Constants.MAP_BASE_URL)
+        .client(client)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
+    @Provides
+    fun getApiServiceGeo(@Named("Geo") retrofit: Retrofit): GeoService =
+        retrofit.create(GeoService::class.java)
 
     @[Provides Singleton]
     fun fusedLocationClient(@ApplicationContext context: Context): FusedLocationProviderClient =

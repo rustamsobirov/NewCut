@@ -12,9 +12,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import me.ruyeo.newcut.data.local.enitity.Booking
+import me.ruyeo.newcut.model.map.GeoResponse
+import me.ruyeo.newcut.model.map.Latlng
 import me.ruyeo.newcut.repository.MainRepository
 import me.ruyeo.newcut.utils.Constants.ERROR_MESSAGE
 import me.ruyeo.newcut.utils.UiStateList
+import me.ruyeo.newcut.utils.UiStateObject
 import me.ruyeo.newcut.utils.extensions.Event
 import me.ruyeo.newcut.utils.extensions.State
 import javax.inject.Inject
@@ -66,5 +69,19 @@ class HomeViewModel @Inject constructor(
                 }
             }
     }
+
+    private var _getLocationName = MutableStateFlow<UiStateObject<GeoResponse>>(UiStateObject.EMPTY)
+    val getLocationName = _getLocationName
+
+    fun getLocationName(latLng: Latlng) = viewModelScope.launch {
+        _getLocationName.value = UiStateObject.LOADING
+        try {
+            val response = repository.getLocationName(latLng = latLng)
+            _getLocationName.value = UiStateObject.SUCCESS(response)
+        }catch (e: Exception){
+            _getLocationName.value = UiStateObject.ERROR(e.localizedMessage ?: ERROR_MESSAGE)
+        }
+    }
+
 
 }

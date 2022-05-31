@@ -14,6 +14,7 @@ import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.directions.route.*
@@ -26,6 +27,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.MapBarberShopAdapter
 import me.ruyeo.newcut.databinding.FragmentMapBinding
@@ -33,6 +35,7 @@ import me.ruyeo.newcut.model.map.*
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.ui.client.filter.FilterAndBookingBarberFragment
 import me.ruyeo.newcut.ui.client.home.HomeViewModel
+import me.ruyeo.newcut.utils.UiStateObject
 import me.ruyeo.newcut.utils.extensions.distance
 import me.ruyeo.newcut.utils.extensions.showSnackMessage
 import me.ruyeo.newcut.utils.extensions.viewBinding
@@ -46,7 +49,7 @@ import retrofit2.Response
 class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     GoogleMap.OnMarkerClickListener {
     private lateinit var map: GoogleMap
-    private val binding by viewBinding { FragmentMapBinding.bind(it) }
+    private var binding: FragmentMapBinding? = null
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var lastLocation: Location? = null
     private val barberShopAdapter by lazy { MapBarberShopAdapter() }
@@ -85,7 +88,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun replaceFrameManager() {
-        binding.included.openerFrame.setOnClickListener {
+        binding?.included?.openerFrame?.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
         requireActivity().supportFragmentManager.beginTransaction()
@@ -93,7 +96,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun btnMyLocationClickManager() {
-        binding.btnMyLocation.setOnClickListener {
+        binding?.btnMyLocation?.setOnClickListener {
             updateLastLocation()
         }
     }
@@ -123,8 +126,10 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     override fun onMarkerClick(marker: Marker): Boolean {
         routeClear()
         if (cameraCurrentLatLng != null)
-            findRoutes(LatLng(cameraCurrentLatLng!!.latitude, cameraCurrentLatLng!!.longitude),
-                marker.position) else
+            findRoutes(
+                LatLng(cameraCurrentLatLng!!.latitude, cameraCurrentLatLng!!.longitude),
+                marker.position
+            ) else
             findRoutes(LatLng(lastLocation!!.latitude, lastLocation!!.longitude), marker.position)
         return true
     }
@@ -152,8 +157,12 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                 .build()
             routing.execute()
             if (cameraCurrentLatLng != null)
-                animateCamera(LatLng(cameraCurrentLatLng!!.latitude,
-                    cameraCurrentLatLng!!.longitude), 16f) else
+                animateCamera(
+                    LatLng(
+                        cameraCurrentLatLng!!.latitude,
+                        cameraCurrentLatLng!!.longitude
+                    ), 16f
+                ) else
                 animateCamera(LatLng(lastLocation!!.latitude, lastLocation!!.longitude), 16f)
         }
     }
@@ -227,7 +236,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun barberShopRecyclerItem() {
-        binding.apply {
+        binding?.apply {
             barberShopRecyclerView.adapter = barberShopAdapter
             PagerSnapHelper().attachToRecyclerView(barberShopRecyclerView)
             mapBarberList.add(
@@ -271,7 +280,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun searchButtonManager() {
-        binding.included.mainContainer.setOnClickListener {
+        binding?.included?.mainContainer?.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
     }
@@ -293,17 +302,17 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun collapseManager() {
-        binding.included.apply {
+        binding?.included?.apply {
             bottomSheetBehavior.addBottomSheetCallback(object :
                 BottomSheetBehavior.BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     when (newState) {
                         BottomSheetBehavior.STATE_EXPANDED -> {
-                            binding.included.openerFrame.isVisible = false
+                            binding?.included?.openerFrame?.isVisible = false
                             locationAddress.isVisible = false
                         }
                         BottomSheetBehavior.STATE_COLLAPSED -> {
-                            binding.included.openerFrame.isVisible = true
+                            binding?.included?.openerFrame?.isVisible = true
                             locationAddress.isVisible = true
                             hideKeyboard()
                         }
@@ -317,6 +326,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding = null
         hideKeyboard()
     }
 
@@ -368,8 +378,8 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     private fun cameraMoveStartedListener(googleMap: GoogleMap) {
         googleMap.setOnCameraMoveStartedListener {
-            binding.mapPoint.playAnimation()
-            binding.mapPoint.loop(true)
+            binding?.mapPoint?.playAnimation()
+            binding?.mapPoint?.loop(true)
             bottomSheetBehavior.isHideable = true
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
@@ -380,7 +390,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
         }
         googleMap.setOnCameraIdleListener {
-            binding.mapPoint.loop(false)
+            binding?.mapPoint?.loop(false)
             bottomSheetBehavior.isHideable = false
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             getCurrentLatLngLabel(current = googleMap.cameraPosition.target)
@@ -407,34 +417,33 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     fun pxFromDp(context: Context, dp: Float): Float {
-        return dp * context.getResources().getDisplayMetrics().density
+        return dp * context.resources.displayMetrics.density
     }
 
     private fun getCurrentLatLngLabel(current: LatLng) {
         with(current) {
-            GeoClient.geoService.getGeoCodeInfo(
-//                "f69e3c084c93c56331d9ac63f0df2e41",
-                "abfb06c1b3f6d63c60c62b98c212ad28",
-                Latlng(this.latitude, this.longitude)
-            ).enqueue(object : Callback<GeoResponse> {
-                override fun onResponse(
-                    call: Call<GeoResponse>,
-                    response: Response<GeoResponse>,
-                ) {
-                    if (response.isSuccessful) {
-                        binding.included.locationAddress.text =
-                            calculateDestination(
-                                response = response.body()!!,
-                                current
-                            )?.name
+            viewModel.getLocationName(Latlng(this.latitude, this.longitude))
+
+            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+                viewModel.getLocationName.collect {
+                    when (it) {
+                        is UiStateObject.LOADING -> {
+
+                        }
+                        is UiStateObject.SUCCESS -> {
+                            binding?.included?.locationAddress?.text =
+                                calculateDestination(
+                                    response = it.data,
+                                    current
+                                )?.name
+                        }
+                        is UiStateObject.ERROR -> {
+
+                        }
+                        else -> Unit
                     }
                 }
-
-                override fun onFailure(call: Call<GeoResponse>, t: Throwable) {
-                    binding.included.locationAddress.text = "${t.message}"
-                }
-
-            })
+            }
         }
     }
 
