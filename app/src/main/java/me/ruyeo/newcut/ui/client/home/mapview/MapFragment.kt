@@ -1,16 +1,13 @@
 package me.ruyeo.newcut.ui.client.home.mapview
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Color
 import android.location.Location
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
-import android.widget.EditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
@@ -38,18 +35,17 @@ import me.ruyeo.newcut.ui.client.home.HomeViewModel
 import me.ruyeo.newcut.utils.UiStateObject
 import me.ruyeo.newcut.utils.extensions.distance
 import me.ruyeo.newcut.utils.extensions.showSnackMessage
-import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEvent
 import me.ruyeo.newcut.utils.keyboard.KeyboardVisibilityEventListener
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 @AndroidEntryPoint
 class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     GoogleMap.OnMarkerClickListener {
     private lateinit var map: GoogleMap
-    private var binding: FragmentMapBinding? = null
+
+    //    private var binding: FragmentMapBinding? = null
+    private var _binding: FragmentMapBinding? = null
+    private val binding get() = _binding!!
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var lastLocation: Location? = null
     private val barberShopAdapter by lazy { MapBarberShopAdapter() }
@@ -77,6 +73,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentMapBinding.bind(view)
         installLocation()
         playerSheetInstall(view)
         collapseManager()
@@ -88,7 +85,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun replaceFrameManager() {
-        binding?.included?.openerFrame?.setOnClickListener {
+        binding.included.openerFrame.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
         requireActivity().supportFragmentManager.beginTransaction()
@@ -96,7 +93,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun btnMyLocationClickManager() {
-        binding?.btnMyLocation?.setOnClickListener {
+        binding.btnMyLocation.setOnClickListener {
             updateLastLocation()
         }
     }
@@ -139,8 +136,8 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
             polyLines!![0].remove()
     }
 
-    private fun animateCamera(toLatLong: LatLng, zoom: Float) {
-        map.animateCamera(CameraUpdateFactory.newLatLngZoom(toLatLong, zoom))
+    private fun Float.animateCamera(toLatLong: LatLng) {
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(toLatLong, this))
     }
 
     private fun findRoutes(start: LatLng?, end: LatLng?) {
@@ -157,13 +154,13 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                 .build()
             routing.execute()
             if (cameraCurrentLatLng != null)
-                animateCamera(
+                16f.animateCamera(
                     LatLng(
                         cameraCurrentLatLng!!.latitude,
                         cameraCurrentLatLng!!.longitude
-                    ), 16f
+                    )
                 ) else
-                animateCamera(LatLng(lastLocation!!.latitude, lastLocation!!.longitude), 16f)
+                16f.animateCamera(LatLng(lastLocation!!.latitude, lastLocation!!.longitude))
         }
     }
 
@@ -236,7 +233,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun barberShopRecyclerItem() {
-        binding?.apply {
+        binding.apply {
             barberShopRecyclerView.adapter = barberShopAdapter
             PagerSnapHelper().attachToRecyclerView(barberShopRecyclerView)
             mapBarberList.add(
@@ -280,7 +277,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun searchButtonManager() {
-        binding?.included?.mainContainer?.setOnClickListener {
+        binding.included.mainContainer.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
         }
     }
@@ -302,17 +299,17 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     }
 
     private fun collapseManager() {
-        binding?.included?.apply {
+        binding.included.apply {
             bottomSheetBehavior.addBottomSheetCallback(object :
                 BottomSheetBehavior.BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
                     when (newState) {
                         BottomSheetBehavior.STATE_EXPANDED -> {
-                            binding?.included?.openerFrame?.isVisible = false
+                            binding.included.openerFrame.isVisible = false
                             locationAddress.isVisible = false
                         }
                         BottomSheetBehavior.STATE_COLLAPSED -> {
-                            binding?.included?.openerFrame?.isVisible = true
+                            binding.included.openerFrame.isVisible = true
                             locationAddress.isVisible = true
                             hideKeyboard()
                         }
@@ -326,7 +323,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
+        _binding = null
         hideKeyboard()
     }
 
@@ -363,13 +360,13 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                 (polyLines as ArrayList<Polyline>).add(polyline)
             }
         }
-//        val endMarker = MarkerOptions()
-//        endMarker.position(polylineEndLatLng!!)
-//        deleteMarker(polylineEndLatLng)
-//        endMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_dest))
+        /*        val endMarker = MarkerOptions()
+        endMarker.position(polylineEndLatLng!!)
+        deleteMarker(polylineEndLatLng)
+        endMarker.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_dest))
 
-//        endMarker.title("Borilishi kerak manzil")
-//        map.addMarker(endMarker)
+        endMarker.title("Borilishi kerak manzil")
+        map.addMarker(endMarker)*/
     }
 
     override fun onRoutingCancelled() {
@@ -378,8 +375,8 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     private fun cameraMoveStartedListener(googleMap: GoogleMap) {
         googleMap.setOnCameraMoveStartedListener {
-            binding?.mapPoint?.playAnimation()
-            binding?.mapPoint?.loop(true)
+            binding.mapPoint.playAnimation()
+            binding.mapPoint.loop(true)
             bottomSheetBehavior.isHideable = true
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
@@ -390,7 +387,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
         }
         googleMap.setOnCameraIdleListener {
-            binding?.mapPoint?.loop(false)
+            binding.mapPoint.loop(false)
             bottomSheetBehavior.isHideable = false
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
             getCurrentLatLngLabel(current = googleMap.cameraPosition.target)
@@ -404,22 +401,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         }
     }
 
-    private fun screenWidth(): Int {
-        val displayMetrics = DisplayMetrics()
-        requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
-        return displayMetrics.widthPixels
-    }
-
-    private fun screenHeight(): Int {
-        val displayMetrics = DisplayMetrics()
-        requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
-        return displayMetrics.heightPixels
-    }
-
-    fun pxFromDp(context: Context, dp: Float): Float {
-        return dp * context.resources.displayMetrics.density
-    }
-
     private fun getCurrentLatLngLabel(current: LatLng) {
         with(current) {
             viewModel.getLocationName(Latlng(this.latitude, this.longitude))
@@ -431,7 +412,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
                         }
                         is UiStateObject.SUCCESS -> {
-                            binding?.included?.locationAddress?.text =
+                            binding.included.locationAddress.text =
                                 calculateDestination(
                                     response = it.data,
                                     current
