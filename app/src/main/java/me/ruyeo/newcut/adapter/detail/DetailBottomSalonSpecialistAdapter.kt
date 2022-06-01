@@ -26,6 +26,9 @@ class DetailBottomSalonSpecialistAdapter :
                     .into(userImage)
                 userName.text = details.userName
                 userDescription.text = details.userDescription
+                userImage.setOnClickListener {
+                    itemClick!!.invoke()
+                }
             }
         }
     }
