@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
         FirebaseAnalytics.getInstance(this)
 
         bottomNavigationManagement()
-        setFullscreen()
 
+        setFullscreen()
     }
 
     private fun bottomNavigationManagement() {
@@ -81,4 +81,6 @@ class MainActivity : AppCompatActivity() {
                     or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION)
         }
     }
+
+
 }

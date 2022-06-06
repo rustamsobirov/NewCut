@@ -1,5 +1,6 @@
 package me.ruyeo.newcut.ui.auth
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
@@ -8,39 +9,95 @@ import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.widget.addTextChangedListener
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 import me.ruyeo.newcut.R
+import me.ruyeo.newcut.SharedPref
 import me.ruyeo.newcut.databinding.FragmentConfirmationBinding
 import me.ruyeo.newcut.ui.BaseFragment
+import me.ruyeo.newcut.ui.client.MainActivity
 import me.ruyeo.newcut.utils.TextWatcherWrapper
+import me.ruyeo.newcut.utils.UiStateObject
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
 
-    //    private val binding by viewBinding { FragmentConfirmationBinding.bind(it) }
     private var _binding: FragmentConfirmationBinding? = null
     private val binding get() = _binding!!
-
+    private val viewModel by viewModels<ConfirmViewModel>()
+    private var isRegister = false
+    @Inject
+    lateinit var sharedPref: SharedPref
     private var sec = 10
     private var secondJob: Job? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            isRegister = it.getBoolean("register")
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentConfirmationBinding.bind(view)
         showKeyboard(binding.ed1)
-        perSecond()
+        secondJob = perSecond()
         callBack()
         phoneNumberColor()
         inputSmsCodeManager()
         resendTextClickManager()
 
+        setupLoginObservers()
+        setupRegisterObservers()
 
+    }
+
+    private fun setupLoginObservers() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.confirmLogin.collect {
+                when (it) {
+                    is UiStateObject.LOADING -> {
+                        toaster("show loading")
+                    }
+                    is UiStateObject.SUCCESS -> {
+                        Intent(requireActivity(),MainActivity::class.java).also {
+                            startActivity(it)
+                        }
+                    }
+                    is UiStateObject.ERROR -> {
+                        showMessage(it.message)
+                    }
+                    else -> Unit
+                }
+            }
+        }
+    }
+
+    private fun setupRegisterObservers() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.confirmRegister.collect {
+                when (it) {
+                    is UiStateObject.LOADING -> {
+                        toaster("show loading")
+                    }
+                    is UiStateObject.SUCCESS -> {
+                        Intent(requireActivity(),MainActivity::class.java).also {
+                            startActivity(it)
+                        }
+                    }
+                    is UiStateObject.ERROR -> {
+                        showMessage(it.message)
+                    }
+                    else -> Unit
+                }
+            }
+        }
     }
 
     private fun resendTextClickManager() {
@@ -48,15 +105,10 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
             tvResend.setOnClickListener {
                 if (tvResend.text == getString(R.string.resend)) {
                     toaster("Resend")
-                    callRequestCodeToServer()
-                    perSecond()
+                    secondJob = perSecond()
                 }
             }
         }
-    }
-
-    private fun callRequestCodeToServer() {
-
     }
 
     private fun inputSmsCodeManager() {
@@ -190,7 +242,11 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                         allEditClearFocus()
                         allEditTextClickableFalse()
                         checkRequestServerCode(ed1.text.toString() + ed2.text.toString() + ed3.text.toString() + ed4.text.toString())
-                        findNavController().navigate(R.id.action_confirmationFragment_to_registrationFragment)
+                        if (isRegister){
+                            viewModel.confirmationRegister()
+                        }else{
+                            viewModel.confirmationLogin()
+                        }
                     }
                 }
             }
@@ -223,10 +279,10 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                 sec--
                 val min = sec / 60
                 var s = sec - min * 60
-//                if (s < 10)
-//                    binding.tvResend.text = "Resend in $min:0$s Sec"
-//                else
-                binding.tvResend.text = "Resend In $min:$s Sec"
+                if (s < 10)
+                    binding.tvResend.text = "Resend in $min:0$s Sec"
+                else
+                    binding.tvResend.text = "Resend In $min:$s Sec"
                 if (sec == 0) {
                     binding.tvResend.text = getString(R.string.resend)
                     binding.tvResend.setTextColor(Color.parseColor("#ff02c65c"))
@@ -235,5 +291,11 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                 delay(1000)
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        secondJob?.cancel()
+        _binding = null
     }
 }

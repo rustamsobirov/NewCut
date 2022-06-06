@@ -41,7 +41,7 @@ class ServerModule {
     @Provides
     @Singleton
     fun getClient(): OkHttpClient = OkHttpClient.Builder()
-        .connectTimeout(60, TimeUnit.SECONDS)
+        .connectTimeout( 60, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
         //   .addInterceptor(ChuckInterceptor(context))
         .addInterceptor(HttpLoggingInterceptor().apply {
@@ -51,9 +51,9 @@ class ServerModule {
             val builder = chain.request().newBuilder()
             builder.header("Content-Type", "application/json")
             builder.header("Accept", "application/json")
-            /*  if (sharedPref.user != ""){
-                  builder.header("Authorization", "Bearer ${sharedPref.user}")
-              }*/
+           //   if (sharedPref.user != ""){
+             //     builder.header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIrOTk4OTQxMTEwNzE3Iiwicm9sZXMiOlsiQ0xJRU5UIl0sImV4cCI6MTY1NTA0OTkyMn0.jmnpKdM0Dub-ylE_LesdGWXpmzhHGGr5DcrZj7bRYJI")
+            //  }
             chain.proceed(builder.build())
         })
         .build()

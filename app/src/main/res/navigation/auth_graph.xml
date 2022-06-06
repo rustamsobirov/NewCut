@@ -31,25 +31,24 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_loginFragment_to_registrationFragment"
+            app:destination="@id/registrationFragment" />
     </fragment>
     <fragment
         android:id="@+id/registrationFragment"
         android:name="me.ruyeo.newcut.ui.auth.RegistrationFragment"
         android:label="fragment_registration"
-        tools:layout="@layout/fragment_registration" />
+        tools:layout="@layout/fragment_registration" >
+        <action
+            android:id="@+id/action_registrationFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/confirmationFragment"
         android:name="me.ruyeo.newcut.ui.auth.ConfirmationFragment"
         android:label="fragment_confirmation"
-        tools:layout="@layout/fragment_confirmation" >
-        <action
-            android:id="@+id/action_confirmationFragment_to_registrationFragment"
-            app:destination="@id/registrationFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-    </fragment>
+        tools:layout="@layout/fragment_confirmation" />
 
 </navigation>
