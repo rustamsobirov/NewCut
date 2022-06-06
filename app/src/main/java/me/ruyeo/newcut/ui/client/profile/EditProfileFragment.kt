@@ -91,8 +91,9 @@ class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile),
 
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+
         val day = String.format("%02d", dayOfMonth)
-        val mMonth = String.format("%02d", month)
+        val mMonth = String.format("%02d", month + 1)
         val date = "$day/$mMonth/$year"
         binding.birthdayTv.text = date
 

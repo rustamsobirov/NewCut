@@ -35,16 +35,6 @@
                 android:gravity="end">
 
                 <ImageView
-                    android:id="@+id/mapIv"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/ll_bg"
-                    android:contentDescription="TODO"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_map" />
-
-                <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="10dp"
