@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -44,6 +45,9 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     }
 
     private fun salonSpecialistRecycler() {
+        detailBottomSalonSpecialistAdapter.itemClick = {
+            findNavController().navigate(R.id.action_detailFragment_to_detailSpecialistFragment)
+        }
         binding.apply {
             salonSpecialistRecyclerView.adapter = detailBottomSalonSpecialistAdapter
             specialistList.add(

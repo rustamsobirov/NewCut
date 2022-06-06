@@ -48,6 +48,11 @@ class MainActivity : AppCompatActivity() {
                     R.id.detailFragment -> {
                         bnvMain.isVisible = false
                     }
+                    R.id.detailSpecialistFragment -> {
+                        statusBarColorDefault()
+                        hideStatusBarAndBottomBar()
+                        bnvMain.isVisible = false
+                    }
                     R.id.editProfileFragment -> {
                         bnvMain.isVisible = false
                     }

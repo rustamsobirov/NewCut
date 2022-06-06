@@ -36,7 +36,11 @@
         android:id="@+id/detailFragment"
         android:name="me.ruyeo.newcut.ui.client.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_detailSpecialistFragment"
+            app:destination="@id/detailSpecialistFragment" />
+    </fragment>
     <fragment
         android:id="@+id/FAQsFragment"
         android:name="me.ruyeo.newcut.ui.client.profile.FAQsFragment"
@@ -103,4 +107,9 @@
         android:name="me.ruyeo.newcut.ui.client.detail.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/detailSpecialistFragment"
+        android:name="me.ruyeo.newcut.ui.client.detail.detail_specialists.DetailSpecialistFragment"
+        android:label="fragment_detail_specialist"
+        tools:layout="@layout/fragment_detail_specialist" />
 </navigation>
