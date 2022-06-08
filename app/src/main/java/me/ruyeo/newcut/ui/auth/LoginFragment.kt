@@ -47,12 +47,12 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                         if (it.data.success) {
                             findNavController().navigate(
                                 R.id.action_loginFragment_to_confirmationFragment,
-                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
+                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString().trim())
                             )
                         } else {
                             findNavController().navigate(
                                 R.id.action_loginFragment_to_registrationFragment,
-                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
+                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString().trim())
                             )
                         }
                     }

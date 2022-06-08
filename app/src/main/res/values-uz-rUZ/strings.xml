@@ -76,6 +76,8 @@
     <string name="dateof_birth" translatable="false">tug`ilgan sana</string>
     <string name="upcoming" translatable="false">Kelgusi</string>
     <string name="pass" translatable="false">Tarix</string>
+    <string name="your_phone_number">Mobil raqamingizni tasdiqlash uchun 4 xonali xavfsizlik kodi SMS orqali yuboriladi!</string>
+    <string name="enter_number">Raqamingizni kiriting</string>
 
 
     <string-array name="times">

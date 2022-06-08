@@ -76,6 +76,8 @@
     <string name="dateof_birth" translatable="false">Дата рождения</string>
     <string name="upcoming" translatable="false">Предстоящие</string>
     <string name="pass" translatable="false">Проходить</string>
+    <string name="your_phone_number">В SMS будет отправлен 4-значный код безопасности для подтверждения номера мобильного телефона!</string>
+    <string name="enter_number">Введите номер</string>
 
 
 

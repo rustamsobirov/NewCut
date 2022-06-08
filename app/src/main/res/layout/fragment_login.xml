@@ -31,7 +31,7 @@ tools:context=".ui.auth.LoginFragment">
     android:layout_marginHorizontal="16dp"
     android:layout_marginTop="40dp"
     android:lineSpacingExtra="4dp"
-    tools:text="A 4 digit security code will be sent via SMS to verify your mobile number!"
+    tools:text="@string/your_phone_number"
     android:textColor="@color/black"
     android:textSize="16sp" />
 
@@ -59,7 +59,7 @@ tools:context=".ui.auth.LoginFragment">
         android:id="@+id/phoneNumberEdt"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:hint="Enter number"
+        android:hint="@string/enter_number"
         android:inputType="phone"
         android:maxLength="18"
         android:textColorHint="@color/light_900"

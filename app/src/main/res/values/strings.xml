@@ -74,6 +74,8 @@
     <string name="dateof_birth" translatable="false">Date of birthday</string>
     <string name="upcoming" translatable="false">Upcoming</string>
     <string name="pass" translatable="false">Pass</string>
+    <string name="your_phone_number">A 4 digit security code will be sent via SMS to verify your mobile number!</string>
+    <string name="enter_number">Enter number</string>
 
 
     <string-array name="times">
