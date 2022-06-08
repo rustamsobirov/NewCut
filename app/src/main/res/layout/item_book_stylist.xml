@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="10dp"
     android:orientation="horizontal">
 
@@ -25,7 +26,7 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Green Apple"
+            tools:text="Green Apple"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -35,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="6391 Elgin St. Celina, Delaware..."
+            tools:text="6391 Elgin St. Celina, Delaware..."
             android:textColor="#ABAAB1"
             android:textSize="13sp" />
 
@@ -63,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="5.0"
+                tools:text="5.0"
                 android:textColor="#FFAB36"
                 android:textSize="13sp" />
 
@@ -78,12 +79,12 @@
 
             <TextView
                 android:id="@+id/tv_length"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:text="15 km"
+                tools:text="15 km"
                 android:textColor="@color/black"
                 android:textSize="13sp" />
 
@@ -91,7 +92,7 @@
                 android:id="@+id/btn_book"
                 android:layout_width="70dp"
                 android:layout_height="32dp"
-                android:text="Book"
+                android:text="@string/book"
                 android:clickable="true"
                 android:focusable="true"
                 android:textColor="@color/white"

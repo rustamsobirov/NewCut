@@ -226,7 +226,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
 //                if (s < 10)
 //                    binding.tvResend.text = "Resend in $min:0$s Sec"
 //                else
-                binding.tvResend.text = "Resend In $min:$s Sec"
+                binding.tvResend.text = getString(R.string.resend_in) + "$min:$s Sec"
                 if (sec == 0) {
                     binding.tvResend.text = getString(R.string.resend)
                     binding.tvResend.setTextColor(Color.parseColor("#ff02c65c"))

@@ -53,8 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_plus"
-                android:contentDescription="@string/todo" />
+                android:src="@drawable/ic_plus" />
 
         </LinearLayout>
 
@@ -88,7 +87,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:text="We provide highend services without the highend price. A moderate price allows us to provide the high end services you enjoy and the lower price allows you to enjoy it more often! Prices for services are subject to consultation."
+            tools:text="We provide highend services without the highend price. A moderate price allows us to provide the high end services you enjoy and the lower price allows you to enjoy it more often! Prices for services are subject to consultation."
             android:textColor="#5E5D65"
             android:fontFamily="@font/poppins_regular"
             android:textSize="13sp"

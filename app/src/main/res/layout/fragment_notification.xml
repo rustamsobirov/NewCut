@@ -22,7 +22,7 @@
             android:layout_gravity="center"
             android:textSize="20sp"
             android:fontFamily="@font/poppins_bold"
-            android:text="Notifications"
+            android:text="@string/notifications"
             android:textStyle="bold" />
     </androidx.appcompat.widget.Toolbar>
 

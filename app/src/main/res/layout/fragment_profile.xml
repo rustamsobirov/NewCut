@@ -24,7 +24,7 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center"
-                android:text="Profil"
+                android:text="@string/profil"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -41,8 +41,7 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/ll_bg"
                     android:padding="12dp"
-                    android:src="@drawable/ic_ring"
-                    android:contentDescription="TODO" />
+                    android:src="@drawable/ic_ring" />
 
                 <ImageView
                     android:id="@+id/favorite_iv"
@@ -51,8 +50,7 @@
                     android:layout_margin="10dp"
                     android:background="@drawable/ll_bg"
                     android:padding="12dp"
-                    android:src="@drawable/ic_favorite"
-                    android:contentDescription="TODO" />
+                    android:src="@drawable/ic_favorite" />
             </LinearLayout>
 
 
@@ -127,13 +125,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
-                android:text="Mirkamol Egamberdiyev" />
+                tools:text="Mirkamol Egamberdiyev" />
 
             <TextView
                 android:id="@+id/phoneNumberTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+998974697907"
+                tools:text="+998974697907"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -150,15 +148,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_edit"
-                android:contentDescription="TODO" />
+                android:src="@drawable/ic_edit" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center_vertical"
                 android:layout_marginStart="10dp"
-                android:text="Edit profile"
+                android:text="@string/edit_profile"
                 app:drawableEndCompat="@drawable/ic_road"
                 tools:ignore="RtlSymmetry" />
 
@@ -211,8 +208,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_faqs"
-                android:contentDescription="TODO" />
+                android:src="@drawable/ic_faqs" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -242,8 +238,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_aboutus"
-                android:contentDescription="TODO" />
+                android:src="@drawable/ic_aboutus" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
@@ -272,8 +267,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_logout"
-                    android:contentDescription="TODO" />
+                    android:src="@drawable/ic_logout" />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="56dp"

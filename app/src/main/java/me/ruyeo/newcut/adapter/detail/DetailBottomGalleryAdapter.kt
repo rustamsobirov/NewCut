@@ -34,7 +34,6 @@ class DetailBottomGalleryAdapter : RecyclerView.Adapter<DetailBottomGalleryAdapt
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) = holder.bind()
-
     override fun getItemCount(): Int = dif.currentList.size
 
     companion object {

@@ -65,7 +65,7 @@
                     android:fontFamily="@font/poppins_bold"
                     android:includeFontPadding="false"
                     android:maxLines="1"
-                    android:text="Bella Rinova"
+                    tools:text="Bella Rinova"
                     android:textColor="@color/text_900"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -80,7 +80,7 @@
                     android:fontFamily="@font/poppins_regular"
                     android:includeFontPadding="false"
                     android:maxLines="1"
-                    android:text="8502 Preston Rd. Inglewo..."
+                    tools:text="8502 Preston Rd. Inglewo..."
                     android:textColor="@color/text_300"
                     android:textSize="16sp" />
 
@@ -129,7 +129,7 @@
                             android:includeFontPadding="false"
                             android:maxLength="8"
                             android:maxLines="1"
-                            android:text="25 km"
+                            tools:text="25 km"
                             android:textColor="@color/text_900"
                             android:textSize="16sp" />
                     </androidx.appcompat.widget.LinearLayoutCompat>

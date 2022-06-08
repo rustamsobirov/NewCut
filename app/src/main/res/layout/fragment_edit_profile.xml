@@ -24,7 +24,7 @@
             android:layout_marginEnd="40dp"
             android:fontFamily="@font/poppins_regular"
             android:gravity="center"
-            android:text="Profile ma'lumotlarini \n o'zgartirish"
+            android:text="@string/change_profile_information"
             android:textColor="@color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="F.I.SH"
+            android:text="@string/fullname"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -67,7 +67,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins_regular"
             android:includeFontPadding="false"
-            android:text="Telefon raqamni o'zgartirish"
+            android:text="@string/change_phone_number"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -87,7 +87,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:background="@drawable/edtextbackground"
-                android:hint="Enter number"
+                tools:hint="Enter number"
                 android:inputType="phone"
                 android:maxLength="18"
                 android:textColorHint="@color/text_100"
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="Tug'ilgan sana"
+            android:text="@string/dateof_birth"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -117,7 +117,7 @@
             android:maxLines="1"
             android:paddingStart="10dp"
             android:paddingEnd="15dp"
-            android:text="17/08/2000"
+            tools:text="17/08/2000"
             android:textColor="#191632"
             android:textSize="14sp"
             app:drawableEndCompat="@drawable/ic_road" />

@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">NewCut</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="verify_phone">Verify phone</string>
     <string name="resend">Resend</string>
 
@@ -31,7 +30,50 @@
     <string name="about_us">About Us</string>
     <string name="logout">Logout</string>
     <string name="Bcancel">Cancel</string>
-    <string name="todo">TODO</string>
+
+    <string name="language">Language selection</string>
+    <string name="uzbek">Uzbek</string>
+    <string name="russion">Russian</string>
+    <string name="english">English</string>
+    <string name="natalia_vicky">Natalia Vicky</string>
+    <string name="_2_days_ago">2 days ago</string>
+    <string name="description">The people working here are just so nice and helpful and make you feel so comfortable!</string>
+    <string name="ok">OK</string>
+    <string name="your_appointments">Your Appointments</string>
+    <string name="open">Open</string>
+    <string name="website">Website</string>
+    <string name="call">Call</string>
+    <string name="direction">Direction</string>
+    <string name="share">Share</string>
+    <string name="salon_specialists">Salon specialists</string>
+    <string name="opening_hours">Opening Hours</string>
+    <string name="monday_friday">Monday - Friday:</string>
+    <string name="saturday_sunday">Saturday - Sunday:</string>
+    <string name="contact">Contact</string>
+    <string name="get_directions_4_km">Get directions - 4 km</string>
+    <string name="change_profile_information">Change profile information</string>
+    <string name="fullname">FullName</string>
+    <string name="change_phone_number">Change phone number</string>
+    <string name="favorite">Favorite</string>
+    <string name="popular_artist">Popular artist</string>
+    <string name="your_phone">Your phone!</string>
+    <string name="next">Continue</string>
+    <string name="profil">Profil</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="sign_up">Sign up</string>
+    <string name="create_a_new_account">Create a new account</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="book">Book</string>
+    <string name="review">Review</string>
+    <string name="reschedule">Reschedule</string>
+    <string name="loading">loading...</string>
+    <string name="cancellation_of_appointment">Cancellation of appointment</string>
+    <string name="are_you_sure_you_want_to_cancel_nthis_appointment">Are you sure you want to cancel \nthis appointment?</string>
+    <string name="select">Select</string>
+    <string name="resend_in" translatable="false">Resend In</string>
+    <string name="dateof_birth" translatable="false">Date of birthday</string>
+    <string name="upcoming" translatable="false">Upcoming</string>
+    <string name="pass" translatable="false">Pass</string>
 
 
     <string-array name="times">

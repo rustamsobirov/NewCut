@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="10dp"
     android:orientation="horizontal">
 
@@ -52,7 +53,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_regular"
                 android:includeFontPadding="false"
-                android:text="Green Apple"
+                tools:text="Green Apple"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -65,7 +66,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:includeFontPadding="false"
-            android:text="6391 Elgin St. Celina, Delaware..."
+            tools:text="6391 Elgin St. Celina, Delaware..."
             android:textColor="#ABAAB1"
             android:textSize="12sp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -94,14 +95,14 @@
 
             <TextView
                 android:id="@+id/tv_length"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/poppins_regular"
                 android:includeFontPadding="false"
-                android:text="15 km"
+                tools:text="15 km"
                 android:textColor="@color/black"
                 android:textSize="12sp" />
 
@@ -111,7 +112,7 @@
                 android:layout_height="40dp"
                 android:clickable="true"
                 android:focusable="true"
-                android:text="Book"
+                android:text="@string/book"
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 android:textStyle="bold" />

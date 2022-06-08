@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">НовыйCut</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="verify_phone">Подтвердить телефон</string>
+    <string name="resend">Отправить</string>
+    <string name="resend_in" translatable="false">Отправить повторно</string>
+
+    <string name="notifications">Уведомления</string>
+    <string name="mark_all_as_read">отметить все как прочитанное</string>
+    <string name="do_not_disturb">Не беспокоить</string>
+    <string name="just_now">Прямо сейчас</string>
+    <string name="notif_example">У вас назначена встреча в парикмахерской The Galleria на 8:00 сегодня.</string>
+    <string name="faqs">Часто задаваемые вопросы</string>
+    <string name="what_is_flo_cutters">Что такое Фло Каттерс?</string>
+    <string name="how_much_does_this_cost">Сколько это стоит?</string>
+    <string name="where_are_you_located">Где вы находитесь?</string>
+    <string name="can_i_just_come_in_or_do_i_have_to_make_an_appointment">Могу я просто прийти или мне нужно\n записаться на прием?</string>
+    <string name="change_avatar">Сменить аватар</string>
+    <string name="full_name">ФИО</string>
+    <string name="permission_not_allowed">Разрешение на размещение не разрешено\nНажмите, чтобы открыть настройки</string>
+    <string name="please_allow_phone_local">Пожалуйста, примите определение местоположения для использования этого приложения.</string>
+    <string name="email">Эл. адрес</string>
+    <string name="address">Адрес</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="b_save">Сохранять</string>
+    <string name="gender">Пол</string>
+    <string name="birth_of_date">Дата рождения</string>
+    <string name="name_example">Роберт Фокс</string>
+    <string name="email_ex">robert_fox@gmail.com</string>
+    <string name="settings">Настройки</string>
+    <string name="about_us">О нас</string>
+    <string name="logout">Выйти</string>
+    <string name="Bcancel">Отмена</string>
+
+    <string name="language">Выберите язык</string>
+    <string name="uzbek">узбекский</string>
+    <string name="russion">Русский</string>
+    <string name="english">Английский</string>
+
+    <string name="natalia_vicky">Наталья Вики</string>
+    <string name="_2_days_ago">2 дня назад</string>
+    <string name="description">Люди, работающие здесь, такие приятные и услужливые, и вы чувствуете себя так комфортно!</string>
+    <string name="ok">OK</string>
+    <string name="your_appointments">Ваши встречи</string>
+    <string name="open">Открытым</string>
+    <string name="website">Веб-сайт</string>
+    <string name="direction">Направление</string>
+    <string name="share">Делиться</string>
+    <string name="salon_specialists">Специалисты салона</string>
+    <string name="opening_hours">Часы работы</string>
+    <string name="monday_friday">Понедельник Пятница:</string>
+    <string name="saturday_sunday">Суббота Воскресенье:</string>
+    <string name="contact">Контакт</string>
+    <string name="get_directions_4_km">Проложить маршрут - 4 км</string>
+    <string name="call">Вызов</string>
+    <string name="book">быть занятым</string>
+    <string name="change_profile_information">Изменить информацию профиля</string>
+    <string name="fullname">ФИО</string>
+    <string name="change_phone_number">Изменить номер телефона</string>
+    <string name="favorite">Любимый</string>
+    <string name="popular_artist">Популярный артист</string>
+    <string name="your_phone">Ваш телефон!</string>
+    <string name="next">Продолжать</string>
+    <string name="profil">Профиль</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="sign_up">Подписаться</string>
+    <string name="create_a_new_account">Создать новый аккаунт</string>
+    <string name="enter_your_name">Введите ваше имя</string>
+    <string name="review">Обзор</string>
+    <string name="reschedule">Перенести</string>
+    <string name="loading">загрузка...</string>
+    <string name="cancellation_of_appointment">Отмена встречи</string>
+    <string name="are_you_sure_you_want_to_cancel_nthis_appointment">Вы уверены, что хотите отменить\nэту встречу?</string>
+    <string name="select">Выбирать</string>
+    <string name="dateof_birth" translatable="false">Дата рождения</string>
+    <string name="upcoming" translatable="false">Предстоящие</string>
+    <string name="pass" translatable="false">Проходить</string>
+
+
+
+
+
+    <string-array name="times">
+        <item>Напомни мне</item>
+        <item>а 10 минут до</item>
+        <item>за 20 минут до</item>
+        <item>за 30 минут до</item>
+        <item>Никогда не напоминать</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>Мужской</item>
+        <item>женский</item>
+
+    </string-array>
+
+
+</resources>

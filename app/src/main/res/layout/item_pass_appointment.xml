@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="10dp"
     android:padding="10dp"
     android:background="@drawable/bg_appointment_item_rv"
@@ -12,7 +13,7 @@
         android:id="@+id/tv_booked_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="12 September 2021, 08:00"
+        tools:text="12 September 2021, 08:00"
         android:textSize="20sp"
         android:fontFamily="@font/poppins_regular"
         android:textColor="#191632"
@@ -44,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="Bella Rinova"
+                tools:text="Bella Rinova"
                 android:fontFamily="@font/poppins_bold"
                 android:textColor="#191632"
                 android:textSize="16sp" />
@@ -54,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
-                android:text="6391 Elgin St. Celina, Dela..."
+                tools:text="6391 Elgin St. Celina, Dela..."
                 android:maxLines="1"
                 android:textColor="#ABAAB1"
                 android:textSize="14sp"/>
@@ -63,7 +64,7 @@
                 android:id="@+id/tv_type_haircut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Services: Regular haircut, Classic shaving"
+                tools:text="Services: Regular haircut, Classic shaving"
                 android:textSize="14sp"
                 android:fontFamily="@font/poppins_regular"
                 android:textColor="@color/green_default"
@@ -92,7 +93,7 @@
             android:textSize="14sp"
             android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:textStyle="normal"
-            android:text="Review"/>
+            android:text="@string/review"/>
 
         <Space
             android:layout_width="15dp"
@@ -105,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/tv_reschedule_bg"
-            android:text="Reschedule"
+            android:text="@string/reschedule"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textStyle="normal" />

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NewCut</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="verify_phone">Telefonni tasdiqlang</string>
+    <string name="resend">yuborish</string>
+    <string name="resend_in" translatable="false">Qayta yuborish</string>
+
+    <string name="notifications">Bildirishnomalar</string>
+    <string name="mark_all_as_read">Hammasini o\'qilgan deb belgilang</string>
+    <string name="do_not_disturb">Bezovta qilmang</string>
+    <string name="just_now">Hozirgina</string>
+    <string name="notif_example">Bugun soat 8:00 da Galleria Sartaroshxonasida uchrashuvingiz bor</string>
+    <string name="faqs">Tez-tez so\'raladigan savollar</string>
+    <string name="what_is_flo_cutters">Flo Cutters nima?</string>
+    <string name="how_much_does_this_cost">Bu qancha turadi?</string>
+    <string name="where_are_you_located">Siz qayerdasiz?</string>
+    <string name="can_i_just_come_in_or_do_i_have_to_make_an_appointment">Kirishim mumkinmi yoki \n uchrashuv tayinlashim kerakmi?</string>
+    <string name="change_avatar">Avatarni o\'zgartirish</string>
+    <string name="full_name">To\'liq ismi sharif</string>
+    <string name="permission_not_allowed">Joylashuvni aniqlashga ruxsat berilmagan\nSozlamani ochish uchun bosing</string>
+    <string name="please_allow_phone_local">Iltimos, ushbu ilovadan foydalanish uchun Joylashuvni aniqlashni yoqing.</string>
+    <string name="email">Elektron pochta</string>
+    <string name="address">Manzil</string>
+    <string name="phone_number">Telefon raqami</string>
+    <string name="b_save">Saqlash</string>
+    <string name="gender">Jins</string>
+    <string name="birth_of_date">Tug\'ilgan sanasi</string>
+    <string name="name_example">Robert Foks</string>
+    <string name="email_ex">robert_fox@gmail.com</string>
+    <string name="settings">Sozlamalar</string>
+    <string name="about_us">Biz haqimizda</string>
+    <string name="logout">Chiqish</string>
+    <string name="Bcancel">Bekor qilish</string>
+
+
+    <string name="language">Tilni tanlang</string>
+    <string name="uzbek">O\'zbek tili</string>
+    <string name="russion">rus tili</string>
+    <string name="english">Ingliz tili</string>
+    <string name="natalia_vicky">Natalya Viki</string>
+    <string name="_2_days_ago">2 kun oldin</string>
+    <string name="description">Bu erda ishlaydigan odamlar juda yaxshi va foydali va sizni juda qulay his qilishadi!</string>
+    <string name="ok">OK</string>
+    <string name="your_appointments">Uchrashuvlaringiz</string>
+    <string name="open">Ochiq</string>
+    <string name="website">Veb-sayt</string>
+    <string name="call">Qo\'ng\'iroq qilish</string>
+    <string name="direction">Yo\'nalish</string>
+    <string name="share">Ulashish</string>
+    <string name="salon_specialists">Salon mutaxassislari</string>
+    <string name="opening_hours">Ish vaqti</string>
+    <string name="monday_friday">Dushanba-Juma:</string>
+    <string name="saturday_sunday">Shanba-yakshanba</string>
+    <string name="contact">Aloqa</string>
+    <string name="get_directions_4_km">Yo`nalishlarni oling - 4 km</string>
+    <string name="book">Band qilish</string>
+    <string name="change_profile_information">Profil ma`lumotlarini o`zgartirish</string>
+    <string name="fullname">To\'liq ismi sharif</string>
+    <string name="change_phone_number">Telefon raqamini o\'zgartiring</string>
+    <string name="favorite">Sevimli</string>
+    <string name="popular_artist">Mashhur sartaroshlar</string>
+    <string name="your_phone">Sizning telefoningiz!</string>
+    <string name="next">Davom etish</string>
+    <string name="profil">Profil</string>
+    <string name="edit_profile">Profilni tahrirlash</string>
+    <string name="sign_up">Ro\'yxatdan o\'tish</string>
+    <string name="create_a_new_account">Yangi hisob yarating</string>
+    <string name="enter_your_name">Ismingizni kiriting</string>
+    <string name="review">Ko‘rib chiqish</string>
+    <string name="reschedule">Qayta rejalashtirish</string>
+    <string name="loading">yuklanmoqda...</string>
+    <string name="cancellation_of_appointment">Uchrashuvni bekor qilish</string>
+    <string name="are_you_sure_you_want_to_cancel_nthis_appointment">Haqiqatan ham ushbu uchrashuvni \nbekor qilmoqchimisiz?</string>
+    <string name="select">Tanlash</string>
+    <string name="dateof_birth" translatable="false">tug`ilgan sana</string>
+    <string name="upcoming" translatable="false">Kelgusi</string>
+    <string name="pass" translatable="false">Tarix</string>
+
+
+    <string-array name="times">
+        <item>Menga eslat</item>
+        <item>10 daqiqa oldin</item>
+        <item>20 daqiqa oldin</item>
+        <item>30 daqiqa oldin</item>
+        <item>Hech qachon eslatma</item>
+    </string-array>
+
+    <string-array name="gender">
+        <item>Erkak</item>
+        <item>Ayol</item>
+
+    </string-array>
+
+
+</resources>
