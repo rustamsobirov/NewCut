@@ -28,12 +28,6 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
         return inflater.inflate(layoutRes, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
-
     protected fun showMessage(message: String) {
         val dialog = MessageDialog(message)
         dialog.onClickListener = {

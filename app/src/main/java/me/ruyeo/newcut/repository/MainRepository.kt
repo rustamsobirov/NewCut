@@ -14,6 +14,11 @@ class MainRepository @Inject constructor(
 ) {
     suspend fun getLocationName(latLng: Latlng) = geoService.getGeoCodeInfo(query = latLng)
 
+
+    //orders
+    suspend fun getAllOrders() = apiService.getAllOrders()
+
+
     suspend fun getAllBooking() = bookingDao.getAllBooking()
 
     suspend fun addBooking(booking: Booking) = bookingDao.addBooking(booking)

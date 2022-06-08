@@ -14,13 +14,12 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.location.LocationManager
 import android.net.Uri
+import android.os.Build
 import android.text.Editable
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.annotation.ColorInt
 import androidx.annotation.LayoutRes
@@ -342,4 +341,5 @@ fun Spinner.setSelections(spinnerId: Int?) {
 }
 
 fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
+
 
