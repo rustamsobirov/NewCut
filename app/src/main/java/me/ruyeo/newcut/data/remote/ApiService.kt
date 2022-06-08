@@ -6,10 +6,10 @@ import retrofit2.http.*
 interface ApiService {
 
     //auth
-    @POST("auth/loginByPhone")
+    @POST("auth/api/v1/loginByPhone")
     suspend fun login(@Body phoneNumber: Login): LoginResponse // we need model class to fetch response
 
-    @POST("auth/register")
+    @POST("auth/api/v1/register")
     suspend fun register(@Body phoneNumber: Login): LoginResponse
 
     @POST("auth/confirmationLoginCode")

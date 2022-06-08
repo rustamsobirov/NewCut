@@ -242,11 +242,11 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                         allEditClearFocus()
                         allEditTextClickableFalse()
                         checkRequestServerCode(ed1.text.toString() + ed2.text.toString() + ed3.text.toString() + ed4.text.toString())
-                        if (isRegister){
-                            viewModel.confirmationRegister()
-                        }else{
-                            viewModel.confirmationLogin()
-                        }
+//                        if (isRegister){
+//                            viewModel.confirmationRegister()
+//                        }else{
+//                            viewModel.confirmationLogin()
+//                        }
                     }
                 }
             }
@@ -283,10 +283,6 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                     binding.tvResend.text = "Resend in $min:0$s Sec"
                 else
                     binding.tvResend.text = "Resend In $min:$s Sec"
-//                if (s < 10)
-//                    binding.tvResend.text = "Resend in $min:0$s Sec"
-//                else
-                binding.tvResend.text = getString(R.string.resend_in) + "$min:$s Sec"
                 if (sec == 0) {
                     binding.tvResend.text = getString(R.string.resend)
                     binding.tvResend.setTextColor(Color.parseColor("#ff02c65c"))
