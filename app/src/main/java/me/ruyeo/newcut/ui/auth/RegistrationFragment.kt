@@ -34,6 +34,7 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        toaster(phoneNumber)
         showKeyboard(binding.nameEdt)
         sensorToHideKeyBoard()
 
@@ -44,7 +45,7 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
 
     private fun setupUI() {
         binding.signUpBtn.setOnClickListener {
-            viewModel.register(Login(phoneNumber))
+            viewModel.register(phoneNumber)
         }
     }
 
@@ -56,7 +57,8 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
                         toaster("show loading")
                     }
                     is UiStateObject.SUCCESS -> {
-                        findNavController().navigate(R.id.action_loginFragment_to_confirmationFragment, bundleOf("register" to true))
+                        findNavController().navigate(R.id.action_registrationFragment_to_confirmationFragment, bundleOf("phoneNumber" to phoneNumber))
+                        viewModel.reset()
                     }
                     is UiStateObject.ERROR -> {
                         showMessage(it.message)

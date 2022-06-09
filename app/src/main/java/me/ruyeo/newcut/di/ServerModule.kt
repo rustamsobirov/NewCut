@@ -8,6 +8,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import me.ruyeo.newcut.SharedPref
 import me.ruyeo.newcut.data.remote.ApiService
 import me.ruyeo.newcut.data.remote.GeoService
 import me.ruyeo.newcut.utils.Constants
@@ -40,7 +41,7 @@ class ServerModule {
 
     @Provides
     @Singleton
-    fun getClient(): OkHttpClient = OkHttpClient.Builder()
+    fun getClient(sharedPref: SharedPref): OkHttpClient = OkHttpClient.Builder()
         .connectTimeout( 60, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
         //   .addInterceptor(ChuckInterceptor(context))
@@ -51,9 +52,9 @@ class ServerModule {
             val builder = chain.request().newBuilder()
             builder.header("Content-Type", "application/json")
             builder.header("Accept", "application/json")
-           //   if (sharedPref.user != ""){
-             //     builder.header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIrOTk4OTQxMTEwNzE3Iiwicm9sZXMiOlsiQ0xJRU5UIl0sImV4cCI6MTY1NTA0OTkyMn0.jmnpKdM0Dub-ylE_LesdGWXpmzhHGGr5DcrZj7bRYJI")
-            //  }
+              if (sharedPref.token != ""){
+                  builder.header("Authorization", "Bearer ${sharedPref.token}")
+              }
             chain.proceed(builder.build())
         })
         .build()

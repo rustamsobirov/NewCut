@@ -21,6 +21,7 @@ import me.ruyeo.newcut.SharedPref
 import me.ruyeo.newcut.databinding.FragmentConfirmationBinding
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.ui.client.MainActivity
+import me.ruyeo.newcut.utils.Constants.RESEND_TIME
 import me.ruyeo.newcut.utils.TextWatcherWrapper
 import me.ruyeo.newcut.utils.UiStateObject
 import javax.inject.Inject
@@ -31,63 +32,47 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
     private var _binding: FragmentConfirmationBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<ConfirmViewModel>()
-    private var isRegister = false
+
     @Inject
     lateinit var sharedPref: SharedPref
-    private var sec = 10
+    private var sec = RESEND_TIME
     private var secondJob: Job? = null
+    private var phoneNumber = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            isRegister = it.getBoolean("register")
+            phoneNumber = it.getString("phoneNumber")!!
         }
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentConfirmationBinding.bind(view)
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
+
         showKeyboard(binding.ed1)
         secondJob = perSecond()
-        callBack()
         phoneNumberColor()
         inputSmsCodeManager()
         resendTextClickManager()
 
-        setupLoginObservers()
-        setupRegisterObservers()
+        setupObservers()
 
     }
 
-    private fun setupLoginObservers() {
+    private fun setupObservers() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.confirmLogin.collect {
+            viewModel.confirmCode.collect {
                 when (it) {
                     is UiStateObject.LOADING -> {
                         toaster("show loading")
                     }
                     is UiStateObject.SUCCESS -> {
-                        Intent(requireActivity(),MainActivity::class.java).also {
-                            startActivity(it)
-                        }
-                    }
-                    is UiStateObject.ERROR -> {
-                        showMessage(it.message)
-                    }
-                    else -> Unit
-                }
-            }
-        }
-    }
-
-    private fun setupRegisterObservers() {
-        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            viewModel.confirmRegister.collect {
-                when (it) {
-                    is UiStateObject.LOADING -> {
-                        toaster("show loading")
-                    }
-                    is UiStateObject.SUCCESS -> {
-                        Intent(requireActivity(),MainActivity::class.java).also {
+                        sharedPref.token = it.data.accessToken
+                        Intent(requireActivity(), MainActivity::class.java).also {
                             startActivity(it)
                         }
                     }
@@ -179,10 +164,6 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         }
     }
 
-    private fun checkRequestServerCode(code: String) {
-        Toast.makeText(context, "Server Send: $code", Toast.LENGTH_SHORT).show()
-    }
-
     private fun allEditTextClickableFalse() {
         binding.apply {
             ed1.isEnabled = false
@@ -241,6 +222,12 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                         hideKeyboard()
                         allEditClearFocus()
                         allEditTextClickableFalse()
+                        val map = HashMap<String, Any>()
+                        map["phoneNumber"] = phoneNumber
+                        map["code"] = 4444
+                        map["deviceId"] = "21"
+                        map["deviceToken"] = "21"
+                        viewModel.confirmationCode(map)
                         checkRequestServerCode(ed1.text.toString() + ed2.text.toString() + ed3.text.toString() + ed4.text.toString())
 //                        if (isRegister){
 //                            viewModel.confirmationRegister()
@@ -266,14 +253,8 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         )
     }
 
-    private fun callBack() {
-        binding.ivBack.setOnClickListener {
-            onBackPressed()
-        }
-    }
-
     private fun perSecond(): Job {
-        if (sec == 0) sec = 10
+        if (sec == 0) sec = RESEND_TIME
         return MainScope().launch {
             while (isActive) {
                 sec--
