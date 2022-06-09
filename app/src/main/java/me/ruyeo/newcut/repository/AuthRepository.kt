@@ -6,11 +6,9 @@ import retrofit2.http.Body
 import javax.inject.Inject
 
 class AuthRepository @Inject constructor(private val apiService: ApiService) {
-    suspend fun login(phoneNumber: Login) = apiService.login(phoneNumber)
+    suspend fun login(phoneNumber: String) = apiService.login(phoneNumber)
 
-    suspend fun register(phoneNumber: Login) = apiService.register(phoneNumber)
+    suspend fun register(phoneNumber: String) = apiService.register(phoneNumber)
 
-    suspend fun confirmationRegisterCode(map: HashMap<String,Any>) = apiService.confirmationRegisterCode(map)
-
-    suspend fun confirmationLoginCode(map: HashMap<String,Any>) = apiService.confirmationLoginCode(map)
+    suspend fun confirmationCode(map: HashMap<String,Any>) = apiService.confirmationCode(map)
 }
