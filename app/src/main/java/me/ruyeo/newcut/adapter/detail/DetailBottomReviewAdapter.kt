@@ -37,11 +37,7 @@ class DetailBottomReviewAdapter : RecyclerView.Adapter<DetailBottomReviewAdapter
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): DetailBottomReviewAdapter.VH {
-        return VH(DetailReviewItemBinding.inflate(LayoutInflater.from(parent.context),
-            parent,
-            false))
-    }
+    ): DetailBottomReviewAdapter.VH { return VH(DetailReviewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)) }
 
 
     override fun onBindViewHolder(holder: DetailBottomReviewAdapter.VH, position: Int) =
