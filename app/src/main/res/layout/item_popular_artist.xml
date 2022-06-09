@@ -27,6 +27,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:padding="0dp"
+            android:fontFamily="@font/poppins_bold"
             android:text="Lily"
             android:textColor="@color/black"
             android:textSize="14sp" />
@@ -35,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hair Stylist"
+            android:fontFamily="@font/poppins_regular"
             android:textSize="17sp"
             android:textColor="#ABAAB1"/>
 

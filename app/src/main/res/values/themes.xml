@@ -2,19 +2,27 @@
     <!-- Base application theme. -->
     <style name="Theme.NewCut" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/colorPrimary_700</item>
-        <item name="colorPrimaryVariant">@color/colorPrimary_900</item>
+        <item name="colorPrimary">@color/green_default</item>
+        <item name="colorPrimaryVariant">@color/green_default</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/colorPrimary_500</item>
-        <item name="colorSecondaryVariant">@color/colorPrimary_300</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorSecondary">@color/green_default</item>
+        <item name="colorSecondaryVariant">@color/green_default</item>
+        <item name="colorOnSecondary">@color/green_default</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
         <item name="buttonStyle">@style/ButtonPrimary</item>
-        <item name="android:textColor">@color/colorPrimary_300</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
         <item name="editTextStyle">@style/PrimaryEditText</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <!--        full screen-->
+    <style name="homeTheme">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
     </style>
 
     <style name="CustomDialog" parent="Theme.MaterialComponents.Dialog">
@@ -52,7 +60,6 @@
         <item name="android:background">@drawable/radius_top</item>
     </style>
 
-
     <style name="circle">
         <item name="cornerSize">50%</item>
     </style>
@@ -66,5 +73,34 @@
         <attr name="spanCount" />
         <attr name="aspectRatio" format="string" />
     </declare-styleable>
+
+    <style name="verifyEditStyle">
+        <item name="android:layout_width">56dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:autofillHints" tools:targetApi="o">password</item>
+        <item name="android:background">@drawable/edtextbackground</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:inputType">number</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/green_default</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <style name="AlertDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+    <style name="fragmentAnimations">
+        <item name="enterAnim">@anim/nav_default_enter_anim</item>
+        <item name="exitAnim">@anim/nav_default_exit_anim</item>
+        <item name="popEnterAnim">@anim/nav_default_pop_enter_anim</item>
+        <item name="popExitAnim">@anim/nav_default_pop_exit_anim</item>
+    </style>
 
 </resources>

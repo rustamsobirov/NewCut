@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:background="@color/white_30"
     android:padding="20dp">
 
     <LinearLayout
@@ -33,16 +34,17 @@
                 android:fontFamily="@font/poppins_bold"
                 android:maxLines="1"
                 android:text="Natalia Vicky"
-                android:textColor="@color/text_900"
-                android:textSize="20sp" />
+                android:textSize="18sp" />
 
             <com.willy.ratingbar.ScaleRatingBar
                 android:id="@+id/starCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                app:srb_clickable="false"
                 app:srb_drawableEmpty="@drawable/ic_star_unselected"
                 app:srb_drawableFilled="@drawable/ic_star_selected"
                 app:srb_numStars="5"
+                app:srb_scrollable="false"
                 app:srb_starHeight="15dp"
                 app:srb_starPadding="3dp"
                 app:srb_starWidth="15dp"
@@ -59,12 +61,10 @@
             android:fontFamily="@font/poppins_regular"
             android:maxLines="1"
             android:text="2 days ago"
-            android:textColor="@color/text_300"
-            android:textSize="18sp" />
+            android:textColor="@color/text_500"
+            android:textSize="16sp" />
 
     </LinearLayout>
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,8 +77,8 @@
             android:fontFamily="@font/poppins_regular"
             android:paddingVertical="10dp"
             android:text="The people working here are just so nice and helpful and make you feel so comfortable!"
-            android:textColor="@color/text_600"
-            android:textSize="18sp" />
+            android:textColor="@color/text_500"
+            android:textSize="14sp" />
 
     </LinearLayout>
 

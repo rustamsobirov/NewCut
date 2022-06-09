@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
 import me.ruyeo.newcut.R
+import kotlin.math.ceil
+import kotlin.math.floor
 
 
 class SpannedGridLayoutManager : RecyclerView.LayoutManager {
@@ -41,7 +43,7 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
         isAutoMeasureEnabled = true
     }
 
-    @Keep /* XML constructor, see RecyclerView#createLayoutManager */
+    @Keep
     constructor(
         context: Context, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int,
     ) {
@@ -49,7 +51,6 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
             attrs, R.styleable.SpannedGridLayoutManager, defStyleAttr, defStyleRes)
         columns = a.getInt(R.styleable.SpannedGridLayoutManager_spanCount, 1)
         parseAspectRatio(a.getString(R.styleable.SpannedGridLayoutManager_aspectRatio))
-        // TODO use this!
         val orientation = a.getInt(
             R.styleable.SpannedGridLayoutManager_android_orientation, RecyclerView.VERTICAL)
         a.recycle()
@@ -161,7 +162,7 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
         if (dy < 0) { // scrolling content down
             scrolled = if (firstVisibleRow == 0) { // at top of content
                 val scrollRange = -(paddingTop - top)
-                Math.max(dy, scrollRange)
+                dy.coerceAtLeast(scrollRange)
             } else {
                 dy
             }
@@ -181,8 +182,8 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
         } else { // scrolling content up
             val bottom = getDecoratedBottom(getChildAt(childCount - 1)!!)
             scrolled = if (lastVisiblePosition == itemCount - 1) { // is at end of content
-                val scrollRange = Math.max(bottom - height + paddingBottom, 0)
-                Math.min(dy, scrollRange)
+                val scrollRange = (bottom - height + paddingBottom).coerceAtLeast(0)
+                dy.coerceAtMost(scrollRange)
             } else {
                 dy
             }
@@ -220,7 +221,7 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
         var position = position
         if (position >= itemCount) position = itemCount - 1
         val scroller: LinearSmoothScroller = object : LinearSmoothScroller(recyclerView.context) {
-            override fun computeScrollVectorForPosition(targetPosition: Int): PointF? {
+            override fun computeScrollVectorForPosition(targetPosition: Int): PointF {
                 val rowOffset = getRowIndex(targetPosition) - firstVisibleRow
                 return PointF(0f, (rowOffset * cellHeight).toFloat())
             }
@@ -361,7 +362,7 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
     }
 
     private val spannedRowCount: Int
-        private get() = firstChildPositionForRow!!.size
+        get() = firstChildPositionForRow!!.size
 
     private fun getNextSpannedRow(rowIndex: Int): Int {
         val firstPositionInRow = getFirstPositionInSpannedRow(rowIndex)
@@ -402,7 +403,7 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
         var position = firstPositionInRow
         while (position <= lastPositionInRow) {
             val view: View = recycler.getViewForPosition(position)
-            val lp = view.getLayoutParams() as LayoutParams
+            val lp = view.layoutParams as LayoutParams
             containsRemovedItems = containsRemovedItems or lp.isItemRemoved
             val cell = cells!![position]
             addView(view, insertPosition)
@@ -471,9 +472,9 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
 
     private fun calculateWindowSize() {
         // TODO use OrientationHelper#getTotalSpace
-        val cellWidth = Math.floor(((width - paddingLeft - paddingRight) / columns).toDouble())
+        val cellWidth = floor(((width - paddingLeft - paddingRight) / columns).toDouble())
             .toInt()
-        cellHeight = Math.floor((cellWidth * (1f / cellAspectRatio)).toDouble()).toInt()
+        cellHeight = floor((cellWidth * (1f / cellAspectRatio)).toDouble()).toInt()
         calculateCellBorders()
     }
 
@@ -500,8 +501,8 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
 
     // adjust to spanned rows
     private val minimumFirstVisibleRow: Int
-        private get() {
-            val maxDisplayedRows = Math.ceil((height.toFloat() / cellHeight).toDouble())
+        get() {
+            val maxDisplayedRows = ceil((height.toFloat() / cellHeight).toDouble())
                 .toInt() + 1
             if (totalRows < maxDisplayedRows) return 0
             val minFirstRow = totalRows - maxDisplayedRows
@@ -534,7 +535,7 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
         var widthSpec = widthSpec
         var heightSpec = heightSpec
         calculateItemDecorationsForChild(child, itemDecorationInsets)
-        val lp = child.getLayoutParams() as RecyclerView.LayoutParams
+        val lp = child.layoutParams as RecyclerView.LayoutParams
         widthSpec = updateSpecWithExtra(widthSpec, lp.leftMargin + itemDecorationInsets.left,
             lp.rightMargin + itemDecorationInsets.right)
         heightSpec = updateSpecWithExtra(heightSpec, lp.topMargin + itemDecorationInsets.top,
@@ -560,7 +561,7 @@ class SpannedGridLayoutManager : RecyclerView.LayoutManager {
             if (colonIndex >= 0 && colonIndex < aspect.length - 1) {
                 val nominator = aspect.substring(0, colonIndex)
                 val denominator = aspect.substring(colonIndex + 1)
-                if (nominator.length > 0 && denominator.length > 0) {
+                if (nominator.isNotEmpty() && denominator.isNotEmpty()) {
                     try {
                         val nominatorValue = nominator.toFloat()
                         val denominatorValue = denominator.toFloat()

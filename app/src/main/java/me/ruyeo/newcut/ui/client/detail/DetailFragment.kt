@@ -1,29 +1,24 @@
 package me.ruyeo.newcut.ui.client.detail
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.DisplayMetrics
-import android.util.Log
 import android.view.View
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.ahmadhamwi.tabsync.TabbedListMediator
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
-import com.willy.ratingbar.ScaleRatingBar
 import dagger.hilt.android.AndroidEntryPoint
 import me.ruyeo.newcut.R
+import me.ruyeo.newcut.adapter.detail.DetailBottomSalonSpecialistAdapter
 import me.ruyeo.newcut.adapter.detail.DetailBottomViewPagerAdapter
 import me.ruyeo.newcut.adapter.detail.DetailImageAdapter
 import me.ruyeo.newcut.databinding.FragmentDetailBinding
 import me.ruyeo.newcut.model.detail.DetailModel
+import me.ruyeo.newcut.model.detail.DetailSpecialistModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.extensions.visible
@@ -31,101 +26,124 @@ import me.ruyeo.newcut.utils.extensions.visible
 @AndroidEntryPoint
 class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     private val detailImageAdapter by lazy { DetailImageAdapter() }
+    private val detailBottomSalonSpecialistAdapter by lazy { DetailBottomSalonSpecialistAdapter() }
     private var photosList = ArrayList<DetailModel>()
-    private var bottomSheetBehavior: BottomSheetBehavior<*>? = null
+    private var specialistList = ArrayList<DetailSpecialistModel>()
     private val binding by viewBinding { FragmentDetailBinding.bind(it) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //fragment detail
-        hideStatusBarAndBottomBar()
         installRecyclerView()
         carouselRecyclerManager()
         tabLayoutManager()
         //detail bottom layout
-        installBottomSheetBehavior(view)
-        bottomSheetBehaviorManager()
-        detailBottomViewPagerManager(view)
-        detailBottomRatingBarManager(view)
+        detailBottomViewPagerManager()
+        detailBottomRatingBarManager()
+        salonSpecialistRecycler()
+
+        callBack()
     }
 
-    private fun detailBottomRatingBarManager(view: View) {
-        val ratingBar = view.findViewById<ScaleRatingBar>(R.id.ratingBar)
+    private fun salonSpecialistRecycler() {
+        detailBottomSalonSpecialistAdapter.itemClick = {
+            findNavController().navigate(R.id.action_detailFragment_to_detailSpecialistFragment)
+        }
+        binding.apply {
+            salonSpecialistRecyclerView.adapter = detailBottomSalonSpecialistAdapter
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                    "Valeriy", "wiki"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                    "Brian", "google"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                    "Valeriy", "wiki"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                    "Brian", "google"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                    "Valeriy", "wiki"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                    "Brian", "google"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
+                    "Valeriy", "wiki"
+                )
+            )
+            specialistList.add(
+                DetailSpecialistModel(
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
+                    "Brian", "google"
+                )
+            )
+            detailBottomSalonSpecialistAdapter.submitList(specialistList)
+        }
+    }
 
-        ratingBar.setOnRatingChangeListener { _, rating, _ ->
+    private fun detailBottomRatingBarManager() {
+        binding.ratingBar.setOnRatingChangeListener { _, rating, _ ->
 //            Toast.makeText(context,
 //                "$rating",
 //                Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun detailBottomViewPagerManager(view: View) {
-        val tabLayout = view.findViewById<TabLayout>(R.id.detailBottomTabLayout)
-        val viewPager = view.findViewById<ViewPager2>(R.id.detailBottomViewPager)
-        val detailBottomViewPagerAdapter =
-            DetailBottomViewPagerAdapter(childFragmentManager, lifecycle)
-        viewPager.adapter = detailBottomViewPagerAdapter
-
-        tabLayout.addTab(tabLayout.newTab().setText("About"))
-        tabLayout.addTab(tabLayout.newTab().setText("Gallery"))
-        tabLayout.addTab(tabLayout.newTab().setText("Review"))
-
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                viewPager.currentItem = tab!!.position
-            }
-
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-        })
-
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                tabLayout.selectTab(tabLayout.getTabAt(position))
-            }
-        })
+    private fun callBack() {
+        binding.backBtn.setOnClickListener {
+            onBackPressed()
+        }
     }
 
-    private fun installBottomSheetBehavior(view: View) {
-        val sheetLayout: ConstraintLayout = view.findViewById(R.id.sheetLayout)
-        bottomSheetBehavior = BottomSheetBehavior.from(sheetLayout)
-    }
+    private fun detailBottomViewPagerManager() {
+        binding.apply {
+            val detailBottomViewPagerAdapter =
+                DetailBottomViewPagerAdapter(childFragmentManager, lifecycle)
+            detailBottomViewPager.adapter = detailBottomViewPagerAdapter
 
-    override fun onResume() {
-        super.onResume()
-        Handler(Looper.getMainLooper()).postDelayed({
-            bottomSheetBehavior!!.peekHeight =
-                getScreenHeight() - binding.detailRecyclerView.measuredHeight - 80
-        }, 10)
-    }
+            detailBottomTabLayout.addTab(detailBottomTabLayout.newTab().setText("About"))
+            detailBottomTabLayout.addTab(detailBottomTabLayout.newTab().setText("Gallery"))
+            detailBottomTabLayout.addTab(detailBottomTabLayout.newTab().setText("Review"))
 
-    override fun onAttach(context: Context) {
-        Log.d("@@@","Slom")
-        super.onAttach(context)
-    }
-
-    private fun getScreenHeight(): Int {
-        val displayMetrics = DisplayMetrics()
-        requireActivity().windowManager.defaultDisplay.getMetrics(displayMetrics)
-        return displayMetrics.heightPixels
-    }
-
-    private fun bottomSheetBehaviorManager() {
-        bottomSheetBehavior?.state = BottomSheetBehavior.STATE_COLLAPSED
-        bottomSheetBehavior?.addBottomSheetCallback(object :
-            BottomSheetBehavior.BottomSheetCallback() {
-            @SuppressLint("SwitchIntDef")
-            override fun onStateChanged(bottomSheet: View, newState: Int) {
-                when (bottomSheetBehavior?.state) {
-                    BottomSheetBehavior.STATE_EXPANDED -> {
-                    }
-                    BottomSheetBehavior.STATE_COLLAPSED -> {
-                    }
+            detailBottomTabLayout.addOnTabSelectedListener(object :
+                TabLayout.OnTabSelectedListener {
+                override fun onTabSelected(tab: TabLayout.Tab?) {
+                    detailBottomViewPager.currentItem = tab!!.position
                 }
-            }
 
-            override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-        })
+                override fun onTabUnselected(tab: TabLayout.Tab?) {}
+
+                override fun onTabReselected(tab: TabLayout.Tab?) {}
+            })
+
+            detailBottomViewPager.registerOnPageChangeCallback(object :
+                ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    detailBottomTabLayout.selectTab(detailBottomTabLayout.getTabAt(position))
+                }
+            })
+        }
     }
 
     @SuppressLint("ResourceType")
@@ -199,10 +217,5 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
         photosList.add(DetailModel("https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef"))
         photosList.add(DetailModel("https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef"))
         detailImageAdapter.submitList(photosList)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        showStatusBarAndBottomBar()
     }
 }

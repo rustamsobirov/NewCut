@@ -9,46 +9,78 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import me.ruyeo.newcut.R
+import me.ruyeo.newcut.data.model.Login
 import me.ruyeo.newcut.databinding.FragmentLoginBinding
 import me.ruyeo.newcut.ui.BaseFragment
+import me.ruyeo.newcut.utils.UiStateObject
+import me.ruyeo.newcut.utils.extensions.getMyDrawable
 import me.ruyeo.newcut.utils.extensions.viewBinding
-
 
 @AndroidEntryPoint
 class LoginFragment : BaseFragment(R.layout.fragment_login) {
     private val binding by viewBinding { FragmentLoginBinding.bind(it) }
+    private val viewModel by viewModels<LoginViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         phoneEditTextManager()
         continueButtonManager()
+        callBack()
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.login.collect {
+                when (it) {
+                    is UiStateObject.LOADING -> {
+                        toaster("show loading")
+                    }
+                    is UiStateObject.SUCCESS -> {
+                        if (it.data.success) {
+                            findNavController().navigate(
+                                R.id.action_loginFragment_to_confirmationFragment,
+                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
+                            )
+                        } else {
+                            findNavController().navigate(
+                                R.id.action_loginFragment_to_registrationFragment,
+                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
+                            )
+                        }
+                    }
+                    is UiStateObject.ERROR -> {
+                        showMessage(it.message)
+                    }
+                    else -> Unit
+                }
+            }
+        }
+    }
+
+    private fun callBack() {
+        binding.toolbar.setNavigationOnClickListener {
+            onBackPressed()
+        }
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun continueButtonManager() {
-        val errorMessageIcon = resources.getDrawable(R.drawable.ic_error_message)
-        errorMessageIcon.setBounds(0, 0,
-            errorMessageIcon.intrinsicWidth, errorMessageIcon.intrinsicHeight)
         binding.phoneNumberEdt.apply {
             binding.continueBtn.setOnClickListener {
                 when {
                     text!!.length > 17 -> {
                         inputLayoutBoxDisable()
-                        findNavController().navigate(
-                            R.id.action_loginFragment_to_confirmationFragment,
-                            bundleOf("phoneNumber" to text.toString())
-                        )
-                    }
-                    text!!.length == 5 -> {
-                        setError("Raqam Kiritilmagan!", errorMessageIcon)
-                        inputLayoutBoxEnable()
+                        viewModel.login(Login(text.toString()))
                     }
                     else -> {
-                        setError("Noto'g'ri formatdagi raqam!", errorMessageIcon)
                         inputLayoutBoxEnable()
                     }
                 }
@@ -63,7 +95,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     private fun inputLayoutBoxDisable() {
         binding.textInputLayout.boxStrokeColor =
-            ContextCompat.getColor(requireContext(), R.color.white)
+            ContextCompat.getColor(requireContext(), R.color.green_default)
     }
 
     @SuppressLint("SetTextI18n")
@@ -77,9 +109,19 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                 @SuppressLint("SetTextI18n")
                 override fun afterTextChanged(p0: Editable?) {
                     inputLayoutBoxDisable()
+                    if (!phoneNumberEdt.text!!.contains("+998(") ||
+                        phoneNumberEdt.text!![0].toString() != "+"
+                    ) {
+                        phoneNumberEdt.setText("+998(")
+                        editLastCursor()
+                    }
                     if (phoneNumberEdt.text!!.length < 5) {
                         phoneNumberEdt.setText("+998(")
                         editLastCursor()
+                    }
+
+                    if (phoneNumberEdt.text!!.length == 18) {
+                        hideKeyboard()
                     }
                 }
             })

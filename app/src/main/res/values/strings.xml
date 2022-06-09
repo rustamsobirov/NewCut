@@ -2,6 +2,37 @@
     <string name="app_name">NewCut</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="verify_phone">Verify phone</string>
+    <string name="resend">Resend</string>
+
+    <string name="notifications">Notifications</string>
+    <string name="mark_all_as_read">Mark all as read</string>
+    <string name="do_not_disturb">Do not disturb</string>
+    <string name="just_now">Just now</string>
+    <string name="notif_example">You have an appointment at The Galleria Hair Salon at 8:00am today</string>
+    <string name="faqs">FAQs</string>
+    <string name="what_is_flo_cutters">What is Flo Cutters?</string>
+    <string name="how_much_does_this_cost">How much does this cost?</string>
+    <string name="where_are_you_located">Where are you located?</string>
+    <string name="can_i_just_come_in_or_do_i_have_to_make_an_appointment">Can I just come in or do I have to \n make an appointment?</string>
+    <string name="change_avatar">Change Avatar</string>
+    <string name="full_name">Full name</string>
+    <string name="permission_not_allowed">Location Permission Don\'t Allowed\nClick to open setting</string>
+    <string name="please_allow_phone_local">Please Accept Location enable for use this App.</string>
+    <string name="email">Email</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone number</string>
+    <string name="b_save">Save</string>
+    <string name="gender">Gender</string>
+    <string name="birth_of_date">Birth of date</string>
+    <string name="name_example">Robert Fox</string>
+    <string name="email_ex">robert_fox@gmail.com</string>
+    <string name="settings">Settings</string>
+    <string name="about_us">About Us</string>
+    <string name="logout">Logout</string>
+    <string name="Bcancel">Cancel</string>
+    <string name="todo">TODO</string>
+
 
     <string-array name="times">
         <item>Remind me</item>
@@ -10,4 +41,12 @@
         <item>30 min before</item>
         <item>Never remind</item>
     </string-array>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+
+    </string-array>
+
+
 </resources>

@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
+    android:textSize="14sp"
+    android:maxLines="1"
     android:background="@color/white"
+    android:fontFamily="@font/poppins_regular"
     android:textColor="#191632"
-    android:textSize="13sp"
     android:textStyle="normal"/>

@@ -12,14 +12,14 @@ import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.location.LocationManager
 import android.net.Uri
+import android.os.Build
 import android.text.Editable
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.annotation.ColorInt
 import androidx.annotation.LayoutRes
@@ -38,6 +38,28 @@ import kotlin.math.roundToInt
 
 fun Context.color(colorRes: Int) = ContextCompat.getColor(this, colorRes)
 
+fun Fragment.isLocationEnabled(): Boolean {
+    val locationManager =
+        requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+    return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
+        LocationManager.NETWORK_PROVIDER
+    )
+}
+
+fun Context.hasPermission(permission: String): Boolean {
+
+    if (permission == Manifest.permission.ACCESS_BACKGROUND_LOCATION &&
+        android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.Q
+    ) return true
+
+    return ActivityCompat.checkSelfPermission(this, permission) ==
+            PackageManager.PERMISSION_GRANTED
+}
+
+fun Fragment.hasPermission(permission: String): Boolean {
+    return requireActivity().applicationContext.hasPermission(permission)
+}
+
 fun Context.getTintDrawable(drawableRes: Int, colorRes: Int): Drawable {
     val source = ContextCompat.getDrawable(this, drawableRes)!!.mutate()
     val wrapped = DrawableCompat.wrap(source)
@@ -45,14 +67,14 @@ fun Context.getTintDrawable(drawableRes: Int, colorRes: Int): Drawable {
     return wrapped
 }
 
-fun EditText.etCondition(condition: Boolean){
+fun EditText.etCondition(condition: Boolean) {
     this.isEnabled = condition
 }
 
 fun Context.getTintDrawable(
     drawableRes: Int,
     colorResources: IntArray,
-    states: Array<IntArray>
+    states: Array<IntArray>,
 ): Drawable {
     val source = ContextCompat.getDrawable(this, drawableRes)!!.mutate()
     val wrapped = DrawableCompat.wrap(source)
@@ -102,7 +124,10 @@ fun Fragment.showSnackMessage(message: String) {
 fun View.showSnackMessage(message: String) {
     val ssb = SpannableStringBuilder().apply {
         append(message)
-        setSpan(ForegroundColorSpan(Color.WHITE), 0, message.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        setSpan(ForegroundColorSpan(Color.WHITE),
+            0,
+            message.length,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         textAlignment = View.TEXT_ALIGNMENT_CENTER
     }
     Snackbar.make(this, ssb, Snackbar.LENGTH_LONG).show()
@@ -240,7 +265,8 @@ fun formatDate(): String {
 }
 
 fun Activity.callToCenter() {
-    if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
+    if (ActivityCompat.checkSelfPermission(this,
+            Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
     ) {
         phoneCall(this)
     } else {
@@ -251,7 +277,9 @@ fun Activity.callToCenter() {
 }
 
 private fun phoneCall(activity: Activity) {
-    if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+    if (ActivityCompat.checkSelfPermission(activity,
+            Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED
+    ) {
         val intent = Intent(Intent.ACTION_CALL, Uri.fromParts("tel", "+998712317193", null))
         activity.startActivity(intent)
     } else {
@@ -261,15 +289,6 @@ private fun phoneCall(activity: Activity) {
 
 fun Context.showMessage(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-}
-
-fun moneyToPin(money: String): String {
-    val length = money.length
-    var ans = ""
-    for (i in 0 until length) {
-        ans += "*"
-    }
-    return ans
 }
 
 fun Long.formattedMoney(showDecimal: Boolean = true, tiyinToSum: Boolean = false) =
@@ -322,26 +341,5 @@ fun Spinner.setSelections(spinnerId: Int?) {
 }
 
 fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
-fun Any.toRoundInt(): Int = this.toString().toDouble().roundToInt()
 
-typealias SingleBlock <T> = (T) -> Unit
 
-fun Long.generateId(): String {
-    if (this >= 10_000) return this.toString()
-    return "00000$this".reversed().substring(0, 5).reversed()
-}
-
-fun String.scanId(): String {
-    var res = ""
-    var isDigit = false
-    for (i in this.indices) {
-        if (!isDigit) {
-            if (this[i].isDigit() && this[i].toRoundInt() > 0) {
-                isDigit = true
-                res += this[i]
-            }
-        } else res += this[i]
-    }
-
-    return res
-}

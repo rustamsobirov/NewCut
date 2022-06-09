@@ -4,9 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import me.ruyeo.newcut.ui.client.detail.detail_in.DetailAboutFragment
 import me.ruyeo.newcut.ui.client.detail.detail_in.DetailGalleryFragment
 import me.ruyeo.newcut.ui.client.detail.detail_in.DetailReviewFragment
+import me.ruyeo.newcut.ui.client.detail.detail_specialists.DetailPortfolioFragment
 
 class DetailBottomViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
     FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -17,10 +17,10 @@ class DetailBottomViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 -> {
-                DetailAboutFragment()
+                DetailGalleryFragment()
             }
             1 -> {
-                DetailGalleryFragment()
+                DetailPortfolioFragment()
             }
             2 -> {
                 DetailReviewFragment()
