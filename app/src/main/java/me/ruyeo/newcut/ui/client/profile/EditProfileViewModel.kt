@@ -11,6 +11,7 @@ import me.ruyeo.newcut.repository.AuthRepository
 import me.ruyeo.newcut.utils.Constants
 import me.ruyeo.newcut.utils.UiStateObject
 import javax.inject.Inject
+
 @HiltViewModel
 class EditProfileViewModel @Inject constructor(
     private val repository: AuthRepository
@@ -29,7 +30,8 @@ class EditProfileViewModel @Inject constructor(
             }
 
         } catch (e: Exception) {
-            _updateProfile.value = UiStateObject.ERROR(e.localizedMessage ?: Constants.ERROR_MESSAGE)
+            _updateProfile.value =
+                UiStateObject.ERROR(e.localizedMessage ?: Constants.ERROR_MESSAGE)
         }
     }
 }
