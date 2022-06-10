@@ -34,21 +34,18 @@
             android:id="@+id/backBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:clickable="true"
             android:focusable="true"
-            android:padding="10dp"
-            android:src="@drawable/ic_detail_back_icon"
+            android:padding="8dp"
+            android:src="@drawable/back_white"
             app:layout_constraintLeft_toLeftOf="@id/detailRecyclerView"
-            app:layout_constraintTop_toTopOf="@id/detailRecyclerView"
+            app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/likeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
             android:clickable="true"
             android:focusable="true"
@@ -97,6 +94,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/barbershopName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
@@ -122,6 +120,7 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
+                            android:id="@+id/is_open_tv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
@@ -137,6 +136,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
+                    android:id="@+id/address_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"

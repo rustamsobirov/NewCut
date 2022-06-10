@@ -36,14 +36,20 @@ interface ApiService {
 
 
     //barbershop
-    @GET("barbershop/getAll")
-    suspend fun getAllBarbershops(): Barbershop
+    @GET("barbershop/$BACK_VER/getAll")
+    suspend fun getAllBarbershops(): BaseResponseList<Barbershop>
 
-    @POST("barbershop/create")
+    @POST("barbershop/$BACK_VER/getByCriteria")
+    suspend fun getByCriteria(@Body criteria: Criteria): BaseResponseList<Barbershop>
+
+    @POST("barbershop/$BACK_VER/create")
     suspend fun createBarbershop(@Body map: HashMap<String,Any>): BaseResponseList<Barbershop>
 
-    @PATCH("barbershop/update")
+    @PATCH("barbershop/$BACK_VER/update")
     suspend fun updateBarbershop(@Body map: HashMap<String,Any>)
+
+    @GET("barbershop/$BACK_VER/{id}")
+    suspend fun getBarbershopById(@Path("id") id: Int) : BaseResponseObject<Barbershop>
 
 
     //barberbshop rating
@@ -57,6 +63,6 @@ interface ApiService {
 
     //notification
 
-    @GET("notification/list")
-    suspend fun getAllNotifications(): Notification
+    @GET("notification/$BACK_VER/list")
+    suspend fun getAllNotifications(): BaseResponseList<Notification>
 }
