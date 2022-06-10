@@ -228,7 +228,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                         map["deviceId"] = "21"
                         map["deviceToken"] = "21"
                         viewModel.confirmationCode(map)
-                        checkRequestServerCode(ed1.text.toString() + ed2.text.toString() + ed3.text.toString() + ed4.text.toString())
+                       // checkAllEditToSendCodeServer(ed1.text.toString() + ed2.text.toString() + ed3.text.toString() + ed4.text.toString())
 //                        if (isRegister){
 //                            viewModel.confirmationRegister()
 //                        }else{
