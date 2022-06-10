@@ -43,14 +43,35 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/fullname"
+            android:text="@string/firstname"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
 
         <EditText
-            android:id="@+id/name_edt"
+            android:id="@+id/firstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edtextbackground"
+            android:backgroundTint="@null"
+            android:drawableEnd="@drawable/ic_profile"
+            android:fontFamily="@font/poppins_regular"
+            android:maxLines="1"
+            android:paddingEnd="15dp"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/lastname"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold" />
+        <EditText
+            android:id="@+id/lastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edtextbackground"

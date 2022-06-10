@@ -17,6 +17,15 @@ interface ApiService {
     suspend fun confirmationCode(@Body map: HashMap<String, Any>): BaseResponseObject<Confirm>
 
 
+    @GET("auth/$BACK_VER/{id}")
+    suspend fun getAboutMe(@Path("id")id: Int):BaseResponseObject<User>
+
+
+    @PUT("auth/$BACK_VER/update")
+    suspend fun upDateProfile(@Body userUpdate: UserUpdate):BaseResponseObject<UserResponseUpdate>
+
+
+
     //orders
     @GET("order/list")
     suspend fun getAllOrders(): Order
@@ -57,4 +66,7 @@ interface ApiService {
 
     @GET("notification/$BACK_VER/list")
     suspend fun getAllNotifications(): BaseResponseList<Notification>
+
+
+
 }

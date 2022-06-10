@@ -32,4 +32,6 @@ class MainRepository @Inject constructor(
 
     //notification
     suspend fun getNotifications() = apiService.getAllNotifications()
+
+
 }

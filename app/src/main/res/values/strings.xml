@@ -76,6 +76,8 @@
     <string name="pass" translatable="false">Pass</string>
     <string name="your_phone_number">A 4 digit security code will be sent via SMS to verify your mobile number!</string>
     <string name="enter_number">Enter number</string>
+    <string name="lastname">LastName</string>
+    <string name="firstname">FirstName</string>
 
 
     <string-array name="times">
