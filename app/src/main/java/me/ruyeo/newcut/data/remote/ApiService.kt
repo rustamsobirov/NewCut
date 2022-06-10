@@ -22,7 +22,8 @@ interface ApiService {
 
 
     @PUT("auth/$BACK_VER/update")
-    suspend fun upDateProfile(@Body userUpdate: UserUpdate):BaseResponseObject<UserResponseUpdate>
+    suspend fun upDateProfile(@Body userUpdate: UserUpdate):BaseResponseObject<User>
+
 
 
 
