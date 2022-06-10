@@ -78,7 +78,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                 when {
                     text!!.length > 17 -> {
                         inputLayoutBoxDisable()
-                        viewModel.login(Login(text.toString()))
+                        viewModel.login(text.toString())
                     }
                     else -> {
                         inputLayoutBoxEnable()
