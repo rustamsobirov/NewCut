@@ -9,18 +9,12 @@ interface ApiService {
     //auth
     @POST("auth/$BACK_VER/loginByPhone")
     suspend fun login(@Body phoneNumber: String): BaseResponseObject<Login> // we need model class to fetch response
-    @POST("auth/api/v1/loginByPhone")
-    suspend fun login(@Body phoneNumber: Login): LoginResponse // we need model class to fetch response
 
-    @POST("auth/api/v1/register")
-    suspend fun register(@Body phoneNumber: Login): LoginResponse
     @POST("auth/$BACK_VER/register")
     suspend fun register(@Body phoneNumber: String): BaseResponseObject<Boolean>
 
     @POST("auth/$BACK_VER/confirmUserCode")
-    suspend fun confirmationCode(@Body map: HashMap<String,Any>): BaseResponseObject<Confirm>
-
-
+    suspend fun confirmationCode(@Body map: HashMap<String, Any>): BaseResponseObject<Confirm>
 
 
     //orders
@@ -28,11 +22,9 @@ interface ApiService {
     suspend fun getAllOrders(): Order
 
 
-
     //organization
     @GET("all")
     suspend fun getAllOrganization(): Organization
-
 
 
     //barbershop
@@ -43,19 +35,19 @@ interface ApiService {
     suspend fun getByCriteria(@Body criteria: Criteria): BaseResponseList<Barbershop>
 
     @POST("barbershop/$BACK_VER/create")
-    suspend fun createBarbershop(@Body map: HashMap<String,Any>): BaseResponseList<Barbershop>
+    suspend fun createBarbershop(@Body map: HashMap<String, Any>): BaseResponseList<Barbershop>
 
     @PATCH("barbershop/$BACK_VER/update")
-    suspend fun updateBarbershop(@Body map: HashMap<String,Any>)
+    suspend fun updateBarbershop(@Body map: HashMap<String, Any>)
 
     @GET("barbershop/$BACK_VER/{id}")
-    suspend fun getBarbershopById(@Path("id") id: Int) : BaseResponseObject<Barbershop>
+    suspend fun getBarbershopById(@Path("id") id: Int): BaseResponseObject<Barbershop>
 
 
     //barberbshop rating
 
     @POST("rating/create")
-    suspend fun giveRating(@Body map: HashMap<String,Any>)
+    suspend fun giveRating(@Body map: HashMap<String, Any>)
 
     @GET("rating/{id}")
     suspend fun getRatingById(@Path("id") id: Int): Rating
