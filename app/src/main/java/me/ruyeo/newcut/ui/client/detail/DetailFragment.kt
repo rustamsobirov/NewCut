@@ -4,6 +4,10 @@ import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -12,6 +16,8 @@ import androidx.viewpager2.widget.ViewPager2
 import com.ahmadhamwi.tabsync.TabbedListMediator
 import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.detail.DetailBottomSalonSpecialistAdapter
 import me.ruyeo.newcut.adapter.detail.DetailBottomViewPagerAdapter
@@ -20,6 +26,7 @@ import me.ruyeo.newcut.databinding.FragmentDetailBinding
 import me.ruyeo.newcut.model.detail.DetailModel
 import me.ruyeo.newcut.model.detail.DetailSpecialistModel
 import me.ruyeo.newcut.ui.BaseFragment
+import me.ruyeo.newcut.utils.UiStateObject
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.extensions.visible
 
@@ -30,6 +37,7 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     private var photosList = ArrayList<DetailModel>()
     private var specialistList = ArrayList<DetailSpecialistModel>()
     private val binding by viewBinding { FragmentDetailBinding.bind(it) }
+    private val viewModel by viewModels<DetailViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //fragment detail
@@ -41,7 +49,43 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
         detailBottomRatingBarManager()
         salonSpecialistRecycler()
 
-        callBack()
+        setupUI()
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.barbershopState.collect {
+                    when(it){
+                        is UiStateObject.LOADING -> {
+                            toaster("show loading")
+                        }
+                        is UiStateObject.SUCCESS -> {
+                            binding.apply {
+                                barbershopName.text = it.data.name
+                                addressTv.text = it.data.address
+                                if (it.data.isClosed){
+                                    isOpenTv.text = "Yopiq"
+                                }else{
+                                    isOpenTv.text = "Ochiq"
+                                }
+                            }
+                        }
+                        is UiStateObject.ERROR -> {
+
+                        }
+                        else -> Unit
+                    }
+                }
+            }
+        }
+    }
+
+    private fun setupUI() {
+        binding.backBtn.setOnClickListener {
+            onBackPressed()
+        }
     }
 
     private fun salonSpecialistRecycler() {
@@ -107,12 +151,6 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
 //            Toast.makeText(context,
 //                "$rating",
 //                Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun callBack() {
-        binding.backBtn.setOnClickListener {
-            onBackPressed()
         }
     }
 

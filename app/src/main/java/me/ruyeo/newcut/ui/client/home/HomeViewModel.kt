@@ -12,6 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import me.ruyeo.newcut.data.local.enitity.Booking
+import me.ruyeo.newcut.data.model.Barbershop
 import me.ruyeo.newcut.model.map.GeoResponse
 import me.ruyeo.newcut.model.map.Latlng
 import me.ruyeo.newcut.repository.MainRepository
@@ -78,10 +79,26 @@ class HomeViewModel @Inject constructor(
         try {
             val response = repository.getLocationName(latLng = latLng)
             _getLocationName.value = UiStateObject.SUCCESS(response)
-        }catch (e: Exception){
+        } catch (e: Exception) {
             _getLocationName.value = UiStateObject.ERROR(e.localizedMessage ?: ERROR_MESSAGE)
         }
     }
 
+    private val _getBarbershopsState = MutableStateFlow<UiStateList<Barbershop>>(UiStateList.EMPTY)
+    var getBarbershopState = _getBarbershopsState
+
+    fun getBarberShops() = viewModelScope.launch {
+        _getBarbershopsState.value = UiStateList.LOADING
+        try {
+            val response = repository.getAllBarbershops()
+            if (response.success) {
+                _getBarbershopsState.value = UiStateList.SUCCESS(response.data)
+            } else {
+                _getBarbershopsState.value = UiStateList.ERROR(response.error.message)
+            }
+        } catch (e: Exception) {
+            _getBarbershopsState.value = UiStateList.ERROR(e.localizedMessage ?: ERROR_MESSAGE)
+        }
+    }
 
 }
