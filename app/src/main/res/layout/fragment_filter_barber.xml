@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginStart="20dp"
+                    android:layout_marginStart="16dp"
                     android:src="@drawable/ic_search" />
 
                 <EditText
@@ -47,6 +47,7 @@
                     android:text="salon" />
 
                 <LinearLayout
+                    android:layout_marginEnd="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical|end">
@@ -68,6 +69,9 @@
                 android:gravity="center">
 
                 <ImageView
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:background="?attr/selectableItemBackground"
                     android:id="@+id/iv_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -88,7 +92,7 @@
             android:maxLines="1"
             android:text="Popular artist"
             android:textColor="@color/black"
-            android:textSize="17sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -108,7 +112,7 @@
             android:layout_marginTop="20dp"
             android:text="Result found(246)"
             android:textColor="@color/black"
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView

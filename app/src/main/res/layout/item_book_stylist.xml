@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
+    android:gravity="center_vertical"
     android:orientation="horizontal">
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/iv_profile"
         android:layout_width="100dp"
-        android:layout_height="85dp"
+        android:layout_height="70dp"
         android:scaleType="centerCrop"
         android:src="@drawable/image_barber"
         app:shapeAppearanceOverlay="@style/rounded_corner" />
@@ -36,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:text="6391 Elgin St. Celina, Delaware..."
-            android:textColor="#ABAAB1"
-            android:textSize="13sp" />
+            android:textColor="@color/text_300"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -78,7 +79,7 @@
 
             <TextView
                 android:id="@+id/tv_length"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="5dp"
@@ -88,9 +89,10 @@
                 android:textSize="13sp" />
 
             <Button
+                android:backgroundTint="@color/colorPrimary_500"
                 android:id="@+id/btn_book"
                 android:layout_width="70dp"
-                android:layout_height="32dp"
+                android:layout_height="30dp"
                 android:text="Book"
                 android:clickable="true"
                 android:focusable="true"

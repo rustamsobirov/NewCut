@@ -32,6 +32,9 @@
     <string name="logout">Logout</string>
     <string name="Bcancel">Cancel</string>
     <string name="todo">TODO</string>
+    <string name="home">Home</string>
+    <string name="appointment">Appointment</string>
+    <string name="profile">Profile</string>
 
 
     <string-array name="times">

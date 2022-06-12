@@ -4,7 +4,7 @@
     <!--    <solid android:color="#191632"/>-->
     <!--    <corners android:radius="20dp"/>-->
 
-    <solid android:color="@color/green_default" />
+    <solid android:color="@color/colorPrimary_500" />
     <corners android:radius="15dp" />
 
 </shape>

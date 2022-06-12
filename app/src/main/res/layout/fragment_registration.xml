@@ -32,7 +32,7 @@
         android:ellipsize="end"
         android:fontFamily="@font/poppins_regular"
         android:text="Create a new account"
-        android:textColor="#ABAAB1"
+        android:textColor="@color/text_400"
         android:textSize="16sp" />
 
 
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginBottom="24dp"
-                android:backgroundTint="@null"
+                android:backgroundTint="@color/colorPrimary_500"
                 android:clickable="true"
                 android:elevation="0dp"
                 android:focusable="true"
@@ -96,3 +96,4 @@
 
 
 </LinearLayout>
+
