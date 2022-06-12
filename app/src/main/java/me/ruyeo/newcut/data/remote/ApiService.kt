@@ -17,6 +17,16 @@ interface ApiService {
     suspend fun confirmationCode(@Body map: HashMap<String, Any>): BaseResponseObject<Confirm>
 
 
+    @GET("auth/$BACK_VER/{id}")
+    suspend fun getAboutMe(@Path("id")id: Int):BaseResponseObject<User>
+
+
+    @PUT("auth/$BACK_VER/update")
+    suspend fun upDateProfile(@Body userUpdate: UserUpdate):BaseResponseObject<User>
+
+
+
+
     //orders
     @GET("order/$BACK_VER/list")
     suspend fun getAllOrders(): BaseResponseList<Order>
@@ -45,6 +55,7 @@ interface ApiService {
 
 
     //barberbshop rating
+
     @POST("rating/create")
     suspend fun giveRating(@Body map: HashMap<String, Any>)
 
@@ -56,8 +67,4 @@ interface ApiService {
 
     @GET("notification/$BACK_VER/list")
     suspend fun getAllNotifications(): BaseResponseList<Notification>
-
-    //favourites
-    @POST("favourites/$BACK_VER/add")
-    suspend fun addFavourites(@Body map : HashMap<String, Any>): BaseResponseObject<Int>
 }
