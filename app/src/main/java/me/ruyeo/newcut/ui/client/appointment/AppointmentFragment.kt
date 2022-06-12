@@ -23,8 +23,8 @@ class AppointmentFragment : BaseFragment(R.layout.fragment_appoitment) {
         binding.apply {
             viewPager.adapter = viewPagerAdapter
 
-            tabLayout.addTab(tabLayout.newTab().setText("Upcoming"))
-            tabLayout.addTab(tabLayout.newTab().setText("Pass"))
+            tabLayout.addTab(tabLayout.newTab().setText(R.string.upcoming))
+            tabLayout.addTab(tabLayout.newTab().setText(R.string.pass))
 
             tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {

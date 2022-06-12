@@ -33,7 +33,7 @@
                 android:ellipsize="end"
                 android:fontFamily="@font/poppins_bold"
                 android:maxLines="1"
-                android:text="Natalia Vicky"
+                android:text="@string/natalia_vicky"
                 android:textSize="18sp" />
 
             <com.willy.ratingbar.ScaleRatingBar
@@ -60,7 +60,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/poppins_regular"
             android:maxLines="1"
-            android:text="2 days ago"
+            android:text="@string/_2_days_ago"
             android:textColor="@color/text_500"
             android:textSize="16sp" />
 
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
             android:paddingVertical="10dp"
-            android:text="The people working here are just so nice and helpful and make you feel so comfortable!"
+            android:text="@string/description"
             android:textColor="@color/text_500"
             android:textSize="14sp" />
 

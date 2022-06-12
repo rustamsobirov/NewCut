@@ -14,7 +14,15 @@ interface ApiService {
     suspend fun register(@Body phoneNumber: String): BaseResponseObject<Boolean>
 
     @POST("auth/$BACK_VER/confirmUserCode")
-    suspend fun confirmationCode(@Body map: HashMap<String,Any>): BaseResponseObject<Confirm>
+    suspend fun confirmationCode(@Body map: HashMap<String, Any>): BaseResponseObject<Confirm>
+
+
+    @GET("auth/$BACK_VER/{id}")
+    suspend fun getAboutMe(@Path("id")id: Int):BaseResponseObject<User>
+
+
+    @PUT("auth/$BACK_VER/update")
+    suspend fun upDateProfile(@Body userUpdate: UserUpdate):BaseResponseObject<User>
 
 
 
@@ -24,28 +32,32 @@ interface ApiService {
     suspend fun getAllOrders(): Order
 
 
-
     //organization
     @GET("all")
     suspend fun getAllOrganization(): Organization
 
 
-
     //barbershop
-    @GET("barbershop/getAll")
-    suspend fun getAllBarbershops(): Barbershop
+    @GET("barbershop/$BACK_VER/getAll")
+    suspend fun getAllBarbershops(): BaseResponseList<Barbershop>
 
-    @POST("barbershop/create")
-    suspend fun createBarbershop(@Body map: HashMap<String,Any>): BaseResponseList<Barbershop>
+    @POST("barbershop/$BACK_VER/getByCriteria")
+    suspend fun getByCriteria(@Body criteria: Criteria): BaseResponseList<Barbershop>
 
-    @PATCH("barbershop/update")
-    suspend fun updateBarbershop(@Body map: HashMap<String,Any>)
+    @POST("barbershop/$BACK_VER/create")
+    suspend fun createBarbershop(@Body map: HashMap<String, Any>): BaseResponseList<Barbershop>
+
+    @PATCH("barbershop/$BACK_VER/update")
+    suspend fun updateBarbershop(@Body map: HashMap<String, Any>)
+
+    @GET("barbershop/$BACK_VER/{id}")
+    suspend fun getBarbershopById(@Path("id") id: Int): BaseResponseObject<Barbershop>
 
 
     //barberbshop rating
 
     @POST("rating/create")
-    suspend fun giveRating(@Body map: HashMap<String,Any>)
+    suspend fun giveRating(@Body map: HashMap<String, Any>)
 
     @GET("rating/{id}")
     suspend fun getRatingById(@Path("id") id: Int): Rating
@@ -53,6 +65,9 @@ interface ApiService {
 
     //notification
 
-    @GET("notification/list")
-    suspend fun getAllNotifications(): Notification
+    @GET("notification/$BACK_VER/list")
+    suspend fun getAllNotifications(): BaseResponseList<Notification>
+
+
+
 }

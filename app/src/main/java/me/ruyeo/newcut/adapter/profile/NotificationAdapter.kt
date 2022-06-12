@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import me.ruyeo.newcut.data.model.Notification
 import me.ruyeo.newcut.databinding.ItemNotificationBinding
 import me.ruyeo.newcut.model.appointment.PassAppointmentModel
 import me.ruyeo.newcut.model.profile.NotificationModel
@@ -15,7 +16,11 @@ class NotificationAdapter : RecyclerView.Adapter<NotificationAdapter.Vh>() {
 
     inner class Vh(var binding: ItemNotificationBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind() {
+            val notification = dif.currentList[adapterPosition]
 
+            binding.apply {
+                notifyTv.text = notification.message
+            }
         }
     }
 
@@ -28,7 +33,7 @@ class NotificationAdapter : RecyclerView.Adapter<NotificationAdapter.Vh>() {
             )
         )
     }
-    fun submitList(list: List<NotificationModel>) {
+    fun submitList(list: List<Notification>) {
         dif.submitList(list)
     }
 
@@ -37,17 +42,17 @@ class NotificationAdapter : RecyclerView.Adapter<NotificationAdapter.Vh>() {
     override fun getItemCount(): Int = dif.currentList.size
 
     companion object {
-        private val ITEM_DIFF = object : DiffUtil.ItemCallback<NotificationModel>() {
+        private val ITEM_DIFF = object : DiffUtil.ItemCallback<Notification>() {
             override fun areItemsTheSame(
-                oldItem: NotificationModel,
-                newItem: NotificationModel
+                oldItem: Notification,
+                newItem: Notification
             ): Boolean {
                 return true
             }
 
             override fun areContentsTheSame(
-                oldItem: NotificationModel,
-                newItem: NotificationModel
+                oldItem: Notification,
+                newItem: Notification
             ): Boolean {
                 return true
             }

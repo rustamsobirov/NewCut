@@ -10,13 +10,10 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.data.model.Login
 import me.ruyeo.newcut.databinding.FragmentLoginBinding
@@ -40,33 +37,29 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
     }
 
     private fun setupObservers() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.login.collect {
-                    when (it) {
-                        is UiStateObject.LOADING -> {
-                            toaster("show loading")
-                        }
-                        is UiStateObject.SUCCESS -> {
-                            if (it.data.success) {
-                                findNavController().navigate(
-                                    R.id.action_loginFragment_to_confirmationFragment,
-                                    bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
-                                )
-                                viewModel.reset()
-                            } else {
-                                findNavController().navigate(
-                                    R.id.action_loginFragment_to_registrationFragment,
-                                    bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
-                                )
-                                viewModel.reset()
-                            }
-                        }
-                        is UiStateObject.ERROR -> {
-                            showMessage(it.message)
-                        }
-                        else -> Unit
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            viewModel.login.collect {
+                when (it) {
+                    is UiStateObject.LOADING -> {
+                        toaster("show loading")
                     }
+                    is UiStateObject.SUCCESS -> {
+                        if (it.data.success) {
+                            findNavController().navigate(
+                                R.id.action_loginFragment_to_confirmationFragment,
+                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
+                            )
+                        } else {
+                            findNavController().navigate(
+                                R.id.action_loginFragment_to_registrationFragment,
+                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
+                            )
+                        }
+                    }
+                    is UiStateObject.ERROR -> {
+                        showMessage(it.message)
+                    }
+                    else -> Unit
                 }
             }
         }

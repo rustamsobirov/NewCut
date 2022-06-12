@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import me.ruyeo.newcut.data.model.Barbershop
 import me.ruyeo.newcut.databinding.MapCuttersItemBinding
 import me.ruyeo.newcut.model.map.MapBarberShopModel
 
@@ -20,14 +21,14 @@ class MapBarberShopAdapter() :
         fun bind() {
             binding.apply {
                 val details = dif.currentList[adapterPosition]
-                Glide.with(root.context)
-                    .load(details.barberShopImage)
+               /* Glide.with(root.context)
+                    .load(details.)
                     .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                    .into(binding.barberShopImages)
-                barberShopName.text = details.barberShopName
-                barberShopLocationName.text = details.barberShopLocationName
-                barberShopRating.rating = details.barberShopStarCount.toFloat()
-                barberShopLocationKM.text = details.barberShopLocationKM
+                    .into(binding.barberShopImages)*/ // we need from bekend
+                barberShopName.text = details.name
+                barberShopLocationName.text = details.address
+                barberShopRating.rating = 3.2f // we need from bekend
+                barberShopLocationKM.text = "3.2KM" // we need from bekend
 
                 mapCutterItem.setOnClickListener {
                     itemClick?.invoke()
@@ -38,7 +39,7 @@ class MapBarberShopAdapter() :
     }
 
 
-    fun submitList(list: List<MapBarberShopModel>) {
+    fun submitList(list: List<Barbershop>) {
         dif.submitList(list)
     }
 
@@ -58,15 +59,15 @@ class MapBarberShopAdapter() :
     override fun getItemCount(): Int = dif.currentList.size
 
     companion object {
-        private val ITEM_DIFF = object : DiffUtil.ItemCallback<MapBarberShopModel>() {
+        private val ITEM_DIFF = object : DiffUtil.ItemCallback<Barbershop>() {
             override fun areItemsTheSame(
-                oldItem: MapBarberShopModel,
-                newItem: MapBarberShopModel,
+                oldItem: Barbershop,
+                newItem: Barbershop,
             ): Boolean = false
 
             override fun areContentsTheSame(
-                oldItem: MapBarberShopModel,
-                newItem: MapBarberShopModel,
+                oldItem: Barbershop,
+                newItem: Barbershop,
             ): Boolean =
                 oldItem == newItem
         }

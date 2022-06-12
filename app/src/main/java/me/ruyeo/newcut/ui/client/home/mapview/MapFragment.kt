@@ -11,7 +11,9 @@ import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.directions.route.*
@@ -25,6 +27,7 @@ import com.google.android.gms.maps.model.*
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.MapBarberShopAdapter
 import me.ruyeo.newcut.databinding.FragmentMapBinding
@@ -32,6 +35,7 @@ import me.ruyeo.newcut.model.map.*
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.ui.client.filter.FilterAndBookingBarberFragment
 import me.ruyeo.newcut.ui.client.home.HomeViewModel
+import me.ruyeo.newcut.utils.UiStateList
 import me.ruyeo.newcut.utils.UiStateObject
 import me.ruyeo.newcut.utils.extensions.distance
 import me.ruyeo.newcut.utils.extensions.showSnackMessage
@@ -71,6 +75,11 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         setUpMap()
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getBarberShops()
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentMapBinding.bind(view)
@@ -79,9 +88,31 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         collapseManager()
         searchButtonManager()
         keyboardChangeListener()
-        barberShopRecyclerItem()
         openDetailFragment()
         replaceFrameManager()
+
+        setupObservers()
+    }
+
+    private fun setupObservers() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.getBarbershopState.collect {
+                    when(it){
+                        is UiStateList.LOADING -> {
+                            toaster("Show loading")
+                        }
+                        is UiStateList.SUCCESS -> {
+                            barberShopAdapter.submitList(it.data)
+                        }
+                        is UiStateList.ERROR -> {
+                            showMessage(it.message)
+                        }
+                        else -> Unit
+                    }
+                }
+            }
+        }
     }
 
     private fun replaceFrameManager() {
@@ -166,7 +197,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     private fun setUpMap() {
         setupMe()
-        barShopLatLongListAdder()
         btnMyLocationClickManager()
     }
 
@@ -219,60 +249,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
                     .icon(bitmapFromVector(R.drawable.ic_location_yellow))
             )
             markerList.add(myMarker!!)
-        }
-    }
-
-    private fun barShopLatLongListAdder() {
-        barberShopLatLongList.add(BarberShopLatLongModel("1", LatLng(41.324122, 69.229472)))
-
-        barberShopLatLongList.add(BarberShopLatLongModel("2", LatLng(41.317578, 69.217327)))
-
-        barberShopLatLongList.add(BarberShopLatLongModel("3", LatLng(41.321744, 69.236438)))
-
-        barberShopLatLongList.add(BarberShopLatLongModel("4", LatLng(41.315098, 69.223595)))
-    }
-
-    private fun barberShopRecyclerItem() {
-        binding.apply {
-            barberShopRecyclerView.adapter = barberShopAdapter
-            PagerSnapHelper().attachToRecyclerView(barberShopRecyclerView)
-            mapBarberList.add(
-                MapBarberShopModel(
-                    "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Salon-image.png?alt=media&token=88fe9b51-1a16-442b-a994-bcdbf6b37559",
-                    "Sartaroshxona",
-                    "chorsu",
-                    4,
-                    "25 km"
-                )
-            )
-            mapBarberList.add(
-                MapBarberShopModel(
-                    "https://beautyhealthtips.in/wp-content/uploads/2019/02/Quiff-Haircuts.jpg",
-                    "Sartaroshxona",
-                    "chorsu",
-                    4,
-                    "25 km"
-                )
-            )
-            mapBarberList.add(
-                MapBarberShopModel(
-                    "https://i.pinimg.com/originals/e5/1f/e7/e51fe72785398953ab9095023bc98505.jpg",
-                    "Sartaroshxona",
-                    "chorsu",
-                    4,
-                    "25 km"
-                )
-            )
-            mapBarberList.add(
-                MapBarberShopModel(
-                    "https://wallpaperaccess.com/full/3696056.jpg",
-                    "Sartaroshxona",
-                    "chorsu",
-                    4,
-                    "25 km"
-                )
-            )
-            barberShopAdapter.submitList(mapBarberList)
         }
     }
 

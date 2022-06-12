@@ -36,7 +36,7 @@
 
                 <EditText
                     android:id="@+id/editText_search"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
@@ -44,13 +44,16 @@
                     android:background="#F8F8F8"
                     android:clickable="true"
                     android:focusable="true"
-                    android:text="salon" />
+                    tools:text="salon"
+                    tools:ignore="NestedWeights" />
 
                 <LinearLayout
                     android:layout_marginEnd="16dp"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center_vertical|end">
+                    android:paddingEnd="10dp"
+                    android:gravity="center_vertical|end"
+                    tools:ignore="RtlSymmetry">
 
                     <ImageView
                         android:id="@+id/iv_filter"
@@ -90,7 +93,7 @@
             android:layout_marginTop="20dp"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="Popular artist"
+            android:text="@string/popular_artist"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -110,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="20dp"
-            android:text="Result found(246)"
+            tools:text="Result found(246)"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
