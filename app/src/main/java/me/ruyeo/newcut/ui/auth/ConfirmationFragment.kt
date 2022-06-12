@@ -73,6 +73,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
                     is UiStateObject.SUCCESS -> {
                         hideProgress()
                         sharedPref.token = it.data.accessToken
+                        sharedPref.setUser(it.data.authUser)
                         Intent(requireActivity(), MainActivity::class.java).also {
                             startActivity(it)
                         }
@@ -92,7 +93,6 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         binding.apply {
             tvResend.setOnClickListener {
                 if (tvResend.text == getString(R.string.resend)) {
-                    toaster("Resend")
                     secondJob = perSecond()
                 }
             }
@@ -138,7 +138,6 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
             ed4.setOnKeyListener { _, keyCode, _ ->
                 if (keyCode == KeyEvent.KEYCODE_DEL) {
                     if (ed4.text.isEmpty()) {
-                        Log.d("@@@", "4 DEL")
                         ed4.setBackgroundResource(R.drawable.edtextbackground)
                         allEditTextClickableTrue()
                         ed3.requestFocus()
