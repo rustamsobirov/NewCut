@@ -12,7 +12,7 @@ tools:context=".ui.auth.LoginFragment">
     android:layout_width="match_parent"
     android:layout_height="?actionBarSize"
     android:elevation="3dp"
-    app:navigationIcon="@drawable/keyboard_backspace"/>
+    app:navigationIcon="@drawable/ic_arrow_back"/>
 
 <TextView
     android:layout_width="wrap_content"
@@ -62,7 +62,8 @@ tools:context=".ui.auth.LoginFragment">
         android:hint="@string/enter_number"
         android:inputType="phone"
         android:maxLength="18"
-        android:textColorHint="@color/light_900"
+        android:singleLine="true"
+        android:textColorHint="@color/text_300"
         android:textSize="14sp" />
 
 </com.google.android.material.textfield.TextInputLayout>
@@ -73,6 +74,7 @@ tools:context=".ui.auth.LoginFragment">
     android:gravity="bottom">
 
     <Button
+        android:backgroundTint="@color/colorPrimary_500"
         android:id="@+id/continue_btn"
         android:layout_width="match_parent"
         android:layout_height="56dp"

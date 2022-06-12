@@ -31,21 +31,24 @@
             tools:listitem="@layout/detail_image_item" />
 
         <ImageView
+            android:layout_marginStart="10dp"
             android:id="@+id/backBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:clickable="true"
             android:focusable="true"
-            android:padding="8dp"
-            android:src="@drawable/back_white"
+            android:src="@drawable/ic_arrow_back_light"
             app:layout_constraintLeft_toLeftOf="@id/detailRecyclerView"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/detailRecyclerView"
             tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/likeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="10dp"
             android:clickable="true"
             android:focusable="true"
@@ -102,7 +105,7 @@
                         android:ellipsize="end"
                         android:fontFamily="@font/poppins_bold"
                         android:maxLines="1"
-                        tools:text="Bella Rinova"
+                        android:text="Bella Rinova"
                         android:textSize="20sp"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -112,7 +115,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="20dp"
-                        android:backgroundTint="@color/green_default"
+                        android:backgroundTint="@color/colorPrimary_500"
                         android:clickable="false"
                         app:cardCornerRadius="16sp"
                         app:cardElevation="0dp"
@@ -120,14 +123,14 @@
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:id="@+id/is_open_tv"
+                            android:id="@+id/isOpenTv"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="10dp"
                             android:layout_marginVertical="5dp"
                             android:fontFamily="@font/poppins_bold"
                             android:includeFontPadding="false"
-                            android:text="@string/open"
+                            android:text="Open"
                             android:textColor="@color/white"
                             android:textSize="16sp" />
 
@@ -136,14 +139,14 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
-                    android:id="@+id/address_tv"
+                    android:id="@+id/addressTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginVertical="5dp"
                     android:fontFamily="@font/poppins_regular"
                     android:textSize="14sp"
-                    tools:text="6391 Elgin St. Celina, Delaware 10299"
+                    android:text="6391 Elgin St. Celina, Delaware 10299"
                     />
 
                 <LinearLayout
@@ -169,17 +172,19 @@
                         app:srb_stepSize="1" />
 
                     <TextView
+                        android:gravity="center_vertical"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_regular"
-                        tools:text="(76 Reviews)"
+                        android:text="(76 Reviews)"
                         android:textColor="@color/text_500" />
 
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+                    android:padding="2dp"
                     android:layout_height="wrap_content">
 
                     <LinearLayout
@@ -212,7 +217,7 @@
                             android:ellipsize="end"
                             android:fontFamily="@font/poppins_regular"
                             android:maxLines="1"
-                            android:text="@string/website"
+                            android:text="Website"
                             android:textSize="14sp" />
 
 
@@ -248,7 +253,7 @@
                             android:ellipsize="end"
                             android:fontFamily="@font/poppins_regular"
                             android:maxLines="1"
-                            android:text="@string/call"
+                            android:text="Call"
                             android:textSize="14sp" />
 
 
@@ -284,7 +289,7 @@
                             android:ellipsize="end"
                             android:fontFamily="@font/poppins_regular"
                             android:maxLines="1"
-                            android:text="@string/direction"
+                            android:text="Direction"
                             android:textSize="14sp" />
 
 
@@ -320,7 +325,7 @@
                             android:ellipsize="end"
                             android:fontFamily="@font/poppins_regular"
                             android:maxLines="1"
-                            android:text="@string/share"
+                            android:text="Share"
                             android:textSize="14sp" />
 
 
@@ -334,7 +339,7 @@
                     android:layout_marginHorizontal="20dp"
                     android:layout_marginVertical="5dp"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="@string/salon_specialists"
+                    android:text="Salon specialists"
                     android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -356,7 +361,7 @@
                     app:tabGravity="center"
                     app:tabIndicator="@drawable/detail_bottom_tab_background"
                     app:tabIndicatorAnimationMode="elastic"
-                    app:tabIndicatorColor="@color/green_default"
+                    app:tabIndicatorColor="@color/colorPrimary_500"
                     app:tabIndicatorGravity="stretch"
                     app:tabMode="scrollable"
                     app:tabRippleColor="@null"

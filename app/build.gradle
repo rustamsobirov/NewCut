@@ -7,7 +7,6 @@ plugins {
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'com.google.firebase.crashlytics'
 }
-
 android {
     compileSdk 32
 

@@ -17,7 +17,7 @@
         android:layout_marginTop="96dp"
         android:ellipsize="end"
         android:fontFamily="@font/poppins_bold"
-        android:text="@string/sign_up"
+        android:text="Sign up "
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="30sp"
@@ -31,8 +31,8 @@
         android:layout_marginTop="10dp"
         android:ellipsize="end"
         android:fontFamily="@font/poppins_regular"
-        android:text="@string/create_a_new_account"
-        android:textColor="#ABAAB1"
+        android:text="Create a new account"
+        android:textColor="@color/text_400"
         android:textSize="16sp" />
 
 
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
-                android:hint="@string/enter_your_name"
+                android:hint="Enter your name"
                 android:includeFontPadding="false"
                 android:inputType="text"
                 android:textColorHint="@color/light_900"
@@ -82,11 +82,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:layout_marginBottom="24dp"
-                android:backgroundTint="@null"
+                android:backgroundTint="@color/colorPrimary_500"
                 android:clickable="true"
                 android:elevation="0dp"
                 android:focusable="true"
-                android:text="@string/sign_up"
+                android:text="Sign up"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -96,3 +96,4 @@
 
 
 </LinearLayout>
+

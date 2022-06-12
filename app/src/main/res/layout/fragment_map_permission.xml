@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="@color/green_default"
+        android:background="@color/colorPrimary_500"
         android:clickable="true"
         android:drawableEnd="@drawable/ic_link_settings"
         android:drawablePadding="2dp"

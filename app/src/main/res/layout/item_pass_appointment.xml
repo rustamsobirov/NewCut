@@ -3,8 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
     android:padding="10dp"
     android:background="@drawable/bg_appointment_item_rv"
     android:orientation="vertical">
@@ -13,8 +12,8 @@
         android:id="@+id/tv_booked_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="12 September 2021, 08:00"
-        android:textSize="20sp"
+        android:text="12 September 2021, 08:00"
+        android:textSize="18sp"
         android:fontFamily="@font/poppins_regular"
         android:textColor="#191632"
         android:textStyle="bold"/>
@@ -45,29 +44,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                tools:text="Bella Rinova"
+                android:text="Bella Rinova"
                 android:fontFamily="@font/poppins_bold"
                 android:textColor="#191632"
-                android:textSize="16sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tv_user_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_regular"
-                tools:text="6391 Elgin St. Celina, Dela..."
+                android:text="6391 Elgin St. Celina, Dela..."
                 android:maxLines="1"
-                android:textColor="#ABAAB1"
+                android:textColor="@color/text_300"
                 android:textSize="14sp"/>
 
             <TextView
                 android:id="@+id/tv_type_haircut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Services: Regular haircut, Classic shaving"
+                android:text="Services: Regular haircut, Classic shaving"
                 android:textSize="14sp"
+                android:singleLine="true"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="@color/green_default"
+                android:textColor="@color/colorPrimary_500"
                 android:maxLines="2"/>
 
         </LinearLayout>
@@ -78,22 +78,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
 
         <Button
             android:id="@+id/b_review"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/tv_bg"
             android:textColor="#191632"
             android:textSize="14sp"
             android:foreground="?android:attr/selectableItemBackgroundBorderless"
             android:textStyle="normal"
-            android:text="@string/review"/>
+            android:text="Review"/>
 
         <Space
             android:layout_width="15dp"
@@ -102,11 +104,11 @@
 
         <Button
             android:id="@+id/b_reschedule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@drawable/tv_reschedule_bg"
-            android:text="@string/reschedule"
+            android:text="Reschedule"
             android:textColor="@color/white"
             android:textSize="14sp"
             android:textStyle="normal" />
@@ -116,3 +118,4 @@
 
 
 </LinearLayout>
+

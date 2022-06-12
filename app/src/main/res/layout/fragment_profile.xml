@@ -20,37 +20,39 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/poppins_regular"
-                android:gravity="center"
-                android:text="@string/profil"
+                android:gravity="center_vertical"
+                android:text="Profile"
                 android:textColor="@color/black"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:gravity="end">
+                android:gravity="center_vertical">
 
                 <ImageView
                     android:id="@+id/notif_iv"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_margin="10dp"
                     android:background="@drawable/ll_bg"
                     android:padding="12dp"
+                    android:layout_marginEnd="16dp"
                     android:src="@drawable/ic_ring" />
 
                 <ImageView
                     android:id="@+id/favorite_iv"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_margin="10dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/ll_bg"
                     android:padding="12dp"
-                    android:src="@drawable/ic_favorite" />
+                    android:src="@drawable/ic_favorite"/>
             </LinearLayout>
 
 
@@ -125,13 +127,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_bold"
-                tools:text="Mirkamol Egamberdiyev" />
+                android:text="Mirkamol Egamberdiyev" />
 
             <TextView
                 android:id="@+id/phoneNumberTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="+998974697907"
+                android:text="+998974697907"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -148,14 +150,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_edit" />
+                android:src="@drawable/ic_edit"
+                android:contentDescription="TODO" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center_vertical"
                 android:layout_marginStart="10dp"
-                android:text="@string/edit_profile"
+                android:text="Edit profile"
                 app:drawableEndCompat="@drawable/ic_road"
                 tools:ignore="RtlSymmetry" />
 
@@ -287,3 +290,4 @@
 
 
 </LinearLayout>
+

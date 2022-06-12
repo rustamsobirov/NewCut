@@ -67,7 +67,7 @@
                     android:maxLines="1"
                     tools:text="Bella Rinova"
                     android:textColor="@color/text_900"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -82,7 +82,7 @@
                     android:maxLines="1"
                     tools:text="8502 Preston Rd. Inglewo..."
                     android:textColor="@color/text_300"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
@@ -131,7 +131,7 @@
                             android:maxLines="1"
                             tools:text="25 km"
                             android:textColor="@color/text_900"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

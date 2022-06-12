@@ -3,19 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <item
+        android:title="Home"
         android:id="@+id/mapPermissionFragment"
         android:icon="@drawable/home_icon_manager"
-        app:showAsAction="always"
-        tools:ignore="MenuTitle" />
+        app:showAsAction="never" />
     <item
+        android:title="Appointment"
         android:id="@+id/appointmentFragment"
         android:icon="@drawable/appointment_icon_manager"
-        app:showAsAction="always"
-        tools:ignore="MenuTitle" />
+        app:showAsAction="never" />
     <item
+        android:title="Profile"
         android:id="@+id/profileFragment"
         android:icon="@drawable/account_icon_manager"
-        app:showAsAction="always"
-        tools:ignore="MenuTitle" />
+        app:showAsAction="never"/>
 
 </menu>
+

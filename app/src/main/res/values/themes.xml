@@ -2,13 +2,13 @@
     <!-- Base application theme. -->
     <style name="Theme.NewCut" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/green_default</item>
-        <item name="colorPrimaryVariant">@color/green_default</item>
+        <item name="colorPrimary">@color/colorPrimary_700</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/green_default</item>
-        <item name="colorSecondaryVariant">@color/green_default</item>
-        <item name="colorOnSecondary">@color/green_default</item>
+        <item name="colorSecondary">@color/colorPrimary_700</item>
+        <item name="colorSecondaryVariant">@color/colorPrimary_700</item>
+        <item name="colorOnSecondary">@color/colorPrimary_700</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <!-- Customize your theme here. -->
@@ -65,7 +65,11 @@
     </style>
 
     <style name="rounded_corner">
-        <item name="cornerSize">30%</item>
+        <item name="cornerSize">25%</item>
+    </style>
+
+    <style name="rounded_corner_style">
+        <item name="cornerSize">24dp</item>
     </style>
 
     <declare-styleable name="SpannedGridLayoutManager">
@@ -86,7 +90,7 @@
         <item name="android:maxLength">1</item>
         <item name="android:maxLines">1</item>
         <item name="android:padding">10dp</item>
-        <item name="android:textColor">@color/green_default</item>
+        <item name="android:textColor">@color/colorPrimary_500</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
