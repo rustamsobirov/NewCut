@@ -52,10 +52,10 @@ class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile),
             saveBtn.setOnClickListener {
                 val userUpdateProfile =
                     UserUpdate(
-                        firstName.text.toString(),
+                        nameEdt.text.toString(),
                         0,
                         "",
-                        lastName.text.toString(),
+                        nameEdt.text.toString(),
                         "")
 
 
