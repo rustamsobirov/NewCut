@@ -34,7 +34,6 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        toaster(phoneNumber)
         showKeyboard(binding.nameEdt)
         sensorToHideKeyBoard()
 
@@ -54,13 +53,15 @@ class RegistrationFragment : BaseFragment(R.layout.fragment_registration) {
             viewModel.register.collect {
                 when (it) {
                     is UiStateObject.LOADING -> {
-                        toaster("show loading")
+                        showProgress()
                     }
                     is UiStateObject.SUCCESS -> {
+                        hideProgress()
                         findNavController().navigate(R.id.action_registrationFragment_to_confirmationFragment, bundleOf("phoneNumber" to phoneNumber))
                         viewModel.reset()
                     }
                     is UiStateObject.ERROR -> {
+                        hideProgress()
                         showMessage(it.message)
                     }
                     else -> Unit

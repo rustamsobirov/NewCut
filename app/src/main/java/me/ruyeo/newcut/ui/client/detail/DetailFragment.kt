@@ -38,15 +38,20 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     private var specialistList = ArrayList<DetailSpecialistModel>()
     private val binding by viewBinding { FragmentDetailBinding.bind(it) }
     private val viewModel by viewModels<DetailViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            viewModel.getBarbershopById(it.getInt("barbershopId"))
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //fragment detail
         installRecyclerView()
         carouselRecyclerManager()
         tabLayoutManager()
-        //detail bottom layout
         detailBottomViewPagerManager()
-        detailBottomRatingBarManager()
         salonSpecialistRecycler()
 
         setupUI()
@@ -55,25 +60,28 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
 
     private fun setupObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.barbershopState.collect {
-                    when(it){
+                    when (it) {
                         is UiStateObject.LOADING -> {
-                            toaster("show loading")
+                            showProgress()
                         }
                         is UiStateObject.SUCCESS -> {
+                            hideProgress()
                             binding.apply {
                                 barbershopName.text = it.data.name
                                 addressTv.text = it.data.address
-                                if (it.data.isClosed){
+                                if (it.data.isClosed) {
                                     isOpenTv.text = "Yopiq"
-                                }else{
+                                } else {
                                     isOpenTv.text = "Ochiq"
                                 }
+                                ratingBar.rating = it.data.rating
                             }
                         }
                         is UiStateObject.ERROR -> {
-
+                            hideProgress()
+                            showMessage(it.message)
                         }
                         else -> Unit
                     }
@@ -143,14 +151,6 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
                 )
             )
             detailBottomSalonSpecialistAdapter.submitList(specialistList)
-        }
-    }
-
-    private fun detailBottomRatingBarManager() {
-        binding.ratingBar.setOnRatingChangeListener { _, rating, _ ->
-//            Toast.makeText(context,
-//                "$rating",
-//                Toast.LENGTH_SHORT).show()
         }
     }
 

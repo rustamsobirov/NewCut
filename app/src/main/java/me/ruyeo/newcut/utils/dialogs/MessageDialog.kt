@@ -44,5 +44,4 @@ class MessageDialog(private val message: String, private val dialogText: String?
         super.onDestroy()
         _bn = null
     }
-
 }

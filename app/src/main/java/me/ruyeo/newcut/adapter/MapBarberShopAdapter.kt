@@ -9,29 +9,28 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import me.ruyeo.newcut.data.model.Barbershop
 import me.ruyeo.newcut.databinding.MapCuttersItemBinding
-import me.ruyeo.newcut.model.map.MapBarberShopModel
 
 class MapBarberShopAdapter() :
     RecyclerView.Adapter<MapBarberShopAdapter.VH>() {
     private val dif = AsyncListDiffer(this, ITEM_DIFF)
-    var itemClick: (() -> Unit)? = null
+    var itemClick: ((Int) -> Unit)? = null
 
     inner class VH(private val binding: MapCuttersItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
             binding.apply {
                 val details = dif.currentList[adapterPosition]
-               /* Glide.with(root.context)
-                    .load(details.)
+                Glide.with(root.context)
+                    .load("https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Salon-image.png?alt=media&token=88fe9b51-1a16-442b-a994-bcdbf6b37559")
                     .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                    .into(binding.barberShopImages)*/ // we need from bekend
-                barberShopName.text = details.name
-                barberShopLocationName.text = details.address
-                barberShopRating.rating = 3.2f // we need from bekend
-                barberShopLocationKM.text = "3.2KM" // we need from bekend
+                    .into(binding.barberShopImages)
+                barberShopName.text = details.address
+                barberShopLocationName.text = details.description
+                barberShopRating.rating = details.rating
+                barberShopLocationKM.text = "${String.format("%.02f",details.distance)} KM"
 
                 mapCutterItem.setOnClickListener {
-                    itemClick?.invoke()
+                    itemClick?.invoke(details.id)
                 }
 
             }

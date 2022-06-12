@@ -68,15 +68,18 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
             viewModel.confirmCode.collect {
                 when (it) {
                     is UiStateObject.LOADING -> {
-                        toaster("show loading")
+                        showProgress()
                     }
                     is UiStateObject.SUCCESS -> {
+                        hideProgress()
                         sharedPref.token = it.data.accessToken
                         Intent(requireActivity(), MainActivity::class.java).also {
                             startActivity(it)
                         }
+                        requireActivity().finish()
                     }
                     is UiStateObject.ERROR -> {
+                        hideProgress()
                         showMessage(it.message)
                     }
                     else -> Unit

@@ -50,12 +50,14 @@ class NotificationFragment : BaseFragment(R.layout.fragment_notification) {
                 viewModel.notificationState.collect {
                     when (it) {
                         is UiStateList.LOADING -> {
-                            toaster("Show progress")
+                            showProgress()
                         }
                         is UiStateList.SUCCESS -> {
+                            hideProgress()
                             adapter.submitList(it.data)
                         }
                         is UiStateList.ERROR -> {
+                            hideProgress()
                             showMessage(it.message)
                         }
                         else -> Unit

@@ -9,13 +9,13 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.PagerSnapHelper
 import com.directions.route.*
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -30,8 +30,12 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.MapBarberShopAdapter
+import me.ruyeo.newcut.data.model.Criteria
 import me.ruyeo.newcut.databinding.FragmentMapBinding
-import me.ruyeo.newcut.model.map.*
+import me.ruyeo.newcut.model.map.BarberShopLatLongModel
+import me.ruyeo.newcut.model.map.GeoCodeInfo
+import me.ruyeo.newcut.model.map.GeoResponse
+import me.ruyeo.newcut.model.map.Latlng
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.ui.client.filter.FilterAndBookingBarberFragment
 import me.ruyeo.newcut.ui.client.home.HomeViewModel
@@ -53,7 +57,6 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private var lastLocation: Location? = null
     private val barberShopAdapter by lazy { MapBarberShopAdapter() }
-    private var mapBarberList = ArrayList<MapBarberShopModel>()
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private val viewModel by viewModels<HomeViewModel>()
     private var barberShopLatLongList = ArrayList<BarberShopLatLongModel>()
@@ -77,7 +80,8 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.getBarberShops()
+        val cri = Criteria(69.226296, 41.3264751, 4)
+        viewModel.getByCriteria(cri)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -92,20 +96,23 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         replaceFrameManager()
 
         setupObservers()
+        binding.barberShopRecyclerView.adapter = barberShopAdapter
     }
 
     private fun setupObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
-                viewModel.getBarbershopState.collect {
-                    when(it){
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.criteriaState.collect {
+                    when (it) {
                         is UiStateList.LOADING -> {
-                            toaster("Show loading")
+                            showProgress()
                         }
                         is UiStateList.SUCCESS -> {
+                            hideProgress()
                             barberShopAdapter.submitList(it.data)
                         }
                         is UiStateList.ERROR -> {
+                            hideProgress()
                             showMessage(it.message)
                         }
                         else -> Unit
@@ -131,7 +138,10 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     private fun openDetailFragment() {
         barberShopAdapter.itemClick = {
-            findNavController().navigate(R.id.action_mapFragment_to_detailFragment)
+            findNavController().navigate(
+                R.id.action_mapFragment_to_detailFragment,
+                bundleOf("barbershopId" to it)
+            )
         }
     }
 
@@ -381,23 +391,25 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         with(current) {
             viewModel.getLocationName(Latlng(this.latitude, this.longitude))
 
-            viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-                viewModel.getLocationName.collect {
-                    when (it) {
-                        is UiStateObject.LOADING -> {
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    viewModel.getLocationName.collect {
+                        when (it) {
+                            is UiStateObject.LOADING -> {
 
-                        }
-                        is UiStateObject.SUCCESS -> {
-                            binding.included.locationAddress.text =
-                                calculateDestination(
-                                    response = it.data,
-                                    current
-                                )?.name
-                        }
-                        is UiStateObject.ERROR -> {
+                            }
+                            is UiStateObject.SUCCESS -> {
+                                binding.included.locationAddress.text =
+                                    calculateDestination(
+                                        response = it.data,
+                                        current
+                                    )?.name
+                            }
+                            is UiStateObject.ERROR -> {
 
+                            }
+                            else -> Unit
                         }
-                        else -> Unit
                     }
                 }
             }

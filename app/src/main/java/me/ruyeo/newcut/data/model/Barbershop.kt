@@ -3,10 +3,13 @@ package me.ruyeo.newcut.data.model
 data class Barbershop(
     val address: String,
     val description: String,
+    val distance: Double,
     val id: Int,
     val isClosed: Boolean,
-    val latitude: String,
-    val longitude: String,
+    val latitude: Double,
+    val longitude: Double,
     val name: String,
+    val pictures: List<String>,
+    val rating: Float,
     val workingTime: String
 )
