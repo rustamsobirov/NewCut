@@ -3,25 +3,22 @@ package me.ruyeo.newcut.ui.client.profile
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 import me.ruyeo.newcut.R
+import me.ruyeo.newcut.SharedPref
 import me.ruyeo.newcut.databinding.FragmentProfileBinding
 import me.ruyeo.newcut.ui.BaseFragment
-import me.ruyeo.newcut.utils.UiStateList
-import me.ruyeo.newcut.utils.UiStateObject
 import me.ruyeo.newcut.utils.extensions.viewBinding
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
     private val binding by viewBinding { FragmentProfileBinding.bind(it) }
     private val viewModel by viewModels<ProfileViewModel>()
 
+    @Inject
+    lateinit var sharedPref: SharedPref
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.getAboutMe(0)
@@ -32,7 +29,14 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
 
 
         profileFragmentsManager()
-        setupObservers()
+        setupUI()
+    }
+
+    private fun setupUI() {
+        binding.apply {
+            fullname.text = sharedPref.getUser().fullName
+            phoneNumberTv.text = sharedPref.getUser().phoneNumber
+        }
     }
 
     private fun profileFragmentsManager() {
@@ -52,7 +56,7 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         }
     }
 
-    private fun setupObservers() {
+  /*  private fun setupObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.mainProfile.collect {
@@ -71,6 +75,5 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
                     }
                 }
             }
-        }
+        }*/
     }
-}

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.ruyeo.newcut.App
 import me.ruyeo.newcut.R
+import me.ruyeo.newcut.data.model.Order
 import me.ruyeo.newcut.databinding.ItemUpcomingAppointmentBinding
 import me.ruyeo.newcut.model.appointment.UpcomingAppointment
 
@@ -66,22 +67,22 @@ class UpcomingAppointmentAdapter :  RecyclerView.Adapter<UpcomingAppointmentAdap
     override fun getItemCount(): Int = dif.currentList.size
 
 
-    fun submitList(list: List<UpcomingAppointment>) {
+    fun submitList(list: List<Order>) {
         dif.submitList(list)
     }
 
     companion object {
-        private val ITEM_DIFF = object : DiffUtil.ItemCallback<UpcomingAppointment>() {
+        private val ITEM_DIFF = object : DiffUtil.ItemCallback<Order>() {
             override fun areItemsTheSame(
-                oldItem: UpcomingAppointment,
-                newItem: UpcomingAppointment
+                oldItem: Order,
+                newItem: Order
             ): Boolean {
                 return true
             }
 
             override fun areContentsTheSame(
-                oldItem: UpcomingAppointment,
-                newItem: UpcomingAppointment
+                oldItem: Order,
+                newItem: Order
             ): Boolean {
                 return true
             }

@@ -33,5 +33,8 @@ class MainRepository @Inject constructor(
     //notification
     suspend fun getNotifications() = apiService.getAllNotifications()
 
+    //favourites
+  //  suspend fun addFavourites(map: HashMap<String, Any>) = apiService.addFavourites(map)
 
+    suspend fun getFavourites(id: Int) = apiService.getFavourites(id)
 }

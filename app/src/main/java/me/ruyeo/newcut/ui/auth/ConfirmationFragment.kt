@@ -68,15 +68,19 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
             viewModel.confirmCode.collect {
                 when (it) {
                     is UiStateObject.LOADING -> {
-                        toaster("show loading")
+                        showProgress()
                     }
                     is UiStateObject.SUCCESS -> {
+                        hideProgress()
                         sharedPref.token = it.data.accessToken
+                        sharedPref.setUser(it.data.authUser)
                         Intent(requireActivity(), MainActivity::class.java).also {
                             startActivity(it)
                         }
+                        requireActivity().finish()
                     }
                     is UiStateObject.ERROR -> {
+                        hideProgress()
                         showMessage(it.message)
                     }
                     else -> Unit
@@ -89,7 +93,6 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
         binding.apply {
             tvResend.setOnClickListener {
                 if (tvResend.text == getString(R.string.resend)) {
-                    toaster("Resend")
                     secondJob = perSecond()
                 }
             }
@@ -135,7 +138,6 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
             ed4.setOnKeyListener { _, keyCode, _ ->
                 if (keyCode == KeyEvent.KEYCODE_DEL) {
                     if (ed4.text.isEmpty()) {
-                        Log.d("@@@", "4 DEL")
                         ed4.setBackgroundResource(R.drawable.edtextbackground)
                         allEditTextClickableTrue()
                         ed3.requestFocus()
@@ -239,7 +241,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
             "Please enter the 4 diget security code we just sent you at " + "<font color=${
                 ContextCompat.getColor(
                     requireContext(),
-                    R.color.green_default
+                    R.color.colorPrimary_500
                 )
             }>" + arguments?.getString(
                 "phoneNumber"

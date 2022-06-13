@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationManagement()
 
-        setFullscreen()
+      //  setFullscreen()
     }
 
     private fun bottomNavigationManagement() {

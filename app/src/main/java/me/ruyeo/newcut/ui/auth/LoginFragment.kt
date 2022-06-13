@@ -20,6 +20,7 @@ import me.ruyeo.newcut.databinding.FragmentLoginBinding
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.UiStateObject
 import me.ruyeo.newcut.utils.extensions.getMyDrawable
+import me.ruyeo.newcut.utils.extensions.phoneNumber
 import me.ruyeo.newcut.utils.extensions.viewBinding
 
 @AndroidEntryPoint
@@ -41,22 +42,26 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
             viewModel.login.collect {
                 when (it) {
                     is UiStateObject.LOADING -> {
-                        toaster("show loading")
+                        showProgress()
                     }
                     is UiStateObject.SUCCESS -> {
+                        hideProgress()
                         if (it.data.success) {
                             findNavController().navigate(
                                 R.id.action_loginFragment_to_confirmationFragment,
-                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
+                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString().phoneNumber())
                             )
+                            viewModel.reset()
                         } else {
                             findNavController().navigate(
                                 R.id.action_loginFragment_to_registrationFragment,
-                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
+                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString().phoneNumber())
                             )
+                            viewModel.reset()
                         }
                     }
                     is UiStateObject.ERROR -> {
+                        hideProgress()
                         showMessage(it.message)
                     }
                     else -> Unit
@@ -78,8 +83,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                 when {
                     text!!.length > 17 -> {
                         inputLayoutBoxDisable()
-                        viewModel.login(text.toString())
-                    }
+                        viewModel.login(text.toString().phoneNumber())            }
                     else -> {
                         inputLayoutBoxEnable()
                     }
@@ -95,7 +99,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     private fun inputLayoutBoxDisable() {
         binding.textInputLayout.boxStrokeColor =
-            ContextCompat.getColor(requireContext(), R.color.green_default)
+            ContextCompat.getColor(requireContext(), R.color.colorPrimary_500)
     }
 
     @SuppressLint("SetTextI18n")

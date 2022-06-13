@@ -340,6 +340,10 @@ fun Spinner.setSelections(spinnerId: Int?) {
         this.setSelection(spinnerId ?: 0)
 }
 
+fun String.phoneNumber(): String{
+   return this.replace("+998","").replace("(","").replace(")","").replace(" ","")
+}
+
 fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
 
 

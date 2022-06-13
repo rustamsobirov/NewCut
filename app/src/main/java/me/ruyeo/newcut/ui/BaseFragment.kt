@@ -1,5 +1,6 @@
 package me.ruyeo.newcut.ui
 
+import android.app.Dialog
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -10,15 +11,22 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.compose.ui.window.Dialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.airbnb.lottie.LottieAnimationView
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import me.ruyeo.newcut.App
 import me.ruyeo.newcut.utils.dialogs.CancellationDialog
 import me.ruyeo.newcut.utils.dialogs.MessageDialog
+import me.ruyeo.newcut.utils.dialogs.ProgressBarDialog
+
 
 abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
+
+    lateinit var loadingDialog : Dialog
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,6 +34,11 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
         savedInstanceState: Bundle?,
     ): View {
         return inflater.inflate(layoutRes, container, false)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        loadingDialog = ProgressBarDialog(requireContext())
     }
 
     protected fun showMessage(message: String) {
@@ -84,6 +97,14 @@ abstract class BaseFragment(private val layoutRes: Int) : Fragment() {
 
     fun onBackPressed() {
         findNavController().popBackStack()
+    }
+
+    fun showProgress(){
+        loadingDialog.show()
+    }
+
+    fun hideProgress(){
+        loadingDialog.dismiss()
     }
 
 }

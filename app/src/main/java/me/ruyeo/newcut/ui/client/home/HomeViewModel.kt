@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import me.ruyeo.newcut.data.local.enitity.Booking
 import me.ruyeo.newcut.data.model.Barbershop
+import me.ruyeo.newcut.data.model.Criteria
 import me.ruyeo.newcut.model.map.GeoResponse
 import me.ruyeo.newcut.model.map.Latlng
 import me.ruyeo.newcut.repository.MainRepository
@@ -98,6 +99,23 @@ class HomeViewModel @Inject constructor(
             }
         } catch (e: Exception) {
             _getBarbershopsState.value = UiStateList.ERROR(e.localizedMessage ?: ERROR_MESSAGE)
+        }
+    }
+
+    private val _criteriaState = MutableStateFlow<UiStateList<Barbershop>>(UiStateList.EMPTY)
+    val criteriaState = _criteriaState
+
+    fun getByCriteria(criteria: Criteria) = viewModelScope.launch {
+        _criteriaState.value = UiStateList.LOADING
+        try {
+            val response = repository.getByCriteria(criteria)
+            if (response.success){
+                _criteriaState.value = UiStateList.SUCCESS(response.data)
+            }else{
+                _criteriaState.value = UiStateList.ERROR(response.error.message)
+            }
+        }catch (e: Exception){
+            _criteriaState.value = UiStateList.ERROR(e.localizedMessage ?: ERROR_MESSAGE)
         }
     }
 

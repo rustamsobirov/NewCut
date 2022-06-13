@@ -7,8 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import me.ruyeo.newcut.data.model.Notification
 import me.ruyeo.newcut.databinding.ItemNotificationBinding
-import me.ruyeo.newcut.model.appointment.PassAppointmentModel
-import me.ruyeo.newcut.model.profile.NotificationModel
 
 class NotificationAdapter : RecyclerView.Adapter<NotificationAdapter.Vh>() {
     private val dif = AsyncListDiffer(this, ITEM_DIFF)
