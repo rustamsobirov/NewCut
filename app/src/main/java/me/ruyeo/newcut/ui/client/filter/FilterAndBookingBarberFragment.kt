@@ -30,8 +30,12 @@ class FilterAndBookingBarberFragment : BaseFragment(R.layout.fragment_filter_bar
         installRecyclerView()
         recyclerSpecialist()
         recyclerBookingList()
-
         reviewCountManager()
+        initViews()
+
+    }
+
+    private fun initViews() {
 
     }
 

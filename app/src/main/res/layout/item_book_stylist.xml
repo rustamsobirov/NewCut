@@ -26,7 +26,7 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Green Apple"
+            android:text="@string/name_example"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:text="6391 Elgin St. Celina, Delaware..."
+            android:text="@string/location"
             android:textColor="@color/text_300"
             android:textSize="14sp" />
 
@@ -64,7 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="5.0"
+                android:text="@string/reating"
                 android:textColor="#FFAB36"
                 android:textSize="13sp" />
 
@@ -84,18 +84,18 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:text="15 km"
+                android:text="@string/distance"
                 android:textColor="@color/black"
                 android:textSize="13sp" />
 
             <Button
-                android:backgroundTint="@color/colorPrimary_500"
                 android:id="@+id/btn_book"
                 android:layout_width="70dp"
                 android:layout_height="30dp"
-                android:text="Book"
+                android:background="@drawable/txt_view_language_background_shape"
                 android:clickable="true"
                 android:focusable="true"
+                android:text="@string/book"
                 android:textColor="@color/white"
                 android:textSize="13sp"
                 android:textStyle="bold" />

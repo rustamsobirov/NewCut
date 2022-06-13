@@ -148,7 +148,6 @@
         <entry key="..\:/AllProjectsBootcamp/CuteCut/app/src/main/res/layout/map_include_layout.xml" value="0.33" />
         <entry key="..\:/AllProjectsBootcamp/CuteCut/app/src/main/res/layout/view_dialog_cancellation.xml" value="0.25" />
         <entry key="..\:/AllProjectsBootcamp/CuteCut/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/drawable-v24/bg_appointment_item_rv.xml" value="0.1215" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/drawable-v24/tv_bg.xml" value="0.141" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/drawable-v24/tv_reschedule_bg.xml" value="0.141" />
@@ -198,15 +197,29 @@
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_pass_appointment.xml" value="0.16417272338606242" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_spinner_list.xml" value="0.19895833333333332" />
         <entry key="..\:/Android/Module 6/NewCut_Rustam/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.33" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/drawable/ic_star_unselected.xml" value="0.126" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/drawable/txt_view_language_background_shape.xml" value="0.126" />
         <entry key="..\:/CuteCutNew/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/CuteCutNew/app/src/main/res/layout/activity_main.xml" value="0.19074074074074074" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/bottom_sheet_filter.xml" value="0.20416666666666666" />
         <entry key="..\:/CuteCutNew/app/src/main/res/layout/detail_review_item.xml" value="0.2" />
         <entry key="..\:/CuteCutNew/app/src/main/res/layout/fragment_about.xml" value="0.20416666666666666" />
         <entry key="..\:/CuteCutNew/app/src/main/res/layout/fragment_confirmation.xml" value="0.20416666666666666" />
         <entry key="..\:/CuteCutNew/app/src/main/res/layout/fragment_detail.xml" value="0.25" />
         <entry key="..\:/CuteCutNew/app/src/main/res/layout/fragment_edit_profile.xml" value="0.22" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/fragment_filter_barber.xml" value="0.25" />
         <entry key="..\:/CuteCutNew/app/src/main/res/layout/fragment_language.xml" value="0.19074074074074074" />
         <entry key="..\:/CuteCutNew/app/src/main/res/layout/fragment_profile.xml" value="0.18854166666666666" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/item_book_stylist.xml" value="0.25" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/item_favorite.xml" value="0.20416666666666666" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/item_notification.xml" value="0.20416666666666666" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/item_popular_artist.xml" value="0.5" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/item_spinner_list.xml" value="0.20416666666666666" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/item_spinner_list_gender.xml" value="0.20416666666666666" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.20416666666666666" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/map_cutters_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/map_include_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/CuteCutNew/app/src/main/res/layout/view_dialog_cancellation.xml" value="0.20416666666666666" />
         <entry key="..\:/NewCut/app/src/main/res/drawable/button_default_bg.xml" value="0.154" />
         <entry key="..\:/NewCut/app/src/main/res/drawable/code_background.xml" value="0.133" />
         <entry key="..\:/NewCut/app/src/main/res/drawable/edtextbackground.xml" value="0.154" />

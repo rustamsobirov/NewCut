@@ -32,6 +32,9 @@
     <string name="about_us">Biz haqimizda</string>
     <string name="logout">Chiqish</string>
     <string name="Bcancel">Bekor qilish</string>
+    <string name="location">6391 Elgin St. Celina, Delaware…</string>
+    <string name="reating">5.0</string>
+    <string name="distance">15 km</string>
 
 
     <string name="language">Tilni tanlang</string>
