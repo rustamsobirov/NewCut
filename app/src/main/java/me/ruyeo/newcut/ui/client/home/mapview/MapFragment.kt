@@ -80,7 +80,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val cri = Criteria(69.226296, 41.3264751, 4)
+        val cri = Criteria(69.226296, 41.3264751, 10000)
         viewModel.getByCriteria(cri)
     }
 

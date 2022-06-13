@@ -241,7 +241,7 @@ class ConfirmationFragment : BaseFragment(R.layout.fragment_confirmation) {
             "Please enter the 4 diget security code we just sent you at " + "<font color=${
                 ContextCompat.getColor(
                     requireContext(),
-                    R.color.green_default
+                    R.color.colorPrimary_500
                 )
             }>" + arguments?.getString(
                 "phoneNumber"

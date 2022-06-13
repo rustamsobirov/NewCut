@@ -3,53 +3,59 @@ package me.ruyeo.newcut.ui.splash
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import me.ruyeo.newcut.SharedPref
 import me.ruyeo.newcut.databinding.ActivitySplashBinding
 import me.ruyeo.newcut.ui.auth.LoginActivity
+import me.ruyeo.newcut.ui.client.MainActivity
+import javax.inject.Inject
 
 /**
  * In SplashActivity, user can visit SignInActivity or MainActivity
  */
 
 @SuppressLint("CustomSplashScreen")
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySplashBinding
+    private var binding: ActivitySplashBinding? = null
+    private var job: Job? = null
 
-    companion object {
-        val TAG = SplashActivity::class.java.simpleName
-    }
-
+    @Inject
+    lateinit var sharedPref: SharedPref
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
-
+        setContentView(binding?.root)
         window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-        setContentView(binding.root)
-        initViews()
 
-    }
-
-    private fun initViews() {
-        countDownTimer()
-    }
-
-    private fun countDownTimer() {
-        object : CountDownTimer(2000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {}
-            override fun onFinish() {
-                callLoginActivity()
+        job = lifecycleScope.launchWhenStarted {
+            delay(2000)
+            if (sharedPref.token.isNotEmpty()) {
+                Intent(this@SplashActivity, MainActivity::class.java).also {
+                    startActivity(it)
+                    finish()
+                }
+            } else {
+                Intent(this@SplashActivity, LoginActivity::class.java).also {
+                    startActivity(it)
+                    finish()
+                }
             }
-        }.start()
+        }
     }
 
-    private fun callLoginActivity() {
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
+        job?.cancel()
     }
 }

@@ -55,7 +55,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
                         } else {
                             findNavController().navigate(
                                 R.id.action_loginFragment_to_registrationFragment,
-                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString())
+                                bundleOf("phoneNumber" to binding.phoneNumberEdt.text.toString().phoneNumber())
                             )
                             viewModel.reset()
                         }
@@ -99,7 +99,7 @@ class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     private fun inputLayoutBoxDisable() {
         binding.textInputLayout.boxStrokeColor =
-            ContextCompat.getColor(requireContext(), R.color.green_default)
+            ContextCompat.getColor(requireContext(), R.color.colorPrimary_500)
     }
 
     @SuppressLint("SetTextI18n")

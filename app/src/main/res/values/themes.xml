@@ -10,7 +10,8 @@
         <item name="colorSecondaryVariant">@color/colorPrimary_700</item>
         <item name="colorOnSecondary">@color/colorPrimary_700</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <!-- Customize your theme here. -->
         <item name="buttonStyle">@style/ButtonPrimary</item>
         <item name="android:textColor">@color/black</item>

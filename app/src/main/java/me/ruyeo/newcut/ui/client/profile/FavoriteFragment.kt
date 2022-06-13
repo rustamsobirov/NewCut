@@ -2,122 +2,79 @@ package me.ruyeo.newcut.ui.client.profile
 
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import me.ruyeo.newcut.R
+import me.ruyeo.newcut.SharedPref
 import me.ruyeo.newcut.adapter.book.UserFavoriteAdapter
 import me.ruyeo.newcut.databinding.FragmentFavoriteBinding
 import me.ruyeo.newcut.model.book.BookModel
 import me.ruyeo.newcut.ui.BaseFragment
+import me.ruyeo.newcut.utils.UiStateList
+import me.ruyeo.newcut.utils.UiStateObject
 import me.ruyeo.newcut.utils.extensions.viewBinding
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoriteFragment : BaseFragment(R.layout.fragment_favorite) {
     private val binding by viewBinding { FragmentFavoriteBinding.bind(it) }
     private val userFavoriteAdapter by lazy { UserFavoriteAdapter() }
-    var rvFavoriteList = ArrayList<BookModel>()
+    private val viewModel by viewModels<FavouriteViewModel>()
+
+    @Inject
+    lateinit var sharedPref: SharedPref
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getFavourites(sharedPref.getUser().id)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        recyclerFavoriteList()
-        installRecyclerView()
-
-        binding.toolbar.setNavigationOnClickListener{
+        binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
 
+        setupUI()
+        setupObservers()
+
     }
 
-
-    private fun installRecyclerView() {
+    private fun setupUI() {
         binding.apply {
             rvFavorite.adapter = userFavoriteAdapter
         }
     }
 
+    private fun setupObservers() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.getFavouritesState.collect {
+                    when(it){
+                        is UiStateList.LOADING -> {
+                            showProgress()
+                        }
+                        is UiStateList.SUCCESS -> {
+                            hideProgress()
+                            if (!it.data.isNullOrEmpty()){
+                                userFavoriteAdapter.submitList(it.data)
+                            }else{
 
-    private fun recyclerFavoriteList() {
-        rvFavoriteList.add(
-            BookModel(
-                "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef",
-                "Green Apple",
-                "6391 Elgin St. Celina, Delaware...",
-                null,
-                "15 km"
-            )
-        )
-        rvFavoriteList.add(
-            BookModel(
-                "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef",
-                "Green Apple",
-                "6391 Elgin St. Celina, Delaware...",
-                null,
-                "15 km"
-            )
-        )
-        rvFavoriteList.add(
-            BookModel(
-                "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef",
-                "Green Apple",
-                "6391 Elgin St. Celina, Delaware...",
-                null,
-                "15 km"
-            )
-        )
-        rvFavoriteList.add(
-            BookModel(
-                "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef",
-                "Green Apple",
-                "6391 Elgin St. Celina, Delaware...",
-                null,
-                "15 km"
-            )
-        )
-        rvFavoriteList.add(
-            BookModel(
-                "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef",
-                "Green Apple",
-                "6391 Elgin St. Celina, Delaware...",
-                null,
-                "15 km"
-            )
-        )
-        rvFavoriteList.add(
-            BookModel(
-                "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef",
-                "Green Apple",
-                "6391 Elgin St. Celina, Delaware...",
-                null,
-                "15 km"
-            )
-        )
-        rvFavoriteList.add(
-            BookModel(
-                "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef",
-                "Green Apple",
-                "6391 Elgin St. Celina, Delaware...",
-                null,
-                "15 km"
-            )
-        )
-        rvFavoriteList.add(
-            BookModel(
-                "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef",
-                "Green Apple",
-                "6391 Elgin St. Celina, Delaware...",
-                null,
-                "15 km"
-            )
-        )
-        rvFavoriteList.add(
-            BookModel(
-                "https://firebasestorage.googleapis.com/v0/b/wallpapers-23e0e.appspot.com/o/Cona_Mobile_512x512.png?alt=media&token=88054f45-ea0e-40d8-82d2-37b6ffb7ebef",
-                "Green Apple",
-                "6391 Elgin St. Celina, Delaware...",
-                null,
-                "15 km"
-            )
-        )
-
-        userFavoriteAdapter.submitList(rvFavoriteList)
-
+                            }
+                        }
+                        is UiStateList.ERROR -> {
+                            hideProgress()
+                            showMessage(it.message)
+                        }
+                        else -> Unit
+                    }
+                }
+            }
+        }
     }
 
 }

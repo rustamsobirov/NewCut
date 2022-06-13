@@ -12,7 +12,6 @@ import kotlinx.coroutines.launch
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.profile.NotificationAdapter
 import me.ruyeo.newcut.databinding.FragmentNotificationBinding
-import me.ruyeo.newcut.model.profile.NotificationModel
 import me.ruyeo.newcut.ui.BaseFragment
 import me.ruyeo.newcut.utils.UiStateList
 import me.ruyeo.newcut.utils.extensions.viewBinding

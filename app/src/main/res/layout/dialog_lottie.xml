@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:lottie_autoPlay="true"
     android:layout_gravity="center"
-    app:lottie_rawRes="@raw/progress"
+    app:lottie_rawRes="@raw/loading"
     app:lottie_loop="true">
 
 </com.airbnb.lottie.LottieAnimationView>

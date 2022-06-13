@@ -77,4 +77,3 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
             }
         }*/
     }
-}

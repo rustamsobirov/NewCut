@@ -37,15 +37,13 @@ import me.ruyeo.newcut.utils.extensions.viewBinding
 import java.util.*
 
 @AndroidEntryPoint
-class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile),
-    AdapterView.OnItemSelectedListener, DatePickerDialog.OnDateSetListener {
+class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile), AdapterView.OnItemSelectedListener, DatePickerDialog.OnDateSetListener {
     private val binding by viewBinding { FragmentEditProfileBinding.bind(it) }
     private val viewModel by viewModels<EditProfileViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        setupUI()
     }
+
 
     private fun setupUI() {
         binding.apply {
@@ -81,7 +79,7 @@ class EditProfileFragment : BaseFragment(R.layout.fragment_edit_profile),
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        setupUI()
         callBack()
         dataPickerDialog()
         sensorToKeyBoard()
