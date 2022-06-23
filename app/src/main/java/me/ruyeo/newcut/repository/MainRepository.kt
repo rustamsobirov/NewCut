@@ -26,9 +26,12 @@ class MainRepository @Inject constructor(
 
     suspend fun getBarbershopById(id: Int) = apiService.getBarbershopById(id)
 
+    suspend fun getBarbers(id: Int) = apiService.getBarbers(id)
+
     suspend fun getAllBooking() = bookingDao.getAllBooking()
 
     suspend fun addBooking(booking: Booking) = bookingDao.addBooking(booking)
+
 
     //notification
     suspend fun getNotifications() = apiService.getAllNotifications()

@@ -38,7 +38,7 @@ class HomeViewModel @Inject constructor(
     val myLocation get() = _myLocation
 
     private val _getBookingState = MutableStateFlow<UiStateList<Booking>>(UiStateList.EMPTY)
-    private val getBookingState = _getBookingState
+    val getBookingState = _getBookingState
 
     fun getAllBooking() = viewModelScope.launch {
         _getBookingState.value = UiStateList.LOADING

@@ -30,6 +30,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.MapBarberShopAdapter
+import me.ruyeo.newcut.data.local.enitity.Booking
 import me.ruyeo.newcut.data.model.Criteria
 import me.ruyeo.newcut.databinding.FragmentMapBinding
 import me.ruyeo.newcut.model.map.BarberShopLatLongModel
@@ -82,6 +83,7 @@ class MapFragment : BaseFragment(R.layout.fragment_map), RoutingListener,
         super.onCreate(savedInstanceState)
         val cri = Criteria(69.226296, 41.3264751, 10000)
         viewModel.getByCriteria(cri)
+        viewModel.getAllBooking()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

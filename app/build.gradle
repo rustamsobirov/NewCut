@@ -103,4 +103,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     //Lottie
     implementation 'com.airbnb.android:lottie:5.0.3'
+
+    //ImagePicker
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
 }

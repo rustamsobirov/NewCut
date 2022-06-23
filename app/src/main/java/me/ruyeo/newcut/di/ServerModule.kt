@@ -13,6 +13,7 @@ import me.ruyeo.newcut.data.remote.ApiService
 import me.ruyeo.newcut.data.remote.GeoService
 import me.ruyeo.newcut.utils.Constants
 import me.ruyeo.newcut.utils.Constants.BASE_URL
+import okhttp3.CacheControl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

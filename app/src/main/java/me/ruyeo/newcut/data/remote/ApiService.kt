@@ -50,6 +50,9 @@ interface ApiService {
     @GET("barbershop/$BACK_VER/{id}")
     suspend fun getBarbershopById(@Path("id") id: Int): BaseResponseObject<Barbershop>
 
+    @GET("barbershop/$BACK_VER/barbers/{id}")
+    suspend fun getBarbers(@Path("id") id: Int): BaseResponseList<Barbershop>
+
 
     //barberbshop rating
     @POST("rating/create")

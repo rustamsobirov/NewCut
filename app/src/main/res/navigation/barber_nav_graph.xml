@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeAcceptedFragment">
+
+    <fragment
+        android:id="@+id/acceptedAppointmentFragment"
+        android:name="me.ruyeo.newcut.ui.barber.appointment.AcceptedAppointmentFragment"
+        android:label="fragment_accepted_appintment"
+        tools:layout="@layout/fragment_accepted_appintment" />
+    <fragment
+        android:id="@+id/barberProfileFragment"
+        android:name="me.ruyeo.newcut.ui.barber.account.BarberProfileFragment"
+        android:label="fragment_barber_profile"
+        tools:layout="@layout/fragment_barber_profile" >
+        <action
+            android:id="@+id/action_barberProfileFragment_to_aboutProfileFragment"
+            app:destination="@id/aboutProfileFragment" />
+        <action
+            android:id="@+id/action_barberProfileFragment_to_settingsProfileFragment"
+            app:destination="@id/settingsProfileFragment" />
+        <action
+            android:id="@+id/action_barberProfileFragment_to_FAQSProfileFragment"
+            app:destination="@id/FAQSProfileFragment" />
+        <action
+            android:id="@+id/action_barberProfileFragment_to_aboutProfileFragment2"
+            app:destination="@id/aboutProfileFragment" />
+        <action
+            android:id="@+id/action_barberProfileFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_barberProfileFragment_to_profileGalleryFragment"
+            app:destination="@id/profileGalleryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeAcceptedFragment"
+        android:name="me.ruyeo.newcut.ui.barber.appointment.HomeAcceptedFragment"
+        android:label="fragment_home_accepted"
+        tools:layout="@layout/fragment_home_accepted" />
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="me.ruyeo.newcut.ui.barber.account.EditProfileFragment"
+        android:label="fragment_edit_profil"
+        tools:layout="@layout/fragment_edit_profil" />
+    <fragment
+        android:id="@+id/settingsProfileFragment"
+        android:name="me.ruyeo.newcut.ui.barber.account.SettingsProfileFragment"
+        android:label="fragment_settings_profile"
+        tools:layout="@layout/fragment_settings_profile" />
+    <fragment
+        android:id="@+id/aboutProfileFragment"
+        android:name="me.ruyeo.newcut.ui.barber.account.AboutProfileFragment"
+        android:label="fragment_about_profile"
+        tools:layout="@layout/fragment_about_profile" />
+    <fragment
+        android:id="@+id/FAQSProfileFragment"
+        android:name="me.ruyeo.newcut.ui.barber.account.FAQSProfileFragment"
+        android:label="fragment_f_a_q_s_profile"
+        tools:layout="@layout/fragment_f_a_q_s_profile" />
+    <fragment
+        android:id="@+id/profileGalleryFragment"
+        android:name="me.ruyeo.newcut.ui.barber.account.ProfileGalleryFragment"
+        android:label="fragment_profile_gallery"
+        tools:layout="@layout/fragment_profile_gallery" >
+        <action
+            android:id="@+id/action_profileGalleryFragment_to_uploadImageFragment"
+            app:destination="@id/uploadImageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/uploadImageFragment"
+        android:name="me.ruyeo.newcut.ui.barber.account.UploadImageFragment"
+        android:label="fragment_upload_image"
+        tools:layout="@layout/fragment_upload_image" />
+</navigation>

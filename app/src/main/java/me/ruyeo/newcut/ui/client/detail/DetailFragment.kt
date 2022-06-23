@@ -26,6 +26,7 @@ import me.ruyeo.newcut.databinding.FragmentDetailBinding
 import me.ruyeo.newcut.model.detail.DetailModel
 import me.ruyeo.newcut.model.detail.DetailSpecialistModel
 import me.ruyeo.newcut.ui.BaseFragment
+import me.ruyeo.newcut.utils.UiStateList
 import me.ruyeo.newcut.utils.UiStateObject
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import me.ruyeo.newcut.utils.extensions.visible
@@ -35,7 +36,6 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     private val detailImageAdapter by lazy { DetailImageAdapter() }
     private val detailBottomSalonSpecialistAdapter by lazy { DetailBottomSalonSpecialistAdapter() }
     private var photosList = ArrayList<DetailModel>()
-    private var specialistList = ArrayList<DetailSpecialistModel>()
     private val binding by viewBinding { FragmentDetailBinding.bind(it) }
     private val viewModel by viewModels<DetailViewModel>()
 
@@ -43,6 +43,7 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             viewModel.getBarbershopById(it.getInt("barbershopId"))
+            viewModel.getBarbers(it.getInt("barbershopId"))
         }
     }
 
@@ -52,10 +53,33 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
         carouselRecyclerManager()
         tabLayoutManager()
         detailBottomViewPagerManager()
-        salonSpecialistRecycler()
 
         setupUI()
         setupObservers()
+        setupGetBarbers()
+    }
+
+    private fun setupGetBarbers() {
+        viewLifecycleOwner.lifecycleScope.launch{
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.getBarberState.collect {
+                    when(it){
+                        is UiStateList.LOADING -> {
+                            showProgress()
+                        }
+                        is UiStateList.SUCCESS -> {
+                            hideProgress()
+                            detailBottomSalonSpecialistAdapter.submitList(it.data)
+                        }
+                        is UiStateList.ERROR -> {
+                            hideProgress()
+                            showMessage(it.message)
+                        }
+                        else -> Unit
+                    }
+                }
+            }
+        }
     }
 
     private fun setupObservers() {
@@ -93,64 +117,6 @@ class DetailFragment : BaseFragment(R.layout.fragment_detail) {
     private fun setupUI() {
         binding.backBtn.setOnClickListener {
             onBackPressed()
-        }
-    }
-
-    private fun salonSpecialistRecycler() {
-        detailBottomSalonSpecialistAdapter.itemClick = {
-            findNavController().navigate(R.id.action_detailFragment_to_detailSpecialistFragment)
-        }
-        binding.apply {
-            salonSpecialistRecyclerView.adapter = detailBottomSalonSpecialistAdapter
-            specialistList.add(
-                DetailSpecialistModel(
-                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
-                    "Valeriy", "wiki"
-                )
-            )
-            specialistList.add(
-                DetailSpecialistModel(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
-                    "Brian", "google"
-                )
-            )
-            specialistList.add(
-                DetailSpecialistModel(
-                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
-                    "Valeriy", "wiki"
-                )
-            )
-            specialistList.add(
-                DetailSpecialistModel(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
-                    "Brian", "google"
-                )
-            )
-            specialistList.add(
-                DetailSpecialistModel(
-                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
-                    "Valeriy", "wiki"
-                )
-            )
-            specialistList.add(
-                DetailSpecialistModel(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
-                    "Brian", "google"
-                )
-            )
-            specialistList.add(
-                DetailSpecialistModel(
-                    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Valeriy_Konovalyuk_3x4.jpg",
-                    "Valeriy", "wiki"
-                )
-            )
-            specialistList.add(
-                DetailSpecialistModel(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUbdm9q7F9Qoe6mAk-W7yrTQjzZYIZ9OPa_-bzuBjPZkzUi-6bdCChY4mvaun8OUlxyAw&usqp=CAU",
-                    "Brian", "google"
-                )
-            )
-            detailBottomSalonSpecialistAdapter.submitList(specialistList)
         }
     }
 

@@ -1,5 +1,6 @@
 package me.ruyeo.newcut.ui.client.profile
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -9,6 +10,7 @@ import me.ruyeo.newcut.R
 import me.ruyeo.newcut.SharedPref
 import me.ruyeo.newcut.databinding.FragmentProfileBinding
 import me.ruyeo.newcut.ui.BaseFragment
+import me.ruyeo.newcut.ui.auth.LoginActivity
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import javax.inject.Inject
 
@@ -36,6 +38,12 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
         binding.apply {
             fullname.text = sharedPref.getUser().fullName
             phoneNumberTv.text = sharedPref.getUser().phoneNumber
+            logoutTv.setOnClickListener {
+                sharedPref.token = ""
+                Intent(requireActivity(),LoginActivity::class.java).also {
+                    startActivity(it)
+                }
+            }
         }
     }
 

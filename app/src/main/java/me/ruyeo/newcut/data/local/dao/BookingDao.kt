@@ -7,7 +7,7 @@ import me.ruyeo.newcut.data.local.enitity.Booking
 
 @Dao
 interface BookingDao {
-    @Insert
+    @Insert()
     suspend fun addBooking(booking: Booking)
 
     @Query("SELECT * FROM booking")

@@ -8,6 +8,7 @@ import kotlinx.coroutines.launch
 import me.ruyeo.newcut.data.model.Barbershop
 import me.ruyeo.newcut.repository.MainRepository
 import me.ruyeo.newcut.utils.Constants.ERROR_MESSAGE
+import me.ruyeo.newcut.utils.UiStateList
 import me.ruyeo.newcut.utils.UiStateObject
 import javax.inject.Inject
 
@@ -30,6 +31,23 @@ class DetailViewModel @Inject constructor(
             }
         }catch (e: Exception){
             _barbershopState.value = UiStateObject.ERROR(e.localizedMessage ?: ERROR_MESSAGE)
+        }
+    }
+
+    private val _getBarbersState = MutableStateFlow<UiStateList<Barbershop>>(UiStateList.EMPTY)
+    val getBarberState = _getBarbersState
+
+    fun getBarbers(id: Int) = viewModelScope.launch {
+        _getBarbersState.value = UiStateList.LOADING
+        try {
+            val response = repository.getBarbers(id)
+            if (response.success){
+                _getBarbersState.value = UiStateList.SUCCESS(response.data)
+            }else{
+                _getBarbersState.value = UiStateList.ERROR(response.error.message)
+            }
+        }catch (e: Exception){
+            _getBarbersState.value = UiStateList.ERROR(e.localizedMessage ?: ERROR_MESSAGE)
         }
     }
 }

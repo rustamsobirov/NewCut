@@ -256,27 +256,40 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/drawable/radius_top.xml" value="0.1955" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/font/poppins_bold.xml" value="0.14322916666666666" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/font/poppins_regular.xml" value="0.14322916666666666" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/activity_admin.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/dialog_lottie.xml" value="0.176" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/dialog_message.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_about.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_about_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_accepted_appintment.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_appoitment.xml" value="0.264" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_barber_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_confirmation.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_detail.xml" value="0.4" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_detail_about.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_detail_specialist.xml" value="0.2" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_edit_profil.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_edit_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_f_a_q_s_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_faqs.xml" value="0.2111111111111111" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_favorite.xml" value="0.264" />
-        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_login.xml" value="0.5157699443413729" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_filter_barber.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_home_accepted.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_login.xml" value="0.2" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_map.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_notification.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_profile_gallery.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_registration.xml" value="0.72" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_settings_profile.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_upcoming_appointment.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/fragment_upload_image.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/item_book_accepted.xml" value="0.1109375" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/item_favorite.xml" value="0.4" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/item_notification.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/item_portfolio_plus_image.xml" value="0.1109375" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/layout/map_include_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/menu/bottom_menu.xml" value="0.20185185185185187" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/menu/bottom_nav_customer.xml" value="0.25416666666666665" />
