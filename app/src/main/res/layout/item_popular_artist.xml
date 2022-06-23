@@ -13,8 +13,8 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/bookImageProfileStory"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:scaleType="centerCrop"
             android:layout_gravity="center"
             android:src="@drawable/stylist_img_1"
@@ -31,14 +31,14 @@
             android:fontFamily="@font/poppins_bold"
             tools:text="Lily"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="13sp" />
         <TextView
             android:id="@+id/tvSpecialist"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Hair Stylist"
             android:fontFamily="@font/poppins_regular"
-            android:textSize="16sp"
+            android:textSize="13sp"
             android:textColor="#ABAAB1"/>
 
     </LinearLayout>
