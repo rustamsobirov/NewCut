@@ -10,6 +10,7 @@ import me.ruyeo.newcut.ui.BaseFragment
 class FAQSProfileFragment : BaseFragment(R.layout.fragment_f_a_q_s_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 
 }

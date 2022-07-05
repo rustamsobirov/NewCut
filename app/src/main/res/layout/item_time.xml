@@ -10,7 +10,7 @@
         android:layout_width="100dp"
         android:layout_height="48dp"
         android:layout_gravity="center"
-        android:backgroundTint="@color/colorPrimary_500"
+        android:backgroundTint="@color/light_400"
         app:cardCornerRadius="10dp">
 
         <TextView
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="30 Minute"
             android:layout_gravity="center"
-            android:textColor="@color/white"
+            android:textColor="@color/text_200"
             android:textSize="13sp" />
 
 

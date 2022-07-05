@@ -20,11 +20,7 @@ class UploadImageFragment : BaseFragment(R.layout.fragment_upload_image) {
     private val binding by viewBinding { FragmentUploadImageBinding.bind(it) }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         initViews()
-
-
     }
 
     private fun initViews() {

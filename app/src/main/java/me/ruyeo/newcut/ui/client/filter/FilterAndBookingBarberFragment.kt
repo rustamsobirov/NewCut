@@ -6,14 +6,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.slider.LabelFormatter
 import com.google.android.material.slider.RangeSlider
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import me.ruyeo.newcut.R
 import me.ruyeo.newcut.adapter.book.SpecialistProfileAdapter
 import me.ruyeo.newcut.adapter.book.UserBookingAdapter
+import me.ruyeo.newcut.adapter.book.UserFavoriteAdapter
 import me.ruyeo.newcut.adapter.filter.ItemServiceAdapter
 import me.ruyeo.newcut.adapter.filter.ItemTimeAdapter
 import me.ruyeo.newcut.databinding.FragmentFilterBarberBinding
@@ -22,6 +29,8 @@ import me.ruyeo.newcut.model.book.PopularArtistModel
 import me.ruyeo.newcut.model.filter.Service
 import me.ruyeo.newcut.model.filter.Time
 import me.ruyeo.newcut.ui.BaseFragment
+import me.ruyeo.newcut.ui.client.profile.FavouriteViewModel
+import me.ruyeo.newcut.utils.UiStateList
 import me.ruyeo.newcut.utils.extensions.viewBinding
 import java.text.NumberFormat
 import java.util.*
@@ -38,8 +47,15 @@ class FilterAndBookingBarberFragment : BaseFragment(R.layout.fragment_filter_bar
     lateinit var btnApply: Button
     lateinit var rvTime: RecyclerView
     lateinit var bottomSheetView: View
+    private val serViceAdapter by lazy { ItemServiceAdapter() }
     private val specialistProfileAdapter by lazy { SpecialistProfileAdapter() }
     private val userBookingAdapter by lazy { UserBookingAdapter() }
+    private val viewModel by viewModels<FilterViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getAllServices()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -50,6 +66,9 @@ class FilterAndBookingBarberFragment : BaseFragment(R.layout.fragment_filter_bar
         reviewCountManager()
         bottomSheetManager()
         initViews(view)
+
+
+
 
     }
     private fun initViews(view: View) {
@@ -71,7 +90,7 @@ class FilterAndBookingBarberFragment : BaseFragment(R.layout.fragment_filter_bar
                 bottomSheetDialog.dismiss()
             }
 
-            recyclerServiceManager()
+            setupObservers()
             recyclerTimeManager()
             rangeSliderListener()
 
@@ -87,7 +106,6 @@ class FilterAndBookingBarberFragment : BaseFragment(R.layout.fragment_filter_bar
     }
 
     private fun rangeSliderListener() {
-
         rangeSlider.setLabelFormatter(object : LabelFormatter {
             override fun getFormattedValue(value: Float): String {
                 return String.format(Locale.US, "%.01f km", value)
@@ -109,18 +127,29 @@ class FilterAndBookingBarberFragment : BaseFragment(R.layout.fragment_filter_bar
         timeAdapter.submitList(timeList)
     }
 
-    private fun recyclerServiceManager() {
-        val adapter = ItemServiceAdapter()
-        rvService.adapter = adapter
-        val list = ArrayList<Service>()
-        list.add(Service( "svbdjsfn"))
-        list.add(Service("svbdjsfn"))
-        list.add(Service("svbdjsfn"))
-        list.add(Service("svbdjsfn"))
-        list.add(Service("svbdjsfn"))
-        list.add(Service("svbdjsfn"))
-        list.add(Service("svbdjsfn"))
-        adapter.submitList(list)
+    private fun setupObservers(){
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED){
+                viewModel.getServiceState.collect{
+                    when(it){
+                        is UiStateList.LOADING ->{
+                            showProgress()
+                        }
+                        is UiStateList.SUCCESS ->{
+                            hideKeyboard()
+                            if (!it.data.isNullOrEmpty()){
+                                serViceAdapter.submitList(it.data)
+                            }
+                        }
+                        is UiStateList.ERROR ->{
+                            hideProgress()
+                            showMessage(it.message)
+                        }
+                        else -> Unit
+                    }
+                }
+            }
+        }
     }
 
     @SuppressLint("SetTextI18n")

@@ -1,6 +1,7 @@
 package me.ruyeo.newcut.data.remote
 
 import me.ruyeo.newcut.data.model.*
+import me.ruyeo.newcut.model.filter.Service
 import me.ruyeo.newcut.utils.Constants.BACK_VER
 import retrofit2.http.*
 
@@ -25,8 +26,12 @@ interface ApiService {
     suspend fun upDateProfile(@Body userUpdate: UserUpdate):BaseResponseObject<User>
 
     //orders
-    @GET("order/$BACK_VER/list")
-    suspend fun getAllOrders(): BaseResponseList<Order>
+    @GET("order/$BACK_VER/listByUserId/upcoming/{id}")
+    suspend fun getAllOrders(@Path("id")id:Int): BaseResponseList<Barbershop>
+
+    @GET("order/$BACK_VER/listByUserId/passed/{id}")
+    suspend fun getAllPassedOrders(@Path("id")id: Int):BaseResponseList<BarberPassedOrder>
+
 
 
     //organization
@@ -69,4 +74,8 @@ interface ApiService {
     //favourites
     @GET("favourites/$BACK_VER/get/{id}")
     suspend fun getFavourites(@Path("id") id: Int): BaseResponseObject<BarbershopList<Barbershop>>
+
+    //Service
+    @GET("services/$BACK_VER/getAllByBarBerShopId")
+    suspend fun getAllServices():BaseResponseList<Service>
 }

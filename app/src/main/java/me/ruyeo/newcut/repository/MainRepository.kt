@@ -17,7 +17,8 @@ class MainRepository @Inject constructor(
 
 
     //orders
-    suspend fun getAllOrders() = apiService.getAllOrders()
+    suspend fun getAllOrders(id: Int) = apiService.getAllOrders(id)
+    suspend fun getPassedOrders(id: Int) = apiService.getAllPassedOrders(id)
 
     //barbershop
     suspend fun getAllBarbershops() = apiService.getAllBarbershops()
@@ -40,4 +41,7 @@ class MainRepository @Inject constructor(
   //  suspend fun addFavourites(map: HashMap<String, Any>) = apiService.addFavourites(map)
 
     suspend fun getFavourites(id: Int) = apiService.getFavourites(id)
+
+    // service
+    suspend fun getAllServices() = apiService.getAllServices()
 }

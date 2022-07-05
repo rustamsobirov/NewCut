@@ -88,9 +88,6 @@ tools:context=".ui.auth.LoginFragment">
         android:textColor="@color/white"
         android:textSize="16sp" />
 
-    <com.google.android.material.slider.RangeSlider
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 </LinearLayout>
 
 </LinearLayout>

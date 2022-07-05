@@ -2,7 +2,6 @@ package me.ruyeo.newcut.adapter.filter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.selection.ItemKeyProvider
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +15,7 @@ class ItemServiceAdapter : RecyclerView.Adapter<ItemServiceAdapter.VH>() {
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
             val item = dif.currentList[adapterPosition]
-            binding.tvService.text = item.service
+            binding.tvService.text = item.type
         }
     }
 
@@ -40,7 +39,7 @@ class ItemServiceAdapter : RecyclerView.Adapter<ItemServiceAdapter.VH>() {
     companion object {
         private val ITEM_DIFF = object : DiffUtil.ItemCallback<Service>() {
             override fun areItemsTheSame(oldItem: Service, newItem: Service): Boolean =
-                oldItem.service == newItem.service
+                oldItem.type == newItem.type
 
             override fun areContentsTheSame(oldItem: Service, newItem: Service): Boolean =
                 oldItem == newItem

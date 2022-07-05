@@ -8,11 +8,12 @@ import android.widget.ArrayAdapter
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import me.ruyeo.newcut.App
 import me.ruyeo.newcut.R
-import me.ruyeo.newcut.data.model.Order
+import me.ruyeo.newcut.data.model.Barbershop
 import me.ruyeo.newcut.databinding.ItemUpcomingAppointmentBinding
-import me.ruyeo.newcut.model.appointment.UpcomingAppointment
 
 class UpcomingAppointmentAdapter :  RecyclerView.Adapter<UpcomingAppointmentAdapter.Vh>(){
     private val dif = AsyncListDiffer(this, ITEM_DIFF)
@@ -22,11 +23,7 @@ class UpcomingAppointmentAdapter :  RecyclerView.Adapter<UpcomingAppointmentAdap
     inner class Vh(var binding: ItemUpcomingAppointmentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind() {
-            val adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(
-                App.instance,
-                R.array.times,
-                R.layout.item_spinner_list
-            )
+            val adapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(App.instance, R.array.times, R.layout.item_spinner_list)
             adapter.setDropDownViewResource(R.layout.item_spinner_list)
 
             binding.apply {
@@ -35,12 +32,19 @@ class UpcomingAppointmentAdapter :  RecyclerView.Adapter<UpcomingAppointmentAdap
                     override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                         spinnerClick?.invoke()
                     }
-
                     override fun onNothingSelected(p0: AdapterView<*>?) {
-
                     }
-
                 }
+                val request = dif.currentList[adapterPosition]
+                tvBookedTime.text = request.workingTime
+                tvUserName.text = request.name
+                tvUserAddress.text = request.address
+                tvTypeHaircut.text = request.description
+                Glide.with(binding.root.context)
+                    .load(request.pictures)
+                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                    .into(binding.ivProfile)
+
 
                 bCancel.setOnClickListener{
                     cancelClick?.invoke()
@@ -48,10 +52,6 @@ class UpcomingAppointmentAdapter :  RecyclerView.Adapter<UpcomingAppointmentAdap
             }
         }
     }
-
-
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Vh {
         return Vh(
             ItemUpcomingAppointmentBinding.inflate(
@@ -67,22 +67,22 @@ class UpcomingAppointmentAdapter :  RecyclerView.Adapter<UpcomingAppointmentAdap
     override fun getItemCount(): Int = dif.currentList.size
 
 
-    fun submitList(list: List<Order>) {
+    fun submitList(list: List<Barbershop>) {
         dif.submitList(list)
     }
 
     companion object {
-        private val ITEM_DIFF = object : DiffUtil.ItemCallback<Order>() {
+        private val ITEM_DIFF = object : DiffUtil.ItemCallback<Barbershop>() {
             override fun areItemsTheSame(
-                oldItem: Order,
-                newItem: Order
+                oldItem: Barbershop,
+                newItem: Barbershop
             ): Boolean {
                 return true
             }
 
             override fun areContentsTheSame(
-                oldItem: Order,
-                newItem: Order
+                oldItem: Barbershop,
+                newItem: Barbershop
             ): Boolean {
                 return true
             }

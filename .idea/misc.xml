@@ -294,6 +294,12 @@
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/menu/bottom_menu.xml" value="0.20185185185185187" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/menu/bottom_nav_customer.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/NewCut/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/cuteCuteProject/app/src/main/res/layout/fragment_confirmation.xml" value="0.15833333333333333" />
+        <entry key="..\:/cuteCuteProject/app/src/main/res/layout/fragment_login.xml" value="0.15833333333333333" />
+        <entry key="..\:/cuteCuteProject/app/src/main/res/layout/item_service.xml" value="0.15833333333333333" />
+        <entry key="..\:/cuteCuteProject/app/src/main/res/layout/item_spinner_list.xml" value="0.19947916666666668" />
+        <entry key="..\:/cuteCuteProject/app/src/main/res/layout/item_time.xml" value="0.33" />
+        <entry key="..\:/cuteCuteProject/app/src/main/res/layout/item_upcoming_appointment.xml" value="0.25" />
       </map>
     </option>
   </component>
